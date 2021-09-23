@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html-Css</title>
+</head>
+<body>
+ <p>  HTML(Hypertext Markuo Language)</p> 
+
+-tag = html komutlarina denir.
+-elenemnt= bir html tagi ve arasindakilerin tamamina denir.
+-attribute= tag in icine yazilan ve ek özellik kadan ifadelerdir.
+-isaretleme dilidir, programlama dili degildir.
+-taglar <> ve </> isaretlerinin arasina yazilir.(istisnalar vardir)
+--------------------------------------------------------------------------------
+HTML KODLARI
+
+<!doctype html> 	= Sayfanin en basina yazilir html ile yazildigini ifade eder.
+			*! e basip enter a basarsak hazir kodlari VSCODE getirir.
+			Utf 8 butun diller destekleyen dil eklentisi
+			cihazlarda duzgun görünmeai icin;
+			-int explorer a özel kod
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">		
+			-her ekranda calisabilmesi icin;
+			<meta name="viewport" content="width=device-width, initial-				scale=1.0">
+
+<html> </html>	= html komutlarinin tamamini kapsayan en temel tag dir.
+
+<head> </head>	= sayfayla ilgili genel bilgiler ve tanilar bulunur.
+
+<title> </title>	= sayfanin basligidir ve tarayicinin basliginda cikar.*SEO isi
+
+<body> </body>	= icerik kisminin olusturuldugu bolumdur.
+
+<p> </p> 		= paragraf olusturmak icin kullanilir.
+
+<h1> </h1> 		= baslik icin kullanilir. Bir sayfada bir tane h1 olmalidir.
+<h2> </h2>		
+<h3> </h3>
+<h4> </h4>
+<h5> </h5>
+<h6> </h6>		= en kücük basliktir.
+
+*<br> veya <br/> 	= alt satira gecmek icin kullanilir.
+
+*<hr>			= cizgi cekmek icin kullanilir
+
+*<!-- --> 		= kod icine aciklama     eklemek icin kullanilir.
+
+<b> </b>		= koyu(bold) yazmak icin kullanilir.
+
+<strong> </strong>	= vurgulu yazdirir, semantiktir.
+
+<u> </u>		= alti cizili yazdirir.
+
+<i> </i>		= italik yazdirir.
+
+<em> </em>		= italik yazdirir,semantiktir(arama motorlari icin anlamlidir)
+
+<div> </div>	= bolum olarak bir kod blogunu ayirmaya yarar.
+
+<span> </span>	= kucuk bir bölüme özel islem yapmak icin kullanilir.
+
+<a href=""> </a>	= baglanti vermek icin kullanilir.
+	""mailto:(email adresi)" =cihazdaki mail pograminizi acip mail gönderilir.
+	"tel:(tel no)""	= cihazin telefonunu kullanir.
+	"https://wa.me/905551234567"	=seklinde whatsapptan arar.
+	https://faq.whatsapp.com/iphone/how-to-link-to-whatsapp-from-a-different-app/?lang=tr
+
+
+<iframe src="." frameborder="0"> </iframe> =sayfada pencere olusturur.
+	Harita, youtube videosu vs eklenebilir
+
+--------------------------------------------------------------------------------
+TABLO OLUSTURMA
+
+<table>					=tablo olusturulacagini ifade eder, sarttir.
+	<thead>				=tablonun basligidir
+		<tr>				=satir manasina gelir
+			<th> </th>		=baslik hücresi anlamindadir.
+		</tr>
+	</thead>
+	<tbody>				=tablonun body sidir.
+		<tr>
+			<td> </td>		=veri hücresi manasindadir.
+		</tr>
+	</tbody>
+	<tfoot>				=tablonun taban kismidir.
+		<tr>
+			<td> </td>
+		</tr>
+	</tfoot>
+</table>
+
+colspan=""	=yatayda hücre birlestirir.
+
+Rowspan=""	=dikeyde hücre birlestirir.
+--------------------------------------------------------------------------------
+LISTELEME TAGLARI
+
+<ol> 				=numarali liste olusturur.
+	<li> </li>
+</ol>
+-----	
+<ul> 				=numarasiz liste olusturur.
+	<li> </li>
+</ul>
+--------------------------------------------------------------------------------
+RESIM-FOTOGRAF EKLEME
+
+<img src="(resim yolu)" alt="(resim bilgisi)" width="100px" height="75px">
+--------------------------------------------------------------------------------
+VIDEO EKLEME
+
+<video src="istenen_video.mp4" width="560" height="315" controls></video>
+	controls autoplay =acilinca oynamaya basla(yabili)r.
+
+-isteninirse direkt olarak youtube dan da ifarame seklinde baglanti alinabilir.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/O2059wLL_Ls" title="YouTube video player" frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+--------------------------------------------------------------------------------
+FORM OLUSTURMA
+
+<form action="."></form>	= form olustururken basta ve sonda kullanilmali.
+
+<label for="x"></label>		=kullaniciya form elemani ile ilgili bilgi verir.
+	Label deki for="" ile input taki id="" eslesmesi icin ayni olmalidir.
+
+
+<input type="." name="." id="x">	=Kullanicidan bilgi almak icin kullanilir.
+	type="text"
+
+--------------------------------------------------------------------------------
+ATTRIBUTLAR
+
+type=""  =siralama türünü belirler. 1,A,a,I,i seklinde olabilir. <ol type "a">
+	    =disc,square,circle yazilirsa sekli degisir. <ol type "disc">
+
+start="" =hangi siralamadan baslayacagini belirtir. <ol type "a" start="a">
+
+id=""    =taga bir isim vermek icin kullanilir.Kullanmak icin # kullanmilalidir
+
+class="" =taga bir ad vermek icindir.Kullanmak icin . lazimdir.
+
+target="_blank" = acilan sayfanin yeni sekmede acilmasini saglar. <a>
+
+title="" = bir gorselin ismi icin kullanilir. <a> ile birlikte kullanilir.
+
+style="" = css icin head arasina koyulur
+	color:red;test allign:center; background-color:blue;...
+--------------------------------------------------------------------------------
+CSS KODLARI
+
+width		= genisligini belirler. 50Px,50%
+
+height	= yüksekligini belirler
+
+color		= yazi rengini belirler
+
+font-family	= yazi stilini belirler
+
+test allign	= yazi hizalamasini ayarlar
+	center,left,reight,
+
+background-color	= arka plan regini ayarlar
+
+position	= top bottom right left
+
+text-shadow
+
+--------------------------------------------------------------------------------
+-lorem yazip arkasina kac yazarsak o kadar uzunlukta hazir metin gelir.
+
+-SHIFT + ALT + F =kodlari düzenler.
+*eger otomatik kaydedilince düzenlenmesi isteniyorsa ayarlar>arama kismina format yazip>Editor defaut formatter> prettier- code formater secilmelidir.
+Altindaki format on save kismi da isaretli olmalidir.
+
+-html snippets eklentisi ekli degise ! e basinca yardimci ön kodlar cikmayabilir
+
+--------------------------------------------------------------------------------
+<html>
+	<head>
+		<title> xxx </title>
+	</head>
+	<body>
+		xxx
+	</body>
+</html>
+--------------------------------------------------------------------------------
+SEO= (Search Engine Optimication) arama motorlarindaki öne cikma isidir.
+
+info.cern.ch	= bu site dünyadaki ilk website. 
+
+https://www.lipsum.com/	= lorem in olusturuldugu ve alnti yapilan sitedir.
+
+https://www.w3schools.com/tags/default.asp = bu site html css js  ile ilgili en fazla faydalanilan kaynaktir.
+
+https://www.w3schools.com/html/tryit.asp?filename=tryhtml_intro = bu site ile vscode gibi bir programa ihtiyac duymadan alistirma yapilabilir.
+
+https://codepen.io/pen/?editors=0010 = html css js ile ilgili alistirma yapilan bir site
+
+https://unsplash.com/ =ucretsiz resim alabildigimiz bir site
+
+https://www.pexels.com/tr-tr/ = ucretsiz resim alabildigimiz bir site
+
+https://www.flaticon.com/ = ücretsiz icon sitesi
+--------------------------------------------------------------------------------
+PROJE KLOSÖRU OLUSTURMA
+
+  Proje klosoru	=ana klosördur.
+	assets	=varliklar demektir.
+		img	=resim tutuldugu yerdir. (video ve ses internetten alinabilir)
+		css	=css dosyalari
+		js	=js dosyalari
+		lib 	=baska kütüphaneler burada tutulur
+	index.html
+	about.html
+	contact.html  		seklinde projemizi ayarlayabiliriz.
+--------------------------------------------------------------------------------
+
+
+style="border: 1px solid red"
+
+display: inline-block; /*yanyana getirir ve block elemente cevirmis oluyor*/
+
+position absolut verilen elemanin parent ina mutlaka relativ verilmelidir.
+
+
+</body>
+</html>
