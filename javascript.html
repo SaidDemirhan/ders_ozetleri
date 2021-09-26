@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript</title>
+  </head>
+  <body>
+    <h1>JavaScript</h1>
+    <section>
+      <ul>
+        <li>
+          JS de kodlarda bir yanlislik varsa kodlar o satira kadar sorunsuz
+          calisir.
+        </li>
+        <li>
+          JS icin asagidaki belgeler mutlaka olusturulmalidir:
+          <ol>
+            <li>index.html</li>
+            <li>app.js</li>
+          </ol>
+        </li>
+        <li>
+          Js normal internet sayfasinda mouse sag click>incele>console kismindan
+          görebiliriz.
+        </li>
+        <li>
+          Css ve bootstrap baglanti linkleri head deki title in üzerinde olmali
+          ki istenildiginde title da degistirilebilsin.
+        </li>
+      </ul>
+    </section>
+    <div>
+      <h2>JS Kodlari</h2>
+      <p>
+        js kodlari app.js sayfasina yazilmalidir. <br />
+        index.html ve app.js sayfasi body üzerindei script koduyla birbirine
+        bagli olmalidir. <br />
+        Consolu görmek icin idex.html sayfasi calistirilmalidir. <br />
+        <strong>Kisa yol:</strong>ctrl+h ile degistirilmek istenen kelimelerin
+        tamamini bir defada degistirebiliyoruz.
+      </p>
+
+      <h3>Konsol</h3>
+
+      <ul>
+        <li>
+          <strong>console.log("Merhaba Dünya");</strong> = konsola istenileni
+          yazdirir.
+        </li>
+        <li>
+          <strong>alert("Dikkat");</strong>
+          = sayfa acilir acilmaz sayfa üzerine istenilen uyari yazdirilabilir.
+        </li>
+        <li>
+          <strong>prompt("Lütfen adinizi giriniz:");</strong>
+          = sayfa acilir acilmaz bir veri girmenizi ister. <br />
+          <strong>Not:</strong> Alinan degeri atarken type ini basina yazmak
+          tavsiye edilir. <br />
+          const isim=String(prompt("Lütfen adinizi giriniz:")); <br />
+          const yas=Number(prompt("Lütfen yasizi giriniz:"));
+        </li>
+        <li>
+          <strong>console.warn("Bu bir uyaridir!");</strong>
+          = konsolda bir uyari mesaji olusturur.
+        </li>
+        <li>
+          <strong>console.error("Bu bir hata mesajidir");</strong>
+          = konsolda bir hata mesaji belirtir.
+        </li>
+      </ul>
+    </div>
+    <h3>JS Degiskenleri</h3>
+    <ul>
+      <li>
+        <strong>var isim="ali";</strong>= Hem string hem de integer deger
+        verilebilir. <br />
+        Her zaman degistirilebilir. <br />
+        Her yerden cagrilip kullanilabilir. <br />
+        Modern js de güvensiz diye devre disi kalmistir.
+      </li>
+      <li>
+        <strong>const piSayisi=3.14; </strong>= Sadece yazildigi yerden
+        ulasilabilir ve orada kullanilabilir. <br />
+        Kesinlikle sonradan degistirilemez, ilk yazilan veri sabit kalir.(JAVA
+        daki final gibi)
+        <br />Hem string hem de integer deger verilebilir.(const isim="Veli";)
+        <br />Mutlaka yazilirken deger atanmalidir.
+      </li>
+      <li>
+        <strong>let fiyat=10;</strong>= Sonradan yeni atama yapilabilir.(let
+        isim="Ali";) <br />Hem string hem de integer deger verilebilir. <br />
+        Eger bir Scope icinde yazilmissa baska yerde kullanilamaz.
+      </li>
+      <li><strong></strong></li>
+      <li>
+        <strong>console.log(typeof isim);</strong>seklinde sorarak Number mi,
+        boolean mi yoksa String mi oldugunu konsoldan ögrenebiliriz.
+      </li>
+      <li>
+        3 cesit String yazimi vardir:
+        <ol>
+          <li>let isim= "Ali"</li>
+          <li>let isim= 'Ali'</li>
+          <li>let isim= `Ali`</li>
+        </ol>
+      </li>
+    </ul>
+    <h3>Aritmetik Operatorler</h3>
+    <ul>
+      <li>
+        <strong>+</strong>= toplama islemidir.<br />Eger bir degeri aciklama ile
+        yazdirmak istersek arasina + veya , kaoyabiliriz.<br />
+        const kola=5;<br />
+        const cips=6;<br />
+        console.log("toplam fiyat",kola+cips);<br />
+        //toplam fiyat 11<br />
+        const sayi=7;<br />
+        const stringSayi="7";<br />
+        console.log(sayi+stringSayi);<br />//77
+      </li>
+      <li><strong>- </strong>= cikarma islemidir.</li>
+      <li><strong>* </strong>= carpma islemidir.</li>
+      <li>
+        <strong>% </strong>= mod alma islemidir. <br />
+        const sayi=123;<br />
+        console.log(sayi%10); <br />
+        //3 birler basamgindaki degeri verir.
+      </li>
+      <li><strong>++ </strong>= bir arttirma islemidir</li>
+      <li><strong>-- </strong>= bir azaltma islemidir.</li>
+      <li>
+        <strong>** </strong>= us alma islemidir. <br />
+        const taban=2;<br />
+        const us=3;<br />
+        console.log(taban**us);<br />
+        //8(2*2*2)
+      </li>
+    </ul>
+    <p>
+      <strong>NOT:</strong>Yazim sekli olarak; <br />
+      const isim="Can";<br />
+      const yas=7;<br />
+      console.log("benim adim "+isim+"yasim "+yas);<br />
+      console.log("benim adim",isim+"yasim",yas);<br />
+      console.log(`benim adim ${isim} yasim ${yas}`);<br />
+      //benim adim Can yasim 7
+    </p>
+    <h3>Karsilastirma Operatorleri</h3>
+    <ul>
+      <li>
+        <strong>== </strong>: esitligi kontrol eder <br />
+        const sayi=7;<br />
+        const stringSayi="7";<br />
+        console.log(sayi==stringSayi);<br />//true
+      </li>
+      <li>
+        <strong>=== </strong>: veri tipi de dahil olmak uzere esitligi kontrol
+        eder. <br />
+        const sayi=7;<br />
+        const stringSayi="7";<br />
+        console.log(sayi==stringSayi);<br />//false cünki biri integer digeri
+        ise String bir deger.
+      </li>
+      <li><strong>!= </strong>: esit olmama durumunu kontrol eder.</li>
+      <li><strong>> </strong>: buyuk olup olmadigini kontrol eder</li>
+      <li><strong>< </strong>: kucuk olup olmadigini kontrol eder</li>
+      <li>
+        <strong>>= </strong>: esit veya buyuk olup olmadigini kontrol eder.
+      </li>
+      <li>
+        <strong><= </strong>: esit veya kucuk olup olmadigini kontrol eder.
+      </li>
+    </ul>
+    <h3>Mantiksal Operatorler</h3>
+    <ul>
+      <li>
+        <strong>&& </strong>: iki tarafin da istenilen sarti saglamasi gerekir
+      </li>
+      <li>
+        <strong>|| </strong>: iki taraftan bir tanesi sarti sagliyorsa true
+        verir.
+      </li>
+      <li><strong>! </strong>: "degilse" manasina gelir.</li>
+    </ul>
+    <h3>Type degistirme</h3>
+    <p>
+      <strong>String()</strong> veya <strong>Number()</strong>yazarak tip
+      degisimi yapabilliriz.
+    </p>
+    const stringPara="100"; <br />
+    console.log(stringPara+15); //10015 <br />
+    console.log(Number(stringPara)+15); //115 seklinde toplanabilir.
+    <h3>Karar Yapilari</h3>
+    <ul>
+      <li>
+        <strong>if-else</strong> <br />
+        const s1=Number(prompt("birinci sayi")); <br />
+        const islem= prompt("islemi giriniz"); <br />
+        const s2=Number(prompt("ikinci sayi")); <br />
+        let sonuc=0; <br />
+        if(islem=="+"){ <br />
+        sonuc = s1+s2; <br />
+        } <br />
+        else if(islem=="-"){ <br />
+        sonuc = s1-s2; <br />
+        } <br />
+        else if(islem=="*"){ <br />
+        sonuc = s1*s2; <br />
+        } <br />
+        else if(islem=="/"){ <br />
+        !s2?alert("bolen 0 olamaz!"):(sonuc=s1/s2) <br />
+        } else {<br />
+        console.log("Yanlis giris yaptiniz!"); <br />
+        } <br />
+        console.log(`${s1} ${islem} ${s2}=${sonuc}`)
+      </li>
+      <li>
+        <strong>ternary</strong> <br />
+        const isim=prompt("adinizi giriniz"); <br />
+        const yas=Number(prompt("yasinizi giriniz"); <br />
+        const saglik=prompt("saglikli misiniz? e/h"); <br />
+        console.log(yas>=18 && saglik=="e" ? `${isim} ehliyet alabilir`:`${isim}
+        ehliyet alamaz` );
+      </li>
+      <li>
+        <strong>switch-case</strong><br />
+        var sayi=prompt("en az iki basamakli bir sayi giriniz"); <br />
+        var birlerBasamagi=sayi%10; <br />
+        switch(birlerbasamagi){<br />
+        case 1:<br />
+        rakamAdi="Bir";<br />
+        break; <br />
+        case 2:<br />
+        rakamAdi="Iki";<br />
+        break; <br />
+        case 3:<br />
+        rakamAdi="Uc";<br />
+        break; <br />
+        case 4:<br />
+        rakamAdi="Dort";<br />
+        break; <br />
+        case 5:<br />
+        rakamAdi="Bes";<br />
+        break; <br />
+        case 6:<br />
+        rakamAdi="Alti";<br />
+        break; <br />
+        case 7:<br />
+        rakamAdi="Yedi";<br />
+        break; <br />
+        case 8:<br />
+        rakamAdi="Sekiz";<br />
+        break; <br />
+        case 9:<br />
+        rakamAdi="Dokuz";<br />
+        break; <br />
+        case 0:<br />
+        rakamAdi="Sifir";<br />
+        }<br />
+      </li>
+      <li>
+        <strong>for</strong><br />
+        const sayi =10; <br />
+        let asalSayi=true;<br />
+        for(let i=2; i(kucuktur)sayi; i++) { <br />
+        if(sayi%i==0)<br />
+        asalSayi=false;<br />
+        break;<br />
+        }<br />
+        };<br />
+        console.log(asalSayi ? "Asal : AsalSayi")
+      </li>
+      <li>
+        <strong>while</strong><br />
+        //"yeter" yazana kadar veri isteyen bir programi dongu kullanarak
+        olusturalim. <br />
+        let isim=prompt ("baslat yaziniz ve enter a basiniz."); <br />
+        let i=1; <br />
+        //true yerine 1 de yazilabilir. (false 0) <br />
+        while(isim !="yeter"){ <br />
+        isim=prompt(i+"bir isim giriniz:"); <br />
+        i++; <br />
+        console.log("isim"); <br />
+        } <br />
+      </li>
+      <li>
+        <strong>do-while</strong><br />
+        let not; do{ <br />
+        not=prompt("Lütfen 0 ile 100 arasinda bir sayi giriniz:"); <br />
+        }while (not(kucuktur) 0||not >100); <br />
+        console.log("Girdiginiz not 0 ile 100 arasindadir."); <br />
+        //0 ile 100 arasinda not girilmedigi sürece not girisi devam edecektir.
+        <br />
+      </li>
+    </ul>
+    <div>
+      <h2>Fonksiyon Olusturma Sekilleri</h2>
+      <ol>
+        <li>
+          <strong>Declaration</strong><br />
+          function carpim(a,b){ <br />
+          return a*b; <br />
+          } <br />
+          fonksiyonun cagrilma durumu oncesinde veya sonrasinda olabilir.
+          (carpim(8,9);)
+        </li>
+        <li>
+          <strong>Expression</strong><br />
+          const carpim = function(a,b){ <br />
+          return a*b; <br />
+          } <br />
+          bu yontem en yaygin yontemdir.
+        </li>
+        <li>
+          <strong>Arrow (ok)</strong><br />
+          const carpim = (a,b) => {a*b}; //susulu parantez sart degil<br />
+        </li>
+      </ol>
+    </div>
+    <p><strong>DOM:</strong>Document Object Model</p>
+    <h2>Dom Elemanlarina Erisme</h2>
+    <ul>
+      <li>
+        <strong>*document.getElementById(id)</strong>: elemani id sine göre
+        getirir. <br />
+        const buton=document.getElementById("btn");
+      </li>
+      <li>
+        <strong>document.getElementsByTagName(isim)</strong>: elemani Tag ismine
+        göre getirir. <br />
+        const resim=documents.getElementsByTagName("img"); <br />
+        //img elemanlarini cagirdik ama indexine gore degisiklik yapmaliyiz.
+        <br />
+        resim[1].style.width="300px";
+      </li>
+      <li>
+        <strong>document.getElementsByClassName(isim)</strong>: elemani class
+        adina göre getirir. <br />
+        const baslık = document.getElementsByClassName("H1"); <br />
+        baslık[2].style.textAlign = "start"; //kacinci h1 oldugunu belirttik.
+        ***birden fazla ClassName olabilecegi icin index istenmekte. <br />
+      </li>
+      <li>
+        <strong>*document.querySelector(CSS secici)</strong>: id,
+        class,ozellik,tur ve degere gore eslesen ilk elemani getirir. <br />
+        En cok kullanilan cagirma yoludur. <br />
+        id icin basina # isareti class icin ise basin . konulmalidir. <br />
+        document.querySelector(".arama").textContent = "KAVRAM 😁"; <br />
+        document.querySelector("#govde").style.backgroundImage =
+        "linear-gradient(green,blue,pink)";
+      </li>
+      <li>
+        <strong>document.querySelectorAll(CSS secici)</strong>id,
+        class,ozellik,tur ve degere gore eslesen elemanlar listesini getirir.
+      </li>
+    </ul>
+
+    <h2>Dom Olaylari</h2>
+    <ul>
+      <li>
+        <strong>onclick :</strong>fareye tiklandiginda <br />
+        document.querySelector(".bir").onclick = function () { <br />
+        document.querySelector(".bir").src = "./img/logo2.png"; <br />
+        document.querySelector(".iki").src = "./img/js_logo.png"; <br />
+        };//birnci resme tiklandiginda ikinci resimle yer degistirdi. <br />
+        //atama yapmadigimiz icin her defasinda cagirmak zorunda kaldik. <br />
+        ***Eger app.js de img ye ulasilacaksa ./img/.. seklinde baslamali.
+        <br />
+      </li>
+      <li><strong>onload :</strong>Web sayfasi yuklendiginde</li>
+      <li>
+        <strong>onmouseover :</strong>fare, bir elemanin uzerine geldiginde
+        <br />
+        const h = document.querySelector(".H1"); //basligi cagirdik ve atadik
+        <br />
+        h.onmouseover = function () { <br />
+        h.style.color = "red"; <br />
+        h.style.backgroundColor = "white"; <br />
+        }; <br />
+      </li>
+      <li>
+        <strong>onmouseout :</strong>fare, bir elemanin uzerinden ayrildiginda
+        <br />
+        h.onmouseout = function () { <br />
+        h.style.color = "pink"; <br />
+        h.style.backgroundColor = "yellow"; <br />
+        }; <br />
+      </li>
+      <li><strong>onchange :</strong>bir elemanin icerigi degistiginde</li>
+      <li><strong>onsubmit :</strong>bir html formu gonderildiginde</li>
+      <li><strong>onkeyup :</strong>klavyeden bir tusa basildiginda</li>
+    </ul>
+
+    <h2>Style Kodlari</h2>
+    <ul>
+      <p>
+        <strong>Örnek:</strong>const
+        paragraf=document.getElementById("aciklama").style;<br />
+        //bunu yaparak bir nesneyi manipule etmek uzere cektik ve tanimladik.
+        <br />
+        //eger sonuna .style; eklemeseydik her defasinda cagirdigimiz ve
+        atatdigimiz nesneye .style vermek zorunda
+        kalacaktik.(paragraf.style.color="red";)
+      </p>
+      <li>
+        <strong>style ;</strong>bir nesneyi manipule etmek icin en basa yazilir
+      </li>
+      <li>
+        <strong>backgroundColor="black"; </strong>arka plan rengini degistirir.
+      </li>
+      <li><strong>color="white"; </strong>yazi rengini degistirir.</li>
+      <li>
+        <strong>fontSize="20px"; </strong>fontunu istenilen sekilde ayarlar.
+      </li>
+      <li><strong>width="300px"; </strong>nesnenin genisligini ayarlar.</li>
+      <li><strong>height="300px"; </strong>nesnenin yuksekligini ayarlar.</li>
+      <li>
+        <strong>border="3px solid red"</strong>nesnenin dis cerdevesini
+        olusturur.
+      </li>
+      <li><strong>textAllign="start"; </strong>yaziyi sola dayar.</li>
+      <li>
+        <strong>backgroundImage = "linear-gradient(green,blue,pink)";</strong>
+      </li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+    </ul>
+    <h2>Style e ihtiyac olmadan kullanilan kodlar</h2>
+    <ul>
+      <li>
+        <strong>textContent="ARA"; </strong>yaziyi degistirir. <br />
+        buton.textContent = "ARA"; //tikla kelimesi ARA kelimesine donustu.
+      </li>
+      <li>
+        <strong>innerHTML=`(kucuktur)li>trt(kucuktur)/li>`;</strong>yaziyi
+        maddeli bir yazi ile degistirir. <br />
+        buton.innerHTML=`...`;
+      </li>
+    </ul>
+  </body>
+</html>
