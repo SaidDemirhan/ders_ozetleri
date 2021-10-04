@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selenium</title>
+  </head>
+  <body>
+    <h1>SELENIUM</h1>
+
+    <h2>Driver Olusturma</h2>
+    <p>
+      System.setProperty("webdriver.chrome.driver",""C:\\Users\\.....\\chromdriver.exe");
+      <br />
+      WebDriver driver = new ChromeDriver();
+    </p>
+
+    <p>
+      bu sekilde driver imizi olusturduk. Artik driver üzerinden islerimizi
+      halledebiliriz.
+    </p>
+    <h2>Driver Komutlari</h2>
+    <ul>
+      <li><strong>driver.get("..."); </strong>yazilan adrese götürür.</li>
+      <li>
+        <strong>driver.getCurrentUrl(); </strong>gidilen sitenin url sini
+        istenirse getirir.
+      </li>
+      <li>
+        <strong>driver.getTitle(); </strong>sitenin basligini istenirse getirir.
+      </li>
+      <li>
+        <strong>driver.manage().window().maximize(); </strong>siteyi tam ekran
+        yapar
+      </li>
+      <li>
+        <strong>Thread.sleep(3000); </strong>3 saniye bulundugu sayfada bekler.
+      </li>
+      <li>
+        <strong>driver.navigate().to("..."); </strong>Rota olusturarak girilen
+        url ye götürür.
+      </li>
+      <li>
+        <strong>driver.navigate().back(); </strong>eski adrese geri getirir.
+      </li>
+      <li>
+        <strong>driver.navigate().forward(); </strong>geri geldigi
+        adrese(ileriye) götürür.
+      </li>
+      <li><strong>driver.navigate().refresh(); </strong>sayfayi yeniler.</li>
+
+      <li>
+        <strong>driver.quit(); </strong>butun acilanlan browser lari kapatir.
+      </li>
+      <li>
+        <strong>driver.close(); </strong>sadece aktif olan browser i kapatir.
+      </li>
+    </ul>
+    <h2>Karsilastirmak icin;</h2>
+    <p>
+      Test asamasinda beklenen duruma <strong>expected</strong>, karsilasilan
+      duruma ise <strong>actual</strong>diyoruz ve bunlari bir
+      <strong>String</strong>'e atiyoruz.
+    </p>
+
+    <p>
+      String expectedTitle="amazon"; <br />
+      String actualTitle=driver.getTitle(); <br />
+
+      if (expectedTitle.equals(actualTitle)){ <br />
+      System.out.println("Title beklenen deger ile ayni, test PASS"); <br />
+      }else { <br />
+      System.out.println("Title beklenenden farkli test FAILED"); <br />
+
+      }
+    </p>
+  </body>
+</html>

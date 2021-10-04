@@ -165,12 +165,12 @@
       </li>
       <li><strong>!= </strong>: esit olmama durumunu kontrol eder.</li>
       <li><strong>> </strong>: buyuk olup olmadigini kontrol eder</li>
-      <li><strong>< </strong>: kucuk olup olmadigini kontrol eder</li>
+      <li><strong>&lt; </strong>: kucuk olup olmadigini kontrol eder</li>
       <li>
         <strong>>= </strong>: esit veya buyuk olup olmadigini kontrol eder.
       </li>
       <li>
-        <strong><= </strong>: esit veya kucuk olup olmadigini kontrol eder.
+        <strong>&lt;= </strong>: esit veya kucuk olup olmadigini kontrol eder.
       </li>
     </ul>
     <h3>Mantiksal Operatorler</h3>
@@ -264,7 +264,7 @@
         <strong>for</strong><br />
         const sayi =10; <br />
         let asalSayi=true;<br />
-        for(let i=2; i(kucuktur)sayi; i++) { <br />
+        for(let i=2; i&lt;sayi; i++) { <br />
         if(sayi%i==0)<br />
         asalSayi=false;<br />
         break;<br />
@@ -289,7 +289,7 @@
         <strong>do-while</strong><br />
         let not; do{ <br />
         not=prompt("Lütfen 0 ile 100 arasinda bir sayi giriniz:"); <br />
-        }while (not(kucuktur) 0||not >100); <br />
+        }while (not&lt; 0||not >100); <br />
         console.log("Girdiginiz not 0 ile 100 arasindadir."); <br />
         //0 ile 100 arasinda not girilmedigi sürece not girisi devam edecektir.
         <br />
@@ -391,6 +391,7 @@
       <li><strong>onchange :</strong>bir elemanin icerigi degistiginde</li>
       <li><strong>onsubmit :</strong>bir html formu gonderildiginde</li>
       <li><strong>onkeyup :</strong>klavyeden bir tusa basildiginda</li>
+      <li><strong>onkeydown :</strong>klavyeden parmak bir tustan cekildiginde</li>
     </ul>
 
     <h2>Style Kodlari</h2>
@@ -420,10 +421,18 @@
         <strong>border="3px solid red"</strong>nesnenin dis cerdevesini
         olusturur.
       </li>
-      <li><strong>textAllign="start"; </strong>yaziyi sola dayar.</li>
+      <li><strong>textAlign="start"; </strong>yaziyi sola dayar.</li>
       <li>
         <strong>backgroundImage = "linear-gradient(green,blue,pink)";</strong>
       </li>
+
+      <li><strong>innerHTML =
+      '&lt;i class="fas fa-sun">&lt;/i>'; </strong>bir nesnenin icerigini bir ikon ile degistirme(avasome uzerinden)</li>
+      <li><strong>value</strong></li> degerlere ulasir
+      <li><strong>toUpperCase/toLowerCase</strong>buyuk/kucuk harf yapar.</li>
+      <li><strong>x.removeChild(x.lastElementChild)</strong>en son elemani siler</li>
+      <li><strong>chercked/unchecked</strong></li>tikli veya tiksiz
+      <li><strong>addEvevntListener(mouseout,function(){x.src="./img/resim2"})</strong>bir nesneye olay eklemek icin kullanilir.</li>
       <li><strong></strong></li>
       <li><strong></strong></li>
       <li><strong></strong></li>
@@ -434,6 +443,20 @@
       <li><strong></strong></li>
       <li><strong></strong></li>
       <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+      <li><strong></strong></li>
+	
     </ul>
     <h2>Style e ihtiyac olmadan kullanilan kodlar</h2>
     <ul>
@@ -442,10 +465,46 @@
         buton.textContent = "ARA"; //tikla kelimesi ARA kelimesine donustu.
       </li>
       <li>
-        <strong>innerHTML=`(kucuktur)li>trt(kucuktur)/li>`;</strong>yaziyi
-        maddeli bir yazi ile degistirir. <br />
+        <strong>innerHTML=`&lt;li>trt&lt;/li>`;</strong>yaziyi maddeli bir
+        yazi ile degistirir. <br />
         buton.innerHTML=`...`;
       </li>
+      <li><strong>play</strong>sesi oynatir.</li>
+      <li><strong>pause</strong>sesi duraklatir.</li>
+      <li>
+        <strong>removeChild(liste.lastChild)</strong>li nin elemanlarini
+        siler</li>
+      </li>
     </ul>
+    <h3>JS Klavye Kodlari</h3>
+<ul>
+  <li><span>backspace ==> 8</span></li>
+  <li><span>backspace ==> 8</span></li>
+  <li><span>tab ==> 9</span></li>
+  <li><span>enter ==> 13</span></li>
+  <li><span>shift ==> 16</span></li>
+  <li><span>ctrl ==> 17</span></li>
+  <li><span>alt ==> 18</span></li>
+  <li><span>pause/break ==> 19</span></li>
+  <li><span>caps lock ==> 20</span></li>
+  <li><span>escape ==> 27</span></li>
+  <li><span>page up ==> 33</span></li>
+  <li><span>page down ==> 34</span></li>
+  <li><span>end ==> 35</span></li>
+  <li><span>home ==> 36</span></li>
+  <li><span>left arrow(sola yön tuşu) ==> 37</span></li>
+  <li><span>up arrow(yukarı yön tuşu) ==> 38</span></li>
+  <li><span>right arrow(sağa yön tuşu) ==> 39</span></li>
+  <li><span>down arrow(aşağı yön tuşu) ==> 40</span></li>
+  <li><span>insert ==> 45</span></li>
+  <li><span>delete ==> 46</span></li>
+  <li><span><a href=" https://www.mmsrn.com/javascript-tum-klavye-kodlari-keycode/"></a> https://www.mmsrn.com/javascript-tum-klavye-kodlari-keycode/</span></li>
+  
+</ul>
+
+
+
+          
+
   </body>
 </html>
