@@ -5,6 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Selenium</title>
+    <style>
+      body{
+        background-color: gray;
+        color: white;
+        text-align: center;
+      }
+      h1,h2,h3{
+        color:honeydew;
+      }
+      ul{
+        text-align: start;
+      }
+    </style>
   </head>
   <body>
     <h1>SELENIUM</h1>
@@ -32,7 +45,8 @@
       </li>
       <li>
         <strong>driver.manage().window().maximize(); </strong>siteyi tam ekran
-        yapar
+        yapar. <br />
+        teste baslarken dreiver lardan sonra yazmayi tercih edelim.
       </li>
       <li>
         <strong>Thread.sleep(3000); </strong>3 saniye bulundugu sayfada bekler.
@@ -60,7 +74,7 @@
     <h2>Karsilastirmak icin;</h2>
     <p>
       Test asamasinda beklenen duruma <strong>expected</strong>, karsilasilan
-      duruma ise <strong>actual</strong>diyoruz ve bunlari bir
+      duruma ise <strong>actual </strong>diyoruz ve bunlari bir
       <strong>String</strong>'e atiyoruz.
     </p>
 
@@ -75,5 +89,132 @@
 
       }
     </p>
+    <h2>Locators(Yer Bulucu, Konum Belirleyici</h2>
+    <p>
+      Toplamda 8 adet selenium locator vardir. <br />
+      Bir web elementini bulmak icin kullanilir.
+    </p>
+    <p>WebElement aramaKutusu=driver.findElement(By...("."));</p>
+    <ul>
+      <li>
+        <strong>By.id(".") </strong>id ile bir elementi cagiriririz.
+        <p>
+          Eğer yanlış id locate edilirse;
+          <strong>NoSuchElementException</strong> hatası olusur.
+        </p>
+
+        <p>
+          Eger varolan bir WebElement calisma sirasinda kaybolsun diye
+          ayarlanmissa <strong>StaleElementReferenceException</strong>
+        </p>
+      </li>
+      <li><strong>By.name(".") </strong></li>
+      <li><strong>By.className(".") </strong></li>
+      <li><strong>By.tagName(".") </strong></li>
+      <li>
+        <strong>By.linkText(".") </strong>Eger html tag i a ise kullanilabilir.
+      </li>
+      <li>
+        <strong>By.partialLinkText(".") </strong>By.linkText("") yontemine
+        benzer. tek fark tam metnr gerek yoktur.
+      </li>
+      <li>
+        <strong>By.xpath(".") </strong> iki cesit xpath vardir:
+        <ul>
+          <li>
+            <strong>Absolute xpath </strong
+            >//parent/child/child/.../child[1,2,3...]
+          </li>
+          <li>
+            <strong>Relative xpath </strong>//tagIsmi[@attribute='value'] <br />
+            tag ismi yerine eger tek veya önemsiz ise <strong>*</strong> da
+            yazilabilir.
+            <p>
+              eger incele kisminda aradigimiz xpath iki adet varsa tamamini
+              paranteze alarak secmek istedigimizi [2] seklinde secebiliriz.<br />
+              (//input[@type='text'])[2]
+            </p>
+
+            <p>
+              tag ismi, attribute ismi, attribute value si en önemli
+              anahtarlardandir.
+            </p>
+            <p>xpath denildiginde relative xpath anlasilir.</p>
+            <p>
+              <strong>Eger sadece WebElement te sadece yazi olusa;</strong
+              ><br />
+              //*[text()='yazinin eksiksiz tamami'] <br />
+              * yerine tag ismi de yazilabilir.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>By.css(".") </strong>üc sekilde yapilabilir
+        <ul>
+          <li><strong>"tagAdi[attributeAdi='value']"" </strong></li>
+          <li>
+            <strong>"tagAdi#idValue" </strong>veya<strong> "#idValue" </strong>
+          </li>
+          <li>
+            <strong>"tagAdi.classValue"</strong>veya<strong></strong>
+              ".classValue"</strong
+            >
+          </li>
+        </ul>
+      </li>
+
+      <p>
+        xpath ve cssSelector de eger birden fazla uyusan WebElement varsa <strong>ilkini</strong> 
+        yazar. <br>
+        eger istedigimize ulasmak istersek <strong>"(#idValue)[3]"</strong> seklinde yazmaliyiz.
+      </p>
+    </ul>
+
+    <p>
+      <strong>findElements() Methodu; </strong><br />
+      mutlaka bir liste'ye atanmalidir ki depolanabilsin. <br />
+      index e sahiptir ve 0'dan baslar.
+    </p>
+    <p>List&lt;WebElement&gt; elementAdi = driver.findElements(By...("."));</p>
+    <p>
+      Eger elimizdeki tüm elementlerin yazilarini yazdirmak istiyorsak forEach
+      Loop kullanmaliyiz.
+    </p>
+    <p>
+      for (WebElement each:elementAdi){ <br />
+      System.out.println(each.getText()); <br />
+      }
+    </p>
+    <h2>WebElement Uzerindek islemler</h2>
+    <ul>
+      <li>
+        <strong>sendKeys(".");</strong>Metin kutusuna istenilen metni yazdirir.
+      </li>
+      <li><strong>clear();</strong>Metin kutusunun icindeki yaziyi siler.</li>
+      <li>
+        <strong>submit();</strong>bir form veya arama kutusundaki metni
+        göndermek icin sendKeys(".") yonteminden sonra kullanilir.
+      </li>
+      <li><strong>click();</strong>bir yere tiklamak icin kullanilir.</li>
+      <li>
+        <strong>isDisplayed();</strong>Bir Web elementinin gorunur olup
+        olmadigini kontrol eder.
+      </li>
+      <li><strong>getText();</strong>Web elementine ait yaziyi getirir.</li>
+      <li><strong>Keys.ENTER();</strong>Enter a basar.</li>
+    </ul>
+
+    <h3>Parent-Child-Sibling iliskisi</h3>
+    <p>
+      &lt;tbody&gt; Parent <br />
+      &lt;tr&gt; Child<br />
+      &lt;td&gt;&lt;/td&gt; Sibling<br />
+      &lt;td&gt;&lt;/td&gt; Sibling <br />
+      &lt;/tr&gt;<br />
+      &lt;/tbody&gt;
+    </p>
+
+    <p></p>
   </body>
 </html>

@@ -183,22 +183,80 @@
     <hr />
 
     <h2>FORM OLUSTURMA</h2>
+    <p>
+      Eger sunucuya gönderiliyorsa hepsinde <strong>name="."</strong>olmak
+      zorundadir.
+    </p>
     <ul>
       <li>
         <strong>&lt;form action=".">&lt;/form> :</strong>form olustururken basta
-        ve sonda kullanilmali.
+        ve sonda kullanilmali. <br />
+        Ziyaretciden bilgi almak icin kullanilan bir tag dir. <br />
+        action="server/kayit/php" bir backend dosyasinda islem yapilmasini
+        ister. <br />
+        kullanici bilgileri doldurduktan sonra actionda belirtilen dosyaya
+        gitmesi emredilir.
       </li>
       <li>
         <strong>&lt;label for="x">&lt;/label> :</strong>kullaniciya form elemani
         ile ilgili bilgi verir. <br />
         Label deki for="" ile input taki id="" eslesmesi icin ayni olmalidir.
+        <br />
+        eger label deki aciklamaya tiklanirsa input aktif olur.
       </li>
       <li>
         <strong>&lt;input type="." name="." id="x"> :</strong>Kullanicidan bilgi
         almak icin kullanilir. <br />
-        type="text"
+      </li>
+      <li>
+        <strong>type"."</strong>input un turunu belirlemek icin yazilir <br />
+        <strong>"text"</strong> genel bilgi girisi icin, <br />
+        <strong>"password"</strong> girilen karakterleri gizli girilmesini
+        saglar. <br />
+        js ile yandaki göz ikonuna tiklanarak type ini text yaparak sifreyi
+        görünür hale getirebiliriz. <br />
+        <strong>"number"</strong> sadece numara yazilabilir, yanda cikan oklarla
+        yukari asagi deger atanabilir. <br />
+        <strong>"search"</strong> arama kutusu olarak kullanilir, kösede texbox
+        i bosaltan bir isaret cikar. <br />
+        <strong>"button"</strong> buton halide bir sekil olusturur.<br />
+        <strong>"checkbox"</strong>
+        <br />
+        <strong>"radio"</strong>
+        <strong>"url"</strong> sadece http ve https ile baslayan ifadeleri kabul
+        eder. <br />
+        <strong>"email"</strong> sadece e posta girislerini kabul eder. <br />
+        <strong>"tel"</strong> telefon numarasi formatinda girisleri kabul eder.
+        <br />
+        <strong>"hidden"</strong> gizli bilgi göndermek icin kullanilir. <br />
+        &lt;input type="hidden" name="id" value="123456" /> <br />
+        sunucuya gönderilen bu bilgi kullanici tarafindan görünmez.
+      </li>
+      <li>
+        <strong>value="."</strong>verilen degerdir. <br />
+        &lt;input type="button" value="gonder" /> seklinde yazarsak butonun
+        üzerinde gönder yazar. <br />
+        eger type="text" value="ali" eklersek formda hazir doldurulmus sekilde
+        ali cikar.
+      </li>
+      <li>
+        <strong>placeholder="soyadinizi giriniz"</strong> inputta cikan
+        bilgilendirme yazisidir.
       </li>
     </ul>
+
+    <form action="#">
+      <label for="ulke">Bulundugunuz Ulke: </label>
+      <input type="text" id="ulke" placeholder="ulke" /> <br />
+      <label for="sifre">Sifre</label>
+      <input type="password" id="sifre" /><br />
+      <label for="n">Derecelendir</label>
+      <input type="number" id="n" /><br />
+      <label for="ara">ara</label>
+      <input type="search" id="ara" /><br />
+
+      <input type="button" value="gonder" />
+    </form>
     <hr />
 
     <h2>ATTRIBUTLAR</h2>
@@ -241,19 +299,24 @@
       <li><strong>height :</strong>yüksekligini belirler</li>
       <li><strong>color :</strong>yazi rengini belirler</li>
       <li><strong>font-family :</strong>yazi stilini belirler</li>
-<li><strong>font-size: 2rem</strong>yazi buyuklugunu belirler</li>
+      <li><strong>font-size: 2rem</strong>yazi buyuklugunu belirler</li>
 
       <li>
         <strong>test allign :</strong>yazi hizalamasini ayarlar
         <br />center,left,reight,
       </li>
       <li><strong>background-color :</strong>arka plan regini ayarlar</li>
-      <li><strong>position :fixed;</strong>nesneyi sabit bir pozisyonda tutar. <br>top:2px (bottom right left)</li>
+      <li>
+        <strong>position :fixed;</strong>nesneyi sabit bir pozisyonda tutar.
+        <br />top:2px (bottom right left)
+      </li>
       <li><strong>text-shadow</strong> yazi golgesini belirler</li>
-<li><strong>box-shadow:2px 2px 3px black; </strong> kutu golgesini belirler</li>
+      <li>
+        <strong>box-shadow:2px 2px 3px black; </strong> kutu golgesini belirler
+      </li>
 
       <li><strong>"border: 1px solid red"</strong>kenarina cerceve ekler</li>
-<li><strong>border-radius</strong> kutu kenarlarini yuvaarlar</li>
+      <li><strong>border-radius</strong> kutu kenarlarini yuvaarlar</li>
 
       <li>
         <strong>display: inline-block;</strong>/*yanyana getirir ve block
