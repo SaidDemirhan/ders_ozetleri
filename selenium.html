@@ -5,34 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Selenium</title>
-    <style>
-      body{
-        background-color: gray;
-        color: white;
-        text-align: center;
-      }
-      h1,h2,h3{
-        color:honeydew;
-      }
-      ul{
-        text-align: start;
-      }
-    </style>
   </head>
+  <style>
+    body {
+      background-color: gray;
+      color: white;
+      text-align: center;
+    }
+    h1,
+    h2,
+    h3 {
+      color: honeydew;
+    }
+    ul {
+      text-align: start;
+    }
+    strong {
+      color: aqua;
+    }
+    .toollar {
+      color: chartreuse;
+    }
+    .kod {
+      margin-left: 30px;
+      text-align: left;
+    }
+  </style>
   <body>
     <h1>SELENIUM</h1>
 
     <h2>Driver Olusturma</h2>
-    <p>
-      System.setProperty("webdriver.chrome.driver",""C:\\Users\\.....\\chromdriver.exe");
-      <br />
-      WebDriver driver = new ChromeDriver();
-    </p>
+    <ul>
+      <li>
+        System.setProperty("webdriver.chrome.driver",""C:\\Users\\.....\\chromdriver.exe");
+      </li>
+      <li>WebDriver driver = new ChromeDriver();</li>
+    </ul>
 
     <p>
       bu sekilde driver imizi olusturduk. Artik driver üzerinden islerimizi
       halledebiliriz.
     </p>
+    <hr />
     <h2>Driver Komutlari</h2>
     <ul>
       <li><strong>driver.get("..."); </strong>yazilan adrese götürür.</li>
@@ -71,24 +85,24 @@
         <strong>driver.close(); </strong>sadece aktif olan browser i kapatir.
       </li>
     </ul>
+    <hr />
     <h2>Karsilastirmak icin;</h2>
     <p>
       Test asamasinda beklenen duruma <strong>expected</strong>, karsilasilan
       duruma ise <strong>actual </strong>diyoruz ve bunlari bir
       <strong>String</strong>'e atiyoruz.
     </p>
-
-    <p>
+    <div class="kod">
       String expectedTitle="amazon"; <br />
-      String actualTitle=driver.getTitle(); <br />
-
+      String actualTitle=driver.getTitle(); <br /><br />
       if (expectedTitle.equals(actualTitle)){ <br />
       System.out.println("Title beklenen deger ile ayni, test PASS"); <br />
       }else { <br />
       System.out.println("Title beklenenden farkli test FAILED"); <br />
-
       }
-    </p>
+    </div>
+
+    <hr />
     <h2>Locators(Yer Bulucu, Konum Belirleyici</h2>
     <p>
       Toplamda 8 adet selenium locator vardir. <br />
@@ -157,7 +171,7 @@
             <strong>"tagAdi#idValue" </strong>veya<strong> "#idValue" </strong>
           </li>
           <li>
-            <strong>"tagAdi.classValue"</strong>veya<strong></strong>
+            <strong>"tagAdi.classValue"</strong>veya<strong>
               ".classValue"</strong
             >
           </li>
@@ -165,12 +179,13 @@
       </li>
 
       <p>
-        xpath ve cssSelector de eger birden fazla uyusan WebElement varsa <strong>ilkini</strong> 
-        yazar. <br>
-        eger istedigimize ulasmak istersek <strong>"(#idValue)[3]"</strong> seklinde yazmaliyiz.
+        xpath ve cssSelector de eger birden fazla uyusan WebElement varsa
+        <strong>ilkini</strong> yazar. <br />
+        eger istedigimize ulasmak istersek
+        <strong>"(#idValue)[3]"</strong> seklinde yazmaliyiz.
       </p>
     </ul>
-
+    <hr />
     <p>
       <strong>findElements() Methodu; </strong><br />
       mutlaka bir liste'ye atanmalidir ki depolanabilsin. <br />
@@ -186,35 +201,333 @@
       System.out.println(each.getText()); <br />
       }
     </p>
+    <hr />
     <h2>WebElement Uzerindek islemler</h2>
     <ul>
       <li>
-        <strong>sendKeys(".");</strong>Metin kutusuna istenilen metni yazdirir.
+        <strong>sendKeys("."); </strong>Metin kutusuna istenilen metni yazdirir.
       </li>
-      <li><strong>clear();</strong>Metin kutusunun icindeki yaziyi siler.</li>
+      <li><strong>clear(); </strong>Metin kutusunun icindeki yaziyi siler.</li>
       <li>
-        <strong>submit();</strong>bir form veya arama kutusundaki metni
+        <strong>submit(); </strong>bir form veya arama kutusundaki metni
         göndermek icin sendKeys(".") yonteminden sonra kullanilir.
       </li>
-      <li><strong>click();</strong>bir yere tiklamak icin kullanilir.</li>
+      <li><strong>click(); </strong>bir yere tiklamak icin kullanilir.</li>
       <li>
-        <strong>isDisplayed();</strong>Bir Web elementinin gorunur olup
+        <strong>isDisplayed(); </strong>Bir Web elementinin gorunur olup
         olmadigini kontrol eder.
       </li>
-      <li><strong>getText();</strong>Web elementine ait yaziyi getirir.</li>
-      <li><strong>Keys.ENTER();</strong>Enter a basar.</li>
+      <li>
+        <strong>isEnabled(); </strong>Bir Web elementinin erisilebilir olup
+        olmadigini kontrol eder.
+      </li>
+      <li>
+        <strong>isSelected(); </strong>Bir checkbox in isaretli olup olmadigini
+        kontrol eder.
+      </li>
+      <li><strong>getText(); </strong>Web elementine ait yaziyi getirir.</li>
+      <li><strong>Keys.ENTER(); </strong>Enter a basar.</li>
     </ul>
-
+    <hr />
     <h3>Parent-Child-Sibling iliskisi</h3>
-    <p>
+    <div class="kod">
       &lt;tbody&gt; Parent <br />
       &lt;tr&gt; Child<br />
       &lt;td&gt;&lt;/td&gt; Sibling<br />
       &lt;td&gt;&lt;/td&gt; Sibling <br />
       &lt;/tr&gt;<br />
       &lt;/tbody&gt;
+    </div>
+    <hr />
+    <h2 class="toollar">MAVEN</h2>
+    <p>
+      Java'da yazdigimiz kodlari derlemek icin kullanilan bir tool'dur. (Project
+      Manegement Tool)
+    </p>
+    <h3>Maven Projesi Olusturma</h3>
+    <p>
+      Intellj&gt;File&gt;New&gt;Project&gt;Maven&gt;next&gt;Name:com.Batch30Maven&gt;Finish
+    </p>
+    <p>
+      Karsimiza pom.xml dosyasi hazir sekilde gelecektir.(Maven'in kalbidir)
+    </p>
+    <p>
+      &lt;/project&gt; kapanma taginin üzerine &lt;dependencies&gt;
+      &lt;/dependencies&gt;tagini acip kapatiyoruz. <br />
+      <a href="https://mvnrepository.com/" target="_blank"
+        >https://mvnrepository.com/</a
+      >
+      adresine gidip arama kismina <strong>webdrivermanager</strong> yazip
+      aratiyoruz. <br />
+      io.github.bonigarcia yazarina sahip olan webdrivermanager seciyoruz ve
+      4.4.3 sürüme giriyoruz. <br />
+      Versiyon linkini tiklayip kopyaliyoruz. <br />
+      &lt;dependencies&gt; tagina kopyalanan repo adresini yapistiriyoruz.
+    </p>
+    <hr />
+    <p>
+      Ayni adreste arama kismina <strong>selenium</strong> yazip aratiyoruz.
+      <br />En populer olan <strong>Selenium Java</strong> yi seciyoruz. <br />
+      Alpha, beta, rc deneme sürümlerinin altindaki son güncel ve en cok tercih
+      edilen sürümü seciyoruz(3.141.59). <br />Versiyon linkini tiklayip
+      kopyaliyoruz. <br />
+      &lt;dependencies&gt; tagina kopyalanan repo adresini yapistiriyoruz.
+    </p>
+    <hr />
+    <p id="kirmiziYazi">
+      Eger yapistirilan yazilar kirmizi uyari veriyorsa henuz kopyaladiginiz
+      repositoriler bilgisayarina yüklenmemis demektir. <br />
+      Sorunu halletmek icin Intellj in sol üst kosesindek
+      <strong>Maven</strong> secenegini acip <strong>refresh</strong> yapiyoruz.
+      <br />Dependencies repository sinin geldigini göreceksiniz.
+    </p>
+    <hr />
+    <p>
+      Projemizde src dosyamizin altinda <strong>main</strong> ve
+      <strong>test</strong> isimli 2 dosya olustu. Test asamasi icin sacece test
+      klosörünü kullaniyoruz. test icindeki java dosyasina package ve class
+      larimizi olusturabiliriz.
+    </p>
+    <hr />
+    <p>
+      Class imizin düzgün calisip calismayacagini kontrol etmek icin; <br />
+      File&gt;Project Structure&gt;Modules&gt;Sources&gt;Language level:
+      (intellj sürümümüz olmali)&gt;Apply&gt;OK <br />
+      Sonuncu kontrolümüz; <br />
+      File&gt;Settings&gt;Build,Execution,Deployment&gt;Compiler&gt;Java
+      Compiler&gt;Target bytecode version:(intellj sürümümüz
+      olmali)&gt;Apply&gt;OK
+    </p>
+    <hr />
+    <h2>Maven icin her Class ta yazilmasi gereken ilk 4 adim</h2>
+
+    <ul>
+      <li>Main Method icerisine;</li>
+      <li>WebDriverManager.cromedriver().setup();</li>
+      <li>WebDriver driver = new ChromeDriver();</li>
+      <li>driver.manage().window().maximize();</li>
+      <li>driver.manage().timeouts().implicitlyWait(5,SECOND);</li>
+    </ul>
+    <hr />
+    <h2 class="toollar">
+      <span style="color: darkgreen">J</span
+      ><span style="color: red">Unit</span>
+    </h2>
+    <p>
+      <a href="https://mvnrepository.com/" target="_blank"
+        >https://mvnrepository.com/</a
+      >
+      adresine gidip arama kismina <strong>junit</strong> yazip aratiyoruz.
+      <br />
+      En cok kullanilan Junit'i seciyoruz seciyoruz ve 4.13.1 sürüme giriyoruz.
+      <br />
+      Versiyon linkini tiklayip kopyaliyoruz. <br />
+      &lt;dependencies&gt; tagina kopyalanan repo adresini yapistiriyoruz.
+      <br />
+      <a href="#kirmiziYazi">Yazilar kirmizi ise tiklayiniz.</a>
+    </p>
+    <p>
+      Eger versiyon degisikligi yapmak istersek yükledigimiz repo'daki
+      &gt;version&lt;4.13.1&gt;/version&lt; kisminda degisiklik yaparak
+      istenilen versiyona gidilebilir. Eger üst sürüm ise yenile yapilmalidir.
+    </p>
+    <hr />
+    <h3>Annotations</h3>
+
+    <p>
+      Java dilinde notasyonlar <strong>@</strong> isaretiyle baslar. <br />
+      Getirdigi bilgilere <strong>Metadata </strong> denir.
     </p>
 
-    <p></p>
+    <ul>
+      <li>
+        <strong>@Test </strong> Main method olmadan calismayi saglar.<br />
+        <br />
+        <section class="kod">
+          @Test <br />
+          public void test1(){ <br />
+          driver.get("https://www.amazon.com/") <br />
+          }
+        </section>
+        <br />
+      </li>
+      <li>
+        <strong>@BeforeClass </strong> Class calismaya baslamadan önce bu method
+        calisir. <br />Eger @AfterClass ile birlikte bir sayfaya gidip o sayfada
+        cesitli testler yapilacaksa önerilir. <br />
+        Test boyunca sadece bir kez calisir. <br />
+        Method statik olmali ve driver'imiz class level'da tanimlanmalidir.
+        (atama sart degil) <br />
+        Test methodlarda ortak kullanilacak WebElement'leri de class levelde
+        tanimlayabiliriz.
+        <br /><br />
+        <section class="kod">
+          static WebDriver driver; <br /><br />
+
+          @BeforeClass <br />
+          public static void setup(){ <br />
+          WebDriverManager.chromedriver.setup(); <br />
+          driver = new ChromeDriver(); <br />
+          driver.manage().window().maximize(); <br />
+          driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS) <br />
+          driver.get("https://www.amazon.com/") <br />
+          }
+        </section>
+        <br />
+      </li>
+      <li>
+        <strong>@AfterClass </strong> Class calismayi bitirdikten sonra bu
+        method calisir. <br />
+        Test boyunca sadece bir kez calisir. <br />Methodun static olmasi
+        gerekir. <br /><br />
+        <section class="kod">
+          @AfterClass <br />
+          public static void tearDown(){ <br />
+          driver.close(); <br />
+          }
+        </section>
+        <br />
+      </li>
+      <li>
+        <strong>@Before </strong>Class daki tüm test methodlardan önce calisir.
+        <br />
+        Her test metodundan önce calisacagi icin cok kez calisabilir. <br />
+        Eger methodlar birbirinden bagimsizsa ve farkli sayfalara gidip
+        geliyorlarsa @After ile birlikte tercih edilmesi önerilir.
+        <br /><br />
+        <section class="kod">
+          static WebDriver driver; <br /><br />
+
+          @Before <br />
+          public void setup(){ <br />
+          WebDriverManager.chromedriver.setup(); <br />
+          driver = new ChromeDriver(); <br />
+          driver.manage().window().maximize(); <br />
+          driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS) <br />
+          }
+        </section>
+      </li>
+      <li>
+        <strong>@After </strong>Class daki methodlardan sonra calisir. <br />
+        Her test metodundan sonra calisacagi icin cok kez calisabilir.
+        <br /><br />
+        <section class="kod">
+          @AfterClass <br />
+          public void tearDown(){ <br />
+          driver.close(); <br />
+          }
+        </section>
+        <br />
+      </li>
+      <li>
+        <strong>@Ignore </strong> Bir test methodunun o an calismasi
+        istenmiyorsa yazilir. <br />Eger aciklama eklenmek istenirse
+        @Ignore(".") seklinde yazilabilir.
+      </li>
+    </ul>
+    <br />
+    <p>
+      Test sirasini bizim yazdigimiz siraya göre yapmak zorunda degildir! <br />
+      TestNG ise isim sirasina göre calistirir.
+    </p>
+    <hr />
+    <h2>Assertion(Verification)</h2>
+    <p>
+      Bir test senaryosunun <strong>PASS</strong> veya <strong>FAILED</strong>
+      durumunu belirlemek icin kullanilan boolean bir methoddur.
+      <br />
+      If yerine kullanilir. <br />
+      Eger kiyaslama basarisiz olursa
+      <strong> AssertionError </strong> verir.
+    </p>
+    <ul>
+      <li>
+        <strong
+          >Assert.assertEqual("FAILED durumundaki
+          mesaj",actualResult,ExpectedResult) </strong
+        >gercek ile beklenen dogru mu?
+      </li>
+      <li>
+        <strong
+          >Assert.assertTrue("FAILED durumundaki
+          mesaj",WebElementAdi.booleanSart) </strong
+        >verilen sart saglaniyor mu?
+        <br />
+        Olumlu cümlelerde assert etmede kullaniriz. <br />
+      </li>
+      <li>
+        <strong
+          >Assert.assertFalse("FAILED durumundaki
+          mesaj",WebElementAdi.booleanSart) </strong
+        >verilen sart sagalanmiyor mu?<br />
+        Negatif durumlari assert etmede kullaniriz.
+      </li>
+      <br />
+      <span><u>Kullanilabilecek diger Assert methodlari;</u></span>
+      <li>
+        <strong
+          >Assert.notEquals("FAILED durumundaki
+          mesaj",WebElementAdi.booleanSart)
+        </strong>
+      </li>
+    </ul>
+    <p>
+      Assert; yalnizca Failed durumunda istenilen mesaji yazdirir,PASS durumunda
+      mesaj cikmaz.
+    </p>
+    <p>
+      Eger bir method icinde bir Assertion Exception verirse o methodun
+      calismasi sona erer, methodun devamindaki testler devre disi kalir. (Devam
+      ettirici method testNG de görülecektir.)
+    </p>
+    <p>
+      Test methodu isimlerinin testimizle uyumlu olmasi sonucu kolay okumamiza
+      vesile olur.
+    </p>
+    <p>
+      Bu testlerde beklenilen ile aktuel arasindaki farklara bakarken her bir
+      elementi String olarak atamamiz, testimizin anlasilabilirligi ve takip
+      edilebilirligi acisindan önemlidir.
+    </p>
+
+    <hr />
+    <section class="kod">
+      <strong>Mülakat Sorusu:</strong> <br /><br />Testiniz calismadiginda ilk
+      ne yaparsiniz? <br />
+      <br />Senkronizasyon ile ilgili bir problem var mi bakarim, eger bir sorun
+      varsa ilgili yerlere Thread.sleep(),implycitlyWait() veya
+      explicitliyWait() koyarak bu problemi cözerim.
+    </section>
+    <hr />
+    <h2 class="toollar">
+      <span style="color: black">Test </span><span style="color: red">N</span>
+      <span style="color: orangered">G</span>
+    </h2>
+
+    <strong>@BeforeSuite</strong><br /><strong>@AfterSuite</strong><br />
+    <strong>@BeforeTest</strong><br /><strong>@AfterTest</strong><br />
+    <strong>@BeforeGroups</strong><br /><strong>@AfterGroups</strong><br />
+    <strong>@BeforeClass</strong><br /><strong>@AfterClass</strong><br />
+    <strong>@BeforeMethod</strong><br /><strong>@AfterMethod</strong><br />
+    <strong>Priorty </strong> Testler arasinda öncelik sirasi belirler.<br />
+    <strong>dependsOnMethods </strong>Methodlari birbirine baglamak icin
+    kullanilir. Eger ilk adim basarisizsa ona bagli sonra gelen diger testler
+    icin vakit kazanmamizi saglar. (amazon a git&gt;arama yap&gt;sepete ekle...)
+    <br /><strong>Dropdown </strong>Acilir seceneklerden bir secim yapma. <br />
+    <strong>SoftAssert </strong>Bir Assertion Failed olunca devam etmesini
+    saglayan methoddur. <br />
+    <strong>Simple Allert </strong> Ok denilerek kapatilan uyari cesitidir.
+    <br />
+    <strong>Confirmation Alert</strong> Ok veya Cancel a basilabilen uyari
+    cesitidir. <br />
+    <strong>Prompt Alert</strong>Kullanicidan bazi bilgileri girmesi istenir.
+    (sendkeys() kullanarak teste devam edilebilir.) <br />
+    <strong>Iframe </strong>Sayfa icinde sayfadir. <br />
+    <strong>swichTo() </strong>Pencereler arasinda gecis yapma methodudur.
+    <br />
+    <strong>getWindowHandle() </strong> String olarak getirir. <br />
+    <strong>getWindowHandles() </strong> Set olarak getirir. <br />
+    <hr />
+    <h2 class="toollar">CUCUMBER</h2>
   </body>
 </html>
