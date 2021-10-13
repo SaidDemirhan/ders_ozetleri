@@ -164,7 +164,7 @@
         </ul>
       </li>
       <li>
-        <strong>By.css(".") </strong>üc sekilde yapilabilir
+        <strong>By.cssSelector(".") </strong>üc sekilde yapilabilir.
         <ul>
           <li><strong>"tagAdi[attributeAdi='value']"" </strong></li>
           <li>
@@ -245,7 +245,7 @@
       Manegement Tool)
     </p>
     <h3>Maven Projesi Olusturma</h3>
-    <p>
+    <p id="mavenFrameWork">
       Intellj&gt;File&gt;New&gt;Project&gt;Maven&gt;next&gt;Name:com.Batch30Maven&gt;Finish
     </p>
     <p>
@@ -314,6 +314,7 @@
       ><span style="color: red">Unit</span>
     </h2>
     <p>
+      Maven projemize eklenen bir tool'dur. <br />
       <a href="https://mvnrepository.com/" target="_blank"
         >https://mvnrepository.com/</a
       >
@@ -324,7 +325,7 @@
       Versiyon linkini tiklayip kopyaliyoruz. <br />
       &lt;dependencies&gt; tagina kopyalanan repo adresini yapistiriyoruz.
       <br />
-      <a href="#kirmiziYazi">Yazilar kirmizi ise tiklayiniz.</a>
+      Yazilar kirmizi ise <a href="#kirmiziYazi">tiklayiniz.</a>
     </p>
     <p>
       Eger versiyon degisikligi yapmak istersek yükledigimiz repo'daki
@@ -431,7 +432,7 @@
       TestNG ise isim sirasina göre calistirir.
     </p>
     <hr />
-    <h2>Assertion(Verification)</h2>
+    <h2 id="junitAssert">Assertion(Verification)</h2>
     <p>
       Bir test senaryosunun <strong>PASS</strong> veya <strong>FAILED</strong>
       durumunu belirlemek icin kullanilan boolean bir methoddur.
@@ -498,22 +499,239 @@
       varsa ilgili yerlere Thread.sleep(),implycitlyWait() veya
       explicitliyWait() koyarak bu problemi cözerim.
     </section>
+
     <hr />
     <h2 class="toollar">
-      <span style="color: black">Test </span><span style="color: red">N</span>
+      <span style="color: black">Test</span><span style="color: red">N</span>
       <span style="color: orangered">G</span>
     </h2>
+    <p>
+      Maven projesine eklene bir tool'dur. JUnit ile TestNG bir arada genellikle
+      kullanilmaz. ikisinde de ayni methodlar oldugu icin hangi kütüphanenin
+      methodunu aldigini karistirabiliriz.(kullanim istisnalari var) <br />
+      TestNG icin yeni bir FrameWork olsurmak icin
+      <a href="#mavenFrameWork">tiklayiniz.</a>
+    </p>
+    <hr />
+    <p>
+      webdrivermanager ve selenium repositorilerini ekledikten
+      <a href="https://mvnrepository.com/" target="_blank"
+        >https://mvnrepository.com/</a
+      >
+      adresine gidip arama kismina <strong>testng</strong> yazip aratiyoruz.
+      <br />
+      En cok kullanilan TestNG'i seciyoruz seciyoruz ve 7.1.0 sürüme giriyoruz.
+      <br />
+      Versiyon linkini tiklayip kopyaliyoruz. <br />
+      &lt;dependencies&gt; tagina kopyalanan repo adresini yapistiriyoruz.
+      <br />
+      Yazilar kirmizi ise <a href="#kirmiziYazi">tiklayiniz.</a>
+    </p>
+    <hr />
+    <p>
+      Projemizde src dosyamizin altinda <strong>main</strong> ve
+      <strong>test</strong> isimli 2 dosya olustu. Test asamasi icin sacece test
+      klosörünü kullaniyoruz. test icindeki java dosyasina package ve class
+      larimizi olusturabiliriz. Ayrica java dosyasinin icine bir de
+      <strong>utilities</strong> klosörü olusturuyoruz. Sürekli kullnmaya
+      ihtiyac duyduklarimizi bu utilities klosörüne olusturacagimiz
+      <strong>Testbase</strong> class'ina depolayacagiz.
+    </p>
+    <hr />
+    <br />
+    <section class="kod">
+      <strong>Mülakat Sorusu:</strong> <br /><br />
+      Multi browser Test nedir? <br /><br />
+      Farkli borowser lar üzerinden yapilan testtir. chrome, firefox vb.
+      Crossbrowser Test de denir.
+    </section>
+    <hr />
+    <ul>
+      <li>
+        <strong>@Test </strong> Main method olmadan testlerimizin bagimsiz
+        olarak calismasini saglar.<br />
+        Test siralamasi alfabetik siralamaya göre yapilir. <br />
+        <br />
+        <section class="kod">
+          @Test <br />
+          public void test1(){ <br />
+          WebDriverManager.chromedriver().setup(); <br />
+          WebDriver driver = new ChromeDriver(); <br />
+          driver.get("https://www.amazon.com/") <br />
+          }
+        </section>
+        <br />
+      </li>
+      <li>
+        <strong>@BeforeClass </strong>Junit deki gibi static olmasina gerek
+        yoktur. <br />
+        Calistirdigimiz Class calisinca ilk calisan method'dur. <br />
+        Tek bir URL üzerinde test yapilacaksa tercih edilmelidir. <br />
+        <br />
+      </li>
+      <li>
+        <strong>@AfterClass </strong>Junit deki gibi static olmasina gerek
+        yoktur. <br />
+        Calistirdigimiz Class calisinca en son calisan method'dur. <br /><br />
+      </li>
+      <li>
+        <strong>@BeforeMethod </strong>JUnit'deki @Before methoduna benzer.
+        <br />
+        Her test Method'u calismadan önce calisir. <br />
+        Birden fazla URL üzerinde test yapilacaksa tercih edilmelidir.
+        <br /><br />
+        <section class="kod">
+          WebDriver driver; <br />
+          @BeforeMethod <br />
+          public void setup(){ <br />
+          WebDriverManager.chromedriver().setup(); <br />
+          driver=new ChromeDriver(); <br />
+          driver.manage().window()maximize(); <br />
+          driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS); <br />
+          } <br /><br />
+        </section>
+      </li>
+      <li>
+        <strong>@AfterMethod </strong>JUnit'deki @After methoduna benzer. <br />
+        Her test Method'u calistiktan sonra calisir. <br /><br />
+        <section class="kod">
+          @AfterMethod <br />
+          public voidtearDown(){ <br />
+          driver.close(); <br />
+          } <br /><br />
+        </section>
+      </li>
+      <li>
+        <strong>Priorty </strong> Testler arasinda öncelik sirasi belirler.
+        <br />
+        Eger herhangi bir öncelik sirasi belirtilmemisse
+        <strong>defaut=0</strong> kabul edilir. <br />
+        eksi deger de siralamaya dahil olur. <br />
+        Her zaman en kücük hangi sayi ise o sayidan calismaya baslar.
+        <br /><br />
+        <section class="kod">
+          @Test(priority = 1) <br />
+          public void test(){ <br />
+          driver.get("https://www.amazon.com/"); <br />
+          } <br />
+        </section>
+        <br />
+      </li>
+      <li>
+        <strong>Dropdown </strong>Acilir seceneklerden (select) bir secim
+        (option) yapma. <br />
+        Sadece locate etmekle istedigimizi yapamiyoruz. <br />
+        WebElement ile Dropdown menüsünü locate edip tanimlamaliyiz. <br />
+        tanimladigimiz WebElement ile <strong>select</strong> objesi
+        olusturmaliyiz. <br />
+        Olusturulan obje ile <strong>option </strong> secimini yapmaliyiz.<br /><br />
+        <section class="kod">
+          @Test <br />
+          public void test(){ <br />
+          WebElement dropDownMenusu = driver.findElement(By.id(".")); <br />
+          Select secenekler =new Select(dropDownMenusu); <br />
+          secenekler.selectByIndex(1); <br />
+          Sytem.out,println(select.getFirstSelectedOption().get.text()); <br />
+          }
+        </section>
+        <br />
+
+        <strong>.getFirstSelectedOption() </strong>secilen objeyi getirir, obje
+        degilse yazdirir.(sout) <br />
+        Eger bir obje metni yazdirilmak istenirse sonuna
+        <strong>.get.text()</strong> eklenirse text olarak yazdirir.(sout)
+        <br />
+        <strong>.selectByIndex() </strong> index olarak option i secer.(int)
+        <br />
+        <strong>.selectByValue(".") </strong> value olarak option i
+        secer.(string) <br />
+        <strong>.selectByVisibleText(".")</strong>text olarak option i secer.
+        (string) <br />
+        <strong>.getOptions() </strong>tüm opsiyonlarin yazdirilmasi icin
+        kullanilir. <br />
+        Önce listeye alip sonra yazdirilmasi gerekir. <br />
+        <br />
+        <section class="kod">
+          List&lt;WebElement&gt; tumOpsiyonlar = select.getOptions(); <br />
+          for (WebElement each : tumOpsiyonlar){ <br />
+          System.out.prinln(each.getText()); <br />
+          }
+        </section>
+        <br />
+      </li>
+      <li>
+        <strong>dependsOnMethods </strong>Methodlari birbirine baglamak icin
+        kullanilir. <br />
+        Eger ilk adim basarisizsa ona bagli sonra gelen diger test calismaz,
+        vakit kazanmamizi saglar. (amazon a git&gt;arama yap) <br />
+        Sadece bir adet test methodu calistirilacaksa zincirleme olarak üstünün
+        üstüne gidemiyor. Ama bastan calistirmak sartiyla yazilabilir.<br />
+
+        <br /><br />
+        <section class="kod">
+          @Test <br />
+          public void test1(){ <br />
+          driver.get("https://www.amazon.com/") <br />
+          } <br />
+          @Test (dependsOnMethods="test1") <br />
+          public void test2(){ <br />
+          driver.findElement(By.Id(".")); <br />
+          } <br />
+          <br />
+        </section>
+      </li>
+      <li>
+        <strong>Assert Methodlari </strong> Junit'ten yer siralamasi olarak
+        farklidir. <br />
+        Assert.assertEqual(actualResult,expectedResult,"FAILED durumundaki
+        mesaj") <br />
+        islevi ayni <a href="#junitAssert">Junit'deki "Assert"</a> gibidir.
+        <br />
+        Eger sonuna kadar calismissa hata yok demektir.
+        <br /><br />
+      </li>
+      <li>
+        <strong>SoftAssert </strong>Bir Assertion Failed olunca devam etmesini
+        saglayan methoddur. <br />Verification olarak da bilinir. Eger verify
+        edin deniyorsa softAssert anlasilir. <br />SoftAssert methodunda da
+        Assert methodlarini kullaniyoruz. <br />SoftAssert methodlari, sondaki
+        assertAll'a kadar calisabilir.(close() gibi) <br /><br />1. SoftAssert
+        class'indan softAssert objesi olusturuyoruz. <br />2. Istedigimiz
+        verification'lari yapiyoruz. yani Assert yazacagimiz yere softAssert
+        yaziyoruz. <br />3. Sona da softAssert.assertAll(); yaziyoruz. Yani test
+        durumunu raporlamasini istiyoruz. assertAll() yoksa raporlama da olmaz.
+
+        <br /><br />
+        <section class="kod">
+          @Test <br />
+          public void test(){ <br />
+          SoftAssert softAssert =new SoftAssert(); <br />
+          driver.get("https://www.amazon.com/"); <br />
+          softAssert.assertTrue(driver.getCurrentUrl().contains("amazon"),"url
+          amazon icermiyor."); <br />
+          softAssert.assertAll(); <br />
+          } <br />
+        </section>
+        <br /><br />
+        <section class="kod">
+          <strong>Mülakat Sorusu:</strong> <br /><br />Soft Assert ile Hard
+          Assert arasindaki fark nedir? <br />
+          <br />Hard Methodda eger test bir hata ile karsilasirsa calismayi
+          durdurur. Soft Assert ise hata ile karsilassa bile calismaya devam
+          eder.
+        </section>
+      </li>
+    </ul>
+    <hr />
+
+    <br />
 
     <strong>@BeforeSuite</strong><br /><strong>@AfterSuite</strong><br />
     <strong>@BeforeTest</strong><br /><strong>@AfterTest</strong><br />
     <strong>@BeforeGroups</strong><br /><strong>@AfterGroups</strong><br />
-    <strong>@BeforeClass</strong><br /><strong>@AfterClass</strong><br />
-    <strong>@BeforeMethod</strong><br /><strong>@AfterMethod</strong><br />
-    <strong>Priorty </strong> Testler arasinda öncelik sirasi belirler.<br />
-    <strong>dependsOnMethods </strong>Methodlari birbirine baglamak icin
-    kullanilir. Eger ilk adim basarisizsa ona bagli sonra gelen diger testler
-    icin vakit kazanmamizi saglar. (amazon a git&gt;arama yap&gt;sepete ekle...)
-    <br /><strong>Dropdown </strong>Acilir seceneklerden bir secim yapma. <br />
+
+    <br />
+
     <strong>SoftAssert </strong>Bir Assertion Failed olunca devam etmesini
     saglayan methoddur. <br />
     <strong>Simple Allert </strong> Ok denilerek kapatilan uyari cesitidir.

@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Html-Css</title>
   </head>
+  <style>
+    .kod {
+      margin-left: 50px;
+    }
+  </style>
   <body>
     <p>HTML(Hypertext Markuo Language)</p>
     <ul>
@@ -181,28 +186,33 @@
     <h2>Ses Ekleme</h2>
     <strong>&lt;audio src="" controls>&lt;/audio></strong>
     <hr />
-
     <h2>FORM OLUSTURMA</h2>
     <p>
-      Eger sunucuya gönderiliyorsa hepsinde <strong>name="."</strong>olmak
+      Eger sunucuya gönderiliyorsa hepsinde <strong>name="." </strong>olmak
       zorundadir.
     </p>
     <ul>
       <li>
-        <strong>&lt;form action=".">&lt;/form> :</strong>form olustururken basta
-        ve sonda kullanilmali. <br />
+        <strong>&lt;form action="." method=".">&lt;/form> :</strong>form
+        olustururken basta ve sonda kullanilmali. <br />
         Ziyaretciden bilgi almak icin kullanilan bir tag dir. <br />
         action="server/kayit/php" bir backend dosyasinda islem yapilmasini
         ister. <br />
         kullanici bilgileri doldurduktan sonra actionda belirtilen dosyaya
-        gitmesi emredilir.
+        gitmesi emredilir. <br />
+        method="GET" olursa giden bilgiler adres satirinda görünür (default
+        degeri). <br />
+        Görünmesi istenmiyorsa method="POST" yapilmalidir (daha gizli ve
+        güvenli). <br />
       </li>
       <li>
         <strong>&lt;label for="x">&lt;/label> :</strong>kullaniciya form elemani
         ile ilgili bilgi verir. <br />
-        Label deki for="" ile input taki id="" eslesmesi icin ayni olmalidir.
+        Label deki for="" ile input taki id="" eslesebilmesi icin ayni
+        olmalidir.
         <br />
-        eger label deki aciklamaya tiklanirsa input aktif olur.
+        eger for ile id uyusursa label deki aciklamaya tiklanirsa da input aktif
+        olur.
       </li>
       <li>
         <strong>&lt;input type="." name="." id="x"> :</strong>Kullanicidan bilgi
@@ -210,27 +220,104 @@
       </li>
       <li>
         <strong>type"."</strong>input un turunu belirlemek icin yazilir <br />
-        <strong>"text"</strong> genel bilgi girisi icin, <br />
+        <strong>"text"</strong> genel bilgi girisi icin. <br />
+        <section class="kod">
+          <label for="soyad">Soyadinizi giriniz: </label>
+          <input type="text" id="soyad" />
+        </section>
         <strong>"password"</strong> girilen karakterleri gizli girilmesini
         saglar. <br />
         js ile yandaki göz ikonuna tiklanarak type ini text yaparak sifreyi
         görünür hale getirebiliriz. <br />
+        <section class="kod">
+          <label for="sifre">Sifre :</label>
+          <input type="password" id="sifre" />
+        </section>
         <strong>"number"</strong> sadece numara yazilabilir, yanda cikan oklarla
         yukari asagi deger atanabilir. <br />
+        <section class="kod">
+          <label for="degerlendirme">Puan Ver: </label
+          ><input type="number" id="degerlendirme" max="10" min="1" />
+        </section>
         <strong>"search"</strong> arama kutusu olarak kullanilir, kösede texbox
         i bosaltan bir isaret cikar. <br />
-        <strong>"button"</strong> buton halide bir sekil olusturur.<br />
-        <strong>"checkbox"</strong>
+        <section class="kod">
+          <label for="arama">Kelime giriniz: </label>
+          <input type="search" id="arama" />
+        </section>
+        <strong>"button"</strong> buton halide bir sekil olusturur. default
+        görevi yoktur.<br />
+        <strong>"submit" </strong>Form bilgilerini baackend e gönderen bir buton
+        olusturur. <br />
+        <strong>"reset" </strong> Form daki bilgileri resetleyen bir buton
+        olusturur. <br />
+        Butonlarin ayni form etiketi icinde aktif oldugunu unutmayalim. <br />
+        <section class="kod">
+          <form action="#">
+            <input type="text" /> <br />
+            <input type="button" value="Buton" />
+            <input type="submit" value="Gönder" />
+            <input type="reset" value="Sil" />
+          </form>
+        </section>
+        <strong>"checkbox" </strong>Birden fazla isaretlemeye izin veren
+        butondur. (hobiler gibi)
         <br />
-        <strong>"radio"</strong>
+        <section class="kod">
+          <input type="checkbox" name="futbol" id="futbol" value="futbol" />
+          <label for="futbol">Futbol</label> <br />
+          <input type="checkbox" name="tenis" id="tenis" value="tenis" />
+          <label for="tenis">Tenis</label> <br />
+        </section>
+        <strong>"radio" </strong> tek secime izin veren bir giristir. eger
+        birden fazla radio butonu varsa name="" leri ayni olmali ki tek secim
+        yapilabilsin.(cinsiyet gibi)<br />
+        <section class="kod">
+          <input type="radio" name="cinsiyet" id="erkek" />
+          <label for="erkek">Erkek</label> <br />
+          <input type="radio" name="cinsiyet" id="bayan" />
+          <label for="bayan">Bayan</label> <br />
+        </section>
         <strong>"url"</strong> sadece http ve https ile baslayan ifadeleri kabul
         eder. <br />
         <strong>"email"</strong> sadece e posta girislerini kabul eder. <br />
         <strong>"tel"</strong> telefon numarasi formatinda girisleri kabul eder.
         <br />
+        Genellikle ABD tlf numralarina göre bir form olusturur.
+        <br />
         <strong>"hidden"</strong> gizli bilgi göndermek icin kullanilir. <br />
         &lt;input type="hidden" name="id" value="123456" /> <br />
-        sunucuya gönderilen bu bilgi kullanici tarafindan görünmez.
+        sunucuya gönderilen bu bilgi kullanici tarafindan görünmez. <br />
+        <strong>"file" </strong> dosya secimi icin kisa yol olusturur. <br />
+        <section class="kod">
+          <label for="dosya">Dosya: </label>
+          <input type="file" id="dosya" />
+        </section>
+        <strong>"date" </strong> Tarih eklemek icin kullanilir
+        (value="2021-10-21") <br />
+        <strong>"time" </strong> Saat secmek icin kullanilir. (value="21:15")
+        <br />
+        <section class="kod">
+          <label for="randevu">Randevu tarihiniz: </label>
+          <input type="date" id="randevu" name="randevu" value="2021-10-21" />
+          <label for="is">randevu saatiniz:</label>
+          <input type="time" name="is" id="is" value="22:15" />
+        </section>
+        <strong>maxlength="20" </strong> maksimum karakter sayisini belirler.
+        <br />
+        <strong>maxlength="2" </strong> minimum karakter sayisini belirler.
+        <br />
+        <strong>min="2" </strong> girilmesi gereken en kücük degeri belirler.
+        <br />
+        <strong>max"10" </strong> maksimum karakter sayisini belirler. <br />
+        <strong>required </strong> maksimum karakter sayisini belirler. <br />
+        <section class="kod">
+          <form action="#">
+            <label for="ad">Adiniz</label>
+            <input type="text" id="ad" required />
+            <input type="submit" name="ad" value="Gönder" />
+          </form>
+        </section>
       </li>
       <li>
         <strong>value="."</strong>verilen degerdir. <br />
@@ -240,23 +327,54 @@
         ali cikar.
       </li>
       <li>
-        <strong>placeholder="soyadinizi giriniz"</strong> inputta cikan
-        bilgilendirme yazisidir.
+        <strong>placeholder="."</strong> inputta cikan bilgilendirme yazisidir.
+        <section class="kod">
+          <label for="ad">Adiniz: </label>
+          <input type="text" id="ad" placeholder="Ali" />
+        </section>
+      </li>
+      <li>
+        <strong>disabled </strong>Degistirilmesi istenmeyen ve pasif kalmasini
+        istedigimiz bilgiler icin kullanilir.
+        <section class="kod">
+          <label for="ad">Adiniz: </label>
+          <input type="text" id="ad" placeholder="Ali" disabled />
+          <input type="submit" value="Gönder" disabled />
+        </section>
+      </li>
+      <li>
+        <strong>&lt;select&gt;&lt;/select&gt; </strong>Listeden secim yapmak
+        icin kullanilir. (ulke sehir..) <br />
+        <strong>multiple </strong> klavyeden ctrl ye basilarak birden fazla
+        secim yapilabilmesini saglar.
+        <br />
+        <strong>size="2" </strong> secim listesinde ayni anda kac secimin
+        gösterilecegini belirler.
+        <section class="kod">
+          <label for="marka">Cep Telefonu Markaniz: </label>
+          <select name="marka" id="marka" multiple size="2">
+            <option value="1">Samsung</option>
+            <option value="2">Iphone</option>
+            <option value="3">Huvai</option>
+            <option value="4">LG</option>
+          </select>
+        </section>
+      </li>
+      <li>
+        <strong>&lt;textarea&gt;&lt;/textarea&gt; </strong> Yazi yazma alani
+        icin olustururlur. (yorum vs) <br />
+        <strong>rows="4" </strong> Yazinin satir sayisini belirler. <br />
+        <strong>cols="50"</strong> Yazinin sütun sayisini belirler. Bis satirda
+        kac karakter istenirse o sekilde belirlenebilir.<br />
+
+        <section class="kod">
+          <label for="yorum">Yorumunuz:</label> <br />
+          <textarea name="yorum" id="yorum" cols="30" rows="2" maxlength="50">
+          Yorumunuzu giriniz: </textarea
+          >
+        </section>
       </li>
     </ul>
-
-    <form action="#">
-      <label for="ulke">Bulundugunuz Ulke: </label>
-      <input type="text" id="ulke" placeholder="ulke" /> <br />
-      <label for="sifre">Sifre</label>
-      <input type="password" id="sifre" /><br />
-      <label for="n">Derecelendir</label>
-      <input type="number" id="n" /><br />
-      <label for="ara">ara</label>
-      <input type="search" id="ara" /><br />
-
-      <input type="button" value="gonder" />
-    </form>
     <hr />
 
     <h2>ATTRIBUTLAR</h2>
