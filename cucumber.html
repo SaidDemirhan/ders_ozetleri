@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .maddesiz ul li {
+        list-style: none;
+      }
+      .cerceve {
+        border: 2px solid black;
+      }
+    </style>
+    <title>cucumber</title>
+  </head>
+  <body>
+    <header><h1>cucumber</h1></header>
+    <main>
+      <div>
+        <h2>Cucumber nedir?</h2>
+        <dfn
+          >BDD(Behaviour Driven Development-Davranis Tabanli Gelistirme)
+          yaklasimiyla gelistirilen acik kaynak kodlu bir
+          kütüphanedir,framework'tur.</dfn
+        ><br /><br />
+        BDD kavramiyla is ilanlarinda karsilasabiliriz.
+        <br /><br /><strong>Gherkin:</strong> Projedeki her davranis icin
+        <strong>.feature</strong> uzantili bir Gherkin dosyasi olusturur.
+        <br /><br />Java haricindeki bu kavramlar-kodlarv
+        <strong>Gherkin Language</strong>'tan gelmektedir.
+        <ul>
+          <li><strong>Given:</strong> Baslangic durumu tanimlanir.</li>
+          <li><strong>When:</strong> Olay tanimlanir.</li>
+          <li><strong>And:</strong> Olay tanimlanir.</li>
+          <li><strong>Then: </strong>Sonuc tanimlanir.</li>
+
+          <li>
+            <strong>Feature:</strong> Dosyanin ismini ifade eder. (US1001 amazon
+            arama)
+          </li>
+          <li>
+            <strong>Scenario:</strong> Given-When-And-Then adimlariyla olusan
+            test seneryosudur. (TC01 amazon nutella arama)
+          </li>
+        </ul>
+        Siralamanin ve ve kelimelerin java acisindan hicbir önemi yoktur.
+        <br />Java Gherkin oldugunu anlayinca burada step oldugunu anlar. <br />
+        <br />
+        Bunlara <strong>step</strong> denir ve herhangi bir stepte hata olursa
+        kodun calismasi o stepte durur.
+        <hr />
+      </div>
+      <div>
+        <h2>Cucumber Framework</h2>
+        <div>
+          <ol>
+            <li>
+              CreateProject: File&gt;New&gt;Project&gt;Select maven&gt;Click
+              next
+            </li>
+            <li>Name: com.Batch30Cucumber&gt;finish</li>
+            <li>
+              Add Dependencies:
+              <strong
+                >Selenium-Java, webdrivermanager,cucumber-java,
+                cucumber-junit,(Faker)</strong
+              >
+            </li>
+            <li>
+              Click Maven: Kirmizi yazilar icin <strong>reload</strong> et.
+            </li>
+            <li>
+              Javanin sürümüyle ilgili sorunleri cözmesi icin
+              <strong>compiler dependency</strong> yüklenebilir.
+              <ul>
+                <li>
+                  &lt;properties&gt;
+                  <ul>
+                    <li>
+                      &lt;maven.compiler.source&gt;11&lt;/maven.compiler.source&gt;
+                    </li>
+                    <li>
+                      &lt;maven.compiler.target&gt;11&lt;/maven.compiler.target&gt;
+                    </li>
+                  </ul>
+                </li>
+                <li>&lt;/properties&gt;</li>
+              </ul>
+            </li>
+            <li>
+              Java klosörünün altinda package olusturalim:
+              <ul>
+                <li><strong>utilities</strong></li>
+                <li><strong>pages</strong></li>
+                <li>
+                  <strong>runners</strong>(testcase leri kontrol etmek ve
+                  calistirmak icin)
+                </li>
+                <li>
+                  <strong>stepdefinitions</strong>(kodlari olusturacagimiz yer)
+                </li>
+              </ul>
+            </li>
+            <li>
+              utilities package altinda 2 class olusturalim:
+              <ul>
+                <li><strong>Driver</strong></li>
+                <li><strong>ConfigReader</strong></li>
+              </ul>
+            </li>
+            <li>
+              Projeye sag tiklayip
+              <strong>configuration.properties</strong> file'i olusturalim
+            </li>
+            <li>
+              Projeye sag tiklayip <strong>resources</strong> klosörü
+              olusturalim.
+            </li>
+            <li>
+              Resources klosörünün icine <strong>features</strong> dosyasi
+              olusturalim.
+            </li>
+            <li>
+              features'e sag tiklayip uzantisi <strong>.feature</strong> olan
+              bir dosya olusturalim.(amazosearch.feature)
+            </li>
+            <li>
+              File &gt;Setting &gt;Plugin 'e gidip
+              <strong>cucumber for java plugin</strong>'i install edelim.
+              (salatalik simgesi)
+            </li>
+            <li>
+              Sorunsuz calismasi icin programi <strong>restart</strong> yapalim.
+            </li>
+          </ol>
+        </div>
+      </div>
+      <hr />
+      <div class="maddesiz">
+        <h3>Örnek .feature Dosyasi</h3>
+        <ul class="cerceve">
+          <li>
+            Feature: US1001 amazon arama
+            <ul>
+              <li>
+                @amazon <br />//Bir grup oldugunu ifade etmek icin yazilir.
+              </li>
+              <li>
+                Scenario: TC01 amazon nutella arama
+                <ul>
+                  <li>When kullanici amazon sayfasina gider</li>
+                  <li>And nutella icin arama yapar</li>
+                  <li>
+                    Then sonucun nutella icerdigini test eder <br /><br />//Eger
+                    yazdigimiz bir olayi kisa yoldan stepdefinitions class'inda
+                    kolay yönden olusturmak istersek 2 yol vardir:
+                    <ol>
+                      <li>Runner class'i false ile calistirmak</li>
+                      <li>
+                        Buradaki maddeye tiklayarak cikan secenekten
+                        stepdefinitions class'inda olusturmasini istemek.
+                      </li>
+                    </ol>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        Eger .feature dosyasinin basina sadece
+        <strong>@background</strong> yazarsak o dosyayi butun olarak calistirir.
+        <br />Ortak kullanilanlari (Wenn:amazon sayfasini gider) feature
+        dosyasina, feature'in altina scnerio'nun üstüne yazilir. <br /><code
+          >Background: amazon sayfasina gitme <br />
+          When kullanici amazon sayfasina gider</code
+        >
+      </div>
+      <hr />
+      <div class="maddesiz">
+        <h3>Feature dosyasini parametre ile kullanma</h3>
+        Parametrelestirmek ve dinamik hale getirmek icin
+        <strong>cift tirnak("")</strong> kullanilir.
+        <ul class="cerceve">
+          <li>When kullanici amazon sayfasina gider</li>
+          <li>And <strong>"nutella"</strong> icin arama yapar</li>
+          <li>Then sonucun <strong>"nutella"</strong> icerdigini test eder</li>
+        </ul>
+        Stepdefinition'daki parametre ise asagidaki gibi olacaktir:
+        <ul class="cerceve">
+          <li>@And("{string} icin arama yapar")</li>
+          <li>
+            public void icinAramaYapar(String arananKelime) {
+            <ul>
+              <li>
+                amazonPage.aramaKutusu.sendKeys(arananKelime+ Keys.ENTER);
+              </li>
+            </ul>
+          </li>
+          <li>}</li>
+          <li>@Then("sonucun {string} icerdigini test eder")</li>
+          <li>
+            public void sonucunIcerdiginiTestEder(String arananKelime) {
+            <ul>
+              <li>
+                Assert.assertTrue(amazonPage.sonucYazisiElementi.getText().contains(arananKelime));
+              </li>
+            </ul>
+          </li>
+          <li>}</li>
+        </ul>
+      </div>
+      <hr />
+      <div class="maddesiz">
+        <h3>Örnek Runner Class'i</h3>
+        Bu runner class'ini bos olmasina ragmen sadece 2 notasyon icin
+        kullaniyoruz: <br /><strong>@RunWith()</strong> ve
+        <strong>@CucumberOptions()</strong>.
+        <ul class="cerceve">
+          <li>package Runners</li>
+          <li>
+            @RunWith(Cucumber.class) <br />
+            //JUnit'i kullanmamizin sebebi bu anatationdur. <br />//Bu test ne
+            zaman calisirsa artik Cucumber ile birlikte calis manasina gelir.
+          </li>
+          <li>
+            @CucumberOptions( <br />//Runner class'inin calismasi icin gerekli
+            olan option'lari bu tagin icine yaziyoruz.
+            <ul>
+              <li>
+                features="src/test/resources/features", <br />//Olusturdugumuz
+                features klosörünün yolunu tirnak icine yaziyoruz. <br />//Dosya
+                yolu icin: features &gt;sag tik&gt;Copy Path/Reference&gt;Path
+                From Content Root
+              </li>
+              <li>
+                glue="src/test/resources/stepdefinitions", <br />//Bizim java
+                kodlarimizi ifade eder. <br />//Java kodlarimizin bulundugu
+                stepdefinitions package'inin yolunu tirnak icine yapistiriyoruz.
+                <br />//Dosya yolu icin: stepdefinitions &gt;sag tik&gt;Copy
+                Path/Reference&gt;Path From Content Root <br />//Bu sekilde
+                yaparak features ile stepdefinitions'i birlestirmis oluyoruz.
+              </li>
+              <li>
+                tags="@amazon", <br />//Testleri gruplandirarak calistirmak icin
+                kullanilir. <br />//ikili olarak yazilabilir. (@amazon @nutella)
+                (@java and @nutella: ikisi bir varsa calistiracaktir) (java or
+                @nutella: ikisinden biri varsa calistiracaktir, ikisi de varsa
+                ikisini de calistirir.) <br />Runner class'ina hangi tagi
+                yazarsak o testi calistiracaktir.
+              </li>
+              <li>
+                dryRun= false <br />//true(renkli görünür) veya false(sönük
+                görülür) deger alir. <br />//Normal kosullarda dryRun=false
+                kalmalidir. <br />//"true" iken run ettigimizde henüz teste
+                baslamadan adimlari kontrol eder ve test adimlarinin
+                tanimlanmasinda eksik bulursa rapor olarak stepdefinitions'a
+                yazilmasi icin tavsiye getirir ve test failed olur.<br />//Eger
+                elle method olusturmak istemiyorsak bu yöntemi kullanabiliriz.
+                <br />
+                //Eger "false" ise stepdefinitions'daki test adimlarini önce
+                kontrol eder ve bir eksiklikle karsilasirsa testi calistirmaz,
+                sadece eksik adimi söyler. <br />
+                //Runner class'indan calistrdigimiz zaman önce faeatures
+                dosyasina gider. <br />//Oradaki yazilanlarin java kodlarinin
+                yazili olup olmadigini kontrol eder. <br />
+                //Henüz hic java kodu yazilmadigi icin UndefinedStepException
+                (tanimlanmamis step) aliriz. <br />//Cucamber'in yardimiyla hata
+                sayfasinda bize tanimlanmasi gereken hazir kaliplari getirir.
+                <br />//Gelen bu kaliplari kopyalayip stepdefinitions
+                klosöründeki class'imiza yapistiralim. <br />//Böylelikle
+                stepdefinitions klosöründeki class'imiz da olusmus oldu.
+              </li>
+            </ul>
+          </li>
+          <li>)</li>
+          <li>public class Runner { <br />//Class'in ic bos kalacak.</li>
+          <li>}</li>
+        </ul>
+      </div>
+      <hr />
+      <div class="maddesiz">
+        <h3>Örnek Stepdefinition Class'i</h3>
+        <ul class="cerceve">
+          <li>package stepdefinitions;</li>
+          <li>
+            public class AmazonStepDefinitions {
+            <ul>
+              <li>
+                AmazonPage amazonPage=new AmazonPage(); <br />//Öncelikle her
+                methodda kullanabilmek icin class level'da Page class'indan bir
+                obje olusturulur. <br />//Asagidaki adimlari
+                <strong>Runner Class</strong>'ina yaptirabiliyoruz. <br /><br />
+              </li>
+              <li>@When("kullanici amazon sayfasina gider")</li>
+              <li>
+                public void kullanici_amazon_sayfasina_gider() {
+                <ul>
+                  <li>
+                    Driver.getDriver().get(ConfigReader.getProperty("amazonUrl"));
+                    <br />//configuration.properties dosyasinda mutlaka
+                    gidilecek adres tanimlanmalidir.
+                  </li>
+                </ul>
+              </li>
+              <li>} <br /><br /></li>
+              <li>@When("nutella icin arama yapar")</li>
+              <li>
+                public void nutella_icin_arama_yapar() {
+                <ul>
+                  <li>
+                    amazonPage.aramaKutusu.sendKeys("Nutella"+ Keys.ENTER);
+                    <br />//Eger amazon sitesinde arama yapacaksak mutlaka Page
+                    class'inda arama kutusunu locate etmeliyiz.
+                  </li>
+                </ul>
+              </li>
+              <li>} <br /><br /></li>
+              <li>@Then("sonucun nutella icerdigini test eder")</li>
+              <li>
+                public void sonucun_nutella_icerdigini_test_eder() {
+                <ul>
+                  <li>
+                    Assert.assertTrue(amazonPage.sonucYazisiElementi.getText().contains("Nutella"));
+                  </li>
+                </ul>
+              </li>
+              <li>}</li>
+            </ul>
+          </li>
+          <li>}</li>
+        </ul>
+      </div>
+      <hr />
+      <div class="maddesiz">
+        <h3>Örnek configuration.properties Sayfasi Olusturma</h3>
+        Stepdefinitions sayfasina yazilan her adim configuration.properties
+        sayfasinda tanimlanmalidir.
+        <ul class="cerceve">
+          <li>browser=chrome</li>
+          <li>
+            amazonUrl=https://www.amazon.com/ <br />//Bu satir yazildiktan sonra
+            Stepdefinitions sayfasina gidilir ve ilgili bölüme: <br />//
+            <code
+              >Driver.getDriver().get(ConfigReader.getProperty("amazonUrl"));</code
+            >
+            yazilir.
+          </li>
+          <li>...</li>
+        </ul>
+      </div>
+      <hr />
+      <div class="maddesiz">
+        <h3>ÖrnekPage sayfasi</h3>
+        <ul class="cerceve">
+          <li>package pages;</li>
+          <li>
+            public class AmazonPage { <br /><br />
+            <ul>
+              <li>
+                public AmazonPage(){
+                <ul>
+                  <li>
+                    PageFactory.initElements(Driver.getDriver(),this);
+                    <br />//Öncelikle Constructor olusturup driver'i
+                    tanimliyoruz.
+                  </li>
+                </ul>
+              </li>
+              <li>} <br /><br /></li>
+              <li>@FindBy(id="twotabsearchtextbox")</li>
+              <li>public WebElement aramaKutusu; <br /><br /></li>
+              <li>
+                @FindBy(xpath = "//div[@class='a-section a-spacing-small
+                a-spacing-top-small']")
+              </li>
+              <li>public WebElement sonucYazisiElementi;</li>
+            </ul>
+          </li>
+          <li>}</li>
+        </ul>
+      </div>
+      <hr />
+      <div>
+        Özet olarak söylemek gerekirse;
+        <ul>
+          <li>
+            Runner <br />//taglari kullanarak feature seneryolarini calistirir.
+            <ul>
+              <li>
+                feature <br />//Gherkin Language ile yazilmis bir dosyadir.
+                <br />
+                //Javva bu dili gördügünde direkt stepdefinition'a gider.
+                <ul>
+                  <li>
+                    stepdefinitions <br />//Bu klosörde feature'da gördügü java
+                    kodlarini arar.
+                    <ul>
+                      <li>
+                        pages <br />//stepdefinition'larda kullanilan locate'ler
+                        pages sayfalarindan alinir.
+                      </li>
+                      <li>
+                        Driver <br />//Kendi olusturdugumuz driver classindaki
+                        Driver.getDriver() methodu kullanilir.
+                      </li>
+                      <li>
+                        ConfigReader <br />//Ihtiyacimiz olan test datalarini
+                        bize getirir.
+                        <ul>
+                          <li>
+                            configuration.properties <br />//test dadatalarimizi
+                            depoladigimiz dosyadir
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <hr />
+      <div>
+        <h2>@tags</h2>
+        Taglari yalnizca belirli seneryolari calistirmak icin kullaniriz,
+        <br /><br />Taglari ayni zamanda seneryolarimizi gruplandirmak icin de
+        kullanabiliriz(smaoke test,regression test vs).
+      </div>
+    </main>
+  </body>
+</html>

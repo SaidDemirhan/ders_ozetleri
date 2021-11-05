@@ -15,7 +15,7 @@
     h1,
     h2,
     h3 {
-      color: honeydew;
+      color: rgb(102, 235, 102);
     }
     ul {
       text-align: start;
@@ -29,6 +29,15 @@
     .kod {
       margin-left: 30px;
       text-align: left;
+    }
+    .sol {
+      text-align: left;
+    }
+    .cerceve {
+      border: 3px black solid;
+    }
+    .maddesiz {
+      list-style-type: none;
     }
   </style>
   <body>
@@ -251,7 +260,7 @@
     <p>
       Karsimiza pom.xml dosyasi hazir sekilde gelecektir.(Maven'in kalbidir)
     </p>
-    <p>
+    <p id="webDriverManagerRepository">
       &lt;/project&gt; kapanma taginin üzerine &lt;dependencies&gt;
       &lt;/dependencies&gt;tagini acip kapatiyoruz. <br />
       <a href="https://mvnrepository.com/" target="_blank"
@@ -265,7 +274,7 @@
       &lt;dependencies&gt; tagina kopyalanan repo adresini yapistiriyoruz.
     </p>
     <hr />
-    <p>
+    <p id="seleniumRepository">
       Ayni adreste arama kismina <strong>selenium</strong> yazip aratiyoruz.
       <br />En populer olan <strong>Selenium Java</strong> yi seciyoruz. <br />
       Alpha, beta, rc deneme sürümlerinin altindaki son güncel ve en cok tercih
@@ -439,7 +448,11 @@
       <br />
       If yerine kullanilir. <br />
       Eger kiyaslama basarisiz olursa
-      <strong> AssertionError </strong> verir.
+      <strong> AssertionError </strong> verir. <br /><br />
+      Eger her defasinda basinda "Assert." yazmak istenmezse; uzerine gelip
+      method'u import edebilirsiniz. Class üzerindeki import alaninda ilgili
+      satiri "import static org.testng/junit.Assert.*;" seklinde
+      degistirmeliyiz.
     </p>
     <ul>
       <li>
@@ -502,8 +515,7 @@
 
     <hr />
     <h2 class="toollar">
-      <span style="color: black">Test</span><span style="color: red">N</span>
-      <span style="color: orangered">G</span>
+      <span style="color: black">Test</span><span style="color: red">NG</span>
     </h2>
     <p>
       Maven projesine eklene bir tool'dur. JUnit ile TestNG bir arada genellikle
@@ -514,7 +526,9 @@
     </p>
     <hr />
     <p>
-      webdrivermanager ve selenium repositorilerini ekledikten
+      <a href="#webDriverManagerRepository">webdrivermanager</a> ve
+      <a href="#seleniumRepository">selenium</a>
+      repositorilerini ekledikten
       <a href="https://mvnrepository.com/" target="_blank"
         >https://mvnrepository.com/</a
       >
@@ -560,19 +574,20 @@
           driver.get("https://www.amazon.com/") <br />
           }
         </section>
-        <br />
+        <hr />
       </li>
       <li>
         <strong>@BeforeClass </strong>Junit deki gibi static olmasina gerek
         yoktur. <br />
         Calistirdigimiz Class calisinca ilk calisan method'dur. <br />
         Tek bir URL üzerinde test yapilacaksa tercih edilmelidir. <br />
-        <br />
+        <hr />
       </li>
       <li>
         <strong>@AfterClass </strong>Junit deki gibi static olmasina gerek
         yoktur. <br />
-        Calistirdigimiz Class calisinca en son calisan method'dur. <br /><br />
+        Calistirdigimiz Class calisinca en son calisan method'dur. <br />
+        <hr />
       </li>
       <li>
         <strong>@BeforeMethod </strong>JUnit'deki @Before methoduna benzer.
@@ -588,8 +603,9 @@
           driver=new ChromeDriver(); <br />
           driver.manage().window()maximize(); <br />
           driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS); <br />
-          } <br /><br />
+          } <br />
         </section>
+        <hr />
       </li>
       <li>
         <strong>@AfterMethod </strong>JUnit'deki @After methoduna benzer. <br />
@@ -598,8 +614,9 @@
           @AfterMethod <br />
           public voidtearDown(){ <br />
           driver.close(); <br />
-          } <br /><br />
+          } <br />
         </section>
+        <hr />
       </li>
       <li>
         <strong>Priorty </strong> Testler arasinda öncelik sirasi belirler.
@@ -615,7 +632,7 @@
           driver.get("https://www.amazon.com/"); <br />
           } <br />
         </section>
-        <br />
+        <hr />
       </li>
       <li>
         <strong>Dropdown </strong>Acilir seceneklerden (select) bir secim
@@ -635,20 +652,31 @@
           }
         </section>
         <br />
+        <ul>
+          <li>
+            <strong>.getFirstSelectedOption() </strong>secilen objeyi getirir,
+            obje degilse yazdirir.(sout)<br />
+            Eger bir obje metni yazdirilmak istenirse sonuna
+            <strong>.get.text()</strong> eklenirse text olarak yazdirir.(sout)
+            <br />
+          </li>
+          <li>
+            <strong>.selectByIndex() </strong> index olarak option i secer.(int)
+          </li>
+          <li>
+            <strong>.selectByValue(".") </strong> value olarak option i
+            secer.(string)
+          </li>
+          <li>
+            <strong>.selectByVisibleText(".")</strong>text olarak option i
+            secer. (string)
+          </li>
+          <li>
+            <strong>.getOptions() </strong>tüm opsiyonlarin yazdirilmasi icin
+            kullanilir. <br /><br />
+          </li>
+        </ul>
 
-        <strong>.getFirstSelectedOption() </strong>secilen objeyi getirir, obje
-        degilse yazdirir.(sout) <br />
-        Eger bir obje metni yazdirilmak istenirse sonuna
-        <strong>.get.text()</strong> eklenirse text olarak yazdirir.(sout)
-        <br />
-        <strong>.selectByIndex() </strong> index olarak option i secer.(int)
-        <br />
-        <strong>.selectByValue(".") </strong> value olarak option i
-        secer.(string) <br />
-        <strong>.selectByVisibleText(".")</strong>text olarak option i secer.
-        (string) <br />
-        <strong>.getOptions() </strong>tüm opsiyonlarin yazdirilmasi icin
-        kullanilir. <br />
         Önce listeye alip sonra yazdirilmasi gerekir. <br />
         <br />
         <section class="kod">
@@ -657,7 +685,7 @@
           System.out.prinln(each.getText()); <br />
           }
         </section>
-        <br />
+        <hr />
       </li>
       <li>
         <strong>dependsOnMethods </strong>Methodlari birbirine baglamak icin
@@ -677,31 +705,43 @@
           public void test2(){ <br />
           driver.findElement(By.Id(".")); <br />
           } <br />
-          <br />
         </section>
+        <hr />
       </li>
       <li>
-        <strong>Assert Methodlari </strong> Junit'ten yer siralamasi olarak
-        farklidir. <br />
+        <strong>Assert </strong> Junit'ten yer siralamasi olarak farklidir.
+        <br />
         Assert.assertEqual(actualResult,expectedResult,"FAILED durumundaki
         mesaj") <br />
         islevi ayni <a href="#junitAssert">Junit'deki "Assert"</a> gibidir.
         <br />
         Eger sonuna kadar calismissa hata yok demektir.
-        <br /><br />
+        <br />
+        <hr />
       </li>
       <li>
         <strong>SoftAssert </strong>Bir Assertion Failed olunca devam etmesini
         saglayan methoddur. <br />Verification olarak da bilinir. Eger verify
-        edin deniyorsa softAssert anlasilir. <br />SoftAssert methodunda da
-        Assert methodlarini kullaniyoruz. <br />SoftAssert methodlari, sondaki
-        assertAll'a kadar calisabilir.(close() gibi) <br /><br />1. SoftAssert
-        class'indan softAssert objesi olusturuyoruz. <br />2. Istedigimiz
-        verification'lari yapiyoruz. yani Assert yazacagimiz yere softAssert
-        yaziyoruz. <br />3. Sona da softAssert.assertAll(); yaziyoruz. Yani test
-        durumunu raporlamasini istiyoruz. assertAll() yoksa raporlama da olmaz.
-
-        <br /><br />
+        edin deniyorsa softAssert anlasilir, assert edin denirse normal Assert
+        anlassilir. <br />SoftAssert methodunda da Assert methodlarini
+        kullaniyoruz. <br />SoftAssert methodlari, sondaki assertAll'a kadar
+        calisabilir.(close() gibi) <br /><br />
+        <ol>
+          <li>SoftAssert class'indan softAssert objesi olusturuyoruz.</li>
+          <li>
+            softAssert objesi kullanilarak SoftAssert class'indan hazir
+            assertion method'lariyla istedigimiz kadar verification yapiyoruz.
+            Yani Assert yazacagimiz yere softAssert yaziyoruz.
+          </li>
+          <li>
+            Tüm Assertion'lari bitirdikten sonra softAssert.assertAll();
+            yaziyoruz. Yani test durumunu raporlamasini istiyoruz. assertAll()
+            yoksa raporlama da olmaz ve assertion'lar hic yapilmamis gibi olur.
+            Eger .assertAll kisminda hata veriyorsa assertlerin birinde hata
+            vardir.
+          </li>
+        </ol>
+        <br />
         <section class="kod">
           @Test <br />
           public void test(){ <br />
@@ -712,40 +752,2106 @@
           softAssert.assertAll(); <br />
           } <br />
         </section>
-        <br /><br />
         <section class="kod">
+          <hr />
           <strong>Mülakat Sorusu:</strong> <br /><br />Soft Assert ile Hard
           Assert arasindaki fark nedir? <br />
           <br />Hard Methodda eger test bir hata ile karsilasirsa calismayi
           durdurur. Soft Assert ise hata ile karsilassa bile calismaya devam
           eder.
         </section>
+        <hr />
+      </li>
+      <li>
+        <strong>Handle JS Alert </strong>Kullaniciya bilgi vermek, kullanicidan
+        izin almak veya uyarmak icin kullanilir. <br /><br />
+        Uyarinin üzerine sag click yaptigimizda eger incele butonu cikmiyorsa JS
+        ile yapilmistir. <br />
+        Eger incele butonu varsa WebElement seklinde locate edilerek devam
+        edilebilir. <br /><br />
+        <u>Alert Cesitleri</u> <br />
+        <ol>
+          <li>
+            <strong>Simple Allert </strong> Ok denilerek kapatilan uyari
+            cesitidir.
+          </li>
+          <li>
+            <strong>Confirmation Alert</strong> Ok veya Cancel a basilabilen
+            uyari cesitidir.
+          </li>
+          <li>
+            <strong>Prompt Alert </strong>Kullanicidan bazi bilgileri girmesi
+            istenir. (sendkeys() kullanarak teste devam edilebilir.) <br />Eger
+            bos iken Cancel denirse hiclik degeri atar. <br />Eger Cancel'a
+            basilirsa deger olarak Null atar.
+          </li>
+        </ol>
+        <br /><br />
+        <u>Handle Allert Methodlari</u> <br />
+        <strong>switchTo() </strong>methodu'yla kullanilir. ac veya degistir
+        manasindadir. <br />
+        <strong>driver.switchTo().alert().</strong>
+        <ul>
+          <li><strong>accept(); </strong>Uyariyi kabul et anlamindadir</li>
+          <li><strong>dismiss(); </strong>Uyariyi reddet anlamindadir.</li>
+          <li><strong>getText(); </strong>Uyaridaki yaziya ulasir.</li>
+          <li>
+            <strong>sendKeys(".") </strong>Uyaridaki text alanina yazi yazdirir.
+          </li>
+        </ul>
+        <hr />
+      </li>
+      <li>
+        <strong>Handle IFrame </strong>Sayfa icinde sayfadir. <br />
+        <strong>driver.switchTo().frame() </strong>ile frame sayfasina
+        girilebilir. <br /><br />
+        <ol>
+          <li>
+            <strong>index </strong>frame() icine int olarak Ifame'in indexi
+            yazilir. Index 0'dan baslar. En hizlisidir.
+          </li>
+          <li>
+            <strong>id </strong>frame(".") icine string olarak id degeri
+            girilir.
+          </li>
+          <li>
+            <strong>name </strong>frame(".") icine string olarak name degeri
+            girilir.
+          </li>
+          <li>
+            <strong>WebElement </strong>frame() icine tanimlanan WebElementi
+            veya locate'i girilir.
+          </li>
+        </ol>
+        <br />
+
+        Eger önceki sayfamizda islem yapmak istersek girdigimiz ifram'den
+        cikmamiz gerekir ki islem yapabilelim. <br />
+        <strong>driver.switchTo().parentFrame() </strong> iframe'den bir önceki
+        sayfaya geri getirir.(Anasayfa&gt;ifame) <br />
+        <strong>driver.switchTo().defaultContent() </strong>Bazen
+        Anasayfa&gt;ifame1&gt;iframe2 seklinde gecis yaptigimizda bizi ana
+        sayfaya geri getirir.<br /><br />
+        Eger locate'te eminsek ve buna ragmen bulamiyorsa html elemanlarini
+        incelemek tavsiye edilir,iframe tagi ile karsilasilabilir.
       </li>
     </ul>
     <hr />
+    <h2>TestBase Class</h2>
+    <p>
+      Utilities package'imizda olusturdugumuz
+      <strong>TestBase</strong> ismindeki class'imizdir.
+    </p>
+    <p>
+      Bizim depomuzdur, Testlerden önce veya sonra tekrar tekrar kullandigimiz
+      kodlari icerir. (setup,teardown,reports)
+    </p>
+    <p>
+      Birden fazla TestBase class'imiz olabilir. Birine beforeClass() digerine
+      beforeMethod() gibi farkli vazifeli methodlari yerlestirebiliriz.
+    </p>
+    <p>
+      Icindeki kodlari kullanabilmemiz icin test class'imizi TestBase Class a
+      <strong>extends</strong> yapmaliyiz.
+    </p>
+    <p>
+      istersek Abstract Class da yapabiliriz, o zaman bu Class'ta obje create
+      edemeyiz.
+    </p>
+    <p>
+      Olusturdugumuz driver'i baska class'lardan kullanabilmek icin
+      <strong>PROTECTED </strong> yapmaliyiz.
+    </p>
+    <hr />
+    <h2 id="windowHandle">Windows Handle</h2>
+    <p>
+      Eger yeni bir window'a gecmek istiyorsak windowHandle'a ihtiyacimiz
+      vardir.
+    </p>
+    <ol class="sol">
+      <li>
+        <strong>driver.getWindowHandle(); </strong>ile bulundugumuz windowun
+        hash kodunu alip bir String'e atiyoruz. Bize gececegimiz sayfanin hash
+        kodu lazim ki o sayfaya gecebilelim.
+        <section class="kod">
+          String ilkSayfaHandle = driver.getWindowHandle();
+        </section>
+        <br />
+      </li>
+      <li>
+        <strong>driver.findElement(By.(".")).click(); </strong>ile gececegimiz
+        sayfa linkine tikliyoruz. <br /><br />
+      </li>
+      <li>
+        <strong>Set&lt;String&gt; setIsmi = driver.getWindowHandles(); </strong
+        >ile onceki ve su an gecilen sayfanin hash kodunu almis ve setimize
+        depolamis oluruz. <br />
+        <br />
+      </li>
+      <li>
+        Set icerisindeki yeni acilan sayfanin hash koduna ulasabilmek icin
+        String olusturup forEach loop kullanarak yeni hash komuzu aliyoruz.
+        <section class="kod">
+          String ikinciSayfaHandle = " "; <br />
+          for (String each : setIsmi){ <br />
+          if (!each.equals(ilkSayfaHandle)){ <br />
+          ikinciSayfaHandle=each; <br />
+          } <br />
+          } <br />
+          <br />
+        </section>
+      </li>
+      <li>
+        <strong>driver.switchTo().window(ikinciSayfaHandle); </strong> yazarak
+        ikinci sayfada islem yapabilme yetkisi almis oluruz. <br /><br />
+      </li>
+      <li>
+        <strong>driver.switchTo().window(ilkSayfaHandle); </strong> yazarak ilk
+        sayfamiza geri dönebiliriz.
+      </li>
+    </ol>
+    <hr />
+    <h2>Action Class</h2>
+    <p>Olusturdugumuz driver gözümüz gibidir. Göremezse islem yapamaz.</p>
+    <ol class="sol">
+      <li>
+        <strong>Actions actions = new Actions(driver); </strong> yazarak Action
+        class'indan obje olusturulur. <br /><br />
+      </li>
+      <li>
+        <strong>WebElement element = driver.findElement(By.(".")); </strong
+        >yazarak üzerinde calisacagimiz ögemiz locate edilir.<br /><br />
+      </li>
+      <li>
+        <strong>actions.contextClick(element).perform(); </strong> diyerek
+        webElement üzerinde islem gerceklestirirlir. Mesela burda mausla saga
+        tikladik.
+      </li>
+    </ol>
 
+    <p>
+      <strong>perform(); </strong>Action isleminin en sonuna yazilir ve onsuz
+      olmaz, emirdir. Eger birbirine bagli islemler yapiliyorsa en sona bir tane
+      perform(); yazilmasi yeterlidir.
+    </p>
+    <hr />
+    <h3>Mouse Base Actions(Maose Aksiyonlari</h3>
+    <ul>
+      <li><strong>.click(); </strong>Sol tusu tek tiklar.</li>
+      <li><strong>.doubleClick(); </strong>Sol tusu iki kez tiklar.</li>
+      <li><strong>.clickAndHold(); </strong>Sol tusu birakmadan tiklar.</li>
+      <li>
+        <strong>.dragAndDrop(); </strong>Bir ögeyi bir noktadan digerine tasir
+        ve birakir.
+      </li>
+      <li>
+        <strong>.moveToElement(); </strong>Fare isaretcisini istenilen ögeye
+        tasir.
+      </li>
+      <li><strong>.contextClick(); </strong>Sag tusu tek tiklar.</li>
+    </ul>
+    <hr />
+    <h3>Keyboard Base Actions (Klavye Aksiyonlari)</h3>
+    <ul>
+      <li>
+        <strong>.sendKeys(); </strong>Klavye ile karakter(ler) girme islemi.
+      </li>
+      <li><strong>.keyDown(); </strong>Klavyede tusa basma islemi</li>
+      <li>
+        <strong>.keyUp(); </strong>Klavyede tusa basma islemini sonlandirma
+      </li>
+    </ul>
+    <p>
+      Bir tusa basmak icin <strong>Keys.TUS_ADI </strong>yazmamiz yeterlidir.
+    </p>
+    <ul>
+      <li><strong>Keys.PAGE_DOWN </strong>sayfayi asagi indirir</li>
+      <li><strong>Keys.PAGE_UP </strong>sayfayi yukari cikartir.</li>
+      <li><strong>Keys.CLEAR </strong>temizler</li>
+      <li><strong>Keys.CONTROL </strong>ctrl ye basar</li>
+      <li><strong>Keys.END </strong>sayfanin sonuna iner</li>
+      <li><strong>Keys.DELETE </strong>siler</li>
+      <li><strong>Keys.TAB </strong>tab tusuna basar</li>
+      <li><strong>Keys.ARROW_RIGHT </strong>sag tus</li>
+      <li><strong>Keys.ARROW_LEFT </strong>sol tus</li>
+      <li><strong>Keys.ARROW_DOWN </strong>asagi tus</li>
+      <li><strong>Keys.ARROW_UP </strong>yukari tus</li>
+      <li><strong>Keys.HOME</strong>en basa gider</li>
+      <li><strong>Keys.END</strong>en sona götürür.</li>
+
+      <li>...</li>
+    </ul>
+    <hr />
+    <h3>File Exist</h3>
+    <p>
+      Bilgisayarimizda bir dosya olup olmadigini kontrol etmek icin Java'yi
+      kullaniriz.
+    </p>
+    <ul>
+      <li>
+        <strong>System.getProperty("user.dir"); </strong>Bulunulan klosörün
+        yolunu verir. <br />Su an hangi programdan bu kodu sorguluyorsaniz o
+        dosyanin bulundugu yolu verir.
+      </li>
+      <li>
+        <strong>System.getProperty("user.home"); </strong>Kullanici klosörünü
+        verir.
+      </li>
+      <li>
+        <strong>Files.exists(Paths.get(dosya yolu)); </strong>Bilgisayarda dosya
+        yolu yazilan dosyanin olup olmadigini kontrol eder. <br />
+        <br />
+        <section class="kod">
+          String
+          dosyaYolu=System.getProperty("user.home")+"\\masaüsü\\picture.jpg";
+          <br />
+          Files.exists(Paths.get(dosyaYolu)); <br />
+        </section>
+        <p>Files(java.nio.file) dosyasinda var olan cesitli methodlar:</p>
+        <ul>
+          <li><strong>exists() </strong>var olup olmadigi</li>
+          <li><strong>deleteIfExist() </strong>varsa sil</li>
+          <li><strong>notExists() </strong>yok olup olmadigi</li>
+          <li><strong>copy() </strong>kopyalama</li>
+          <li><strong>move() </strong>tasima</li>
+          <li><strong>deletr()</strong>silme</li>
+          <li>...</li>
+          <br />
+          <section class="kod">
+            String
+            dosyaYolu=System.getProperty("user.home")+"\\masaüsü\\picture.jpg";
+            <br />
+            Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
+            <br />
+          </section>
+        </ul>
+      </li>
+    </ul>
+    <hr />
+    <h3>File Upload (Dosya Yükleme)</h3>
+    <section class="kod">
+      driver.get("urlAdresi"); <br />
+      String dosyaYolu=System.getProperty("user.home")+"\\masaüsü\\picture.jpg";
+      <br />WebElement dosyaYukle = driver.findElement(By...("dosyaSecButonu"));
+      <br />
+      dosyaYukle.sendKeys(dosyaYolu); <br />
+      driver.findElement(By...("uploadButonu")).click(); <br />
+      Thread.sleep(3000); <br />
+    </section>
+    <hr />
+    <h3>Synchronization - Selenium Waits</h3>
+    <p>
+      <strong>NoSuchElementExeption </strong>hatasi her seye ragmen veriyorsa bu
+      yönteme basvurulmalidir.
+    </p>
+    <ul>
+      <li>
+        <strong>Thread.sleep() </strong>istenildigi kadar mutlaka bekler. Sart
+        gerceklesse dahi bekler. <br /><br />
+      </li>
+      <li>
+        <strong>implicitlyWait(10,TimeUnit.SECONDS </strong>Sayfadaki tüm ögeler
+        icin global bir zaman asimidir. sart gerceklesince devam eder.
+        <br /><br />
+      </li>
+      <li>
+        <strong>explicitliyWait(driver,20) </strong>Cogunlukla belirli ögeler
+        icin belirli bir kosul (expected condition) gerceceklesmesi icin maximum
+        belirtilen süre kadar bekletmek icin kullanilir. Sart gerceklesirse
+        devam eder. Bu methodu kullanabilmek icin mutlaka bir wait objesi
+        olusturmaliyiz.
+      </li>
+    </ul>
+    <section class="kod">
+      WebdriverWait wait = new WebDriverWait(driver, 20); <br />
+      WebElement element =
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(By...)))
+    </section>
     <br />
 
+    <p class="sol">
+      <u>explicitliyWait ile ilgili kullanilabilecek sartlar;</u>
+    </p>
+    <ul>
+      <li><strong>alertIsPresent() </strong></li>
+      <li><strong>elementSelectionStateToBe() </strong></li>
+      <li><strong>elementToBeClickable() </strong></li>
+      <li><strong>elementToBeSelected() </strong></li>
+      <li><strong>frameToBeAvaibleAndSwitchTolt() </strong></li>
+      <li><strong>invisibilityOfTheElementLocated() </strong></li>
+      <li><strong>invisibilityOfElementWithText() </strong></li>
+      <li><strong>presenceOfAllElementsLocatedBy() </strong></li>
+      <li><strong>presenceOfAllElementsLocated() </strong></li>
+      <li><strong>textToBePresentInElement() </strong></li>
+      <li><strong>textToBePresentInElementLocated() </strong></li>
+      <li><strong>textToBePresentInElementValue() </strong></li>
+      <li><strong>titleIs() </strong></li>
+      <li><strong>titleContains() </strong></li>
+      <li>
+        <strong>visibilityOf() </strong>Belirtilen elemnt görünür olana kadar
+        max belirtilen süre kadar bekle.
+      </li>
+      <li>
+        <strong>visibilityElementsLocatedBy() </strong>Belirtilen Locate'deki
+        element görününür olana kadar max belirtilen süre kadar bekle
+      </li>
+      <li><strong>visibilityElementsLocated() </strong></li>
+      <li><strong>visibilityOfAllElements() </strong></li>
+      <li><strong>visibilityOfAllElementsLocatedBy() </strong></li>
+      <li><strong>visibilityOfAllElementsLocated() </strong></li>
+    </ul>
+
+    <p>
+      Sonunda Located olanlar icin Locate idilmis elementin ismini parantez
+      icine yaziyoruz.
+    </p>
+    <p>
+      Sonunda LocatedBy yazanlar icin parantez icinde bir locate islemi
+      yapilmasi gerekir.
+    </p>
+    <hr />
+    <h2>Faker Kütüphanesi</h2>
+    <p id="fakerRepository">
+      webdrivermanager ve selenium repositorilerini ekledikten
+      <a href="https://mvnrepository.com/" target="_blank"
+        >https://mvnrepository.com/</a
+      >
+      adresine gidip arama kismina <strong>faker</strong> yazip aratiyoruz.
+      <br />
+      En cok kullanilan Faker'i seciyoruz seciyoruz ve 1.0.2 sürüme giriyoruz.
+      <br />
+      Versiyon linkini tiklayip kopyaliyoruz. <br />
+      &lt;dependencies&gt; tagina kopyalanan repo adresini yapistiriyoruz.
+      <br />
+      Yazilar kirmizi ise <a href="#kirmiziYazi">tiklayiniz.</a>
+    </p>
+    <p>
+      Faker kütüphanesini kullanabilmek icin <strong>faker. </strong> yazip
+      istedigimiz methodu kullanabiliriz.
+    </p>
+    <ul>
+      <li><strong>adress() </strong> adres olusturur.</li>
+      <li><strong>business() </strong> bir meslek olusturur.</li>
+      <li><strong>company() </strong> sirket ismi olusturur.</li>
+      <li><strong>currency() </strong> para birimi olusturur.</li>
+      <li><strong>name() </strong> isim olusturur.</li>
+      <li><strong>internet() </strong>email adresi,sifre olusturur.</li>
+      <li><strong>date() </strong>tarih olusturur.</li>
+      <li>
+        <strong>number() </strong>numara olusturur. <br />eger belli bir sayi
+        araligini kullanmak istersek; <br />
+        <strong
+          >actions.sendKeys(String.valueOf(faker.number().numberBetween(1,31))).perform();</strong
+        >
+      </li>
+      <li>...</li>
+    </ul>
+    <hr />
+    <h2>POM (Page Object Model)</h2>
+    <p>
+      Testlerimizi daha düzenli yapabilmek ve tekrarlardan kurtulmak icin bu
+      modele ihtiyac duyulmustur. <br />
+      Bu sayede Data Güncellemelerini cok kisa zamanda gerceklestirebiliriz.
+    </p>
+    <p>
+      Yeni bir proje olusturalim: <br />
+      File&lt;New&lt;Maven&lt;Next&lt;Name:com.Batch30POM&lt;Finish
+    </p>
+    <p>
+      pom.xml dosyasina; <br />
+      <a href="#webDriverManagerRepository">webdrivermanager</a>,
+      <a href="#selenium">selenium</a> ve
+      <a href="#fakerRepository">faker</a> repositorilerini ekliyoruz.
+    </p>
+    <hr />
+    <section class="sol">
+      Bir POM calisabilmesi icin asagidaki adimlara ihtiyac duyar.
+      <ol>
+        <li>
+          Pages Class'lari
+          <ul>
+            <li>Bir driver olustur.</li>
+            <li>Constructor olustur.</li>
+            <li>PageFactory ile bir olusturulan driver'a deger ata.</li>
+            <li>@FindBy ile WebElement'leri locate et.</li>
+            <li>cok kullanacagin siradan methodlar olustur.</li>
+          </ul>
+        </li>
+        <li>
+          configuration.properties
+          <ul>
+            <li>Test datalarini icinde barindirir. Key-Value</li>
+          </ul>
+        </li>
+        <li>
+          ConfigReader
+          <ul>
+            <li>
+              Properties dosyasindaki datalari okuyabilmek icin properties
+              objesi olustur.
+            </li>
+            <li>
+              Static Block kullanarak dosyadaki datalari FileInputStream ile
+              okuyup olusturdugumuz properties objesine load yap.(yükle)
+            </li>
+            <li>
+              Yüklenen bilgileri alabilmek icin (Key yollayip Value'yu alabilmek
+              icin) bir method yaz.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Driver Class'i
+          <ul>
+            <li>Driver objesi olustur ve static yap.</li>
+            <li>switch-case ile browser secimlerini tanimla.</li>
+            <li>
+              teslerde sürekli driver olusturmasini engellemek icin if olustur.
+            </li>
+            <li>
+              Acmadigi Driver'i kapatmaya ugrasmasin diye closeDriver()'a if
+              koy.
+            </li>
+            <li>
+              Yeniden calistiginda eski browser aklinda kalmasin diye Driver'a
+              null ata.
+            </li>
+            <li>
+              Singleton yapmak icin parametresiz Constructor olustur ve privat
+              yap.
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+    <hr />
+    <section class="kod">
+      <u>FrameWork olarak;</u>
+      <table class="cerceve">
+        <tr>
+          <td>
+            <ul>
+              <li>
+                com.Batch30POM
+                <ul>
+                  <li>.idea</li>
+                  <li>
+                    src
+                    <ul>
+                      <li>main</li>
+                      <li>
+                        test
+                        <ul>
+                          <li>
+                            java
+                            <ul>
+                              <li>
+                                pages
+                                <ul>
+                                  <li>Page1</li>
+                                  <li>Page2</li>
+                                </ul>
+                              </li>
+                              <li>
+                                tests
+                                <ul>
+                                  <li>
+                                    package1
+                                    <ul>
+                                      <li>Test1</li>
+                                      <li>Test2</li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>
+                                utilities
+                                <ul>
+                                  <li>TestBase</li>
+                                  <li>Driver</li>
+                                  <li>ConfigReader</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    target
+                    <ul>
+                      <li>...</li>
+                    </ul>
+                  </li>
+                  <li>configuration.properties</li>
+                  <li>pom.xml</li>
+                </ul>
+              </li>
+              <li>
+                External Libraries
+                <ul>
+                  <li>Maven Kütüphaneleri</li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </section>
+    <hr />
+    <section class="kod">
+      Test icin olusturdugumuz Class'i TestBase Class'ina
+      <strong>extends</strong> etmeliyiz. <br />
+      Page Class'indaki locate ve Method'lari kullanabilmak icin bir obje create
+      etmeliyiz. <br /><br />
+      Page page = new Page(driver);
+    </section>
+    <hr />
+    <section class="kod">
+      Page Class'ina Test Class'inda kullanacagimiz locate'leri ve methodlari
+      yazabiliriz. <br /><br />
+      Bir Page sayfasi olusturdugumuzda mutlaka bir driver olusturmaliyiz.
+      <br />
+      Sonrasinda bir costructor olusturararak(Class ismi ile ayni) driver'a ilk
+      degeri atamaliyiz(inistantiate). <br />
+      Mutlaka PageFactory.initElements(driver,this) yapmaliyiz. <br /><br />
+    </section>
+    <section class="kod">
+      <ul class="cerceve maddesiz">
+        <li>
+          WebDriver driver; <br /><br />
+          //Bir driver olusturuyoruz. <br /><br />
+        </li>
+        <li>
+          public ClassAdi (WebDriver driver){ <br /><br />
+          //Bir costructor olusturuyoruz. <br /><br />
+          <ul class="maddesiz">
+            <li>
+              this.driver=driver; <br /><br />
+              //Class Level'de olusturdugumuz driver a degerini atiyoruz.
+              <br /><br />
+            </li>
+            <li>
+              PageFactory.initElements(driver,this); <br /><br />
+              //Class Level'daki driver ile TestBase'deki driver'in ayni
+              oldugunu onayliyoruz. <br /><br />
+            </li>
+          </ul>
+        </li>
+        <li>
+          public ClassAdi (){} <br /><br />
+          //Default Constructor islevini yitirdigi icin onu da olusturalim
+          <br /><br />
+        </li>
+        <li>@FindBy(...)</li>
+        <li>
+          public WebElement locateAdi; <br /><br />
+          //@FinBy(id="."), @FindBy(xpath=".") seklinde locate edilebilir.
+          <br /><br />
+        </li>
+        <li>}</li>
+      </ul>
+    </section>
+    <hr />
+    <h3>configuration.properties text dosyasi</h3>
+    <p>
+      com.Batch30POM(proje)&gt;New&gt;File(text)&gt;Name:configuration.properties
+      <br /><br />
+      Bu dosya <strong>Key</strong> ve <strong>Value</strong>'lardan olusan özel
+      bir bir text dosyasidir. <br />
+      Key unique olmalidir ama Value birden fazla olabilir. <br />Kullanimda
+      olan Key renkli hale gelir. <br />
+      Veriler bosluksuz bir sekilde yazilmalidir.
+    </p>
+    <hr />
+    <h3>ConfigReader dosyasi</h3>
+    <p>
+      utilities(package)&gt;New&gt;Class&gt;ClassName:ConfigReader <br /><br />
+      Olusturdugumuz test Class'larimizla configuration.properties text dosyasi
+      arasinda <strong>KÖPRÜ</strong> vazifes görür. <br /><br />
+      <strong>configuration.properties</strong> dosyasindaki bilgileri
+      okuyabilmek ve kullanabilmek icin olusturulmus özel bir class'tir.
+    </p>
+    <hr />
+    <section class="kod">
+      ConfigReader Class'inda;
+      <ol>
+        <li>
+          properties dosyasina ulasabilmek icin bir
+          <strong>properties objesi</strong> olusturmaliyiz.
+        </li>
+        <li>
+          <strong>FileInputStream</strong> methodunu kullanarak properties
+          dosyasini okumak icin bir <strong>kod</strong> yazariz.
+        </li>
+        <li>
+          Olusturdugumuz ConfigReader Class'indaki kodlari kullanabilmek icin
+          siradan bir <strong>method</strong> olustururuz.
+        </li>
+      </ol>
+    </section>
+    <hr />
+    <section class="kod">
+      <ul class="cerceve maddesiz">
+        <li>package utilities</li>
+        <li>
+          public class ConfigReader{ <br /><br />
+          <ul class="maddesiz">
+            <li>
+              static Properties properties; <br /><br />
+              //Class Level'da bir properties objesi olusturduk ama atama
+              yapmadik. <br /><br />
+            </li>
+            <li>
+              static { <br /><br />
+              //Öncelikli calismasi icin bir static block olusturduk.
+              <br /><br />
+              <ul class="maddesiz">
+                <li>
+                  String dosyaYolu = "configuration.properties"; <br /><br />
+                  //dosya yolunu bir String'e tanimladik. <br />
+                  //configuration.properties dosyasina saga tiklayinca
+                  <strong>Pahth From Content Root</strong>'a basararsak
+                  dosyamizin yolunu almis oluruz.<br /><br />
+                </li>
+
+                <li>
+                  try {
+                  <ul class="maddesiz">
+                    <li>
+                      FileInputStream fileInputStream = new
+                      FileInputStream(dosyaYolu); <br /><br />
+                      //Dosya yolundaki bilgileri alabilmek icin FileInputStream
+                      Class'indan bir obje olusturuyoruz. <br />//Altini
+                      cizecegi icin try/catch yapacagiz(ya okuyamazsam?).
+                      <br /><br />
+                    </li>
+                    <li>
+                      properties = new Properties(); <br />
+                      <br />
+                      //yukarida olusturdugumuz ama deger atamadigimiz
+                      properties objesine deger atiyoruz. <br /><br />
+                    </li>
+                    <li>
+                      properties.load(fileInputStream); <br /><br />
+                      //fileInputStream'in okumus oldugu bilhileri bu sekilde
+                      yüklüyoruz. <br />//altini ciziyor, bir catch daha
+                      ekleyerek(IO) cözüyoruz. (ya yükleyemezsem?). <br /><br />
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  } catch(FileNotFoundException e) {
+                  <ul class="maddesiz">
+                    <li>e.printStackTrace();</li>
+                  </ul>
+                </li>
+                <li>
+                  } catch (IOException){
+                  <ul class="maddesiz">
+                    <li>e.printStackTrace();</li>
+                  </ul>
+                </li>
+                <li>} <br /><br /></li>
+              </ul>
+            </li>
+            <li>
+              public static String getProperty(String key){ <br /><br />
+              //Her yerden ulasabilsin ve ulasilabilsin diye static bir method
+              olusturduk.
+              <br />
+              //Gelen degerler String olarak gelecegi icin dataType'ini String
+              yaptik. <br />
+              //Bize properties'ten bilgi getirecegi icin adin getProperty
+              koyduk. <br />// biz String bir Key yollayacagiz, method da bize
+              String bir Value döndürecek. <br /><br />
+              <ul class="maddesiz">
+                <li>String value = properties.getProperty(key);</li>
+                <li>return value;</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </li>
+        <li>}</li>
+      </ul>
+    </section>
+    <hr />
+    <p>Artik test Class'imizda islem yapmaya baslayabiliriz.</p>
+    <section class="kod">
+      <ul class="cerceve maddesiz">
+        <li>
+          public class Test extends TestBase {
+          <ul class="maddesiz">
+            <li>@Test</li>
+            <li>
+              public void test(){
+              <ul class="maddesiz">
+                <li>
+                  driver.get(ConfigReader.getProperty("Key") <br /><br />
+                  //Extends ile TestBase'de olusturulan driver'i
+                  kullanabiliyoruz. <br />
+                  //ConfigReader Class'indaki getProperty methoduna KEy
+                  gönderiyoruz. <br /><br />
+                </li>
+                <li>
+                  Page page = new Page(driver); <br /><br />
+                  //Page Class'indan bir obje olusturuyoruz. <br />
+                  //Olusturdugumuz page objesiyle o Class'ta locate ettigimiz
+                  elementlere ve Methodlara ulasabiliyoruz. <br /><br />
+                </li>
+                <li>page.tanimlanmisWebElementAdi....</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </li>
+        <li>}</li>
+      </ul>
+    </section>
+    <hr />
+    <h2>Driver Class</h2>
+    <p>
+      Amacimiz; test class'larimizi extends olmaktan kurtarmatir. <br />
+      Driver Class'imiz olursa TestBase Class'ina ihtiyacimiz kalmayacak. <br />
+      Bu Class sayesinde kendi <strong>Driver</strong>'imizi olusturmus oluruz.
+      <br /><br />
+      utilities&gt;New&gt;Java Class&gt;Driver <br /><br />
+    </p>
+    Driver clasinin ici sadece eger chrome ile calisacaksak:
+    <section class="kod cerceve">
+      <ul class="maddesiz">
+        <li>package utilities</li>
+        <li>
+          public class Driver{
+          <ul class="maddesiz">
+            <li>
+              privat static Webdriver driver; <br /><br />
+              //Class Level'da bir intance/static Variable olusturduk. <br />
+              //Driver class ismi ile cagrilabilsi diye static yaptik. <br />
+              //Henuz bu driver ile ilgili ayar yapilmadigi icin yanlislikla
+              kullanimin önüne gecmek icin privat yaptik. <br />
+              //privat ile sadece bu class icinde kullanabiliriz. <br /><br />
+            </li>
+            <li>
+              public WebDriver getDriver(){
+              <ul class="maddesiz">
+                <li>WebDriverManager.cromedriver().setup();</li>
+                <li>driver = new ChromeDriver();</li>
+                <li>driver.manage().window().maximize();</li>
+                <li>
+                  driver.manage().timeouts().implicitlyWait(15,SECOND);
+                  <br /><br />
+                </li>
+                <li>
+                  //Artik bizim kücük harfle yazdigimiz driver öldu ve omun
+                  yerine Driver.getDriver() gelmis oldu.
+                </li>
+                <li>return driver;</li>
+              </ul>
+            </li>
+            <li>} <br /><br /></li>
+            <li>
+              public void closeDriver(){
+              <ul class="maddesiz">
+                <li>driver.quit();</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </li>
+        <li>}</li>
+      </ul>
+    </section>
+    <hr />
+    Bizim her browser'a uygun bir driver'imiz olmali.
+    <section class="kod cerceve">
+      <ul class="maddesiz">
+        <li>package utilities</li>
+        <li>
+          public class Driver{ <br /><br />
+          <ul class="maddesiz">
+            <li><span id="singleton">private Driver(){}</span> <br /><br /></li>
+            <li>
+              //obje olusturulamasin diye parametresiz Constructor'i etkisiz
+              hale getirip kendimiz private Constructor olusturduk(SINGLETON).
+              <br /><br />
+            </li>
+            <li>private static Webdriver driver; <br /><br /></li>
+            <li>
+              public WebDriver getDriver(){ <br /><br />
+              <ul class="maddesiz">
+                <li>
+                  if (driver==null){ <br /><br />
+                  <ul class="maddesiz">
+                    <li>
+                      //Bu methodun her cagrildiginda yeni bir driver
+                      olusturmamasi icin if kullaniyoruz.
+                    </li>
+                    <li>
+                      //if driver'i kontrol edecek ve eger bir deger atamasi
+                      yapilmissa yeni bir driver olusturmayacak. <br /><br />
+                    </li>
+                    <li>
+                      //configuration.properties dosyamizin ilk satirina
+                      calisacagimiz browser'i yaziyoruz(browser=chrome).
+                      <br /><br />
+                    </li>
+                    <li>
+                      switch (ConfigReader.getProperty("browser")) {
+                      <br /><br />
+                      <ul class="maddesiz">
+                        <li>
+                          //switch yapilmasinin amaci; eger bir browser aciksa o
+                          browser'da teste devam etmesidir. Baska url'ye gidilse
+                          bile yeni sayfalar acilmasinin önüne gecilmesidir.
+                          <br /><br />
+                        </li>
+                        <li>case "chrome":</li>
+                        <li>WebDriverManager.cromedriver().setup();</li>
+                        <li>driver = new ChromeDriver();</li>
+                        <li>break;</li>
+                        <li>case "firefox":</li>
+                        <li>WebDriverManager.firefoxdriver().setup();</li>
+                        <li>driver = new FirefoxDriver();</li>
+                        <li>break;</li>
+                        <li>case "opera":</li>
+                        <li>WebDriverManager.operadriver().setup();</li>
+                        <li>driver = new OperaDriver();</li>
+                        <li>break;</li>
+                        <li>case "edge":</li>
+                        <li>WebDriverManager.edgedriver().setup();</li>
+                        <li>driver = new EdgeDriver();</li>
+                        <li>break;</li>
+                        <li>default:</li>
+                        <li>WebDriverManager.cromedriver().setup();</li>
+                        <li>driver = new ChromeDriver(); <br /><br /></li>
+                        <li>
+                          //Eger properties'ta herhangi bir browser degeri yoksa
+                          default calisacak.
+                        </li>
+                      </ul>
+                    </li>
+                    <li>}</li>
+                    <li>driver.manage().window().maximize();</li>
+                    <li>
+                      driver.manage().timeouts().implicitlyWait(15,SECOND);
+                      <br /><br />
+                    </li>
+                  </ul>
+                </li>
+                <li>}</li>
+                <li>return driver;</li>
+              </ul>
+            </li>
+            <li>} <br /><br /></li>
+            <li>
+              public void closeDriver(){ <br /><br />
+              <ul class="maddesiz">
+                <li>
+                  //Eger driver'imiz acilmissa kapalsin demek icin bir if
+                  eklemeliyiz. <br />
+                  <br />
+                </li>
+                <li>
+                  if (driver!=null){
+                  <ul class="maddesiz">
+                    <li>driver.quit();</li>
+                  </ul>
+                </li>
+                <li>} <br /><br /></li>
+                <li>
+                  //Test islemlerini bitirdikten sonra son kullandigi browser'i
+                  aklinda tutmamasi icin driver'i null'a esitlemeliyiz.
+                  <br /><br />
+                </li>
+                <li>driver=null;</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </li>
+        <li>}</li>
+      </ul>
+    </section>
+
+    <p>
+      driver'imizi olusturduktan sonra artik Page Object Model (POM) hazir.
+      <br />Artik Page Class'imizi olusturabiliriz.
+    </p>
+    <hr />
+    <h3>Yeni Page sayfamiz</h3>
+    <p>
+      Su ana kadar kullandigimiz Page sayfalarimizi kendi driver'imizi
+      olusturdugumuz icin kullanamiyoruz. <br />
+      Cünkü eski Page class'larinda eski driver var. <br />
+      Artik <strong>driver</strong> öldü,
+      <strong>Driver.getDriver()</strong>dogdu.
+    </p>
+    <hr />
+    <section class="kod">
+      <p>Yeni Page sayfamiz:</p>
+      <ul class="maddesiz cerceve">
+        <li>package pages</li>
+        <li>
+          public class ...Page {
+          <ul class="maddesiz">
+            <li>public WebDriver driver; //Driver olustur//</li>
+            <li>
+              public ...Page () { //parametresiz Constructor olustur//
+              <ul class="maddesiz">
+                <li>
+                  PageFactory.initElements(Driver.getDriver(),this);
+                  //driver'imizi tanimliyoruz.
+                </li>
+              </ul>
+            </li>
+            <li>} <br /><br /></li>
+            <li>@FindBy(linkText = "Log in") //örnektir//</li>
+            <li>public WebElement loginLinki; //örnektir//</li>
+          </ul>
+        </li>
+        <li>}</li>
+      </ul>
+    </section>
+    <hr />
+    <p>Test Class'imizdan artik istedigimiz sekilde test yapabiliriz.</p>
+
+    <section class="cerceve kod">
+      <ul class="maddesiz">
+        <li>@Test</li>
+        <li>
+          public void test () {
+          <ul class="maddesiz">
+            <li>
+              Driver.getDriver().get(ConfigReader.getProperty("AmazonUrl"));
+            </li>
+            <li>...Page ...Page = new ...Page();</li>
+            <li>...Page.loginLinki.click();</li>
+            <li>...</li>
+            <li>Driver.closeDriver();</li>
+          </ul>
+        </li>
+        <li>}</li>
+      </ul>
+    </section>
+    <hr />
+    <h2>Singleton Pattern(Tekli Kullanim- Singleton Class)</h2>
+    <p>
+      Bir Class'ta <strong>sadece bir tane obje olusturma</strong>ya izin
+      verilen class'tir. <br />
+      Driver Class'indan obje üretilmesini istemedigimiz icin Driver Class'i
+      <strong><a href="#singleton">SINGLETON</a></strong> yapiyoruz. <br />
+      Default Constructor yerine
+      <strong>parametresiz Constructor</strong> olusturup Access Modifier'i
+      <strong>private</strong> yapiyoruz. <br /><br />
+      Olusturdugumuz Driver Class'ina methodlarin üzerine yazabiliriz.
+      <br /><br />
+      <strong>private Driver () {}</strong>
+    </p>
+
+    <hr />
+    <h2>Smoke Test</h2>
+    <p>
+      Kullanilan uygulamanin <strong>önemli/temel fonksiyonlar</strong>ini test
+      etmek icin yapilir. <br />
+      <br />Sabah ilk ise baslama görevidir. <br /><br />
+      Eger smoke test FAILED olursa acilen tüm ekip haberdar edilmelidir.
+    </p>
+    <hr />
+    <h2>End to End Test (E2E)</h2>
+    <p>
+      Bir uygulamanin bir özelliginin tüm adimlarini
+      <strong>bastan sona</strong> kadar test etmektir. <br /><br />
+      Diger ismi <strong>Sistem Testi</strong>'dir.
+    </p>
+    <hr />
+    <h2>Web Tables</h2>
+    <section class="kod cerceve">
+      <table>
+        <tr>
+          <td>
+            <ul class="maddesiz">
+              <li>
+                &lt;table&gt;
+                <ul class="maddesiz">
+                  <li>
+                    &lt;thead&gt;
+                    <ul class="maddesiz">
+                      <li>
+                        &lt;tr&gt;
+                        <ul class="maddesiz">
+                          <li>&lt;th&gt;&lt;/th&gt;</li>
+                        </ul>
+                      </li>
+                      <li>&lt;/tr&gt;</li>
+                    </ul>
+                  </li>
+                  <li>&lt;/thead&gt;</li>
+                  <li>
+                    &lt;tbody&gt;
+                    <ul class="maddesiz">
+                      <li>
+                        &lt;tr&gt;
+                        <ul class="maddesiz">
+                          <li>&lt;td&gt;&lt;/td&gt;</li>
+                        </ul>
+                      </li>
+                      <li>&lt;/tr&gt;</li>
+                    </ul>
+                  </li>
+                  <li>&lt;/tbody&gt;</li>
+                </ul>
+              </li>
+              <li>&lt;/table&gt;</li>
+            </ul>
+          </td>
+          <td>
+            =&gt; Tablo olusturan genel tagdir.<br />
+            =&gt; Tablonun basligini ifade eder<br />
+            =&gt; Tablonun sütununu ifade eder<br />
+            =&gt;Tablonun basligindaki hücreleri ifade eder.<br /><br /><br />
+            =&gt;Tablonun gövdesidir.<br /><br />
+            =&gt; Tablo gövdesindeki datalari ifade eder<br /><br /><br /><br />
+          </td>
+        </tr>
+      </table>
+    </section>
+    <hr />
+
+    <section class="kod">
+      <h3>Tabloda Arama Yapma</h3>
+      <strong>// </strong> ctrl+f 'ye basildiginda arama cubuguna yazip
+      arattigimizda tag olarak basladigini ifade eder. <br />
+      <strong>//tr/td </strong> Tüm tr'lerin altindaki (satirlardaki) tüm
+      td'lerin (hücrelerin) sayisini gösterir. <br />
+      <strong>//tr[1]/td </strong> Ilk satirdaki hücre sayisini gösterir. <br />
+      <strong>//tbody/tr[1]/td[2] </strong> Body'deki birinci satirdaki ikinci
+      hücreyi ifade eder.
+      <br />
+      <strong>/ ile // farki: </strong>
+      "//tbody//td[4]" bir tablo body'sindeki 4. sütunlari bulabilirken,
+      "//tbody/td[4]" bulamaz. Eger araya "tr/" koysaydik bulacakti.
+      <hr />
+      <h3>Tablodaki Degerleri List'e Alma</h3>
+      <strong
+        >@FindBy(xpath="//thead/tr[1]/th") <br />
+        public List&lt;WebElement&gt;basliklarListesi; </strong
+      ><br /><br />
+      Bir tablodaki sütundaki yazilarin page sayfasina locate edilerek bir
+      List'e kaydedilmesi islemidir. <br />
+      Locate islemi mutlaka <strong>// </strong> ile baslar ve ihtiyaca göre /
+      veya // ile devam eder.<br /><br />
+      <hr />
+      <h3>List'teki Degerleri Getirme</h3>
+      *Eger List'in icindeki degerleri getirmek istiyorsak; <br />
+      <ul class="maddesiz" id="foreach">
+        <li>
+          for(WebElement each: ...Page.basliklarListesi){
+          <ul class="maddesiz">
+            <li>System.out.println(each.getText());</li>
+          </ul>
+        </li>
+        <li>}</li>
+      </ul>
+      <hr />
+      <h3>Sütun Sayisi</h3>
+      *Eger bizden kac sütun oldugunu isteseydi; <br />
+      <span class="kod"
+        >System.out.println(...Page.basliklarListesi.size());</span
+      >
+      <hr />
+      <h3>Body'i Yazdirma</h3>
+      *Eger tüm tablonun boyd'sini yazdirmak isteseydik: <br />
+      -Öncelikle page sayfasina tablonun body'sini locate ederdik; <br />
+      <span class="kod">@FindBy(xpath="//tbody")</span> <br />
+      <span class="kod"> public WebElement tBodyTumu;</span>
+      <br />
+      -Locate ettikten sonra test class'imizda direkt yazdirirdik; <br />
+      <span class="kod">System.out.println(...Page.tBodyTumu.getText());</span>
+      <br />
+      <br />
+      <strong>Not: </strong>Tüm body'i bir string olarak aldigi icin tek tek
+      datalara ulasamayiz.<br />Icinde gecen bir kelimenin olup olmadigini test
+      edebiliriz. <br />
+      <span class="kod"
+        >Assert.assertTrue(...Page.tBodyTumu.getText().contains("kelime"));</span
+      >
+      <hr />
+      <h3>Satirlari Yazdirma</h3>
+      *Eger satirlari ayri ayri getirmek istersek; <br />
+      Önce Page Class'inda bir List'e locate edip ForLoop ile alabiliriz.
+      <ul class="maddesiz">
+        <li>
+          for(int i=0;i&lt;...Page.satirlarListesi.size();i++){
+          <ul class="maddesiz">
+            <li>
+              System.out.println(i+1+". satir:
+              "+...Page.satirlarListesi.get(i).getText());
+            </li>
+          </ul>
+        </li>
+        <li>}</li>
+      </ul>
+      <hr />
+      <h3>Bir Sütunu veya Satiri Yazdirma</h3>
+      *Eger bir sütunu yazdirmak istersek: <br />
+      <span class="kod">@FindBy(xpath="//tbody/tr//td[4]")</span> <br />
+      <span class="kod">
+        public List&lt;WebElement&gt; dorduncuSutunListesi;</span
+      ><br />Seklinde Page Clasinda bir List'e locate edip
+      <a href="foreach">forEachLoop</a> ile yazdirabiliriz.
+      <hr />
+      <h3>Bir Hücredeki Veriyi Yazdirma</h3>
+      Page Class'ina istenilen hücreyi getirebilecek bir method create
+      edilmelidir. <br /><br />
+      <strong>Kisa Yol: </strong>Eger test Class'ina; <br />
+      <span class="kod">...Page.hucreyiYazdir(3,5);</span><br />
+      yazip kirmizi yazinin üzerine gelirsek direkt olarak Page'de yazilan
+      method'u olusturur. <br />
+      Ayni zamanda bu MethodCall'dur. <br />
+      Eger bir MethodCall'u kullanacaksak bir String'e atayabiliriz: <br />
+      <span class="kod">String actualData=...Page.hucreyiYazdir(3,5);</span>
+      <ul class="maddesiz">
+        <li>public String hucreyiYazdir(int satir,int sutun){</li>
+        <ul class="maddesiz">
+          <li>String hucre= "//tbody//tr["+satir+"]//td["+sutun+"]";</li>
+          <li>
+            String
+            istenenData=Driver.getDriver()findElement(By.xpath(hucre)).getText();
+          </li>
+          <li>
+            System.out.println(satir+". satir "+sutun+". sütundaki data:
+            "+istenenData);
+          </li>
+          <li>return istenenData;</li>
+          <li>
+            //eger test class'inda kullanilmayacaksa returntype'i void olabilir.
+          </li>
+        </ul>
+        <li>}</li>
+      </ul>
+    </section>
+    <hr />
+    <h2>EXEL</h2>
+
+    <p><strong>WorkBook&gt;Sheet&gt;Row&gt;Cell</strong></p>
+    <p>
+      Öncelikle Java klosörümüzde <strong>resources</strong> klosörü
+      olusturalim. <br />
+      Ulasmak istedigimiz <strong>exel</strong> dosyamizi olusturdugumuz
+      resources klosörüne alalim.
+    </p>
+    <p>
+      Selenium'da Exel ile handle edebilmemiz icin bir
+      <strong>dependencies</strong>'e ihtiyacimiz var. <br />
+    </p>
+    <p>
+      <a href="https://mvnrepository.com/" target="_blank"
+        >https://mvnrepository.com/</a
+      >
+      adresine gidip arama kismina <strong>apache poi</strong> yazip aratiyoruz.
+      <br />
+      Iki adet en cok kullanilan cikiyor ve "Aphache POI API Based On OPC and
+      OOXML Schemas (1864 usages)" ve "Aphace POI (1841 usages)" ismindeki
+      eklentileri teker teker seciyoruz ve 4.1.2 sürümlerine giriyoruz. <br />
+      Versiyon linkini tiklayip kopyaliyoruz. <br />
+      &lt;dependencies&gt; tagina kopyalanan repo adresini pom.xml'e
+      yapistiriyoruz.
+    </p>
+    <p>
+      Sonrasinda Test Klosörüne ExelAutomation isimli bir package olusturup
+      icine Exel islemleri test Class'lari acabilirsiniz.
+    </p>
+    <hr />
+    <h3 id="dosyayolu">Dosya Yolu</h3>
+    <p>
+      resources Klosöründeki kullanacagimiz exel'in üzerine gelip sag tus ile
+      "Patch From Content Root" a tikliyoruz. <br />
+      Aldigimiz dosya yolunu bir String'e atiyoruz. <br />
+      <span class="kod"
+        >String DosyaYolu="src/test/java/resource/exelDosyasi.xlsx";</span
+      >
+    </p>
+    <hr />
+    <h3>Exel Dosyasina Ulasma</h3>
+    <section class="kod">
+      <ol>
+        <li>
+          Dosyanin icini okuyabilmesi icin FileInputStreamtrong Class'indan bir
+          <strong>FileInputStream objesi</strong> olusturmaliyiz. <br />
+          <code
+            >FileInputStream fileInputStream=new
+            FileInputStream(dosyaYolu);</code
+          >
+          <br />
+          <br />
+          *Altinda kirmizi uyariyi gidermek icin "add Exception" firlatmaliyiz.
+        </li>
+        <p>
+          Buraya kadar olan bölüm her tür dosya okuma islemi icin gecerlidir.
+          <br />
+          Artik exel dosyasini okuyabilmek icin Aphache'den faydalanacagiz.
+        </p>
+        <li>
+          <strong>Workbook objesi</strong> olusturuyoruz (new yok, parametresi
+          var): <br />
+          <code
+            >Workbook workbook=WorkbookFactory.create(fileInputStream);</code
+          >
+          <br /><br />
+        </li>
+        <li>
+          <strong>Sheet objesi</strong> olusturuyoruz: <br />
+          <code
+            >Sheet sheet=workbook.getSheet("sayfaAdi"veya int sayfa
+            numarasi);</code
+          ><br /><br />
+        </li>
+        <li>
+          <strong>Row objesi</strong> olusturalim: <br />
+          <code>Row row=sheet.getRow(int SatirNumarasi);</code><br /><br />
+        </li>
+        <li>
+          <strong>Cell objesi</strong> olusturalim: <br />
+          <code>Cell cell=row.getCell(int SutunNumarasi);</code>
+        </li>
+      </ol>
+      <ul>
+        <li>
+          <strong>NOT: </strong>Satir ve sütun numaralari
+          <strong>INDEX</strong> oldugu icin <strong>"0"</strong>'dan baslar.
+          <br /><br />
+        </li>
+        <li>
+          <strong>Kisa Yol:</strong> Sheet, Row ve Cell objelerini olusturmadan,
+          sadece Workbook obesini olusturarak hücreye ulasilabilir. <br />
+          <strong
+            ><code
+              >Cell cell=workbook.getSheet("Sayfa1").getRow(5).getCell(3);</code
+            ></strong
+          ><br /><code>System.out.println(cell);</code> //istersek direkt
+          yazdirabiliriz.
+          <br />
+          //istersek stringe cevirerek büyük harflerle yazdirabiliriz. <br />
+          <code>System.out.println(cell.toString().ToUpperCase());</code>
+          <br /><br />
+        </li>
+        <li>
+          <strong>Uyari: </strong> Eger gelen Datayi test edeceksek dataType
+          olarak stringe cevirmeliyiz.
+          <br />
+          Cell in dataType'i cell'dir. <br />
+          <code
+            >Assert.assertEquals(cell.getStringCellValue(),"expectedData");</code
+          >
+          <br />
+          *getStringCellValue() yerine toString() de kullanilabilir.
+          <br /><br />
+        </li>
+        <li>
+          Striing Manipulation methodlarini kullanmak istiyorsak mutlaka data'yi
+          cast yapmaliyiz. <br /><br />
+        </li>
+        <li>
+          <strong>workbook.getSheet("Sayfa1").get...</strong>
+          <ul>
+            <li>
+              <strong>getFirstRowNum() </strong>ilk kullanilan satirin
+              numarasinin bir eksigini getirir. (index) Sayfa bossa -1 getirir.
+            </li>
+            <li>
+              <strong>getLastRowNum() </strong>Son dolu satirin numarasininin
+              bir eksigini getirir, aralarda bos satirlar olabilir. (index)
+              Sayfa bossa -1 getirir.
+            </li>
+            <li>
+              <strong>getPhysicalNumberOfRows() </strong>fiziksel olarak
+              kullanilan satir sayisini getirir. Sayfa bossa 0 getirir.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <hr />
+    <h3>Exel'den Sütun Yazdirma</h3>
+    <section class="kod">
+      <ul class="maddesiz">
+        <li>List&lt;String&gt;ikinciSutun=new ArrayList&lt;&gt;();</li>
+        <li>String DosyaYolu="src/test/java/resource/exelDosyasi.xlsx";</li>
+        <li>
+          FileInputStream fileInputStream=new
+          FileInputStream(dosyaYolu);(*Exception)
+        </li>
+        <li>
+          Workbook workbook=WorkbookFactory.create(fileInputStream);
+          <br /><br />
+        </li>
+
+        <li><u>*Eger sütunun tamami isteniyorsa;</u> <br /><br /></li>
+        <li>
+          for(int i=0; i&lt;=workbook.getSheet("Sayfa1").getLastRowNum(); i++){
+          <ul class="maddesiz">
+            <li>
+              ikinciSutun.add(workbook.getSheet("Sayfa1").getRow(i).getCell(1).toString());
+            </li>
+          </ul>
+        </li>
+        <li>}</li>
+        <li>System.out.println(ikinciSutun); <br /><br /></li>
+
+        <li>
+          <u>*Eger belli bir harfle baslayanlar isteniyorsa;</u> <br /><br />
+        </li>
+        <li>List&lt;String&gt;aIleBaslayanlar=new ArrayList&lt;&gt;();</li>
+        <li>
+          for(String each: ikinciSutun){
+          <ul class="maddesiz">
+            <li>
+              if (each.startWith("A")){
+              <ul class="maddesiz">
+                <li>aIleBaslayanlar.add(each);</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </li>
+        <li>}</li>
+        <li>System.out.println(aIleBaslayanlar);</li>
+      </ul>
+    </section>
+    <hr />
+    <h3>Cell'leri Collection'a Cevirme</h3>
+    <section class="kod">
+      Bu islemler data'larin javada kullanilabilir hale getirilmesi icin
+      yapilir. <br />
+      Tüm exel listesini alabilmek icin en uygun secenek
+      map'tir.(key(unique),Value)
+      <ul class="maddesiz">
+        <li>String dosyaYolu="src/test/java/resource/exelDosyasi.xlsx";</li>
+        <li>
+          FileInputStream fileInputStream=new
+          FileInputStream(dosyaYolu);(*Exception)
+        </li>
+        <li>
+          Workbook workbook=WorkbookFactory.create(fileInputStream);
+          <br /><br />
+        </li>
+        <li>Map&lt;String,String&gt; ulkelerMap=new HashMap&lt;&gt;();</li>
+        <li>String key="";</li>
+        <li>String value="";</li>
+        <li>
+          for(int i=0; i&lt;=workbook.getSheet("Sayfa1").getLastRowNum(); i++){
+          <ul class="maddesiz">
+            <li>
+              key=workbook.getSheet("Sayfa1").getRow(i).getCell(0).toString());
+            </li>
+            <li>
+              value=workbook.getSheet("Sayfa1").getRow(i).getCell(1).toString()
+              +", "+ workbook.getSheet("Sayfa1").getRow(i).getCell(2).toString()
+              +", "+
+              workbook.getSheet("Sayfa1").getRow(i).getCell(3).toString();
+            </li>
+            <li>//4 adet sütun oldugunu kabul edelim.</li>
+            <li>ulkelerMap.put(key,value).</li>
+          </ul>
+        </li>
+        <li>}</li>
+        <li>System.out.println(ulkelerMap);</li>
+        <li>//key=value,value,value seklinde kaydedilir.</li>
+      </ul>
+    </section>
+    <hr />
+    <h3>Exel'e Data Gönderme</h3>
+    <section class="kod">
+      <strong>UYARI! </strong> Eger üzerinde islem yapilan dosya aciksa biz veri
+      gönderdigimiz an exel dosyamizi bir daha kullananilamayacak sekilde bozmus
+      oluruz. <br /><br />
+      <ol>
+        <li>
+          Öncelikle <a href="#dosyayolu">dosya yolu</a> icin bir
+          <strong>String </strong> olusturmaliyiz. <br />
+          <code
+            >String dosyaYolu="src/test/java/resource/exelDosyasi.xlsx";</code
+          ><br /><br />
+        </li>
+        <li>
+          Dosya yolundaki (Path) belgeye ulasabilmek icin
+          <strong>FileInputStream </strong>objesi olusturulur. <br /><code
+            >FileInputStream fis=new FileInputStream(dosyaYolu);</code
+          >
+          (+ add Exception) <br /><br />
+        </li>
+        <li>
+          Aphache den bir Exel dosyasini okuyabilmek icin
+          <strong>workbook </strong>objesi olusturulur. <br /><code
+            >Workbook workbook=WorkbookFactory create(fis);</code
+          >(+ add Exception) <br /><br />
+        </li>
+        <li>
+          "workbook" objesi üzerinden artik dosyaya ulasabiliriz. <br /><code
+            >workbook.getSheet("Sheet_Adi").getRow(satirinIndexi).createCell(sutununIndexi).setCellValue("veri");</code
+          >
+          <ul>
+            <li>Burda createCell methodunu kullanmamizin sebebi;</li>
+            <li>
+              Biz aslinda exelin dolu olan kismini bir kopyasini su an buraya
+              pull ettik.
+            </li>
+            <li>
+              Eger gelen satir ve sütunlarda bizim girdigimiz hücrenin önce
+              üretilmesi ve sonrasinda data girilmesi gerekmektedir.
+            </li>
+            <li>
+              setCellValue ile istedigimiz data türünü girebiliriz.(string,
+              int...) <br /><br />
+            </li>
+          </ul>
+        </li>
+        <li>
+          Bilgiler girildikten sonra bilginin dosyaya gönderilebilmesi icin bir
+          <strong>FileOutputStream </strong>objesi olusturulur. <br /><code
+            >FileOutputStream fos=new FileOutputStream(dosyaYolu);</code
+          >
+          <br /><br />
+        </li>
+        <li>
+          Daha önce olusturulan
+          <strong>workbook</strong> objesiyle icinde output olan
+          <strong>write()</strong> methoduyla
+          <mark>Exel kapali iken</mark> exele bilgiler run yapilarak
+          kaydedilir.<br /><code>workbook.write(fos);</code><br /><br />
+        </li>
+        <li>
+          Son olarak da acilan objeler <strong>close()</strong> methoduyla
+          kapatilmalidir. <br /><code
+            >fis.close(); <br />fos.close(); <br />workbook.close();</code
+          >
+        </li>
+      </ol>
+    </section>
+    <hr />
+    <h2>XML File Olusturma</h2>
+    <section class="kod">
+      Uygulamalar arasinda haberlesmeyi saglayan üc adet temel dil vardir:
+      <ol>
+        <li>.html</li>
+        <li>.xml</li>
+        <li>.json</li>
+      </ol>
+      Xml dosyasi; frameworkteki belirli veya tüm testleri otomatik olarak
+      calistirmak icin kullanilan bir <strong>otomasyon dosyasi</strong>dir.
+      <br /><br />
+      Test dedigimizde aklimiza gelen testler sunlardir:
+      <ol>
+        <li>Smoke</li>
+        <li>Regression</li>
+        <li>E2E</li>
+        <li>Mini Regression</li>
+      </ol>
+      TestNg xml ile ilgili tüm dokumanlar icin:
+      <a href="https://testng.org/doc/documentation-main.html#testng-xml"
+        >https://testng.org/doc/documentation-main.html#testng-xml</a
+      ><br /><br />
+      <u>Bir XML dosyasi olusturmak icin:</u>
+      <ol>
+        <li>
+          Proje statusunden uzantisi <strong>.xml </strong>olacak sekilde yeni
+          bir <strong>File </strong>olusturulur. <br /><code
+            >belirliMethodCalistirma.xml</code
+          ><br /><br />
+        </li>
+        <li>
+          Yukaridaki testNG adresine giderek oradaki <br />
+          <code
+            >&lt;!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" &gt;
+          </code>
+          <br />
+          satirini kopalayip olusturdugumuz
+          <strong>xml dosyasinin ilk satiri</strong>na yapistiriyoruz.
+          <br /><br />
+        </li>
+        <li>
+          Eger bir class calistiracaksak dosyamiz su sekilde olusturulmalidir:
+          <code
+            ><ul>
+              <li>
+                &lt;!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd"
+                &gt;
+              </li>
+              <li>
+                &lt;suite name"."&gt;
+                <ul>
+                  <li>
+                    &lt;test name"."&gt;
+                    <ul>
+                      <li>
+                        &lt;classes&gt;
+                        <ul>
+                          <li>
+                            &lt;class name="test
+                            name"tests.day13.C03_Pages"&gt;&lt;/class&gt;
+                          </li>
+                        </ul>
+                      </li>
+                      <li>&lt;/classes&gt;</li>
+                    </ul>
+                  </li>
+                  <li>&lt;/test&gt;</li>
+                </ul>
+              </li>
+              <li>&lt;/suite&gt; <br /><br /></li></ul
+          ></code>
+        </li>
+        <li>
+          Eger bir Method calistiracaksak dosyamiz su sekilde olusturulmalidir:
+          <code
+            ><ul>
+              <li>
+                &lt;!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd"
+                &gt;
+              </li>
+              <li>
+                &lt;suite name"."&gt;
+                <ul>
+                  <li>
+                    &lt;test name"."&gt;
+                    <ul>
+                      <li>
+                        &lt;classes&gt;
+                        <ul>
+                          <li>
+                            &lt;class name="tests.day13.C03_Pages"&gt;
+                            <ul>
+                              <li>
+                                &lt;methods&gt;
+                                <ul>
+                                  <li>
+                                    &lt;include name="test"&gt;&lt;/include&gt;
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>&lt;/methods&gt;</li>
+                            </ul>
+                          </li>
+                          <li>&lt;/class&gt;</li>
+                        </ul>
+                      </li>
+                      <li>&lt;/classes&gt;</li>
+                    </ul>
+                  </li>
+                  <li>&lt;/test&gt;</li>
+                </ul>
+              </li>
+              <li>&lt;/suite&gt; <br /><br /></li></ul
+          ></code>
+        </li>
+        <li>
+          Eger bir Method bir class bir package calistirmak istersek dosyamiz su
+          sekilde olusturulmalidir:
+          <code
+            ><ul>
+              <li>
+                &lt;!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd"
+                &gt;
+              </li>
+              <li>
+                &lt;suite name"."&gt;
+                <ul>
+                  <li>
+                    &lt;test name"."&gt;
+                    <ul>
+                      <li>
+                        &lt;packages&gt;
+                        <ul>
+                          <li>
+                            &lt;package
+                            name="tests.smoketest"&gt;&lt;packages&gt;
+                          </li>
+                        </ul>
+                      </li>
+                      <li>&lt;/packages&gt;</li>
+                      <li>
+                        &lt;classes&gt;
+                        <ul>
+                          <li>
+                            &lt;class
+                            name="tests.day13.C03_Pages"&gt;&lt;/class&gt;
+                          </li>
+                          <li>
+                            &lt;class name="tests.day17.C01_ReadExel"&gt;
+                            <ul>
+                              <li>
+                                &lt;methods&gt;
+                                <ul>
+                                  <li>
+                                    &lt;include name="test"&gt;&lt;/include&gt;
+                                  </li>
+                                </ul>
+                              </li>
+                              <li>&lt;/methods&gt;</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>&lt;/classes&gt;</li>
+                    </ul>
+                  </li>
+                  <li>&lt;/test&gt;</li>
+                </ul>
+              </li>
+              <li>&lt;/suite&gt; <br /><br /></li></ul
+          ></code>
+        </li>
+        <li>
+          <strong>verbose"."</strong> test sonucundaki yazilarin azligi ve
+          coklugu ile alakalidir. 1 ile 10 arasi(az-cok) bir deger alabilir.
+          <br /><code>&lt;suite name"." verbose="1"&gt;</code><br /><br />
+        </li>
+        <li>
+          Eger istersek istedigimiz methodlari bir grup haline getirerek
+          calistirabiliriz. bunun icin classlarda @Test in yanina: <br /><code
+            >@Test(groups="grupAdi")</code
+          >
+          <br />yazilir. Eger baska bir parantez ici yazi varsa "," konularak
+          yanina yazilir. <br /><br />
+          <code
+            ><ul>
+              <li>
+                &lt;!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd"
+                &gt;
+              </li>
+              <li>
+                &lt;suite name"."&gt;
+                <ul>
+                  <li>
+                    &lt;test name"."&gt;
+                    <ul>
+                      <li>
+                        &lt;groups&gt;
+                        <ul>
+                          <li>
+                            &lt;run&gt;
+                            <ul>
+                              <li>
+                                &lt;include name="testgubu"&gt;&lt;/include&gt;
+                              </li>
+                            </ul>
+                          </li>
+                          <li>&lt;/run&gt;</li>
+                        </ul>
+                      </li>
+                      <li>&lt;/groups&gt;</li>
+                      <li>
+                        &lt;packages&gt;
+                        <ul>
+                          <li>
+                            &lt;package
+                            name="tests.smoketest"&gt;&lt;/package&gt;
+                          </li>
+                          <li>
+                            &lt;package name="tests.day17"&gt;&lt;/package&gt;
+                          </li>
+                        </ul>
+                      </li>
+                      <li>&lt;/packages&gt;</li>
+                    </ul>
+                  </li>
+                  <li>&lt;/test&gt;</li>
+                </ul>
+              </li>
+              <li>&lt;/suite&gt; <br /><br /></li></ul
+          ></code>
+        </li>
+        <li>
+          Eger projedeki tüm methodlari calistirmak istersek: <br /><br />
+          <code
+            ><ul>
+              <li>
+                &lt;!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd"
+                &gt;
+              </li>
+              <li>
+                &lt;suite name"."&gt;
+                <ul>
+                  <li>
+                    &lt;test name"."&gt;
+                    <ul>
+                      <li>
+                        &lt;packages&gt;
+                        <ul>
+                          <li>&lt;package name=".*"&gt;&lt;/package&gt;</li>
+                        </ul>
+                      </li>
+                      <li>&lt;/packages&gt;</li>
+                    </ul>
+                  </li>
+                  <li>&lt;/test&gt;</li>
+                </ul>
+              </li>
+              <li>&lt;/suite&gt; <br /><br /></li></ul
+          ></code>
+        </li>
+        <li>
+          Eger xml dosyamiz yukaridaki formata uygun olursa TestNG tafindan run
+          tusuna basilinca otomatik olarak talebimizi yerine getirecektir.
+        </li>
+      </ol>
+      <ul>
+        <li>
+          Birden fazla test deniliyorsa (smoke,regression)
+          <strong>Suite</strong> aklimiza gelmeli.
+        </li>
+        <li>
+          Hiyerarsi önemlidir ama her yazilani calistiracagi manasina gelmez.
+        </li>
+        <li>
+          class name'i rastgele secemiyoruz, mutlaka orda cikan seceneklerden
+          secmeliyiz.
+        </li>
+        <li>Eger kaydetmezsek testimiz calismayabilir.</li>
+        <li>
+          Method calistirirken
+          <strong>&lt;include&gt;, &lt;exclude&gt;</strong> olarak secilip
+          calistirilabilir..
+        </li>
+        <li>Benzer calistirilmak istenen islemler alt alta yazilabilir.</li>
+        <li>
+          Eger Class ve methodlar kullanilan ayni package in icindeyse package
+          in icinde de class ve method yazilabilir.
+        </li>
+        <li>
+          Eger grup olarak calistirilacak testlerde testbase clasina veya
+          birbirine bagli olan(dependsOnMethods,Extends..) methodlar varsa hata
+          verebilir.
+        </li>
+      </ul>
+    </section>
+    <hr />
+    <h2>TestNG HTML Raporlari</h2>
+    <section>
+      TestNG rapor hazirlayabilmek icin bazi kütüphalerden yardim gereklidir. Bu
+      yüzden <strong>Pom.xml </strong> dosyamiza
+      <strong>aventstack dependency</strong>'yi ekliyoruz.
+    </section>
+    <p>
+      <a href="https://mvnrepository.com/" target="_blank"
+        >https://mvnrepository.com/</a
+      >
+      adresine gidip arama kismina <strong>aventstack</strong> yazip aratiyoruz.
+      <br />
+      com.aventstack yazarina sahip olan ExtentReports'u seciyoruz ve 4.0.9
+      sürüme giriyoruz. <br />
+      Versiyon linkini tiklayip kopyaliyoruz. <br />
+      &lt;dependencies&gt; tagina kopyalanan repo adresini yapistiriyoruz.
+    </p>
+    <code
+      >&lt;!-- https://mvnrepository.com/artifact/com.aventstack/extentreports
+      --&gt;
+      <ul>
+        <li>
+          &lt;dependency&gt;
+          <ul>
+            <li>&lt;groupId&gt;com.aventstack&lt;/groupId&gt;</li>
+            <li>&lt;artifactId&gt;extentreports&lt;/artifactId&gt;</li>
+            <li>&lt;version&gt;4.0.9&lt;/version&gt;</li>
+          </ul>
+        </li>
+        <li>&lt;/dependency&gt;</li>
+      </ul>
+    </code>
+    <hr />
+    <p id="kirmiziYazi">
+      Eger yapistirilan yazilar kirmizi uyari veriyorsa henuz kopyaladiginiz
+      repositoriler bilgisayarina yüklenmemis demektir. <br />
+      Sorunu halletmek icin Intellj in sol üst kosesindek
+      <strong>Maven</strong> secenegini acip <strong>refresh</strong> yapiyoruz.
+      <br />Dependencies repository sinin geldigini göreceksiniz.
+    </p>
+    <hr />
+    <section>
+      Hazirlanmis bir <strong>ReusableMethods</strong> classi var ve bu
+      dosyamizi daha sonra kullanilabilsin diye
+      <strong>utilities dosyasinin icine kaydedilmelidir.</strong
+      ><br /><br />ReusableMethods class'ina ulasmak icin
+      <a
+        target="_blank"
+        href="https://github.com/SaidDemirhan/com.Batch30POM/blob/master/src/test/java/utilities/ReusableMethods.java"
+        >tiklayiniz.</a
+      ><br /><br />
+      ReusableMethods class'inda tüm methodlar static'tir. Kullanilan class'ta
+      direkt olarak class ismini yazarak istenilen method cagrilabilir. <br />
+      <br />
+      ReusableMethods Clasinin icinde:
+      <ul>
+        <li>screenshot :hata durumunda ekran resmi alma</li>
+        <li>
+          switchToWindow : Yeni bir pencereye gecme
+          <a href="#windowhandle">(windowHandle)</a> <br /><code
+            >ReusuableMethods.switchToWindow(gecmek istedigimiz sayfanin
+            basligi-getTitle);</code
+          >
+        </li>
+        <li>hover : Mouse ile üzerine gelince vurgu yapma</li>
+        <li>
+          getElementsText(List&lt;WebElement&gt; list) : Web Öğesi listesi
+          verilen bir dize listesi döndür
+        </li>
+        <li>
+          getElementsText(By locator) : =Öğe bulucu verilen öğenin Metnini
+          döndürür
+        </li>
+        <li>
+          waitFor : int saniye cinsinden bekleme, her defasinda Exception
+          firlatmaktan kurtatrir. <br /><code
+            >ReusuableMethods.waitFor(5);</code
+          >
+        </li>
+        <li>waitForVisibility : görünmesini beklemek icin kullanilir</li>
+        <li>waitForClickablility : tiklanabilir olmasi icin bekleme</li>
+        <li>waitForPageToLoad : sayfanin yüklenebilmesi icin bekleme</li>
+        <li>
+          fluentWait : belirli saniye araliklariyla kontrol edici bir bekleme
+        </li>
+      </ul>
+    </section>
+    <hr />
+    <section class="kod">
+      Hazirlanmis diger bir <strong>TestBaseRapor</strong> classi var ve bu
+      dosyamizi da daha sonra kullanilabilsin diye
+      <strong>utilities dosyasinin icine kaydedilmelidir.</strong
+      ><br /><br />TestBaseRapor class'ina ulasmak icin
+      <a
+        target="_blank"
+        href="https://github.com/SaidDemirhan/com.Batch30POM/blob/master/src/test/java/utilities/TestBaseRapor.java"
+        >tiklayiniz.</a
+      ><br /><br />TestBaseRapor class'inin icinde:
+      <ol>
+        <li>
+          @BeforeTest <br />
+          Test işlemine başlamadan hemen önce calisir.(test methodundan önce
+          değil, tüm test işleminden önce)
+          <ul class="maddesiz cerceve">
+            <li><code>@BeforeTest(alwaysRun = true)</code></li>
+            <li>
+              <code>public void setUpTest() {</code>
+              <ul class="maddesiz">
+                <li>
+                  <code>extentReports = new ExtentReports();</code><br />
+                  //rapor oluştuktan sonra raporunuz nereye eklensin
+                  istiyorsanız buraya yazıyorsunuz.
+                </li>
+                <li>
+                  <code
+                    >String filePath = System.getProperty("user.dir") +
+                    "/raporlar/Rapor.html";</code
+                  ><br />
+                  //oluşturmak istediğimiz raporu (html formatında)
+                  başlatıyoruz, filePath ile dosya yolunu belirliyoruz.
+                </li>
+                <li>
+                  <code
+                    >extentHtmlReporter = new
+                    ExtentHtmlReporter(filePath);</code
+                  >
+                </li>
+                <li>
+                  <code>extentReports.attachReporter(extentHtmlReporter);</code
+                  ><br />
+                  // Raporu olusturan bilgilerini buraya Key-Value seklinde
+                  ekeyebilir(imza gibi).
+                </li>
+                <li>
+                  <code>extentReports.setSystemInfo("Enviroment","QA");</code>
+                </li>
+                <li>
+                  <code
+                    >extentReports.setSystemInfo("Browser",
+                    ConfigReader.getProperty("browser"));</code
+                  >
+                  // chrome, firefox gibi properties dosyasindaki tarayici
+                </li>
+                <li>
+                  <code
+                    >extentReports.setSystemInfo("Automation Engineer",
+                    "Mehmet");</code
+                  >
+                </li>
+                <li>
+                  <code
+                    >extentHtmlReporter.config().setDocumentTitle("amazon Arama
+                    Testi");</code
+                  >
+                  <br />
+                  //Rapor dokümanimizin basligi
+                </li>
+                <li>
+                  <code
+                    >extentHtmlReporter.config().setReportName("amazon Arama
+                    Testi");</code
+                  ><br />//Raporumuzun adi
+                </li>
+              </ul>
+            </li>
+            <li>
+              <code>} <br /><br /></code>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          @AfterMethod <br />
+          // Her test methodundan sonra eğer testte hata varsa, ekran görüntüsü
+          alıp rapora ekliyor.
+          <ul class="maddesiz cerceve">
+            <li><code>@AfterMethod(alwaysRun = true)</code></li>
+            <li>
+              <code
+                >public void tearDownMethod(ITestResult result) throws
+                IOException {</code
+              >
+              <ul class="maddesiz">
+                <li>
+                  <code> if (result.getStatus() == ITestResult.FAILURE) { </code
+                  >// eğer testin sonucu başarısızsa hemen ekran resmi cekecek
+                  ve dosyaya ekleyecek
+                  <ul class="maddesiz">
+                    <li>
+                      <code
+                        >String screenshotLocation =
+                        ReusableMethods.getScreenshot(result.getName());</code
+                      >
+                    </li>
+                    <li><code>extentTest.fail(result.getName());</code></li>
+                    <li>
+                      <code
+                        >extentTest.addScreenCaptureFromPath(screenshotLocation);</code
+                      >
+                    </li>
+                    <li>
+                      <code></code>extentTest.fail(result.getThrowable());
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <code
+                    >} else if (result.getStatus() == ITestResult.SKIP) { </code
+                  >// eğer test basarili ise herhangi bir sey yapmiyor.
+                  <ul class="maddesiz">
+                    <li>
+                      <code
+                        >extentTest.skip("Test Case is skipped: " +
+                        result.getName()); </code
+                      >// Ignore olanlar
+                    </li>
+                  </ul>
+                </li>
+                <li><code>}</code></li>
+                <li><code>Driver.closeDriver();</code></li>
+              </ul>
+            </li>
+            <li>
+              <code>} <br /><br /></code>
+            </li>
+          </ul>
+        </li>
+        <li>
+          @AfterTest <br />
+          // Raporlandırmayı sonlandıginda calisiyor ve ortaligi temizliyor.
+          <ul class="maddesiz cerceve">
+            <li><code>@AfterTest(alwaysRun = true)</code></li>
+            <li>
+              <code>public void tearDownTest() {</code>
+              <ul class="maddesiz">
+                <li><code>extentReports.flush();</code></li>
+              </ul>
+            </li>
+            <li><code>}</code></li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+    <hr />
+    <h3>Rapor Hazirlama (Extends Reports)</h3>
+    <section class="kod">
+      Bir rapor hazirlayabilmak icin 3 adet obje olusturmaya ihtiyacimiz vardir.
+
+      <ol>
+        <li>
+          <code>protected static ExtentReports extentReports;</code> <br />
+          extent report objesi class level'de olusturulur, ilk atama method
+          icinde gerceklesir.
+        </li>
+        <li>
+          <code>protected static ExtentHtmlReporter extentHtmlReporter;</code>
+          <br />
+          Html raporu duzenler
+        </li>
+        <li>
+          <code>protected static ExtentTest extentTest;</code> <br />Test pass
+          veya failed gibi bilgileri kaydeder. Ayrica ekran resmi icin de
+          kullaniriz
+        </li>
+      </ol>
+      Bu adimlarla tek tek ugrasmamak icin utilities klosörümüze
+      <strong>TestBaseRapor</strong> class'ini ekledik.
+    </section>
+    <hr />
+    <section>
+      Rapor icin olusturdugumuz class'i TestBaseRapor class'ina
+      <strong>extends</strong> etmeliyiz.
+
+      <code>
+        <ul class="maddesiz cerceve">
+          <li>
+            public class Rapor <mark>extends</mark> TestBaseRapor{
+            <ul class="maddesiz">
+              <li>@Test</li>
+              <li>
+                public void test(){
+                <ul class="maddesiz">
+                  <li>
+                    extendTest=extentReports.createTest("testAdi","testGörevi");
+                  </li>
+                  <li>Driver.getDriver().get("...");</li>
+                  <li>extentTest.info("istenen adrese gidildi");</li>
+                  <li>.....</li>
+                  <li>
+                    extentTest.pass("yazinin görünür oldugu test edildi.");
+                  </li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </li>
+              <li>}</li>
+            </ul>
+          </li>
+          <li>}</li>
+        </ul>
+      </code>
+      Belirtilen dosya yoluna istenilen isimde bir klosör olusturuldu ve bir
+      html dosyasi rapor olarak üretildi. <br />Dosyayi görüntülemek icin;
+      <ol class="sol">
+        <li>Üretilen html dosyasinin üzerine gelip saga tikla,</li>
+        <li>Open in secenegine gidip,</li>
+        <li>Browser olarak chrome u seciyoruz.</li>
+      </ol>
+      Eger TestBaseRapor clasindaki dosya adini degistirmezsek her testimiz bir
+      önceki dosyamizin üzerine yazilir. <br /><br />
+      Eger birdenfazla methodu ayni test dosyasi icinde test edisorsak rapora
+      sekmeler halide ayrinti eklenir. <br /><br />
+      Eger testimiz basarisiz ise belirtilen dosyaya
+      <strong>Screenshots</strong> klosörü olurturur ve icine ekran resmini
+      kanit olarak atar.
+    </section>
+
+    <hr />
     <strong>@BeforeSuite</strong><br /><strong>@AfterSuite</strong><br />
-    <strong>@BeforeTest</strong><br /><strong>@AfterTest</strong><br />
     <strong>@BeforeGroups</strong><br /><strong>@AfterGroups</strong><br />
 
-    <br />
-
-    <strong>SoftAssert </strong>Bir Assertion Failed olunca devam etmesini
-    saglayan methoddur. <br />
-    <strong>Simple Allert </strong> Ok denilerek kapatilan uyari cesitidir.
-    <br />
-    <strong>Confirmation Alert</strong> Ok veya Cancel a basilabilen uyari
-    cesitidir. <br />
-    <strong>Prompt Alert</strong>Kullanicidan bazi bilgileri girmesi istenir.
-    (sendkeys() kullanarak teste devam edilebilir.) <br />
-    <strong>Iframe </strong>Sayfa icinde sayfadir. <br />
-    <strong>swichTo() </strong>Pencereler arasinda gecis yapma methodudur.
-    <br />
-    <strong>getWindowHandle() </strong> String olarak getirir. <br />
-    <strong>getWindowHandles() </strong> Set olarak getirir. <br />
     <hr />
+    <br />
     <h2 class="toollar">CUCUMBER</h2>
   </body>
 </html>

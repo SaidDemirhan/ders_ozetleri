@@ -10,542 +10,939 @@
     .kod {
       margin-left: 50px;
     }
+    header {
+      font-style: oblique;
+    }
   </style>
   <body>
-    <p>HTML(Hypertext Markuo Language)</p>
-    <ul>
-      <li><strong>tag =</strong>html komutlarina denir.</li>
-      <li>
-        <strong>elenemnt=</strong>bir html tagi ve arasindakilerin tamamina
-        denir.
-      </li>
-      <li>
-        <strong>attribute=</strong>tag in icine yazilan ve ek özellik kadan
-        ifadelerdir.
-      </li>
-      <li>isaretleme dilidir, programlama dili degildir.</li>
-      <li>
-        taglar &lt;> ve &lt;/> isaretlerinin arasina yazilir.(istisnalar vardir)
-      </li>
-    </ul>
-    <hr />
-    <h2>HTML KODLARI</h2>
-    <ul>
-      <li>
-        <strong>&lt;!doctype html> :</strong>Sayfanin en basina yazilir html ile
-        yazildigini ifade eder. <br />
-        *! e basip enter a basarsak hazir kodlari VSCODE getirir.<br />
-        Utf 8 butun diller destekleyen dil eklentisi<br />
-        cihazlarda duzgun görünmeai icin;<br />
-        -int explorer a özel kod<br />
-        &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"> <br />
-        -her ekranda calisabilmesi icin;<br />
-        &lt;meta name="viewport" content="width=device-width,
-        initial-scale=1.0"><br />
-        <br />
-      </li>
-      <li>
-        <strong>&lt;html> &lt;/html> :</strong>html komutlarinin tamamini
-        kapsayan en temel tag dir.
-      </li>
-      <li>
-        <strong>&lt;head> &lt;/head> :</strong>sayfayla ilgili genel bilgiler ve
-        tanilar bulunur.
-      </li>
-      <li>
-        <strong>&lt;title> &lt;/title> :</strong>sayfanin basligidir ve
-        tarayicinin basliginda cikar.*SEO isi
-      </li>
-      <li>
-        <strong>&lt;body> &lt;/body> :</strong>icerik kisminin olusturuldugu
-        bolumdur.
-      </li>
-      <li>
-        <strong>&lt;p> &lt;/p> :</strong>paragraf olusturmak icin kullanilir.
-      </li>
-      <li>
-        <strong>&lt;h1> &lt;/h1> :</strong>baslik icin kullanilir. Bir sayfada
-        bir tane h1 olmalidir. <br />
-        <strong>&lt;h2> &lt;/h2></strong><br />
-        <strong>&lt;h3> &lt;/h3></strong><br />
-        <strong>&lt;h4> &lt;/h4></strong><br />
-        <strong>&lt;h5> &lt;/h5></strong><br />
-        <strong>&lt;h6> &lt;/h6> :</strong> en kücük basliktir.
-      </li>
-      <li>
-        <strong>*&lt;br> veya &lt;br/> :</strong>alt satira gecmek icin
-        kullanilir.
-      </li>
-      <li><strong>*&lt;hr> :</strong>cizgi cekmek icin kullanilir</li>
-      <li>
-        <strong>*&lt;!-- --></strong>kod icine aciklama eklemek icin kullanilir.
-        <br />soru isareti koyulursa yorum satiri mavi <br />
-        todo yazilirsa turuncu <br />
-        ünlem koyulursa yorum satiri kirmizi olur.
-      </li>
-      <li>
-        <strong>&lt;b> &lt;/b> :</strong>koyu(bold) yazmak icin kullanilir.
-      </li>
-      <li>
-        <strong>&lt;strong> &lt;/strong> :</strong>vurgulu yazdirir,
-        semantiktir.
-      </li>
-      <li><strong>&lt;u> &lt;/u> :</strong>alti cizili yazdirir.</li>
-      <li><strong>&lt;i> &lt;/i> :</strong>italik yazdirir.</li>
-      <li>
-        <strong>&lt;em> &lt;/em> :</strong>italik yazdirir,semantiktir(arama
-        motorlari icin anlamlidir)
-      </li>
-      <li>
-        <strong>&lt;div> &lt;/div> :</strong>bolum olarak bir kod blogunu
-        ayirmaya yarar.
-      </li>
-      <li>
-        <strong>&lt;span> &lt;/span> :</strong>kucuk bir bölüme özel islem
-        yapmak icin kullanilir.
-      </li>
-      <li>
-        <strong>&lt;a href=""> &lt;/a> :</strong>baglanti vermek icin
-        kullanilir. <br />
-        "mailto:(email adresi)" =cihazdaki mail pograminizi acip mail
-        gönderilir. <br />
-        "tel:(tel no)"" = cihazin telefonunu kullanir. <br />
-        "https://wa.me/905551234567" =seklinde whatsapptan arar.
-        https://faq.whatsapp.com/iphone/how-to-link-to-whatsapp-from-a-different-app/?lang=tr
-      </li>
-      <li>
-        <strong>&lt;iframe src="." frameborder="0"> &lt;/iframe> :</strong
-        >=sayfada pencere olusturur. <br />
-        Harita, youtube videosu vs eklenebilir.
-      </li>
-      <li><strong></strong></li>
-      <li><strong></strong></li>
-    </ul>
+    <header><h1>HTML(Hypertext Markuo Language)</h1></header>
+    <main>
+      <ul>
+        <li><strong>tag =</strong>html komutlarina denir.</li>
+        <li>
+          <strong>elenemnt=</strong>bir html tagi ve arasindakilerin tamamina
+          denir.
+        </li>
+        <li>
+          <strong>attribute=</strong>tag in icine yazilan ve ek özellik kadan
+          ifadelerdir.
+        </li>
+        <li>isaretleme dilidir, programlama dili degildir.</li>
+        <li>
+          taglar &lt;> ve &lt;/> isaretlerinin arasina yazilir.(istisnalar
+          vardir)
+        </li>
+      </ul>
+      <hr />
+      <h2>HTML KODLARI</h2>
+      <ul>
+        <li>
+          <strong>&lt;!doctype html> :</strong>Sayfanin en basina yazilir html
+          ile yazildigini ifade eder. <br />
+          *! e basip enter a basarsak hazir kodlari VSCODE getirir.<br />
+          Utf 8 butun diller destekleyen dil eklentisi<br />
+          cihazlarda duzgun görünmeai icin;<br />
+          -int explorer a özel kod<br />
+          &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"> <br />
+          -her ekranda calisabilmesi icin;<br />
+          &lt;meta name="viewport" content="width=device-width,
+          initial-scale=1.0"><br />
+          <br />
+        </li>
+        <li>
+          <strong>&lt;html> &lt;/html> :</strong>html komutlarinin tamamini
+          kapsayan en temel tag dir.
+        </li>
+        <li>
+          <strong>&lt;head> &lt;/head> :</strong>sayfayla ilgili genel bilgiler
+          ve tanilar bulunur.
+        </li>
+        <li>
+          <strong>&lt;title> &lt;/title> :</strong>sayfanin basligidir ve
+          tarayicinin basliginda cikar.*SEO isi
+        </li>
+        <li>
+          <strong>&lt;body> &lt;/body> :</strong>icerik kisminin olusturuldugu
+          bolumdur.
+        </li>
+        <li>
+          <strong>&lt;p> &lt;/p> :</strong>paragraf olusturmak icin kullanilir.
+        </li>
+        <li>
+          <strong>&lt;h1> &lt;/h1> :</strong>baslik icin kullanilir. Bir sayfada
+          bir tane h1 olmalidir. <br />
+          <strong>&lt;h2> &lt;/h2></strong><br />
+          <strong>&lt;h3> &lt;/h3></strong><br />
+          <strong>&lt;h4> &lt;/h4></strong><br />
+          <strong>&lt;h5> &lt;/h5></strong><br />
+          <strong>&lt;h6> &lt;/h6> :</strong> en kücük basliktir.
+        </li>
+        <li>
+          <strong>*&lt;br> veya &lt;br/> :</strong>alt satira gecmek icin
+          kullanilir.
+        </li>
+        <li><strong>*&lt;hr> :</strong>cizgi cekmek icin kullanilir</li>
+        <li>
+          <strong>*&lt;!-- --></strong>kod icine aciklama eklemek icin
+          kullanilir. <br />soru isareti koyulursa yorum satiri mavi <br />
+          todo yazilirsa turuncu <br />
+          ünlem koyulursa yorum satiri kirmizi olur.
+        </li>
+        <li>
+          <strong>&lt;b> &lt;/b> :</strong>koyu(bold) yazmak icin kullanilir.
+        </li>
+        <li>
+          <strong>&lt;strong> &lt;/strong> :</strong>vurgulu yazdirir,
+          semantiktir.
+        </li>
+        <li><strong>&lt;u> &lt;/u> :</strong>alti cizili yazdirir.</li>
+        <li><strong>&lt;i> &lt;/i> :</strong>italik yazdirir.</li>
+        <li>
+          <strong>&lt;em> &lt;/em> :</strong>italik yazdirir,semantiktir(arama
+          motorlari icin anlamlidir)
+        </li>
+        <li>
+          <strong>&lt;div> &lt;/div> :</strong>bolum olarak bir kod blogunu
+          ayirmaya yarar.
+        </li>
+        <li>
+          <strong>&lt;span> &lt;/span> :</strong>kucuk bir bölüme özel islem
+          yapmak icin kullanilir.
+        </li>
+        <li>
+          <strong>&lt;a href=""> &lt;/a> :</strong>baglanti vermek icin
+          kullanilir. <br />
+          "mailto:(email adresi)" =cihazdaki mail pograminizi acip mail
+          gönderilir. <br />
+          "tel:(tel no)"" = cihazin telefonunu kullanir. <br />
+          "https://wa.me/905551234567" =seklinde whatsapptan arar.
+          https://faq.whatsapp.com/iphone/how-to-link-to-whatsapp-from-a-different-app/?lang=tr
+        </li>
+        <li>
+          <strong>&lt;iframe src="." frameborder="0"> &lt;/iframe> :</strong
+          >=sayfada pencere olusturur. <br />
+          Harita, youtube videosu vs eklenebilir.
+        </li>
+        <li><strong></strong></li>
+        <li><strong></strong></li>
+      </ul>
 
-    --------------------------------------------------------------------------------
-    <h2>TABLO OLUSTURMA</h2>
-    <ul>
-      <li>
-        <strong>&lt;table> :</strong>tablo olusturulacagini ifade eder, sarttir.
-      </li>
-      <li><strong>&lt;thead> :</strong>tablonun basligidir</li>
-      <li><strong>&lt;tr> :</strong>satir manasina gelir</li>
-      <li><strong>&lt;th> &lt;/th> :</strong>baslik hücresi anlamindadir.</li>
-      <li><strong>&lt;/tr> :</strong></li>
-      <li><strong>&lt;/thead> :</strong></li>
-      <li><strong>&lt;tbody> :</strong>tablonun body sidir.</li>
-      <li><strong>&lt;tr> :</strong></li>
-      <li><strong>&lt;td> &lt;/td> :</strong>veri hücresi manasindadir.</li>
-      <li><strong>&lt;/tr> :</strong></li>
-      <li><strong>&lt;/tbody> :</strong></li>
-      <li><strong>&lt;tfoot> :</strong>=tablonun taban kismidir.</li>
-      <li><strong>&lt;tr> :</strong></li>
-      <li><strong>&lt;td> &lt;/td> :</strong></li>
-      <li><strong>&lt;/tr> :</strong></li>
-      <li><strong>&lt;/tfoot> :</strong></li>
-      <li><strong>&lt;/table> :</strong></li>
-      <li><strong>colspan="" :</strong>yatayda hücre birlestirir.</li>
-      <li><strong>rowspan="" :</strong>dikeyde hücre birlestirir.</li>
-    </ul>
-    <hr />
+      --------------------------------------------------------------------------------
+      <h2>TABLO OLUSTURMA</h2>
+      <ul>
+        <li>
+          <strong>&lt;table> :</strong>tablo olusturulacagini ifade eder,
+          sarttir.
+        </li>
+        <li><strong>&lt;thead> :</strong>tablonun basligidir</li>
+        <li><strong>&lt;tr> :</strong>satir manasina gelir</li>
+        <li><strong>&lt;th> &lt;/th> :</strong>baslik hücresi anlamindadir.</li>
+        <li><strong>&lt;/tr> :</strong></li>
+        <li><strong>&lt;/thead> :</strong></li>
+        <li><strong>&lt;tbody> :</strong>tablonun body sidir.</li>
+        <li><strong>&lt;tr> :</strong></li>
+        <li><strong>&lt;td> &lt;/td> :</strong>veri hücresi manasindadir.</li>
+        <li><strong>&lt;/tr> :</strong></li>
+        <li><strong>&lt;/tbody> :</strong></li>
+        <li><strong>&lt;tfoot> :</strong>=tablonun taban kismidir.</li>
+        <li><strong>&lt;tr> :</strong></li>
+        <li><strong>&lt;td> &lt;/td> :</strong></li>
+        <li><strong>&lt;/tr> :</strong></li>
+        <li><strong>&lt;/tfoot> :</strong></li>
+        <li><strong>&lt;/table> :</strong></li>
+        <li><strong>colspan="" :</strong>yatayda hücre birlestirir.</li>
+        <li><strong>rowspan="" :</strong>dikeyde hücre birlestirir.</li>
+      </ul>
+      <hr />
 
-    <h2>LISTELEME TAGLARI</h2>
-    <ul>
-      <li><strong>&lt;ol> :</strong>numarali liste olusturur.</li>
-      <li><strong>&lt;li> &lt;/li> :</strong></li>
-      <li><strong>&lt;/ol> :</strong></li>
-      <li><strong>-------------------</strong></li>
-      <li><strong>&lt;ul> :</strong>numarasiz liste olusturur.</li>
-      <li><strong>&lt;li> &lt;/li> :</strong></li>
-      <li><strong>&lt;/ul> :</strong></li>
-    </ul>
-    <hr />
+      <h2>LISTELEME TAGLARI</h2>
+      <ul>
+        <li><strong>&lt;ol> :</strong>numarali liste olusturur.</li>
+        <li><strong>&lt;li> &lt;/li> :</strong></li>
+        <li><strong>&lt;/ol> :</strong></li>
+        <li><strong>-------------------</strong></li>
+        <li><strong>&lt;ul> :</strong>numarasiz liste olusturur.</li>
+        <li><strong>&lt;li> &lt;/li> :</strong></li>
+        <li><strong>&lt;/ul> :</strong></li>
+      </ul>
+      <hr />
 
-    <h2>RESIM-FOTOGRAF EKLEME</h2>
-    <strong
-      >&lt;img src="(resim yolu)" alt="(resim bilgisi)" width="100px"
-      height="75px"></strong
-    >
-    <hr />
-    <h2>VIDEO EKLEME</h2>
-    <strong
-      >&lt;video src="istenen_video.mp4" width="560" height="315"
-      controls>&lt;/video></strong
-    ><br />
-    <strong>controls autoplay :</strong>acilinca oynamaya basla(yabili)r.<br />
-    isteninirse direkt olarak youtube dan da ifarame seklinde baglanti
-    alinabilir. <br />
-    <p>
-      &lt;iframe width="560" height="315"
-      src="https://www.youtube.com/embed/O2059wLL_Ls" title="YouTube video
-      player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
-      encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>&lt;/iframe>
-    </p>
-    <hr />
-    <h2>Ses Ekleme</h2>
-    <strong>&lt;audio src="" controls>&lt;/audio></strong>
-    <hr />
-    <h2>FORM OLUSTURMA</h2>
-    <p>
-      Eger sunucuya gönderiliyorsa hepsinde <strong>name="." </strong>olmak
-      zorundadir.
-    </p>
-    <ul>
-      <li>
-        <strong>&lt;form action="." method=".">&lt;/form> :</strong>form
-        olustururken basta ve sonda kullanilmali. <br />
-        Ziyaretciden bilgi almak icin kullanilan bir tag dir. <br />
-        action="server/kayit/php" bir backend dosyasinda islem yapilmasini
-        ister. <br />
-        kullanici bilgileri doldurduktan sonra actionda belirtilen dosyaya
-        gitmesi emredilir. <br />
-        method="GET" olursa giden bilgiler adres satirinda görünür (default
-        degeri). <br />
-        Görünmesi istenmiyorsa method="POST" yapilmalidir (daha gizli ve
-        güvenli). <br />
-      </li>
-      <li>
-        <strong>&lt;label for="x">&lt;/label> :</strong>kullaniciya form elemani
-        ile ilgili bilgi verir. <br />
-        Label deki for="" ile input taki id="" eslesebilmesi icin ayni
-        olmalidir.
-        <br />
-        eger for ile id uyusursa label deki aciklamaya tiklanirsa da input aktif
-        olur.
-      </li>
-      <li>
-        <strong>&lt;input type="." name="." id="x"> :</strong>Kullanicidan bilgi
-        almak icin kullanilir. <br />
-      </li>
-      <li>
-        <strong>type"."</strong>input un turunu belirlemek icin yazilir <br />
-        <strong>"text"</strong> genel bilgi girisi icin. <br />
-        <section class="kod">
-          <label for="soyad">Soyadinizi giriniz: </label>
-          <input type="text" id="soyad" />
-        </section>
-        <strong>"password"</strong> girilen karakterleri gizli girilmesini
-        saglar. <br />
-        js ile yandaki göz ikonuna tiklanarak type ini text yaparak sifreyi
-        görünür hale getirebiliriz. <br />
-        <section class="kod">
-          <label for="sifre">Sifre :</label>
-          <input type="password" id="sifre" />
-        </section>
-        <strong>"number"</strong> sadece numara yazilabilir, yanda cikan oklarla
-        yukari asagi deger atanabilir. <br />
-        <section class="kod">
-          <label for="degerlendirme">Puan Ver: </label
-          ><input type="number" id="degerlendirme" max="10" min="1" />
-        </section>
-        <strong>"search"</strong> arama kutusu olarak kullanilir, kösede texbox
-        i bosaltan bir isaret cikar. <br />
-        <section class="kod">
-          <label for="arama">Kelime giriniz: </label>
-          <input type="search" id="arama" />
-        </section>
-        <strong>"button"</strong> buton halide bir sekil olusturur. default
-        görevi yoktur.<br />
-        <strong>"submit" </strong>Form bilgilerini baackend e gönderen bir buton
-        olusturur. <br />
-        <strong>"reset" </strong> Form daki bilgileri resetleyen bir buton
-        olusturur. <br />
-        Butonlarin ayni form etiketi icinde aktif oldugunu unutmayalim. <br />
-        <section class="kod">
-          <form action="#">
-            <input type="text" /> <br />
-            <input type="button" value="Buton" />
-            <input type="submit" value="Gönder" />
-            <input type="reset" value="Sil" />
-          </form>
-        </section>
-        <strong>"checkbox" </strong>Birden fazla isaretlemeye izin veren
-        butondur. (hobiler gibi)
-        <br />
-        <section class="kod">
-          <input type="checkbox" name="futbol" id="futbol" value="futbol" />
-          <label for="futbol">Futbol</label> <br />
-          <input type="checkbox" name="tenis" id="tenis" value="tenis" />
-          <label for="tenis">Tenis</label> <br />
-        </section>
-        <strong>"radio" </strong> tek secime izin veren bir giristir. eger
-        birden fazla radio butonu varsa name="" leri ayni olmali ki tek secim
-        yapilabilsin.(cinsiyet gibi)<br />
-        <section class="kod">
-          <input type="radio" name="cinsiyet" id="erkek" />
-          <label for="erkek">Erkek</label> <br />
-          <input type="radio" name="cinsiyet" id="bayan" />
-          <label for="bayan">Bayan</label> <br />
-        </section>
-        <strong>"url"</strong> sadece http ve https ile baslayan ifadeleri kabul
-        eder. <br />
-        <strong>"email"</strong> sadece e posta girislerini kabul eder. <br />
-        <strong>"tel"</strong> telefon numarasi formatinda girisleri kabul eder.
-        <br />
-        Genellikle ABD tlf numralarina göre bir form olusturur.
-        <br />
-        <strong>"hidden"</strong> gizli bilgi göndermek icin kullanilir. <br />
-        &lt;input type="hidden" name="id" value="123456" /> <br />
-        sunucuya gönderilen bu bilgi kullanici tarafindan görünmez. <br />
-        <strong>"file" </strong> dosya secimi icin kisa yol olusturur. <br />
-        <section class="kod">
-          <label for="dosya">Dosya: </label>
-          <input type="file" id="dosya" />
-        </section>
-        <strong>"date" </strong> Tarih eklemek icin kullanilir
-        (value="2021-10-21") <br />
-        <strong>"time" </strong> Saat secmek icin kullanilir. (value="21:15")
-        <br />
-        <section class="kod">
-          <label for="randevu">Randevu tarihiniz: </label>
-          <input type="date" id="randevu" name="randevu" value="2021-10-21" />
-          <label for="is">randevu saatiniz:</label>
-          <input type="time" name="is" id="is" value="22:15" />
-        </section>
-        <strong>maxlength="20" </strong> maksimum karakter sayisini belirler.
-        <br />
-        <strong>maxlength="2" </strong> minimum karakter sayisini belirler.
-        <br />
-        <strong>min="2" </strong> girilmesi gereken en kücük degeri belirler.
-        <br />
-        <strong>max"10" </strong> maksimum karakter sayisini belirler. <br />
-        <strong>required </strong> maksimum karakter sayisini belirler. <br />
-        <section class="kod">
-          <form action="#">
-            <label for="ad">Adiniz</label>
-            <input type="text" id="ad" required />
-            <input type="submit" name="ad" value="Gönder" />
-          </form>
-        </section>
-      </li>
-      <li>
-        <strong>value="."</strong>verilen degerdir. <br />
-        &lt;input type="button" value="gonder" /> seklinde yazarsak butonun
-        üzerinde gönder yazar. <br />
-        eger type="text" value="ali" eklersek formda hazir doldurulmus sekilde
-        ali cikar.
-      </li>
-      <li>
-        <strong>placeholder="."</strong> inputta cikan bilgilendirme yazisidir.
-        <section class="kod">
-          <label for="ad">Adiniz: </label>
-          <input type="text" id="ad" placeholder="Ali" />
-        </section>
-      </li>
-      <li>
-        <strong>disabled </strong>Degistirilmesi istenmeyen ve pasif kalmasini
-        istedigimiz bilgiler icin kullanilir.
-        <section class="kod">
-          <label for="ad">Adiniz: </label>
-          <input type="text" id="ad" placeholder="Ali" disabled />
-          <input type="submit" value="Gönder" disabled />
-        </section>
-      </li>
-      <li>
-        <strong>&lt;select&gt;&lt;/select&gt; </strong>Listeden secim yapmak
-        icin kullanilir. (ulke sehir..) <br />
-        <strong>multiple </strong> klavyeden ctrl ye basilarak birden fazla
-        secim yapilabilmesini saglar.
-        <br />
-        <strong>size="2" </strong> secim listesinde ayni anda kac secimin
-        gösterilecegini belirler.
-        <section class="kod">
-          <label for="marka">Cep Telefonu Markaniz: </label>
-          <select name="marka" id="marka" multiple size="2">
-            <option value="1">Samsung</option>
-            <option value="2">Iphone</option>
-            <option value="3">Huvai</option>
-            <option value="4">LG</option>
-          </select>
-        </section>
-      </li>
-      <li>
-        <strong>&lt;textarea&gt;&lt;/textarea&gt; </strong> Yazi yazma alani
-        icin olustururlur. (yorum vs) <br />
-        <strong>rows="4" </strong> Yazinin satir sayisini belirler. <br />
-        <strong>cols="50"</strong> Yazinin sütun sayisini belirler. Bis satirda
-        kac karakter istenirse o sekilde belirlenebilir.<br />
+      <h2>RESIM-FOTOGRAF EKLEME</h2>
+      <strong
+        >&lt;img src="(resim yolu)" alt="(resim bilgisi)" width="100px"
+        height="75px"></strong
+      >
+      <hr />
+      <h2>VIDEO EKLEME</h2>
+      <strong
+        >&lt;video src="istenen_video.mp4" width="560" height="315"
+        controls>&lt;/video></strong
+      ><br />
+      <strong>controls autoplay :</strong>acilinca oynamaya basla(yabili)r.<br />
+      isteninirse direkt olarak youtube dan da ifarame seklinde baglanti
+      alinabilir. <br />
+      <p>
+        &lt;iframe width="560" height="315"
+        src="https://www.youtube.com/embed/O2059wLL_Ls" title="YouTube video
+        player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+        encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>&lt;/iframe>
+      </p>
+      <hr />
+      <h2>Ses Ekleme</h2>
+      <strong>&lt;audio src="" controls>&lt;/audio></strong>
+      <hr />
+      <h2>FORM OLUSTURMA</h2>
+      <p>
+        Eger sunucuya gönderiliyorsa hepsinde <strong>name="." </strong>olmak
+        zorundadir.
+      </p>
+      <ul>
+        <li>
+          <strong>&lt;form action="." method=".">&lt;/form> :</strong>form
+          olustururken basta ve sonda kullanilmali. <br />
+          Ziyaretciden bilgi almak icin kullanilan bir tag dir. <br />
+          action="server/kayit/php" bir backend dosyasinda islem yapilmasini
+          ister. <br />
+          kullanici bilgileri doldurduktan sonra actionda belirtilen dosyaya
+          gitmesi emredilir. <br />
+          method="GET" olursa giden bilgiler adres satirinda görünür (default
+          degeri). <br />
+          Görünmesi istenmiyorsa method="POST" yapilmalidir (daha gizli ve
+          güvenli). <br />
+        </li>
+        <li>
+          <strong>&lt;label for="x">&lt;/label> :</strong>kullaniciya form
+          elemani ile ilgili bilgi verir. <br />
+          Label deki for="" ile input taki id="" eslesebilmesi icin ayni
+          olmalidir.
+          <br />
+          eger for ile id uyusursa label deki aciklamaya tiklanirsa da input
+          aktif olur.
+        </li>
+        <li>
+          <strong>&lt;input type="." name="." id="x"> :</strong>Kullanicidan
+          bilgi almak icin kullanilir. <br />
+        </li>
+        <li>
+          <strong>type"."</strong>input un turunu belirlemek icin yazilir <br />
+          <strong>"text"</strong> genel bilgi girisi icin. <br />
+          <section class="kod">
+            <label for="soyad">Soyadinizi giriniz: </label>
+            <input type="text" id="soyad" />
+          </section>
+          <strong>"password"</strong> girilen karakterleri gizli girilmesini
+          saglar. <br />
+          js ile yandaki göz ikonuna tiklanarak type ini text yaparak sifreyi
+          görünür hale getirebiliriz. <br />
+          <section class="kod">
+            <label for="sifre">Sifre :</label>
+            <input type="password" id="sifre" />
+          </section>
+          <strong>"number"</strong> sadece numara yazilabilir, yanda cikan
+          oklarla yukari asagi deger atanabilir. <br />
+          <section class="kod">
+            <label for="degerlendirme">Puan Ver: </label
+            ><input type="number" id="degerlendirme" max="10" min="1" />
+          </section>
+          <strong>"search"</strong> arama kutusu olarak kullanilir, kösede
+          texbox i bosaltan bir isaret cikar. <br />
+          <section class="kod">
+            <label for="arama">Kelime giriniz: </label>
+            <input type="search" id="arama" />
+          </section>
+          <strong>"button"</strong> buton halide bir sekil olusturur. default
+          görevi yoktur.<br />
+          <strong>"submit" </strong>Form bilgilerini baackend e gönderen bir
+          buton olusturur. <br />
+          <strong>"reset" </strong> Form daki bilgileri resetleyen bir buton
+          olusturur. <br />
+          Butonlarin ayni form etiketi icinde aktif oldugunu unutmayalim. <br />
+          <section class="kod">
+            <form action="#">
+              <input type="text" /> <br />
+              <input type="button" value="Buton" />
+              <input type="submit" value="Gönder" />
+              <input type="reset" value="Sil" />
+            </form>
+          </section>
+          <strong>"checkbox" </strong>Birden fazla isaretlemeye izin veren
+          butondur. (hobiler gibi)
+          <br />
+          <section class="kod">
+            <input type="checkbox" name="futbol" id="futbol" value="futbol" />
+            <label for="futbol">Futbol</label> <br />
+            <input type="checkbox" name="tenis" id="tenis" value="tenis" />
+            <label for="tenis">Tenis</label> <br />
+          </section>
+          <strong>"radio" </strong> tek secime izin veren bir giristir. eger
+          birden fazla radio butonu varsa name="" leri ayni olmali ki tek secim
+          yapilabilsin.(cinsiyet gibi)<br />
+          <section class="kod">
+            <input type="radio" name="cinsiyet" id="erkek" />
+            <label for="erkek">Erkek</label> <br />
+            <input type="radio" name="cinsiyet" id="bayan" />
+            <label for="bayan">Bayan</label> <br />
+          </section>
+          <strong>"url"</strong> sadece http ve https ile baslayan ifadeleri
+          kabul eder. <br />
+          <strong>"email"</strong> sadece e posta girislerini kabul eder. <br />
+          <strong>"tel"</strong> telefon numarasi formatinda girisleri kabul
+          eder.
+          <br />
+          Genellikle ABD tlf numralarina göre bir form olusturur.
+          <br />
+          <strong>"hidden"</strong> gizli bilgi göndermek icin kullanilir.
+          <br />
+          &lt;input type="hidden" name="id" value="123456" /> <br />
+          sunucuya gönderilen bu bilgi kullanici tarafindan görünmez. <br />
+          <strong>"file" </strong> dosya secimi icin kisa yol olusturur. <br />
+          <section class="kod">
+            <label for="dosya">Dosya: </label>
+            <input type="file" id="dosya" />
+          </section>
+          <strong>"date" </strong> Tarih eklemek icin kullanilir
+          (value="2021-10-21") <br />
+          <strong>"time" </strong> Saat secmek icin kullanilir. (value="21:15")
+          <br />
+          <section class="kod">
+            <label for="randevu">Randevu tarihiniz: </label>
+            <input type="date" id="randevu" name="randevu" value="2021-10-21" />
+            <label for="is">randevu saatiniz:</label>
+            <input type="time" name="is" id="is" value="22:15" />
+          </section>
+          <strong>maxlength="20" </strong> maksimum karakter sayisini belirler.
+          <br />
+          <strong>maxlength="2" </strong> minimum karakter sayisini belirler.
+          <br />
+          <strong>min="2" </strong> girilmesi gereken en kücük degeri
+          belirler.Tarih ve saatlerde de uygulanabilir.
+          <br />
+          <strong>max"10" </strong> maksimum karakter sayisini belirler.Tarih ve
+          saatlerde de uygulanabilir. <br />
+          <section class="kod">
+            <label for="puan">Puan veriniz: </label>
+            <input type="number" id="puan" min="1" max="10" />
+          </section>
+          <strong>required </strong> inputu zorunluhale getirir. Bos gecilemez.
+          Aksi durumda tarayicinin diline göre uyari mesaji gelir.<br />
+          <section class="kod">
+            <form action="#">
+              <label for="ad">Adiniz</label>
+              <input type="text" id="ad" required />
+              <input type="submit" name="ad" value="Gönder" />
+            </form>
+          </section>
+        </li>
+        <li>
+          <strong>value="."</strong>verilen degerdir. <br />
+          &lt;input type="button" value="gonder" /> seklinde yazarsak butonun
+          üzerinde gönder yazar. <br />
+          eger type="text" value="ali" eklersek formda hazir doldurulmus sekilde
+          ali cikar.
+        </li>
+        <li>
+          <strong>placeholder="."</strong> inputta cikan bilgilendirme
+          yazisidir.
+          <section class="kod">
+            <label for="ad">Adiniz: </label>
+            <input type="text" id="ad" placeholder="Ali" />
+          </section>
+        </li>
+        <li>
+          <strong>disabled </strong>Degistirilmesi istenmeyen ve pasif kalmasini
+          istedigimiz bilgiler icin kullanilir.
+          <section class="kod">
+            <label for="ad">Adiniz: </label>
+            <input type="text" id="ad" placeholder="Ali" disabled />
+            <input type="submit" value="Gönder" disabled />
+          </section>
+        </li>
+        <li>
+          <strong>&lt;select&gt;&lt;/select&gt; </strong>Listeden secim yapmak
+          icin kullanilir. (ulke sehir..) <br />
+          <strong>multiple </strong> klavyeden ctrl ye basilarak birden fazla
+          secim yapilabilmesini saglar.
+          <br />
+          <strong>size="2" </strong> secim listesinde ayni anda kac secimin
+          gösterilecegini belirler.
+          <section class="kod">
+            <label for="marka">Cep Telefonu Markaniz: </label>
+            <select name="marka" id="marka" multiple size="2">
+              <option value="1">Samsung</option>
+              <option value="2">Iphone</option>
+              <option value="3">Huvai</option>
+              <option value="4">LG</option>
+            </select>
+          </section>
+        </li>
+        <li>
+          <strong>&lt;textarea&gt;&lt;/textarea&gt; </strong> Yazi yazma alani
+          icin olustururlur. (yorum vs) <br />
+          <strong>rows="4" </strong> Yazinin satir sayisini belirler. <br />
+          <strong>cols="50"</strong> Yazinin sütun sayisini belirler. Bis
+          satirda kac karakter istenirse o sekilde belirlenebilir.<br />
 
-        <section class="kod">
-          <label for="yorum">Yorumunuz:</label> <br />
-          <textarea name="yorum" id="yorum" cols="30" rows="2" maxlength="50">
+          <section class="kod">
+            <label for="yorum">Yorumunuz:</label> <br />
+            <textarea name="yorum" id="yorum" cols="30" rows="2" maxlength="50">
           Yorumunuzu giriniz: </textarea
-          >
-        </section>
-      </li>
-    </ul>
-    <hr />
-
-    <h2>ATTRIBUTLAR</h2>
-    <ul>
-      <li>
-        <strong>type="" :</strong>siralama türünü belirler. 1,A,a,I,i seklinde
-        olabilir. &lt;ol type "a"> <br />
-        disc,square,circle yazilirsa sekli degisir. &lt;ol type "disc">
-      </li>
-      <li>
-        <strong>start="" :</strong>hangi siralamadan baslayacagini belirtir.
-        &lt;ol type "a" start="a">
-      </li>
-      <li>
-        <strong>id="" :</strong>taga bir isim vermek icin kullanilir.Kullanmak
-        icin # kullanmilalidir
-      </li>
-      <li>
-        <strong>class="" :</strong>taga bir ad vermek icindir.Kullanmak icin .
-        lazimdir.
-      </li>
-      <li>
-        <strong>target="_blank" :</strong>acilan sayfanin yeni sekmede
-        acilmasini saglar. &lt;a>
-      </li>
-      <li>
-        <strong>title="" :</strong>bir gorselin ismi icin kullanilir. &lt;a> ile
-        birlikte kullanilir.
-      </li>
-      <li>
-        <strong>style="" :</strong>css icin head arasina koyulur. <br />
-        color:red;test allign:center; background-color:blue;...
-      </li>
-    </ul>
-    <hr />
-
-    <h2>CSS KODLARI</h2>
-    <ul>
-      <li><strong>width :</strong>genisligini belirler. 50Px,50%</li>
-      <li><strong>height :</strong>yüksekligini belirler</li>
-      <li><strong>color :</strong>yazi rengini belirler</li>
-      <li><strong>font-family :</strong>yazi stilini belirler</li>
-      <li><strong>font-size: 2rem</strong>yazi buyuklugunu belirler</li>
-
-      <li>
-        <strong>test allign :</strong>yazi hizalamasini ayarlar
-        <br />center,left,reight,
-      </li>
-      <li><strong>background-color :</strong>arka plan regini ayarlar</li>
-      <li>
-        <strong>position :fixed;</strong>nesneyi sabit bir pozisyonda tutar.
-        <br />top:2px (bottom right left)
-      </li>
-      <li><strong>text-shadow</strong> yazi golgesini belirler</li>
-      <li>
-        <strong>box-shadow:2px 2px 3px black; </strong> kutu golgesini belirler
-      </li>
-
-      <li><strong>"border: 1px solid red"</strong>kenarina cerceve ekler</li>
-      <li><strong>border-radius</strong> kutu kenarlarini yuvaarlar</li>
-
-      <li>
-        <strong>display: inline-block;</strong>/*yanyana getirir ve block
-        elemente cevirmis oluyor*/
-      </li>
-      <li>
-        <strong>position absolut</strong>verilen elemanin parent ina mutlaka
-        relativ verilmelidir.
-      </li>
-    </ul>
-
-    <hr />
-    <h2>Extra kisa yollar</h2>
-    <ul>
-      <li>
-        lorem yazip arkasina kac yazarsak o kadar uzunlukta hazir metin gelir.
-      </li>
-      <li>
-        SHIFT + ALT + F =kodlari düzenler. <br />
-        *eger otomatik kaydedilince düzenlenmesi isteniyorsa ayarlar>arama
-        kismina format yazip>Editor defaut formatter> prettier- code formater
-        secilmelidir. Altindaki format on save kismi da isaretli olmalidir.
-      </li>
-      <li>
-        html snippets eklentisi ekli degise ! e basinca yardimci ön kodlar
-        cikmayabilir
-      </li>
-      <li>alt shift A = kodlari toptan yoruma alir.</li>
-      <li>ctrl # =yalnizca o satiri yoruma alir.</li>
-      <li></li>
-    </ul>
-    <hr />
-    <h3>html sayfasi kod sekli</h3>
-    &lt;html> <br />
-    &lt;head> <br />
-    &lt;title> xxx &lt;/title> <br />
-    &lt;/head> <br />
-    &lt;body> <br />
-    xxx <br />
-    &lt;/body> <br />
-    &lt;/html> <br />
-    <hr />
-    <h3>Genel bilgiler faydali uygulamalar</h3>
-    <ul>
-      <li>
-        <strong>SEO :=</strong>(Search Engine Optimication) arama motorlarindaki
-        öne cikma isidir.
-      </li>
-      <li><strong>info.cern.ch :</strong>bu site dünyadaki ilk website.</li>
-      <li>
-        <strong>https://www.lipsum.com/ :</strong>lorem in olusturuldugu ve
-        alnti yapilan sitedir.
-      </li>
-      <li>
-        <strong>https://www.w3schools.com/tags/default.asp </strong>bu site html
-        css js ile ilgili en fazla faydalanilan kaynaktir.
-      </li>
-      <li>
-        <strong
-          >https://www.w3schools.com/html/tryit.asp?filename=tryhtml_intro
-          :</strong
-        >bu site ile vscode gibi bir programa ihtiyac duymadan alistirma
-        yapilabilir.
-      </li>
-      <li>
-        <strong>https://codepen.io/pen/?editors=0010 :</strong>html css js ile
-        ilgili alistirma yapilan bir site
-      </li>
-      <li>
-        <strong>https://unsplash.com/ :</strong>ucretsiz resim alabildigimiz bir
-        site
-      </li>
-      <li>
-        <strong>https://www.pexels.com/tr-tr/ :</strong>ucretsiz resim
-        alabildigimiz bir site
-      </li>
-      <li><strong>https://www.flaticon.com/ :</strong>ücretsiz icon sitesi</li>
-    </ul>
-    <hr />
-    <h2>Faydali uygulamalar</h2>
-    <ul>
-      <li>
-        emojisense= <strong>ctrl + i</strong> basildiginda emojiler cikacaktir.
-      </li>
-    </ul>
-    <hr />
-    <h2>PROJE KLOSÖRU OLUSTURMA</h2>
-    <strong>Proje klosoru :</strong>ana klosördur.
-    <ul>
-      <li>
-        <strong>assets :</strong>varliklar demektir.
+            >
+          </section>
+        </li>
+      </ul>
+      <hr />
+      <h2>HTML5 ile Gelen Yeni Semantic Taglar</h2>
+      <section>
+        Icinde bulunan bilgi ve elemanlarla ilgili bir anlama sahip olan, arama
+        motorlari icin önemli olan taglara
+        <strong>semantic Taglar</strong> denir.
         <ul>
           <li>
-            <strong>img :</strong>resim tutuldugu yerdir. (video ve ses
-            internetten alinabilir)
+            <strong>&lt;article&gt; :</strong>
+            Genellikle makale gibi uzun yazilarin bir arada bulunmasini saglar.
+            Article etiketi altında paragraf etiketleri, img etiketleri, audio
+            ya da video etiketleri gibi etiketler ile bütün yazınızın tek bir
+            etiket altında tutulmasını sağlayabiliriz
           </li>
-          <li><strong>css :</strong>css dosyalari</li>
-          <li><strong>js :</strong>js dosyalari</li>
-          <li><strong>lib :</strong>baska kütüphaneler burada tutulur</li>
+          <li>
+            <strong>&lt;details&gt; :</strong>
+            Acilir kapanir yazilar icin kullanilir.
+            <details>
+              <summary>Lorem ipsum...</summary>
+              <article>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod<br />
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                minim veniam,<br />
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo <br />
+                consequat. Duis aute irure dolor in reprehenderit in voluptate
+                velit esse <br />
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non <br />
+                proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum. <br />
+              </article>
+            </details>
+          </li>
+          <li>
+            <strong>&lt;summary&gt; :</strong>
+            metin acilmadan gösterilen kisimdaki tag icin kullanilir.
+          </li>
+          <li>
+            <strong>&lt;figcaption&gt; :</strong>
+            Figure elementinin icinde bir img'nin altina veya üzerine aciklama
+            yazisi eklemek icin kullanilir.
+          </li>
+          <li>
+            <strong>&lt;figure&gt; :</strong>
+            text ve resim dosyalarının birbirleriyle uyumu yakalamaları için
+            figure elementi kullanılabilir.
+          </li>
+          <li>
+            <strong>&lt;footer&gt; :</strong>
+            Bir web sayfasindaki alttaki bilgilerin yer aldigi Tagdir.
+          </li>
+          <li>
+            <strong>&lt;header&gt; :</strong>
+            Bir Web sayfasindaki üstteki genellikle sabit olan kisimdir.
+          </li>
+          <li>
+            <strong>&lt;main&gt; :</strong>
+            Html Body'sinin header ve footer disinda kalan kismidir.
+          </li>
+          <li>
+            <strong>&lt;nav&gt; :</strong> Sayfadaki bağlantıları bir araya
+            toplamak için kullanılan bir etikettir. <br />
+            <nav>
+              <a href="#">link1</a>
+              <a href="#">link2</a>
+              <a href="#">link3</a>
+            </nav>
+          </li>
+          <li>
+            <strong>&lt;mark&gt; :</strong> HTML mark etiketi temel olarak
+            belirtilen alanın arkaplan rengi değiştirir ve vurgulama yapar. Mark
+            etiketinin çalışma prensibini fosforlu kalemlere benzetebiliriz.
+            Mark etiketi ile bir metin içerisindeki önemli satırların arka plan
+            rengini değiştirebiliriz. <br />
+            <article>
+              <mark>Lorem ipsum</mark> dolor sit amet, consectetur adipisicing
+              elit, sed do eiusmod...
+            </article>
+          </li>
+          <li>
+            <strong>&lt;section&gt; :</strong>
+            Sadece aynı tipteki içerikleri gruplamak için kullanılabilir.
+          </li>
+          <li>
+            <strong>&lt;aside&gt; :</strong>
+            aynı içeriğe sahip ifadeleri bir araya toplamak için kullanılan bir
+            elementtir. Genellikle yan tarafta olustulan menü icin kullanilir.
+          </li>
+          <li>
+            <strong>&lt;time&gt; :</strong>
+            tarih ve saat yazımında kullanılan bir elementtir. Örneğin herhangi
+            bir text içerisinde bir zaman belirtirken time elementi
+            kullanılabilir.
+            <section>
+              <!-- time elementinin datetime özelliği vardir. Fakat datetime özelliğinde 
+                yazılan değer web sayfasında gösterilmez bu değerden kullanıcının bilgisayarınin haberi olur. -->
+              <time datetime="17.04.2020"> 27 Ekim 2021 </time>
+            </section>
+          </li>
         </ul>
-      </li>
-      <li><strong>index.html</strong></li>
-      <li><strong>about.html</strong></li>
-      <li><strong>contact.html </strong>seklinde projemizi ayarlayabiliriz.</li>
-    </ul>
-    <hr />
+      </section>
+      Belli html elemanlarini gruplandirmak icin kullanilan Semantik olmadigi
+      halde yogun karsilasilan taglar:
+      <section>
+        <ul>
+          <li><strong>&lt;div&gt; :</strong>Tüm satiri kaplar.</li>
+          <li>
+            <strong>&lt;span&gt; :</strong>Sadece icine aldigi element kadar yer
+            kaplar.
+          </li>
+        </ul>
+      </section>
+      <hr />
+      <h2>Block ve Inline Elementler</h2>
+      <p>
+        Sayfada kapladiklari yere göre göre Block ve Inline element olarak
+        ayrilmislardir.
+      </p>
+      <p>
+        Tüm satiri kaplayan ve yanina baska bir element koyuldugunda onu asagi
+        satira kaydiran elementlerde <strong>Block Elementler</strong> denir.
+      </p>
+      <p>
+        Sadece icindeki element kadar yer kaplayan elementlere
+        <strong>Inline Elementler </strong>denir.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Block Elementler</th>
+            <th></th>
+            <th>Inline Elementler</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center">
+          <tr>
+            <td>div</td>
+            <td>p</td>
+            <td>a</td>
+            <td>b,strong</td>
+          </tr>
+          <tr>
+            <td>h1-6</td>
+            <td>ol,ul,li</td>
+            <td>i,em</td>
+            <td>br</td>
+          </tr>
+          <tr>
+            <td>hr</td>
+            <td>blockqoute</td>
+            <td>img</td>
+            <td>select</td>
+          </tr>
+          <tr>
+            <td>form</td>
+            <td>header</td>
+            <td>sup,sub</td>
+            <td>code</td>
+          </tr>
+          <tr>
+            <td>aside</td>
+            <td>main</td>
+            <td>span</td>
+            <td>button</td>
+          </tr>
+          <tr>
+            <td>table</td>
+            <td>footer</td>
+            <td>input</td>
+            <td>textarea</td>
+          </tr>
+          <tr>
+            <td>nav</td>
+            <td>section</td>
+            <td>label</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <section>
+        <br />
+        <strong>&lt;blockquote&gt; :</strong> etiketi başka bir kaynaktan alıntı
+        yapmak için kullanılır. İnternet tarayıcılar bu bölümü girintili olarak
+        gösterirler.
+        <blockquote cite="http://www.worldwildlife.org/who/index.html">
+          For 50 years, WWF has been protecting the future of nature. The
+          world's leading conservation organization, WWF works in 100 countries
+          and is supported by 1.2 million members in the United States and close
+          to 5 million globally.
+        </blockquote>
+        <strong>&lt;sub&gt; :</strong> Özellikle kimya formüllerinde kullanilir.
+        <br />Suyun Formulü: HO<sub>2</sub> <br />
+        <strong>&lt;sup&gt; :</strong> Özellikle matematikte kullanilir. <br />
+        bir sayinin karesi: 4<sup>2</sup>=16 <br />
+        <strong>&lt;code&gt; :</strong> Bilgisayar kod bloğu tanımlar.
+        <code>örnek yazi</code><br />
+        <strong>&lt;dfn&gt; :</strong> Bir terim tanımlar. <dfn>örnek yazi</dfn
+        ><br />
+        <strong>&lt;samp&gt; :</strong> Bilgisayar programından örnek çıktı
+        verir. <samp>örnek yazi</samp><br />
+        <strong>&lt;kbd&gt; :</strong> Klavye girişini tanımlar.
+        <kbd>örnek yazi</kbd><br />
+        <strong>&lt;var&gt; :</strong>
+        Bir değişken tanımlar. <var>örnek yazi</var>
+      </section>
 
-    <h2>HTML BELGESINI JS YE BAGLAMA</h2>
-    <p>
-      Alttaki body kismina &lt;script src="app.js">&lt;/script> yazarak islemi
-      gerceklestirmis oluruz.
-    </p>
+      <h2>ATTRIBUTLAR</h2>
+      <ul>
+        <li>
+          <strong>type="" :</strong>siralama türünü belirler. 1,A,a,I,i seklinde
+          olabilir. &lt;ol type "a"> <br />
+          disc,square,circle yazilirsa sekli degisir. &lt;ol type "disc">
+        </li>
+        <li>
+          <strong>start="" :</strong>hangi siralamadan baslayacagini belirtir.
+          &lt;ol type "a" start="a">
+        </li>
+        <li>
+          <strong>id="" :</strong>taga bir isim vermek icin kullanilir.Kullanmak
+          icin # kullanmilalidir
+        </li>
+        <li>
+          <strong>class="" :</strong>taga bir ad vermek icindir.Kullanmak icin .
+          lazimdir.
+        </li>
+        <li>
+          <strong>target="_blank" :</strong>acilan sayfanin yeni sekmede
+          acilmasini saglar. &lt;a>
+        </li>
+        <li>
+          <strong>title="" :</strong>bir gorselin ismi icin kullanilir. &lt;a>
+          ile birlikte kullanilir.
+        </li>
+        <li>
+          <strong>style="" :</strong>css icin head arasina koyulur. <br />
+          color:red;test allign:center; background-color:blue;...
+        </li>
+      </ul>
+      <hr />
+      <h2>Extra kisa yollar</h2>
+      <ul>
+        <li>
+          lorem yazip arkasina kac yazarsak o kadar uzunlukta hazir metin gelir.
+        </li>
+        <li>
+          SHIFT + ALT + F =kodlari düzenler. <br />
+          *eger otomatik kaydedilince düzenlenmesi isteniyorsa ayarlar>arama
+          kismina format yazip>Editor defaut formatter> prettier- code formater
+          secilmelidir. Altindaki format on save kismi da isaretli olmalidir.
+        </li>
+        <li>
+          html snippets eklentisi ekli degise ! e basinca yardimci ön kodlar
+          cikmayabilir
+        </li>
+        <li>alt shift A = kodlari toptan yoruma alir.</li>
+        <li>ctrl # =yalnizca o satiri yoruma alir.</li>
+        <li></li>
+      </ul>
+      <hr />
+      <h3>html sayfasi kod sekli</h3>
+      &lt;html> <br />
+      &lt;head> <br />
+      &lt;title> xxx &lt;/title> <br />
+      &lt;/head> <br />
+      &lt;body> <br />
+      xxx <br />
+      &lt;/body> <br />
+      &lt;/html> <br />
+      <hr />
+      <h3>Genel bilgiler faydali uygulamalar</h3>
+      <ul>
+        <li>
+          <strong>SEO :=</strong>(Search Engine Optimication) arama
+          motorlarindaki öne cikma isidir.
+        </li>
+        <li><strong>info.cern.ch :</strong>bu site dünyadaki ilk website.</li>
+        <li>
+          <strong>https://www.lipsum.com/ :</strong>lorem in olusturuldugu ve
+          alnti yapilan sitedir.
+        </li>
+        <li>
+          <strong>https://www.w3schools.com/tags/default.asp </strong>bu site
+          html css js ile ilgili en fazla faydalanilan kaynaktir.
+        </li>
+        <li>
+          <strong
+            >https://www.w3schools.com/html/tryit.asp?filename=tryhtml_intro
+            :</strong
+          >bu site ile vscode gibi bir programa ihtiyac duymadan alistirma
+          yapilabilir.
+        </li>
+        <li>
+          <strong>https://codepen.io/pen/?editors=0010 :</strong>html css js ile
+          ilgili alistirma yapilan bir site
+        </li>
+        <li>
+          <strong>https://unsplash.com/ :</strong>ucretsiz resim alabildigimiz
+          bir site
+        </li>
+        <li>
+          <strong>https://www.pexels.com/tr-tr/ :</strong>ucretsiz resim
+          alabildigimiz bir site
+        </li>
+        <li>
+          <strong>https://www.flaticon.com/ :</strong>ücretsiz icon sitesi
+        </li>
+        <li>
+          <a href="https://emojipedia.org/">https://emojipedia.org/</a>
+          istedigimiz emojileri bulabilecegimiz bir sitedir. istedigimiz emojiye
+          gelip Copy yapip yapistirirsakistedigimiz sekilde özellikle liste
+          maddesi olarak kullanabiliriz. list_style-type:"."; icine
+          yerlestirmeliyiz.
+        </li>
+        <li>
+          <a href="https://fontawesome.com/">https://fontawesome.com/</a>
+          linkinden ister kendimiz indirebiliriz ve zip icindeki css klosörünü
+          lib dosyamiza tasiyip Link rel ile html dosyamiza baglayabiliriz,
+          baglarken link sonuna all.min.css yazmaliyiz. <br />
+          ücretsiz ikonlardan kullanabiliriz. <br /><code
+            >&lt;i class="fas fa-home"&gt;&lt;/i&gt;</code
+          ><br />
+          Istersek online olarak kullanabiliriz. <br />
+          <a href="https://cdnjs.com/libraries/font-awesome"
+            >https://cdnjs.com/libraries/font-awesome</a
+          >
+          linkinden istedigimiz versiyonu indirerek kullaniriz.
+        </li>
+      </ul>
+      <hr />
+      <h2>Faydali uygulamalar</h2>
+      <ul>
+        <li>
+          emojisense= <strong>ctrl + i</strong> basildiginda emojiler
+          cikacaktir.
+        </li>
+      </ul>
+      <hr />
+      <h2>PROJE KLOSÖRU OLUSTURMA</h2>
+      <strong>Proje klosoru :</strong>ana klosördur.
+      <ul>
+        <li>
+          <strong>assets :</strong>varliklar demektir.
+          <ul>
+            <li>
+              <strong>img :</strong>resim tutuldugu yerdir. (video ve ses
+              internetten alinabilir)
+            </li>
+            <li><strong>css :</strong>css dosyalari</li>
+            <li><strong>js :</strong>js dosyalari</li>
+            <li><strong>lib :</strong>baska kütüphaneler burada tutulur</li>
+          </ul>
+        </li>
+        <li><strong>index.html</strong></li>
+        <li><strong>about.html</strong></li>
+        <li>
+          <strong>contact.html </strong>seklinde projemizi ayarlayabiliriz.
+        </li>
+      </ul>
+      <hr />
+
+      <h2>HTML BELGESINI JS YE BAGLAMA</h2>
+      <p>
+        Alttaki body kismina &lt;script src="app.js">&lt;/script> yazarak islemi
+        gerceklestirmis oluruz.
+      </p>
+      <hr />
+      <h1>CSS (Cascading Style Sheet)</h1>
+      <section>
+        Üc cesit html dosyamiza CSS kodlarini yazabiliriz.
+        <ol>
+          <li>
+            Bir HTML elementine CSS eklemek icin ilgili tagin icine
+            <code>style </code>attribute'u ekleneir. <br />Buna
+            <strong>inline stil </strong>denir. <br />
+          </li>
+          <li>
+            Head kismina <strong>&lt;style&gt; </strong>taginin icine yazilir.
+            <br />Buna <strong>internal stil </strong>denir.
+            <ul>
+              <li><code>h1{text-align: center;}</code></li>
+              <li><code>.baslik{color: red;}</code></li>
+              <li><code>#birinciBaslik{background-color: red;}</code></li>
+              <li>
+                <code>.menu a{text-decoration: none</code> menu class indaki
+                ataglarinin cizgisini kaldir
+              </li>
+            </ul>
+          </li>
+          <li>
+            Ayri bir html sayfasi icine yazilir. En cok kullanilan yöntemdir.
+            <br />Buna <strong>external stil </strong>denir. style taginin
+            üzerine title'in altina eklenir. <br />
+            <code>&lt;link href="css/stil.css" rel="stylesheet"&gt;</code>
+            <br />
+            Eger css/stil.css kismina tikladigimizda css dosyasina gidiyorsa
+            baglanti kurulmus demektir.
+          </li>
+        </ol>
+      </section>
+      <p>
+        <code>&lt;p style="color: red"&gt;</code><br />
+        <strong>property(özellik): </strong>color <br />
+        <strong>value(deger): </strong>red <br />
+        Eger birden fazla stil eklenecekse sitril özelliklerinin arasina
+        <strong>; (noktali virgül) </strong>konur.
+      </p>
+      <h2>CSS KODLARI (Cascading Style Sheet)</h2>
+      <ul>
+        <li>
+          <strong>*{ } </strong>butun html taglara css vermek icin kullanilir.
+        </li>
+        <li><strong>/* */ </strong>aciklama yazmak icin kullanilir.</li>
+        <li><strong>width :</strong>genisligini belirler. 50Px,50%</li>
+        <li>
+          <strong>height :</strong>yüksekligini belirler. <br />Inline
+          Elementlere width ve height uygulanmaz.
+        </li>
+        <li>
+          <strong>color:red; :</strong>yazi rengini belirler. Hexadecimal
+          sistemle de renk verilebilir. #1255FA rgb,rgba
+        </li>
+        <li>
+          <strong>font-family : sans-serif</strong>yazi stilini belirler.
+          <ul>
+            <li>
+              <a href="https://fonts.google.com/">https://fonts.google.com/</a>
+              adresinden yazi stilini secip
+              <strong>+Select this style</strong> a basarak orada verdigi linki
+              head in icine style in üzerine yapistirilir.
+            </li>
+            <li>
+              Style kismindaki Body ye linkin altindaki font-family kismi
+              kopyalanarak yapistirilir.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>font-size: 1rem(16px) </strong>yazi buyuklugunu belirler
+        </li>
+        <li>
+          <strong>font-style</strong>
+          <ul>
+            <li>font-style: normal;</li>
+            <li>font-style: italic;</li>
+            <li>font-style: oblique; italik yapar</li>
+          </ul>
+        </li>
+        <li>
+          <strong>font-weight:</strong> 100 ile 900 arasinda degerler de
+          alabilir.
+        </li>
+        <ul>
+          <li>font-weight: bold;</li>
+          <li>font-weight: normal;</li>
+        </ul>
+        <li>
+          <strong>test allign :</strong>yazi hizalamasini ayarlar.
+          <ul>
+            <li>center</li>
+            <li>left</li>
+            <li>reight</li>
+            <li>justify : iki yana yaslar.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>background-color : red;</strong>arka plan regini ayarlar.
+        </li>
+        <li>
+          <strong>position :fixed;</strong>nesneyi sabit bir pozisyonda tutar.
+          <br />top:2px (bottom right left)
+        </li>
+        <li>
+          <strong>text-decoration:</strong>
+          <ul>
+            <li>
+              underline:altı çizili olarak vurgulamak için kullanabilmekteyiz.
+            </li>
+            <li>overline: üstü çizili yapar</li>
+            <li>
+              line-through: textin üstünü çizerek artık geçersiz olduğunu
+              belirtebilirsiniz.
+            </li>
+            <li>
+              none: özellikle linklerin altindaki cizgiyi kaldirmak icin
+              kullanilir.
+            </li>
+          </ul>
+        </li>
+        <li><strong>text-shadow</strong> yazi golgesini belirler</li>
+        <li>
+          <strong>box-shadow:2px 2px 3px black; </strong> kutu golgesini
+          belirler
+        </li>
+
+        <li><strong>"border: 1px solid red"</strong>kenarina cerceve ekler</li>
+        <li><strong>border-radius</strong> kutu kenarlarini yuvaarlar</li>
+        <li>
+          <strong>list-style-type </strong> listenin maddesini belirler.
+          <ul>
+            <li>list-style-type: circle; yuvarlak</li>
+            <li>list-style-type: square; kare</li>
+            <li>list-style-type: upper-roman;</li>
+            <li>list-style-type: lower-alpha;</li>
+            <li>list_style-type:"Emoji_koyulabilir";</li>
+            <li>list-style-image: url('sqpurple.gif'); bir resim olarak</li>
+            <li>
+              list-style-position: outside; madde isaretini li taginin önüne
+              alir.
+            </li>
+            <li>
+              list-style-position: inside; madde isaretini li taginin icine
+              alir.
+            </li>
+            <li>list-style-type: none; isaretsiz hali</li>
+            <li>
+              Menü elemanlarinin sol bos tarafinda olusan boslugu kaldirmak icin
+              ul icine padding:0 verebiliriz.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>:hover</strong> ürzerine gelinen element ile ilgili tanimlanan
+          degisikligi yapar.
+          <ul>
+            <li><code>.menu li:hover{background-color: red;}</code></li>
+            <li><code>.menu li:hover a{background-color: red;}</code></li>
+          </ul>
+        </li>
+        <li><strong>padding</strong></li>
+        <li>
+          <strong>display: inline-block;</strong>/*yanyana getirir ve block
+          elemente cevirmis oluyor*/
+        </li>
+        <li>
+          <strong>position absolut</strong>verilen elemanin parent ina mutlaka
+          relativ verilmelidir.
+        </li>
+      </ul>
+      <hr />
+      <h3>Ayrintilar</h3>
+      <ul>
+        <li>
+          nav.navbar ul li{ } denildiginde nav in navbar class ina sahip olmasi
+          gerekir. <br />nav .navbar ul li{ } denildiginde ise (bosluk var) nav
+          in altinda navbar class ina sahip bir tag var ve onun icindekileri
+          kast etmis oluyoruz.
+        </li>
+        <li></li>
+      </ul>
+    </main>
   </body>
 </html>

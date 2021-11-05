@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API</title>
+  </head>
+  <body>
+    <main>
+      <h1>
+        API (Aplication Programming Interface) <br />Uygulama Programlama
+        Arayüzü
+      </h1>
+      Backend denildiginde akla <strong>Database</strong> (SQL,JDBC) ve
+      <strong>API</strong> gelmelidir. <br /><br />
+      Bir uygulamanin fonksiyonlarina erisilip kullanilmasin saglayan bir
+      <strong>arayüz</strong>dür. <br /><br />Bir uygulamanin hem IOS'ta, hem
+      Windows'ta, hem de Android isletim sisteminde kullanilabilmesi API
+      sayesinde olur. <br /><br />
+      API'in kullanici arayuzu yoktur. (User Interface{UI}) <br /><br />
+      UI daki kullanici adi ve sifre istenmesi gibi API'de de islem yapabilmek
+      icin <strong>token</strong> almamiz gereklidir.
+      <hr />
+      <h2>API Nasi Calisir?</h2>
+      <ol>
+        <li>
+          Request to API <br />//Müsteri garsona siparisini söylüyor.(pizza)
+          <br />//Amazondan Alisveris yapiyorum
+        </li>
+        <li>
+          Request to Server <br />//Garson müsterinin pizza istedigini mutfak
+          kismina bildiriyor. <br />//Kart bilgilerimi ilgili bankaya onaylatmak
+          icin gönderiyor
+        </li>
+        <li>
+          Response from Server <br />//Mutfak hazirlanan siparisi garsona teslim
+          ediyor. <br />//Banka bilgileri onaylayip Ödeme islemini
+          gerceklestirdigini amazona iletiyor.
+        </li>
+        <li>
+          Responce to client <br />//Garson siparisi müsteriye getiriyor.
+          <br />Amazon Ödemeniz gerceklesti seklinde bize mesaj getiriyor.
+        </li>
+      </ol>
+      Bir uygulamaya Google Maps'i entegre etmek, iot cihazlari uygulamalar
+      üzerinden yönetmek(robot süpürge), bir web uygulamasinda farkli firmalara
+      ait seyahat bilgilerini listelemek API servisinin kullnimina örnektir.
+      <hr />
+      <h2>Web Service & API</h2>
+      Bir browser'da girilen url <strong>request</strong>, gelen sayfa
+      <strong>responce</strong>tur. Buna <strong>Web Service</strong> denir.
+      <br />
+      Bu iletisimin kurulabilmesi icin <strong>internet gerekli</strong>dir.
+      <br /><br />API'nin calisabilmesi icin her zaman
+      <strong>Internet gerekli degil</strong>dir. <br />(Bilgisayarimizdaki exel
+      ile Windows'un (.dll dosyalari araciligiyla) iletisim kurmasi)
+      <br /><br />
+      <mark>NOT:</mark> Tüm Web Service'ler API'dir ama tüm API'ler Web Service
+      degildir.
+      <hr />
+      <h2>http (Hiper Text Transfer Protocol)</h2>
+      <strong>Client</strong> ve <strong>Server</strong> arasindaki
+      <strong>request</strong>(telep) ve <strong>responce</strong>(cevap)lar ile
+      gerceklesen bir protokoldür. <br />Bir url yazildiginda karsimiza
+      istenilen sayfanin gelmesi.
+      <hr />
+      <h2>API TESTING isleminde Dogrulama</h2>
+      <ul>
+        <li>Eldeki verilerle API'ye bir istek (requst) gönderilir.</li>
+        <li>
+          API'den aldigimiz cevaplar(responce):
+          <ol>
+            <li>http status code</li>
+            <li>data</li>
+          </ol>
+        </li>
+      </ul>
+      <hr />
+      <h3>http status code</h3>
+      <ul>
+        <li>1xx :Informational codes(Bilgi)</li>
+        <li>2xx :Succes codes(basari)</li>
+        <li>3xx :Redirect codes(yönlendirme)</li>
+        <li>4xx :Client error codes(tarayici hatasi)</li>
+        <li>5xx :Server error codes(sunucu hatasi)</li>
+      </ul>
+      Örnek olarak;
+      <ul>
+        <li>
+          <strong>200</strong> (OK) Basarili bir sekilde size responce
+          döndürüldü.
+        </li>
+        <li>
+          <strong>201</strong>(CREATED) Olusturma islemi basarili bir sekilde
+          gerceklesti.
+        </li>
+        <li>
+          <strong>204</strong> (No CONTENT) Isleminiz basarili sekilde
+          gerceklesti ama icerik olmadigi icin bir sey döndürülemedi.
+        </li>
+        <li>
+          <strong>400</strong> (BAD REQUEST) Hatali bir istek gönderdiniz.
+        </li>
+        <li>
+          <strong>403</strong> (FORBINDEN) Erisim izniniz yok. (size yasak ancak
+          sifreyle girilebilir.)
+        </li>
+        <li><strong>404</strong> (NOT FOUND) Istek bulunamadi</li>
+        <li>
+          <strong>500</strong> (INTERNAL SERVER ERROR) Server'in o an ulasilmaz
+          oldugunu ifade eder.
+        </li>
+      </ul>
+      <hr />
+      <h2>API Protokolleri</h2>
+      <ol>
+        <li>SOAP</li>
+        <li>REST</li>
+      </ol>
+      <h3>
+        SOAP (Simple Object Access Protocol- basit nesne erisim protokolü)
+      </h3>
+      <ul>
+        <li>Bir <strong>protokol</strong>dür.</li>
+        <li>
+          XML tabanlidir. XML yardimiyla methodlar cagrilir. Gönderilen verilere
+          cevap XML formatinda döndürür.
+        </li>
+        <li>
+          SOAP tabanli bir Web Service'in gönderilen XML verisini nasil
+          yorumlayacaginin tanimlanmasi gerekir. Bu tanimlama
+          <strong>WSDL</strong> (Web Service Description Language - Web
+          servisleri tanimlama dili) ile yapilir.
+        </li>
+        <li>Ön bellegi okuyamaz. (can not be cached)</li>
+        <li>Rest'e göre daha <strong>yavas</strong>tir.</li>
+        <li>Rest'e göre daha <strong>güvenli</strong>dir.</li>
+        <li>
+          <strong>Finans, iletisim, ödeme</strong> noktalarinda kullanilir.
+        </li>
+        <li>
+          Kullanici, datayi server'a iletmek isterse öncelikle SOAP
+          standardlarina uygun hala getirmelidir.
+        </li>
+        <li><code>getProductName</code> seklinde kullanilir.</li>
+      </ul>
+
+      <h3>REST (Representational State Transfer)</h3>
+      Dört temel methodu vardir:
+      <ol>
+        <li><strong>GET</strong> Talep edilen datalari getirir ve okuruz.</li>
+        <li><strong>POST</strong> Gönderilen verileri olusturur.</li>
+        <li><strong>PUT</strong> Gönderilen verileri günceller.</li>
+        <li><strong>DELETE</strong> Talep edilen datayi siler.</li>
+      </ol>
+
+      <ul>
+        <li>
+          Bu methodlara <strong>CRUD</strong> (Create, Read, Update, Delete) da
+          denir.
+        </li>
+        <li>
+          Http methodlariyla calisan bir <strong>mimari</strong>dir.(Rest
+          mimarisi))
+        </li>
+        <li>
+          Http methodlariyla tasarlandigi icin kullanimi daha
+          <strong>kolay</strong>dir.
+        </li>
+        <li>
+          Rest mimarisini kullanan servislere <strong>Restful</strong> denir.
+        </li>
+        <li>Ön bellegi okur. (can be cached)</li>
+        <li>Soap'a göre dah <strong>hizli</strong>dir.</li>
+        <li>
+          Veriler
+          <strong>XML, JSON (Java Script Object Notation), TEXT, HTML</strong>
+          formatlarinda olabilir.
+        </li>
+        <li>
+          Rest mimarisinde islemler <strong>resource</strong> kavrami ile
+          yapilir.
+        </li>
+        <li>
+          Resource ise <strong>URI</strong> (Uniform Resource Identifiers) ile
+          tanimlanir.
+        </li>
+        <li>
+          URI; örnegin amazon sitesine gittik ve orada bir ürüne tikladik. Adres
+          cubugundaki linkin tamamina URI diyoruz.
+          (https://www.techproeducation.com/courses)
+        </li>
+        <li>
+          Methodlar icin istek URI ile ve web service http protokolüyle yapilir.
+        </li>
+        <li>
+          <strong>Sosyal medya,web chat, mobil uygulamalar</strong>da
+          kullanilir.
+        </li>
+        <li><code>.../procucts/name/1</code> URI'i seklinde kullanilir.</li>
+      </ul>
+      <hr />
+      <h2>REST Request'in Parcalari</h2>
+      <ul>
+        <li>
+          <strong>Request-Line :</strong>Istegin hangi url'ye yapilacagi
+          <strong>endpoint</strong>tir. (http bilgisi)
+        </li>
+        <li>
+          <strong>Header :</strong>yapilan istegin parametrelerdir. Datanin
+          boyutu vs(yazilmasi zorunlu degil)
+        </li>
+        <li>
+          <strong>Body :</strong>Server'da bir degisiklik yapacaksak kullanilir.
+          (Post, put patch gibi islemler)
+        </li>
+      </ul>
+      <hr />
+      <h2>Endpoints</h2>
+      Kaynaga nasil esisebilecegimizi göreteren URI'lardir. <br /><br />
+      Bir API olusturdugumuzda kullanicilarin ulasabilmesi icin bu endpoint'i ve
+      kullanilabilecek http methodlarini kullanicilara bildirmeliyiz.
+      <ul>
+        <li>https://www.techproeducation.com/ : Base URL</li>
+        <li>
+          https://www.techproeducation.com/courses : URI (Uniform Resource
+          Identifiers) veya endpoint
+        </li>
+        <li>www.techproeducation.com/courses : URN</li>
+        <li>courses : path</li>
+      </ul>
+      <hr />
+      <h2>Path ve Query Parametreleri</h2>
+      https://regres.in/api/users?id=1
+      <h3>path param</h3>
+      Bir kaynagi tanimlamak ya da daha ayrintili nesneler üzerinde hareket
+      etmek istersek kullaniriz. <br /><br />
+      Bir url'de ?'nden önce gelen kisimdir.
+      <h3>query param</h3>
+      Ögeleri siralamak veya filtrelemek istersek kullanniriz. <br /><br />
+      Bir url'de ? 'nin sag tarafinda görünen kuyruk kismidir. <br /><br />Query
+      parametreleri <strong>Key-Value</strong> seklinde kullanilir.
+      <hr />
+      <h2>Swagger Documents</h2>
+      API kullananlarin kullanim klavuzu gibidir. <br /><br />
+      API methodlarinin ne ise yaradigi ve nasil kullanildiginin bu doküman
+      icinde anlasilir olmasi gerekir. <br /><br />Elle yazmak ve her zaman
+      güncel tutmak zor oldugu icin Swagger'a bunu ürettiriyoruz.
+      <br /><br />Swagger'in <strong>amac</strong>i; RestApi'ler icin bir arayüz
+      saglamaktir. <br />
+      <br />
+      Bu sekilde insanlar kaynak koda erismeden RestApi'lerin özelliklerini
+      görmesine, incelemesine ve anlamasina olanak saglar. <br /><br />
+      Swagger dokümanini olusturmak icin
+      <a target="_blank" href="https://www.swagger.io"
+        >https://www.swagger.io</a
+      >
+      sitesi ziyaret edilebilir.
+    </main>
+    <footer>
+      <hr />
+      Ayrintili bilgi icin
+      <a href="https://image4.io/tr/blog/postman-ile-api-testi/"
+        >https://image4.io/tr/blog/postman-ile-api-testi/</a
+      >
+      adresini ziyaret edebilirsiniz.
+    </footer>
+  </body>
+</html>
