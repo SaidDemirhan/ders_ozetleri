@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .cerceve {
+        border: solid 3px black;
+      }
+    </style>
+    <title>SQL</title>
+  </head>
+  <body>
+    <main>
+      <h1>SQL (Structured Query Language)</h1>
+
+      <h2>Database(Veritabani)</h2>
+      Bilgilerin depolandigi alandir. <br /><br />
+      DBMS ile kontrol edilir. <br /><br />
+      <hr />
+      <h2>DBMS(Data Base Management System</h2>
+      Veri tabaninji yönetmek, kullanmak, gelistirmek ve bakim yapmak icin
+      kullanilan yazilimlardir. <br /><br />
+      CRUD(Create, Read, Update, Delete) islemlerini düzenler. <br /><br />
+      Data güvenligini saglar. <br /><br />
+      form, sorgu, ve rapor olusturur ve isletir. <br /><br />
+      Uygulanmayi kontrol eder. <br /><br />
+      Diger uygulamalarla iletisimi saglar.
+      <hr />
+      <h2>Tables(Tablolar)</h2>
+      <strong>Headers</strong> : Tablo basliklarina denir. (ID, name, email vs)
+      <br /><br />
+      <strong>Row(Record)</strong> : Satirlara denir. <br /><br />
+      <strong>Column(Field)</strong> : Sütunlara denir. <br /><br />
+      Birbiriyle herhangi bir bilgi ile baglanan tablolara
+      <strong>Relational Databases(iliskili tablolar)</strong> denir. (Ögrenci
+      No-Ögrenci No ) Ayni zamanda <strong>SQL Databases</strong> olarak da
+      adlandirilir.<br /><br />
+      Tablolar ve iliskilerinin bütününe
+      <strong>Schema</strong> denir.(selenium'daki Faramework gibi)
+      <hr />
+      <h2>Piyasadaki bilinen Relational Databases (SQL Database)</h2>
+      <ul>
+        <li>SQL Server (Microsoft)</li>
+        <li>MySQL Server (Oracle)</li>
+        <li>PostgreSQL Server</li>
+        <li>PL/SQL (Oracle)*</li>
+      </ul>
+      <hr />
+      <h2>SQL Komutlari</h2>
+      SQL Komutlari dört ana gruba ayrilir:
+      <ol>
+        <li>
+          DQL(Data Query Language)- Veri Sorgulama Dili
+          <ul>
+            <li><strong>SELECT</strong> : Veri tabanindaki verileri alir.</li>
+          </ul>
+        </li>
+        <li>
+          DML(Data Manipulation Language)- Veri Kullanma Dili
+          <ul>
+            <li><strong>INSERT</strong> :Veri tabanina yeni veri ekler.</li>
+            <li>
+              <strong>UPDATE</strong> :Veri tabanindaki verileri günceller.
+            </li>
+            <li>
+              <strong>DELETE</strong> :Veri tabanindaki verileri siler.
+              <br />//DML(ic islemler) insert update delete
+            </li>
+          </ul>
+        </li>
+        <li>
+          DDL(Data Definition Language)- Veri Tanimlama Dili
+          <ul>
+            <li>
+              <strong>CREATE</strong> :Bir veritabani veya veritabani icinde bir
+              tablo olusturur.
+            </li>
+            <li>
+              <strong>ALTER</strong> :Bir veritabani veya veritabnai icindeki
+              tabloyu günceller.
+            </li>
+            <li>
+              <strong>DROP</strong> :Bir veritabani veya veritabani icindeki
+              tabloyu siler. <br />//DDL islemleri (dis islemler)create alter
+              drop
+            </li>
+          </ul>
+        </li>
+        <li>
+          DCL(Data Control Language)- Veri Kontrol Dili
+          <ul>
+            <li>
+              <strong>GRANT</strong> :Bir kullaniciya yetki vermek icin
+              kullanilir.
+            </li>
+            <li>
+              <strong>REVOKE</strong> :Bir kullaniciya verilen yetkiyi geri
+              almak icin kullanilir.
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <hr />
+      <h3>Primary Key</h3>
+      //not Null, Unique, parent. <br /><br />
+      Bir veri tablosunda <strong>tek olmasi gereken</strong> bir veri icin
+      kisitlama anahtaridir.(Ögrenci No) <br /><br />
+      Bos gecilemez. <br /><br />
+      NULL degeri alamaz. <br /><br />
+      Bir tabloda en fazla <strong>bir adet primary key</strong> olabilir.
+      <br /><br />
+      Her tabloda primary key olmasi <strong>zorunlu degil</strong>dir.
+      <br /><br />
+      Primary key her tür datayi icerebilir.(String, sayi vs) <br /><br />
+      Her benzersiz olan data primary key degildir. <br /><br />
+      Primary key eger gercek dünyadaki verileri iceriyorsa (tc no) buna
+      <strong>Natural Key</strong> denir. <br /><br />
+      Herhangi bir kayit eklenmeden üretilen sira numarasi gibi sayisal
+      degerlere <strong>Surrogate Key</strong> denir.
+      <hr />
+      <h3>Foreign Key</h3>
+      //null olabilir, Unique sart degil, child. <br /><br />
+      Iki tablo arasinda <strong>bag olusturmak icin</strong> kullanilan
+      anahtardir. <br /><br />
+      Foreign Key baska bir tablodaki
+      <strong>Primary Key</strong> ile iliskilendirilmis olmalidir. <br /><br />
+      Bir tabloda birden fazla foreign key olabilir. <br /><br />
+      Foreign Key <strong>NULL</strong> degeri kabul eder. <br /><br />
+      Unique olma zorunlulugu yoktur. <br /><br />
+      Ayni tablo icerisinde de bir relation (bag) olusturulabilir.
+      <hr />
+      <h3>Composite Key</h3>
+      Birden fazla field(sütun)'in kombinasyonu ile olusturulur. <br /><br />
+      Eger tek basina bir sütun primary key olma özelligi tasimiyorsa birden
+      fazla kolon birlestirilerek Primary olusturulur.
+      <hr />
+      <h3>Unique Key</h3>
+      Bir tabloda birden fazla olabilir. <br /><br />
+      <strong>NULL</strong> degeri kabul eder. <br /><br />
+      Dublication'a(cift kullanim) izin vermez.
+      <hr />
+      <h2>SQL Data Types</h2>
+      SQL'de dört cesit data tipi mevcuttur.
+      <ol>
+        <li>
+          String Data Types
+          <ul>
+            <li>
+              <strong>char(size)</strong> :
+              <ul>
+                <li>Maximum boyutu 2000 byte olabilir.</li>
+                <li>1 karakter 1 byte kullanir.</li>
+                <li>"size" database'e eklenecek karakter sayisidir.</li>
+                <li>Uzunlugu sabit datalari depolar.</li>
+                <li>
+                  SSN, zip code gibi uzunlugu sabit datalari depolamak icin
+                  idealdir. <br />
+                  //Girilen datanin net uzunlugu
+                  <strong>biliniyorsa</strong> tercih edilmelidir.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>nchar(size)</strong> :
+              <ul>
+                <li>Maximum boyutu 2000 byte olabilir.</li>
+                <li>1 karakter 2 byte kullanir.</li>
+                <li>"size" depolanacak karakter sayisidir.</li>
+                <li>Unicode datalari depolamak icin kullanilir.</li>
+                <li>Farkli dillerdeki karakterler icin kullanilir.</li>
+                <li>Uzunlugu belli stringler icin kullanilir.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>varchar2(size)</strong> :
+              <ul>
+                <li>Maximum boyutu 4000 byte olabilir.</li>
+                <li>1 karakter 1 byte kullanir.</li>
+                <li>"size" database'e eklenecek maximum karakter sayisidir.</li>
+                <li>
+                  Degisken uzunluktaki String'ler icin kullanilir.
+                  <br />
+                  //Girilen datanin net uzunlugu
+                  <strong>bilinmiyorsa</strong> tercih edilmelidir.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>nvarcahr2(size)</strong> :
+              <ul>
+                <li>Maximum boyutu 8000 byte olabilir.</li>
+                <li>1 karakter 2 byte kullanir.</li>
+                <li>"size" dopolanacak karakter sayisidir.</li>
+                <li>
+                  Degisken uzunluktaki String'lerin Unicode degerleri icin
+                  kullanilir.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Numeric Data Types
+          <ul>
+            <li>
+              <strong>number(p)</strong> :
+              <ul>
+                <li>(p) sayidaki rakam sayisidir. (precision)</li>
+                <li>(p) 1 ile 38 arasinda bir deger yazilabilir.</li>
+                <li>
+                  (p)'den az sayida rakam girebilirsiniz ama fazlasini
+                  giremezsiniz.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>number(p,s)</strong> :
+              <ul>
+                <li>
+                  (s) virgülden sonra kac rakam oldugunu belirler. (scale)
+                  <br />
+                  Örnegin: 1234,56 = number(6,2)
+                </li>
+                <li>(s) -84 ile 127 arainda deger alabilir.</li>
+                <li>number(4,2)=123,45 hata verir.</li>
+                <li>
+                  number(7) 12345,67 olarak kabul etse de 12345 olarak depolar.
+                </li>
+                <li>number(7) ile number(7,0) aynisir.</li>
+                <li>
+                  number(7,-2) 1234567,89 virgulden 2 basamak sola gelerek
+                  yuvarlar: 1234600
+                </li>
+                <li>Baska proramlarda degisik kullanimlari vardir.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Date Data Types
+          <ul>
+            <li>
+              <strong>DATE</strong> :
+              <ul>
+                <li>
+                  Tarih ve zamani depolamak icin kullanilir. Saniyennin virgüllü
+                  kismini da alir.
+                </li>
+                <li>Yil, ay, gün, saat, dakika, saniye icerir</li>
+                <li>formati dd-MMM-yy(13-Apr-21) seklindedir.</li>
+                <li>
+                  Tarih formati ALTER SESSION SET NLS_DATE_FORMAT="YYYY_MM_DD"
+                  yazilarak 2021-04-18'e degistirilebilir.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Blob Data Types
+          <ul>
+            <li>
+              <strong>BLOB</strong> :
+              <ul>
+                <li>Binary Large OBject demektir.</li>
+                <li>
+                  Resim video ses gibi datalari binary formatina cevirerek
+                  depolar.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <hr />
+      <strong>Oracle SQL Developer</strong> programinda calismaya baslamak icin:
+      <br />
+      File'in altindaki dosya isaretine bas &gt; Database Tier &gt; Database
+      Files &gt; SQL file dosyasini sec &gt; Tamam &gt; File Name =day1
+      &gt;Directory = Masaüstünde olusturulan SQL Klosörünü sec &gt; Select &gt;
+      Tamam <br />Worksheet acilmistir.
+      <hr />
+      <h4>Bazi kisa aciklamalar:</h4>
+      <ul>
+        <li>
+          Yorum satir yapmak icin -- isareti ile baslanmalidir. <br />Eger
+          paragraf yorum yapmak istersek /* */ arasina yazilir.
+        </li>
+        <li>
+          Yazilan kelimeyi büyük veya kücük harfe cevirmek icin yukaridaki Aa
+          simgesine basmak yeterli olur.
+        </li>
+        <li>
+          Eger satir numaralarini görmek istersek satir basindaki bos sütuna
+          gelip sag tiklayip Toggle Line Numbers secenegine tiklayalim.
+        </li>
+        <li>
+          Eger dosya adi egik cikiyorsa mutlaka ayrilmadan önce kaydetmeliyiz.
+        </li>
+        <li></li>
+      </ul>
+      <hr />
+      <h3>Tablo Olusturma</h3>
+      <div class="cerceve">
+        <code
+          >CREATE TABLE student <br />
+          ( <br />
+          id CHAR(4), <br />
+          name VARCHAR(20), <br />
+          age NUMBER <br />
+          );</code
+        >
+      </div>
+      Degerler arasina virgül konur. <br /><br />
+      Yazilan kodun sonuna gelip mouse'umuzu tiklayip run isaretini kullanarak
+      calistirabilecegimiz gibi sadece sectigimiz kismi da calistirabiliriz.
+      Burada run tusuna basarsak student isminde bir tablo create edilmis
+      olacaktir.(eger ayni isimde tablo yoksa)
+      <hr />
+      <h3>Tabloya Veri Girisi</h3>
+      Olusturulan tabloda id, name, age header'lari mevcut.
+      <div class="cerceve">
+        <code>INSERT INTO student VALUES('1001','MEHMET CAN',25);</code>
+      </div>
+      Olusturulan tablodaki siraya göre veriler girilmelidir. <br /><br />
+      NUMMER icin tek tirnakli yazmaya gerek yoktur. <br /><br />
+      CHAR ve VARCHAR degerleri icin tirnak kullanmak sarttir.
+      <h4>Eger parcali veri girisi yapmak istersek:</h4>
+      <div class="cerceve">
+        <code>INSERT INTO student(id,name) VALUES('1002','FATMA CANLI');</code>
+      </div>
+      Girilmeyen age kismi <strong>(null)</strong> olacaktir.
+      <hr />
+      <h3>Tablodan Veri Sorgulama</h3>
+      <div class="cerceve"><code>SELECT * FROM student;</code></div>
+      Yildiz tablodaki her seyi getir göster manasina gelir.
+      <hr />
+      <h3>Tablo Silme</h3>
+      Tablo acikken silinmez! <br />
+      Child silinmeden Parent silinmez.
+      <div class="cerceve"><code>DROP TABLE student;</code></div>
+      Eger Tabloyu manuel silmek istersek; <br />
+      sol taraftaki Connections kismi &gt; silmek istedigimiz tabloya gelip sag
+      tikla &gt; Table &gt; Drop &gt; Uygula <br />
+      Eger cöp kutusuna degil de tamamen silinsin istersek uygula demeden
+      <strong>Purge</strong> secenegini isaretlemeliyiz. <br /><br />
+      Eger cöp kutusuna gönderdigimiz bir dosyayi yeniden yüklemek istersek;
+      <br />
+      istenilen doyaya sag tikla &gt; Flashback to Before Drop secenegine bas.
+      <hr />
+      <h3>Iki Tabloyu Birbirine Baglama</h3>
+      <div class="cerceve">
+        <code
+          >CREATE TABLE adresler( <br />
+          adres_id CHAR(5), <br />
+          CONSTRAINT id_foreign FOREIGN KEY(adres_id) REFERENCES calisanlar(id)
+          <br />
+          );
+        </code>
+      </div>
+      Calisanlar tablosu önceden olusturulmus olmali ve calisanlar tablosundaki
+      id primary key olmali.
+      <hr />
+      <h3>Tablodaki Bilgileri Güncelleme</h3>
+      Ögrenci numarasi 1002 olan ögrencinin sinav notunu 85 olarak
+      güncelleyelim;
+      <div class="cerceve">
+        <code>
+          UPDATE ogrenciler <br />
+          <strong>SET</strong> sinav_notu= 85 <br />
+          WHERE ogrenci_no=1002;
+        </code>
+      </div>
+      sütunun tamamini ayni degerle güncelleyeceksek yer belirtmeye(WHERE) gerek
+      yok. <br />
+      Eger 50'nin altinda alan ögrencilerin sinav notunun +5 artmasini
+      isteseydik;
+      <div class="cerceve">
+        <code>
+          UPDATE ogrenciler <br />
+          SET sinav_notu= sinav_notu+5 <br />
+          WHERE sinav_notu&lt;50;
+        </code>
+      </div>
+      Eger birbirine bagli iki tabloda degisiklik yapmak isteseydik; <br />
+      Sinav notu kismina ortalamasi 50 alti olanlara sinav tablosundan bütünleme
+      sinavi tarihi yazilsin)
+      <div class="cerceve">
+        <code>
+          UPDATE ogrenciler <br />
+          SET sinav_notu=(SELECT butunleme_tarihi FROM sinavlar) <br />
+          WHERE ortalama&lt;50);
+        </code>
+      </div>
+      <hr />
+      <h3>CONSTRAINTS - KISITLAMALAR</h3>
+      Kisitlamalari tablo olustururken yazmamiz gerekir.
+      <ul>
+        <li>
+          <strong>NOT NULL</strong> : Bir Sütunun NULL içermemesini garanti
+          eder.
+          <ul>
+            <li><code>id CHAR(4) NOT NULL</code></li>
+          </ul>
+        </li>
+        <li>
+          <strong>UNIQUE</strong> : Bir sütundaki tüm değerlerin BENZERSİZ
+          olmasını garanti eder. Birden fazla null kabul edebilir.
+          <ul>
+            <li><code>id CHAR(4) UNIQUE</code></li>
+          </ul>
+        </li>
+        <li>
+          <strong>PRIMARY KEY</strong> : Bir sütunun NULL içermemesini ve
+          sütundaki verilerin BENZERSİZ olmasını garanti eder.(NOT NULL ve
+          UNIQUE birleşimi gibi)
+          <ul>
+            <li><code> id CHAR(5) PRIMARY KEY </code></li>
+          </ul>
+          Istersek kisitlamaya kendimiz isim atayabiliriz ama isi uzatiriz;
+          <ul>
+            <li>
+              <code
+                >id CHAR(5), <br />
+                CONSTRAINT id_primary PRIMARY KEY(id)
+              </code>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>FOREIGN KEY</strong> : Başka bir tablodaki Primary Key'i
+          referans göstermek için kullanılır. Böylelikle, tablolar arasında
+          ilişki kurulmuş olur.
+          <ul>
+            <li>
+              <code
+                >CREATE TABLE adresler( <br />
+                adres_id CHAR(5), <br />
+                CONSTRAINT id_foreign FOREIGN KEY(adres_id) REFERENCES
+                calisanlar(id) <br />
+                );
+              </code>
+              <br />
+              //adresler ile calisanlar tablosu birbirine baglanmis oldu.
+              (calisanlar(id) primary key olmali) <br />
+              //Calisanlar tablosu parent oldu. <br />
+              //Parent'ta olmayan id'li veri girisine(INSERT) izin verilmez.
+              //iki farkli veri foreign key yapilarak baska bir tablodaki ayni
+              data tiplerine(primary key'e sahip) baglanabilir.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>CHECK</strong> : Bir sutundaki tüm verilerin belirlenen özel
+          bir şartı sağlamasını garanti eder. Null deger alabilir. <br />
+          <code> nufus NUMBER(8,0) CHECK (nufus&gt;1000) </code>
+        </li>
+      </ul>
+      <hr />
+      <h3>Istenilen Bir Sarti Listeleme</h3>
+      Ögrenciler tablosundan sinav notu 80'den büyük olan ögrencileri
+      listeleyelim.
+      <div class="cerceve">
+        <code
+          >SELECT *FROM ogrenciler <br />
+          WHERE sinav_notu>80;
+        </code>
+      </div>
+      Eger adresi Ankara olan ögrencilerin numara ve isimlerini isteseydik;
+      <div class="cerceve">
+        <code
+          >SELECT ogrenci_no, isim FROM ögrenciler <br />
+          WHERE adres= 'Ankara';
+        </code>
+      </div>
+      Eger notu 60 ile 80 arasinda olan ögrencileri listeleseydik;
+      <div class="cerceve">
+        <code
+          >SELECT * FROM ogrenciler <br />
+          WHERE sinav_notu <strong>BETWEEN</strong> '60' AND '80';
+        </code>
+      </div>
+      veya
+      <div class="cerceve">
+        <code
+          >SELECT * FROM ogrenciler <br />
+          WHERE sinav_notu &gt;= '60' AND sinav_notu &lt;='80';
+        </code>
+      </div>
+      Sinirda olanlari dahil ediyor. <br />
+      Illa ki sayisal bir deger olmasina gerek yok, harf olarak da getirebilir.
+      <br />
+      Eger bu aralikta nota sahip olmayanlarin soyadlarini listelemek
+      isteseydik;
+      <div class="cerceve">
+        <code
+          >SELECT soyad FROM ogrenciler <br />
+          WHERE sinav_notu <strong>NOT BETWEEN</strong> '60'
+          <strong>AND</strong> '80';
+        </code>
+      </div>
+      Sinirda olanlari dahil etmiyor. <br />
+      Eger sadece istenilen notlara sahip ögrencileri isteseydik;
+      <div class="cerceve">
+        <code
+          >SELECT * FROM ogrenciler <br />
+          WHERE sinav_notu <strong>IN</strong> (60,70,80);
+        </code>
+      </div>
+      Gelen notlar icinde 75 notu olan bir ögrenci olmayacak.
+      <hr />
+      <h3>Operatör Ifadeleri</h3>
+      <ul>
+        <li><strong>=</strong> : Esittir</li>
+        <li>
+          <strong>&lt;&gt;</strong> : Esit degil (!= seklinde de
+          kullanilabilir).
+        </li>
+        <li><strong>&gt;</strong> : Büyüktür</li>
+        <li><strong>&lt;</strong> : Kücüktür</li>
+        <li><strong>&gt;=</strong> : Büyüktür veya esittir</li>
+        <li><strong>&lt;=</strong> : Kücüktür veya esittir</li>
+      </ul>
+
+      <!--
+
+-------------------------
+SELECT * FROM tablo_ismi 
+WHERE sinav_notu>80;		= secilen sarta ait tüm bilgileri gösterir.
+-------------------------
+DELETE FROM tablo_ismi
+WHERE id=124;				=sarti tutanlari siler.
+	-DELETE FROM tablo_ismi
+	WHERE isim='Ayse' OR isim='fatma'	=hem ismi ayse olanlari sil hem de fatma olanlari sil 
+	-DELETE FROM tablo_ismi
+	WHERE isim='Ayse' AND id=124		=iki sarta da uyani sil
+	(id>126,id IN (123,124,126)
+------------------------
+SELECT * FROM tablo_ismi
+WHERE id BETWEEN '1003' AND '1008';	
+	veya
+SELECT * FROM tablo_ismi
+WHERE id id>= '1003' AND id<='1008';	= sartlar arasini gösterir.
+	*sartimiz harf veya kelime de olabilir.
+------------------------
+SELECT * FROM tabela_ismi
+WHERE maas IN (2000,3000,5000);	=sadece bu sarti saglayanlari gösterir.
+------------------------
+UPDATE tablo_ismi
+SET degistirilmek_istenen_key/value='yeni_deger'
+WHERE degistirilecek_degerin_kimligi=kimlik;	=Value veya key i degistirme
+	*eger hepsi degisecekse WHERE e gerek yok.
+	*art arda virgul ile degistirilecekler yazilabilir.
+------------------------
+***AGGREGATE FONKSIYONLAR***
+SUM	=toplam
+	SELECT SUM (toplami_istenilen) FROM tablo_ismi
+COUNT 	=adet(sayac)
+	SELECT COUNT(sayilmasi_istenen) FROM tablo_ismi 
+*ROUND	=yuvarla
+	SELECT ROUND (AVG(ortalamasi_istenilen)) FROM tablo_ismi
+MIN	=minimum deger
+	SELECT MIN (istenilen mainimun_deger) FROM tablo_ismi
+MAX	=maximum deger
+	SELECT MAX (istenilen maximun_deger) FROM tablo_ismi
+AVG 	=ortalama
+	SELECT AVG(ortalamasi_istenilen) FROM tablo_ismi
+
+AS yeni isim vermek icin genelde parantez ardina yazilir. Sutuna isim verir
+
+TRUNCATE TABLE tablo_ismi= tamamen siler geri gelmez
+
+DROP TABLE tablo_ismi PURGE =tamamen siler geri gelmez.
+
+FLASHBACK TABLE tablo_ismi TO BEFORE DROP = cop kutusundakini geri getirir.
+
+ON DELETE CASCADE = parent de olsa silebilmek baglanti yaparken  REFERENCES ten sonra yazilmali
+
+			=>CONSTRAINT aciklama FOREIGN KEY kendi_tablo_degeri REFERENCES 						diger_tablo(diger_tablo_degeri) ON DELETE CASCADE
+
+	*IN yerine EXIST de yazilabilir.
+SELECT urun_id, musteri_isim FROM mart_satislar
+ WHERE EXISTS(SELECT urun_id FROM nisan_satislar
+                WHERE mart_satislar.urun_id=nisan_satislar.urun_id);
+------------------------------------
+IS NULL /IS NOT NULL
+
+SELECT * FROM insanlar
+ WHERE isim IS NULL;		//ismi null olanlari gösterir
+-------------------------------------
+COALESCE
+--Null olmayanlari bize gösterir.
+ SELECT COALESCE (isim,ssn,adres) FROM insanlar;		// her satirdan getirir
+veya
+UPDATE insanlar
+ SET isim= COALESCE (isim,'Henuz isim girilmedi'),
+ adres=COALESCE (adres,'Henuz adres girilmedi'),
+ ssn=COALESCE (ssn,'ssn yok');				//null lari degistirir.
+
+/*================================ ORDER BY  ===================================
+   ORDER BY cümleciği bir SORGU deyimi içerisinde belli bir SUTUN'a göre
+   SIRALAMA yapmak için kullanılır.
+   Syntax
+   -------
+      ORDER BY sutun_adi ASC   -- ARTAN
+      ORDER BY sutun_adi DESC  -- AZALAN
+=========================================*/
+SELECT * FROM kisiler
+ ORDER BY adres;
+
+SELECT * FROM kisiler
+ WHERE isim ='Mine'
+ ORDER BY ssn DESC;
+
+SELECT * FROM kisiler
+ WHERE soyisim ='Bulut'
+ ORDER BY 2;			-- 2. sutunda isim oldugu icin bu sekilde de kullanabiliriz.
+ 
+ /*===== FETCH NEXT, OFFSET (12C VE ÜSTÜ oracle larda çalışır, daha altsanız çalışmaz) ============
+   FETCH cümleciği ile listelenecek kayıtları sınırlandırabiliriz. İstersek
+   satır sayısına göre istersek de toplam satır sayısının belli bir yüzdesine
+   göre sınırlandırma koymak mümkündür. (şu kadar satırı getir)
+   Syntax
+   ---------
+   FETCH NEXT satir_sayisi ROWS ONLY;
+   FETCH NEXT satir_yuzdesi PERCENT ROWS ONLY;
+   OFFSET Cümleciği ile de listenecek olan satırlardan sırasıyla istediğimiz
+   kadarını atlayabiliriz.
+   Syntax
+   ----------
+   OFFSET satır_sayisi ROWS;
+==============================================================================*/
+
+ ORNEK1: MAAŞ'ı en yüksek 3 kişinin bilgilerini listeleyen sorguyu yazınız.*/
+  
+  SELECT * FROM kisiler;
+  
+  SELECT * FROM kisiler
+  ORDER BY maas DESC
+  FETCH NEXT 3 ROWS ONLY;-- su an yuklu surumde hata veriyor
+  
+  SELECT * FROM (SELECT * FROM kisiler
+  ORDER BY maas DESC)
+  WHERE ROWNUM<4;       --11 den oncekilerde bu olmali
+  
+  --ORNEK2: MAAŞ'ı en DÜŞÜK 2 kişinin bilgilerini listeleyen sorguyu yazınız.
+  
+  SELECT * FROM kisiler
+  ORDER BY maas
+  FETCH NEXT 2 ROWS ONLY;
+  
+  SELECT * FROM (SELECT * FROM kisiler
+  ORDER BY maas)
+   WHERE ROWNUM<3;
+   
+   --ORNEK3: MAAŞ'a göre sıralamada 4. 5. ve 6. kişilerin bilgilerini listeleyen
+  --sorguyu yazınız
+  
+  SELECT * FROM kisiler
+  ORDER BY maas DESC
+  OFFSET 3 ROWS
+  FETCH NEXT 3 ROWS ONLY;
+  
+  
+   SELECT * FROM
+   (SELECT * FROM
+   (SELECT *
+                FROM   kisiler
+                ORDER BY maas DESC)
+        WHERE ROWNUM <=6)
+WHERE  ROWNUM <=3;
+
+*============================ GROUP BY =====================================
+    GROUP BY cümleciği bir SELECT ifadesinde satırları, sutunların değerlerine
+    göre özet olarak gruplamak için kullanılır.
+    GROUP BY cümleceği her grup başına bir satır döndürür.
+    GROUP BY genelde, AVG(),COUNT(),MAX(),MIN() ve SUM() gibi aggregate
+    fonksiyonları ile birlikte kullanılır.*/
+
+SELECT isim, SUM (urun_miktari)toplam_urun
+  FROM manav
+  GROUP BY isim;
+
+SELECT urun_adi, COUNT(isim)
+  FROM manav
+  WHERE urun_adi IS NOT NULL
+  GROUP BY urun_adi;
+
+/*******SIRALAMA AŞAĞIDAKİ GİBİ OLMALI********
+  =>SELECT FROM
+  =>WHERE  1)gruplamadan bazı şartlara göre bazılarını ele
+  =>GROUP BY 2)özelliklerine göre grupla
+  =>HAVİNG 3) grup özelliklerine göre şartla ele. ya where ya having yani
+  =>ORDER BY  4) bu grupları istenilen özelliğe göre sırala
+*/
+
+<> =esit degildir demek != seklinde de kullanilabilir.
+
+/*============================= DISTINCT =====================================
+    DISTINCT cümleciği bir SORGU ifadesinde benzer olan satırları flitrelemek
+    için kullanılır. Dolayısıyla seçilen sutun yada sutunlar için benzersiz veri
+    içeren satırlar oluşturmaya yarar.
+    SYNTAX
+    -------
+    SELECT DISTINCT sutun_adi1, sutun_adi2, satin_adi3
+    FROM  tablo_adı;
+    
+    aynilari yok etme oluyor
+======================= SELECT - LIKE ======================================
+    NOT:LIKE anahtar kelimesi, sorgulama yaparken belirli patternleri
+    kullanabilmemize olanak sağlar.
+    SYNTAX:
+    -------
+    SELECT sutün1, sutün2,…
+    FROM  tablo_adı WHERE sütun LIKE pattern
+    PATTERN İÇİN
+    -------------
+    %    --- > 0 veya daha fazla karakteri belirtir.
+    _    --- > Tek bir karakteri temsil eder.
+/* ====================================================
+
+select *from personel
+where isim like 'A%';
+
+/*======================= SELECT - REGEXP_LIKE ================================
+    Daha karmaşık pattern ile sorgulama işlemi için REGEXP_LIKE kullanılabilir.
+    Syntax:
+    --------
+    REGEXP_LIKE(sutun_adı, 'pattern[] ', 'c' ] )
+             -- 'c' => case-sentisitive demektir ve default case-sensitive aktiftir.
+     -- 'i' => incase-sentisitive demektir.
+/* ========================================================================== */
+
+SELECT * FROM kelimeler
+    where REGEXP_LIKE (kelime,'hi'|'ha','i'); veya islemi icin kullanilir
+	//sondaki i buyuk kucuk olabilir demek. Regex in özelligi
+//baslangic icin^ killanilir bitis icin$ (kelime, ^hi|^ha,'i') (kelime, t$|m$,'i')
+//kelime,'h[a-zA-Z0-9]t','i') uc harfli bir kelime bulma
+
+==================== SET (küme) OPERATORLERI: UNION, UNION ALL======================
+    set=küme diyelim diğer set (sql komutu) ile karışmasın
+    UNION, UNION ALL, INTERSECT, ve MINUS gibi SET operatorleri yardimiyla
+    Çoklu Sorgular birlestirilebilirler.aynı tablodan yada farklı tablodan sütunları birleştirip aynı sütunda yazdırma
+    UNION :  Bir SET operatorudur. 2 veya daha fazla Sorgu ifadesinin sonuc
+    kumelerini birlesitirerek tek bir sonuc kumesi olusturur. (iki kümenin birleşimi)
+    -- UNION
+-- Eger tek sorguda birlestiremeyecegim iki sorgunun sonucunu ayni tabloda
+-- gormek istersek UNION islemi kullanilir
+-- BU durumda dikkat etmemiz gereken konu iki sorguda da field sayisi ve
+-- alt alta gelecek field data tiplerinin ayni olmasidir
+    -- UNION ALL komutu ise tekrara bakmaksizin iki sorgudan gelen tum sonuclari listeler
+-- UNION ALL komutunda da iki sorgunun sonucunun esit sayida field'a ve data
+-- tiplerine sahip olmasi gereklidir
+     SÜTUN birleştirme=> SET
+     TABLO birleştirme=> JOIN
+    Syntax:
+    ----------
+    SELECT sutun_adi,sutun_adi2, .. FROM tablo_adi1
+    UNION
+    SELECT sutun_adi1, sutun_adi2, .. FROM tablo_adi2;
+    NOT: UNION operatoru SADECE benzersiz degerleri alır. Benzerli verileri almak
+    için UNION ALL kullanılır.
+
+ ========================= SET OPERATORLERI: INTERSECT ========================
+    --ıntersect=> iki kümenin kesişimini döndürür
+    INTERSECT operarotu 2 veya daha fazla Sorgu ifadesinin sonuclarini
+    dondurmek icin kullanilir. Ancak, intersect SADECE tum sorgularin ortak
+    verilerini (kesimlerini) dondurur.
+    Syntax:
+    ----------
+    SELECT sutun_adi,sutun_adi2, .. FROM tablo_adi1
+    INTERSECT
+    SELECT sutun_adi1, sutun_adi2, .. FROM tablo_adi2;
+==============================================================================*/
+/* -----------------------------------------------------------------------------
+  ORNEK5: Personel tablosundan Istanbul veya Ankara'da calisanlarin id'lerini
+  sorgulayiniz.
+  Personel_bilgi tablosundan 2 veya 3 cocugu olanlarin id lerini sorgulayiniz.
+  Bu iki sorguyu INTERSECT ile birlesitiriniz.
+------------------------------------------------------------------------------*/
+
+
+========================= SET OPERATORLERI: MINUS ============================
+    MINUS operatoru ilk Sorgu ifadesinde olup da diger sorgu ifadesinde olmayan
+    verileri dondurur. Yani 1. sorgu ile 2. sorgu arasindaki farklı olanları
+    dondurur
+    Syntax:
+    ----------
+    SELECT sutun_adi,sutun_adi2, .. FROM tablo_adi1
+    MINUS
+    SELECT sutun_adi1, sutun_adi2, .. FROM tablo_adi2;
+==============================================================================*/
+
+
+--minus tekrarli satirlardan sadece bir adet yaazdirir.(union gibi)
+
+/* -----------------------------------------------------------------------------
+  ORNEK8: 5000'den az maas alan ve Honda calisani olmayanların bilgilerini
+  listeleyen bir sorgu yaziniz.
+------------------------------------
+
+============================== JOIN İSLEMLERİ ===============================
+    foreıgn key id si ortakları yanyana yazıyordu bu bikaç tablodan istenilen
+    sütunları alır birleştirir. set istenilen sütunları tek sütunda birleştirir
+    Set Operatorleri (Union,Intersect,Minus) farklı tablolardaki sutunlari
+    birlestirmek için de kullanilir.
+    Join islemleri ise farklı Tablolari birlestirmek icin kullanilir. Diger
+    bir ifade ile farkli tablolardaki secilen sutunlar ile yeni bir tablo
+    olusturmak icin kullanilabilir.
+    JOIN islemleri Iliskisel Veritabanlari icin cok onemli bir ozelliktir. Çunku
+    Foreign Key'ler ile iliskili olan tablolardan istenilen sutunlari cekmek
+    icin JOIN islemleri kullanilabilir.
+    ORACLE SQL'de 4 Cesit Join islemi kullanilabilmektedir.
+    1) FULL JOIN:  Tablodaki tum sonuclari gosterir
+    2) INNER JOIN:  Tablolardaki ortak olan sonuc kumesini gosterir
+    3) LEFT JOIN:  Ilk tabloda (Sol) olup digerinde olmayan sonuclari gosterir
+4) RIGHT JOIN: Sadece Ikinci tabloda olan tum sonuclari gosterir
+
+/*=============================== FULL JOIN  ==================================
+    FULL JOIN, Her iki tablo icin secilen sutunlara ait olan tum satirlari
+    getirmek icin kullanilir. ortaklar aynı satırda yazılır, extra fazla satır varsa o da yazılır.
+    Syntax
+    -----------
+    SELECT sutun1,sutun2....sutunN
+    FROM tablo1
+    FULL JOIN tablo2
+    ON tablo1.sutun = tablo2.sutun;
+==============================================================================*/
+/* -----------------------------------------------------------------------------
+  ORNEK1: sirketler ve siparisler adındaki tablolarda yer alan sirket_isim,
+  siparis_id ve siparis_tarihleri listeleyen bir sorgu yaziniz.
+------------------------------------------------------------------------------*/
+
+=============================== INNER JOIN  ==================================
+    Iki tablonun kesisim kumesi ile yeni bir tablo olusturmak icin kullanilir.
+    Syntax
+    -----------
+    SELECT sutun1,sutun2....sutunN
+    FROM tablo1
+    INNER JOIN tablo2
+    ON tablo1.sutun = tablo2.sutun;
+================================================================================
+/* -----------------------------------------------------------------------------
+  ORNEK2: Iki Tabloda sirket_id'si ayni olanlarin sirket_ismi, siparis_id ve
+  siparis_tarihleri listeleyen bir sorgu yaziniz. null olanlar çıkmıcak çünkü NULL
+  ortak değil(bir tabloda null iken diğerinde id null yok, 100, 101 vs var)
+------------------------------------------------------------------------------*/
+
+/*=============================== ALTER TABLE ==================================
+    --iç kaporta için UPDATE (DML), dış kaporta için ALTER (DDL)
+    ALTER TABLE  tabloda ADD, MODIFY, veya DROP/DELETE COLUMNS islemleri icin
+    kullanilir.
+    ALTER TABLE ifadesi tablolari yeniden isimlendirmek (RENAME) icin de
+    kullanilir.
+==========================================================*/
+
+-->
+    </main>
+  </body>
+</html>

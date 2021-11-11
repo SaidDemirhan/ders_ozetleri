@@ -175,6 +175,13 @@
           >Background: amazon sayfasina gitme <br />
           When kullanici amazon sayfasina gider</code
         >
+        <br /><br />
+        Eger feature dosyasina <strong>yorum</strong> yazmak istersek
+        <strong>#</strong> isaretini kullanmaliyiz. <br /><br />
+        Runner Class'ina bir tag(@..) yazildiginda bu tag feature package'inin
+        tamaminda aranir.Feature dosyasinda o tag bulununca sonraki satir
+        calistirilmak icin ilgili satir bu kez stepdefinitions package'inin
+        tamaminda aranir.
       </div>
       <hr />
       <div class="maddesiz">
@@ -252,11 +259,12 @@
               <li>
                 dryRun= false <br />//true(renkli görünür) veya false(sönük
                 görülür) deger alir. <br />//Normal kosullarda dryRun=false
-                kalmalidir. <br />//"true" iken run ettigimizde henüz teste
-                baslamadan adimlari kontrol eder ve test adimlarinin
-                tanimlanmasinda eksik bulursa rapor olarak stepdefinitions'a
-                yazilmasi icin tavsiye getirir ve test failed olur.<br />//Eger
-                elle method olusturmak istemiyorsak bu yöntemi kullanabiliriz.
+                kalmalidir. <br />//"true" iken run ettigimizde
+                <strong>testimiz calismaz!</strong> Henüz teste baslamadan
+                adimlari kontrol eder ve test adimlarinin tanimlanmasinda eksik
+                bulursa rapor olarak stepdefinitions'a yazilmasi icin tavsiye
+                getirir ve test failed olur.<br />//Eger elle method olusturmak
+                istemiyorsak bu yöntemi kullanabiliriz.
                 <br />
                 //Eger "false" ise stepdefinitions'daki test adimlarini önce
                 kontrol eder ve bir eksiklikle karsilasirsa testi calistirmaz,
@@ -277,6 +285,8 @@
           <li>public class Runner { <br />//Class'in ic bos kalacak.</li>
           <li>}</li>
         </ul>
+        Eger herhangi bir step <strong>failed</strong> oldugunda test calismayi
+        durdurur ve sonraki stepler <strong>ignore</strong> edilir.
       </div>
       <hr />
       <div class="maddesiz">
@@ -427,7 +437,163 @@
         <h2>@tags</h2>
         Taglari yalnizca belirli seneryolari calistirmak icin kullaniriz,
         <br /><br />Taglari ayni zamanda seneryolarimizi gruplandirmak icin de
-        kullanabiliriz(smaoke test,regression test vs).
+        kullanabiliriz(smaoke test,regression test vs). <br /><br />
+        Eger o an calistirilmak istenen bir test varsa
+        <strong>@wip</strong>(work in progress) tagi kullanilir.
+      </div>
+      <hr />
+      <div>
+        <h2>Scenario Outline</h2>
+        Ayni testte birden fazla detayi kullanmamizi saglar. <br /><br />Bir
+        liste kullanmak istedigimizde degeri
+        <strong>&lt;value&gt;</strong> seklinde yazariz. <br /><br />Testin
+        sonuna ise <strong>Examples:</strong> yazip ilk satira olarak
+        <strong>|value|</strong> yazariz. <br /><br />Altina kullanmak
+        istedigimiz degerleri ekleriz. <br />
+        |Elma| <br />|Armut| <br />|......| <br /><br />Eger birlikte test
+        edilmesi gereken bilgi varsa yan yana yazilabilir. <br />
+
+        Examples: <br />
+        |firstName| lastName|position|office|extension|startDate|salary|<br />
+        |Hakan |Can|TestLead|Paris|124|2021-01-21|60000|<br />
+        |Murat |Kan | QA | Kenya | 126 |2021-01-20|40000|
+      </div>
+      <div class="maddesiz">
+        <ul class="cerceve">
+          <li>
+            <strong>Feature:</strong> US1005 amazonda liste ile arama
+
+            <ul>
+              <li>
+                //@CH seklinde bu dosyayi Runner'dan calistirmak icin buraya tag
+                yazilabilir. <br />
+                <strong>Scenario Outline:</strong> TC09 amazonda verilen bir
+                listeyi aratip, var olduklarini test ediniz.
+                <ul>
+                  <li>
+                    <strong>Given</strong> kullanici
+                    <strong>"amazonUrl"</strong> sayfasina gider
+                  </li>
+                  <li>
+                    <strong>Then</strong>
+                    <strong>"&lt;arananUrun&gt;"</strong> icin arama yapar
+                    <br />//Eger sadece tirnak icindeki kisim farkli olursa Java
+                    ayni yere input yapilacak zanneder. <br />//Her adim bu
+                    yüzden unique olmalidir.
+                  </li>
+                  <li><strong>And</strong> sonuc sayisini yazdirir</li>
+                  <li>
+                    <strong>And</strong> sonucun
+                    <strong>"&lt;arananUrun&gt;"</strong> icerdigini test eder
+                  </li>
+                  <li><strong>Then</strong> sayfayi kapatir</li>
+                  <li>
+                    <strong>Examples:</strong>
+                    <ul>
+                      <li><strong>|arananUrun|</strong></li>
+                      <li>|nutella |</li>
+                      <li>|java |</li>
+                      <li>|ipod |</li>
+                      <li>|armut |</li>
+                      <li>|Apple |</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <hr />
+      <div class="maddesiz">
+        <h2>HTML Rapor Ekleme</h2>
+        Cucumber'da Html raporu alabilmek icin <strong>Runner</strong> Class'ina
+        <strong>plugin</strong>(eklenti) eklenmelidir.
+        <ul class="cerceve">
+          <li>package runners;</li>
+          <li>@RunWith(Cucumber.class)</li>
+          <li>
+            @CucumberOptions (
+            <ul>
+              <li>
+                <code>plugin={"html:target\\cucumber-reports.html"</code>,
+                <br />//Intellj de target klosörünün altina cuucmber-reports
+                isimli bi dosya olusturur. <br />//Eger üzerine yazmasin
+                istersek rapor2 seklinde degistirilebilir.
+                <code>"json:target/json-reports/cucumber.json"</code>, <br />
+                <code>"junit:target/xml-report/cucumber.xml"}</code
+                >,<br />//Eger html disinda raporlar isteniyorsa (json,xml) bu
+                sekilde yazilir.(API icin)
+              </li>
+              <li>features="src/test/resources/features",</li>
+              <li>glue="stepdefinitions",</li>
+              <li>tags="@Amazon",</li>
+              <li>dryRun= false</li>
+            </ul>
+          </li>
+          <li>)</li>
+          <li>public class Runner {</li>
+          <li>}</li>
+        </ul>
+        Rapor alabilmek icin mutlaka <strong>Runner</strong> Class'indan
+        calistirmaliyiz.
+      </div>
+      <hr />
+      <div class="maddesiz">
+        <h3>Rapora Hooks ve Screen Shot Ekleme</h3>
+        Cucumber Hooks, senaryolardan önce veya sonra calisan kod bloklarina
+        sahip bir class'tir.(TestBase gibi) <br /><br /><strong>@Before</strong>
+        ve <strong>@After</strong> Annotation'lari kullanilarak kodlari
+        projemizde ve stepdefinition'larda kullanabiliriz. <br /><br />
+        Hooks, kodlari yönetmemizi kolaylastirir ve kod fazlaligini azaltmaya
+        yardimci olur. <br /><br />
+        Aradigimizda bulabilmek icin
+        <strong>stepdefinition package</strong>'inin altina
+        <strong>Hooks</strong> isimli bir <strong>Class</strong> olustururuz.
+        <br /><br />
+        @Before methodda hicbir sey yapmiyoruz ama
+        <strong>ekran resmi</strong> almak icin @After methodu kullaniyoruz.
+
+        <ul class="cerceve">
+          <li>package stepdefinitions;</li>
+          <li>
+            public class Hooks {
+            <ul>
+              <li>@Before</li>
+              <li>public void setUp(){</li>
+              <li>} <br /><br /></li>
+              <li>@After <br />//io.cucumber'dan import edilmeli.</li>
+              <li>
+                public void tearDown(Scenario scenario){
+                <ul>
+                  <li>
+                    final byte[] screenshot=((TakesScreenshot)
+                    Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+                  </li>
+                  <li>
+                    if (scenario.isFailed()) { <br />//Eger false olursa
+                    calisacak.
+                    <ul>
+                      <li>
+                        scenario.attach(screenshot, "image/png","screenshots");
+                        <br />
+                        //Bir ekran görüntüsü alacak, png olarak kaydedilecek,
+                        ismi screenshots olacak.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>}</li>
+                  <li>
+                    Driver.closeDriver(); <br />//testimiz failed olsa bile
+                    artik ekran görüntüsü alinip browser kapatilacak.
+                  </li>
+                </ul>
+              </li>
+              <li>}</li>
+            </ul>
+          </li>
+          <li>}</li>
+        </ul>
       </div>
     </main>
   </body>
