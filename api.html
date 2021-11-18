@@ -9,15 +9,15 @@
   <body>
     <main>
       <h1>
-        API (Aplication Programming Interface) <br />Uygulama Programlama
-        Arayüzü
+        API (Aplication Programming Interface) <br />
+        Uygulama Programlama Arayüzü
       </h1>
       Backend denildiginde akla <strong>Database</strong> (SQL,JDBC) ve
       <strong>API</strong> gelmelidir. <br /><br />
       Bir uygulamanin fonksiyonlarina erisilip kullanilmasin saglayan bir
-      <strong>arayüz</strong>dür. <br /><br />Bir uygulamanin hem IOS'ta, hem
-      Windows'ta, hem de Android isletim sisteminde kullanilabilmesi API
-      sayesinde olur. <br /><br />
+      <strong>arayüz</strong>dür. <br /><br />
+      Bir uygulamanin hem IOS'ta, hem Windows'ta, hem de Android isletim
+      sisteminde kullanilabilmesi API sayesinde olur. <br /><br />
       API'in kullanici arayuzu yoktur. (User Interface{UI}) <br /><br />
       UI daki kullanici adi ve sifre istenmesi gibi API'de de islem yapabilmek
       icin <strong>token</strong> almamiz gereklidir.
@@ -25,22 +25,25 @@
       <h2>API Nasi Calisir?</h2>
       <ol>
         <li>
-          Request to API <br />//Müsteri garsona siparisini söylüyor.(pizza)
-          <br />//Amazondan Alisveris yapiyorum
+          Request to API <br />
+          //Müsteri garsona siparisini söylüyor.(pizza) <br />
+          //Amazondan Alisveris yapiyorum
         </li>
         <li>
-          Request to Server <br />//Garson müsterinin pizza istedigini mutfak
-          kismina bildiriyor. <br />//Kart bilgilerimi ilgili bankaya onaylatmak
-          icin gönderiyor
+          Request to Server <br />
+          //Garson müsterinin pizza istedigini mutfak kismina bildiriyor. <br />
+          //Kart bilgilerimi ilgili bankaya onaylatmak icin gönderiyor
         </li>
         <li>
-          Response from Server <br />//Mutfak hazirlanan siparisi garsona teslim
-          ediyor. <br />//Banka bilgileri onaylayip Ödeme islemini
-          gerceklestirdigini amazona iletiyor.
+          Response from Server <br />
+          //Mutfak hazirlanan siparisi garsona teslim ediyor. <br />
+          //Banka bilgileri onaylayip Ödeme islemini gerceklestirdigini amazona
+          iletiyor.
         </li>
         <li>
-          Responce to client <br />//Garson siparisi müsteriye getiriyor.
-          <br />Amazon Ödemeniz gerceklesti seklinde bize mesaj getiriyor.
+          Responce to client <br />
+          //Garson siparisi müsteriye getiriyor. <br />
+          //Amazon Ödemeniz gerceklesti seklinde bize mesaj getiriyor.
         </li>
       </ol>
       Bir uygulamaya Google Maps'i entegre etmek, iot cihazlari uygulamalar
@@ -53,9 +56,9 @@
       <br />
       Bu iletisimin kurulabilmesi icin <strong>internet gerekli</strong>dir.
       <br /><br />API'nin calisabilmesi icin her zaman
-      <strong>Internet gerekli degil</strong>dir. <br />(Bilgisayarimizdaki exel
-      ile Windows'un (.dll dosyalari araciligiyla) iletisim kurmasi)
-      <br /><br />
+      <strong>Internet gerekli degil</strong>dir. <br />
+      (Bilgisayarimizdaki exel ile Windows'un (.dll dosyalari araciligiyla)
+      iletisim kurmasi) <br /><br />
       <mark>NOT:</mark> Tüm Web Service'ler API'dir ama tüm API'ler Web Service
       degildir.
       <hr />
@@ -149,10 +152,10 @@
       <h3>REST (Representational State Transfer)</h3>
       Dört temel methodu vardir:
       <ol>
-        <li><strong>GET</strong> Talep edilen datalari getirir ve okuruz.</li>
-        <li><strong>POST</strong> Gönderilen verileri olusturur.</li>
-        <li><strong>PUT</strong> Gönderilen verileri günceller.</li>
-        <li><strong>DELETE</strong> Talep edilen datayi siler.</li>
+        <li><strong>GET</strong> : Talep edilen datalari getirir ve okuruz.</li>
+        <li><strong>POST</strong> : Gönderilen verileri olusturur.</li>
+        <li><strong>PUT</strong> : Gönderilen verileri günceller.</li>
+        <li><strong>DELETE</strong> : Talep edilen datayi siler.</li>
       </ol>
 
       <ul>
@@ -162,7 +165,7 @@
         </li>
         <li>
           Http methodlariyla calisan bir <strong>mimari</strong>dir.(Rest
-          mimarisi))
+          mimarisi)
         </li>
         <li>
           Http methodlariyla tasarlandigi icin kullanimi daha
@@ -225,7 +228,7 @@
           <strong>endpoint</strong>tir. (http bilgisi)
         </li>
         <li>
-          <strong>Header :</strong>yapilan istegin parametrelerdir. Datanin
+          <strong>Header :</strong>Yapilan istegin parametrelerdir. Datanin
           boyutu vs(yazilmasi zorunlu degil)
         </li>
         <li>
@@ -278,6 +281,420 @@
         >https://petstore.swagger.io/</a
       >
       adresinden swagger ile ilgili alistirmalar yapilabilir.
+      <hr />
+      <h2>API Testing</h2>
+      IntelliJ ile API testleri yapabilmek icin <strong>POM.xml</strong>'e
+      <strong>io-rest-assured</strong> ve
+      <strong>junit</strong> dependency'lerinin yüklenmesi gerekir. <br /><br />
+      API testlerini yaparken <strong>Gherkin</strong> dilini kullaniriz.
+      <ul>
+        <li>
+          <strong>Given</strong> : Istenen Endpoint sorgusundan önce yapilacak
+          geereklilikleri ifade eder. (Json formatinda getir) <br />
+          <code> given(). accept("application/json")... </code>
+        </li>
+        <li>
+          <strong>When</strong> : Kullanicinin aksiyonunu belirtir. (API
+          testindeki get,put,patch gibi komutlari icerir.) <br />
+          <code
+            >String url="http://dummy.restapiexample.com/api/v1/employees";
+            <br />
+            ...when().get(url);
+          </code>
+        </li>
+        <li>
+          <strong>Then</strong> : Ciktilari ifade eder. Response islemlerinde
+          kullanilir. (Assert islemleri genelde then ile yapilir.
+          statusCode=200) <br />
+          <code
+            >response.then(). assertThat(). statusCode(200).
+            contentType(ContentType.JSON).statusLine("HTTP/1.1 200 OK");
+          </code>
+          //aceept ("application/json") da yazilabilir.
+        </li>
+        <li><strong>And</strong> : Coklu islem yapilacaksa kullanilir.</li>
+      </ul>
+      Yazdigimiz kelimelerin siralamasi ve yeri önemlidir. (Cucumber'dan
+      farklidir) <br /><br />
+      Vazifemiz: API servisine bir <strong>Request</strong> (istek) göndermek,
+      gelen <strong>responce</strong>'u <strong>Assert</strong> (dogrulamak)
+      etmektir. <br /><br />
+      Iki cesit <strong>Assertion</strong> vardir;
+      <ul>
+        <li>
+          <strong>Assert</strong> : Selenium'da kullanilan fonksiyonlari
+          kullanabiliriz.
+        </li>
+        <li>
+          <strong>Matcher Class</strong> : Gelen responce'lari actual result
+          olarak atayarak assert edebiliriz.
+        </li>
+      </ul>
+      Gelen responce'lar belli bir formatta gelmektedir (xml, json vs). Java'nin
+      bu formatlari okuyabilmesi icin dgeisim gerekmektedir. <br /><br />
+      <strong>DE-Serialization</strong> : Json formatindaki bir datanin Java
+      formatina cevrilmesine denir. <br /><br />
+      <strong>Serialization</strong> : Java formatindaki bir datanin json
+      formatina cevrilmesi islemidir (bu islem su an icin bizi ilgilendirmiyor).
+      <hr />
+      <h3>Soru:</h3>
+      API testini nasil yaptiniz? <br /><br />
+      Rest-assured kütüphanesiyle yaptik. Bazi test annotation'larindan
+      faydalandik (Junit veya TestNG olabilir). Manuel kismini ise Postman ile
+      yaptik.
+      <hr />
+      <h2>API Projesi Olusturma</h2>
+      IntelliJ &gt; File &gt; New &gt; Project &gt; Maven &gt; 11 java version
+      &gt; Next &gt; Name: Batch30Api &gt; Finish <br /><br />
+      Pom.xml dosyamizdaki &lt;/project&gt; kapanma tagindan önce
+      &lt;dependencies&gt; tagi acip <strong>rest-assured</strong> ve
+      <strong>JUnit</strong> kütüphanelerini yüklüyoruz. <br />
+      <code>
+        <ul>
+          <li>
+            &lt;dependencies&gt;
+            <ul>
+              <li>
+                &lt;dependency&gt;
+                <ul>
+                  <li>&lt;groupId&gt;junit&lt;/groupId&gt;</li>
+                  <li>&lt;artifactId&gt;junit&lt;/artifactId&gt;</li>
+                  <li>&lt;version&gt;4.13.2&lt;/version&gt;</li>
+                </ul>
+              </li>
+              <li>&lt;/dependency&gt;</li>
+              <li>
+                &lt;dependency&gt;
+                <ul>
+                  <li>&lt;groupId&gt;io.rest-assured&lt;/groupId&gt;</li>
+                  <li>&lt;artifactId&gt;rest-assured&lt;/artifactId&gt;</li>
+                  <li>&lt;version&gt;4.4.0&lt;/version&gt;</li>
+                  <li>&lt;scope&gt;test&lt;/scope&gt;</li>
+                </ul>
+              </li>
+              <li>&lt;/dependency&gt;</li>
+            </ul>
+          </li>
+          <li>&lt;/dependencies&gt;</li>
+        </ul>
+      </code>
+      <hr />
+      <h2>API Framework</h2>
+      <ul>
+        <li>
+          Batch30Api
+          <ul>
+            <li>.idea</li>
+            <li>
+              src
+              <ul>
+                <li>main</li>
+                <li>
+                  test
+                  <ul>
+                    <li>
+                      java
+                      <ul>
+                        <li>
+                          com.techproed
+                          <ul>
+                            <li>
+                              day01
+                              <ul>
+                                <li>GetRequest01</li>
+                                <li>...</li>
+                              </ul>
+                            </li>
+                            <li>
+                              testBase
+                              <ul>
+                                <li>DummyTestBase</li>
+                                <li>...</li>
+                              </ul>
+                            </li>
+                            <li>
+                              testData
+                              <ul>
+                                <li>DummyTestData</li>
+                                <li>...</li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>target</li>
+            <li>pom.xml</li>
+          </ul>
+        </li>
+        <li>External Libraries</li>
+        <li>Scratches and Consoles</li>
+      </ul>
+      Eger acilan package'lar yanyana görünüyorsa(techproed.day1 gibi) Framework
+      un ayarlar simgesine tiklayip
+      <strong>Compact Middle Packages</strong> secenegindeki isareti kaldirmak
+      gereklidir.
+      <hr />
+      <h3>Soru:</h3>
+      Selenium WebDriver'i API testinin neresinde kullaniriz? <br /><br />
+      Api testinde UI ile isimiz olmadi icin herhangi bir driver kullanmiyoruz.
+      API backend testi icindir ve oradaki bilgilerle ilgilenir.
+      <hr />
+      <h3>API Testinin Basamaklari</h3>
+      <ol>
+        <li>
+          URL(Endpoint) belirlenmelidir.
+          <ul>
+            <li>
+              <code>
+                String url = "https://restful-booker.herokuapp.com/booking/3";
+              </code>
+            </li>
+          </ul>
+        </li>
+        <li>Beklenen sonuc (Expected Result) olusturulmalidir.</li>
+        <li>
+          Bir istek (Request) gönderilmelidir.
+          <ul>
+            <li>
+              Request gönderirken Gherkin dilinden faydalaniriz. <br />
+              <code>
+                Response
+                response=given().accept("application/json").when().get(url);
+              </code>
+            </li>
+            <li>
+              given() i import ederken mutlaka
+              <strong>RestAssured.given(io.restAssured)</strong> kütüphansinden
+              manuel <strong>import</strong> etmeliyiz.
+            </li>
+            <li>
+              Eger response'taki body'i yazdirmak istersek; <br />
+              <code>response.prettyPrint();</code>
+            </li>
+            <li>
+              Eger response'taki header'lari yazdirmak istersek; <br />
+              <code>System.out.println(response.getHeaders());</code>
+            </li>
+            <li>
+              Eger baska bilgiler isteniyorsa; <br />
+              <code
+                >response.getStatusCode(); <br />
+                response.getContentType(); <br />
+                response.getStatusLine(); seklinde cagrilabilir.
+              </code>
+            </li>
+          </ul>
+        </li>
+        <li>Geribildirim (Actual Result) alinmalidir.</li>
+        <li>
+          Dogrulama (Assertion) yapilmalidir. Cesitli yöntemlerle yapilabilir.
+          <ul>
+            <li>
+              Cucumber'daki Assert dogrulamasini kullanabiliriz; <br />
+              <code>
+                Assert.assertEquals(200,response.getStatusCode()); <br />
+                Assert.assertEquals("application/json;
+                charset=utf-8",response.getContentType());
+              </code>
+            </li>
+            <li>
+              API dogrulamasini kullanabiliriz; <br />
+              <code
+                >response.then(). assertThat(). statusCode(200).
+                contentType(ContentType.JSON). statusLine("HTTP/1.1 200 OK");
+              </code>
+              <ul>
+                <li>
+                  Eger response body'de belli bir kelime icerdigini veya
+                  icermedigini test etmek istersek
+                  <strong>.asString()</strong> methodunu kullanarak response'u
+                  String'e cevirmeliyiz.
+                  <br />
+                  <code>
+                    Assert.assertTrue(response.asString().contains("Not
+                    Found"));
+                    <br />
+                    Assert.assertFalse(response.asString().contains("API"));
+                  </code>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Matcher Class yardimiyla; <br /><code>
+                response.then(). <br />
+                assertThat(). <br />
+                statusCode(200). <br />
+                contentType("application/json"). <br />
+                body("firstname", Matchers.equalTo("Susan")). <br />
+                body("lastname",Matchers.equalTo("Jackson")). <br />
+                body("totalprice",Matchers.equalTo(811)). <br />
+                body("depositpaid",Matchers.equalTo(true)). <br />
+                body("bookingdates.checkin",Matchers.equalTo("2021-08-11")).
+                <br />
+                body("bookingdates.checkout",Matchers.equalTo("2021-10-18"));
+              </code>
+              <ul>
+                <li>
+                  Her defasinda <strong>Matchers</strong> yazmamak icin
+                  import'u; <br />
+                  <code>
+                    import
+                    <strong>static</strong>
+                    org.hamcrest.Matchers.<strong>*</strong>;
+                  </code>
+                  <br />
+                  sekline ceviriyoruz. Artik Matchers'siz yazilabilir; <br />
+                  <code
+                    >body("firstname",equalTo("Susan"), <br />
+                    "lastname",equalTo("Jackson"), <br />
+                    "totalprice",equalTo(811), <br />
+                    "bookingdates.checkin",equalTo("2021-08-11"), <br />
+                    "bookingdates.checkout",equalTo("2021-10-18"));
+                  </code>
+                </li>
+                <li>
+                  <code> "bookingdates.checkin",equalTo("2021-08-11"); </code>
+                  <br />
+                  Buradaki formata <strong>JsonPath</strong> denir. Ic ice olan
+                  datalara ulasmak icin kullanilir.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <strong>NOT:</strong> API testlerimizi @Test annotation'li bir method
+      icerisinide gerceklestiriyoruz. <br />
+      <code>
+        @Test <br />
+        public void test(){ <br />
+        ... <br />
+        }
+      </code>
+      <hr />
+      <h3>Örnek Soru:</h3>
+      https://restful-booker.herokuapp.com/booking url'ine accept type'i
+      "application/json" olan GET request'i yolladigimizda gelen response'un
+      status kodunun 200, content type'inin "application/json" oldugunu test
+      ediniz. <br /><br />
+      <code>
+        String url= "https://restful-booker.herokuapp.com/booking"; <br />
+        Response response= given(). accept("application/json"). when().
+        get(url); <br />
+        *System.out.println("Status code: "+response.statusCode()); <br />
+        *System.out.println("CT: "+response.contentType()); <br />
+        *response.prettyPrint(); <br />
+        response.then(). assertThat(). statusCode(200).
+        contentType(ContentType.JSON);
+      </code>
+      <hr />
+      <h3>JsonPath</h3>
+      Json formatinda gelen bir dataya ulasmak ve manipule etmek icin
+      kullanilir. <br />
+      <br />
+      <strong>$</strong> isareti dokümandaki tüm <strong>node</strong>'lari
+      verir. <br /><br />
+      Child bölümlere ulasmak icin <strong>(.)</strong> kullanilir. (store.book)
+      <br /><br />
+      Eger index belirtilmezse hepsini getirir. <br /><br />
+      Belirli bir dataya ulasmak istiyorsak index kullanmaliyiz.
+      <ul>
+        <li>
+          <code> store.book[1] </code> <br />
+          ikinci siradaki kitabi getirir.
+        </li>
+        <li>
+          <code> store.book[0,3] </code> <br />
+          Ilk ve dördüncü siradaki kitabi getirir.
+        </li>
+        <li>
+          <code> store.book[-1] </code> <br />
+          Son kitaba ulasmak icin kullanilir.
+        </li>
+        <li>
+          <code> store.book[*].author </code> <br />
+          Tüm kitaplarin yazarlarina ulasmak icin kullanilir.
+        </li>
+      </ul>
+      Ayrinlili bilgi icin
+      <a href="https://jsonpath.herokuapp.com/" target="_blank"
+        >https://jsonpath.herokuapp.com/</a
+      >
+      sitesi incelenebilir.
+      <hr />
+      <h2>Matchers Class</h2>
+      <ul>
+        <li>
+          <strong>body("key",Matchers.equalTo("Value"))</strong> Key olarak
+          verilen degiskenin degerininn value'ya esit olup olmadigini kontrol
+          eder.
+        </li>
+        <li>
+          <strong>body("data.id",Matchers.hasSize("value"))</strong> Key olarak
+          verilen degiskenin sayisinin value'ya esit olup olmadigini kontrol
+          eder.
+        </li>
+        <li>
+          <strong>body("data.employee_name",Mathers.hasItem("value"))</strong>
+          Key olarak verilen degiskenin aldigi degerlerin icinde value'nun olup
+          olmadigini kontrol eder. <br />
+          Eger value birden fazla ise <strong>hasItems</strong> kullanip
+          value'lari <strong>(,)</strong> ile yan yana yazabiliriz.
+        </li>
+      </ul>
+      <hr />
+      <h3>Örnek Soru</h3>
+      http://dummy.restapiexample.com/api/v1/employees url'ine accept type'i
+      "application/json" olan GET request'i yolladigimda gelen response'un
+      status kodunun 200 ve content type'inin "application/json" ve employees
+      sayisinin 24 ve employee'lerden birinin "Ashton Cox" ve gelen yaslar
+      icinde 21, 61, ve 23 degerlerinden birinin oldugunu test ediniz.
+      <br /><br />
+      <code>
+        String url="http://dummy.restapiexample.com/api/v1/employees"; <br />
+        Response response=given().accept("application/json").when().get(url);
+        <br />
+        *response.prettyPrint(); <br />
+        response.then().assertThat().statusCode(200).contentType("application/json").
+        <br />
+        body("data.id", hasSize(24), <br />
+        "data.employee_name",hasItem("Ashton Cox"), <br />
+        "data.employee_age",hasItems(21,61,23));
+      </code>
+      <hr />
+      <h3>TestBase Class'i</h3>
+      <ul>
+        <li>
+          public class JsonPlaceHolderTestBase {
+          <ul>
+            <li>protected RequestSpecification spec01;</li>
+            <li>@Before</li>
+            <li>
+              public void setUp(){
+              <ul>
+                <li>
+                  spec01= new RequestSpecBuilder(). <br />
+                  setBaseUri("https://jsonplaceholder.typicode.com"). <br />
+                  build();
+                </li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </li>
+        <li>}</li>
+      </ul>
+      Linkimizin ana kismini buraya <strong>spec</strong> olarak tanimladik
+      <br />
+      <strong>Parametre</strong> olarak kullanacagimiz class'ta linkin arkasina
+      ekleyebiliriz.
+      <br />
+      Kullanacagimiz Class'i bu Class'a <strong>extends</strong> etmeliyiz.
     </main>
     <footer>
       <hr />

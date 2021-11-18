@@ -339,16 +339,96 @@
       <hr />
       <h3>Tablo Silme</h3>
       Tablo acikken silinmez! <br />
-      Child silinmeden Parent silinmez.
+      Child silinmeden Parent silinmez. <br />Bir tabloyu
+      <strong>DROP</strong> komutuyla silersek tablo geri dönüsüm kutusuna
+      gönderilir.
       <div class="cerceve"><code>DROP TABLE student;</code></div>
       Eger Tabloyu manuel silmek istersek; <br />
       sol taraftaki Connections kismi &gt; silmek istedigimiz tabloya gelip sag
-      tikla &gt; Table &gt; Drop &gt; Uygula <br />
+      tikla &gt; Table &gt; Drop &gt; Uygula <br /><br />
       Eger cöp kutusuna degil de tamamen silinsin istersek uygula demeden
-      <strong>Purge</strong> secenegini isaretlemeliyiz. <br /><br />
+      <strong>Purge</strong> secenegini isaretlemeliyiz. <br />
+      Kod ile yazmak istersek;
+      <div class="cerceve"><code>DROP TABLE student PURGE;</code></div>
+      Eger zaten cöp kutusuna göndermissek ve geri getirilemeyecek sekilde kod
+      ile silmek istiyorsak;
+      <div class="cerceve"><code>PURGE TABLE student;</code></div>
+      <br />
       Eger cöp kutusuna gönderdigimiz bir dosyayi yeniden yüklemek istersek;
       <br />
       istenilen doyaya sag tikla &gt; Flashback to Before Drop secenegine bas.
+      <br />
+      Eger bunu kod ile yapmak istersek;
+      <div class="cerceve">
+        <code>FLASHBACK TABLE student TO BEFORE DROP;</code>
+      </div>
+      <br />
+      Bir tabloyu <strong>TRUNCATE</strong> komutunu kullanarak silersek datalar
+      artik geri getirilemez.
+      <div class="cerceve"><code>TRUNCATE TABLE student;</code></div>
+      <br />
+      Eger tabloyu degil de tablonun icindeki datalari silmek istersek;
+      <div class="cerceve"><code>DELETE FROM student;</code></div>
+      <br />
+      Eger tablonun icindeki bir sütunu silmek istersek; (?)
+      <div class="cerceve">
+        <code
+          >DELETE FROM student <br />
+          WHERE sehir;
+        </code>
+      </div>
+      Eger bir satiri silmek istersek;
+      <div class="cerceve">
+        <code>
+          DELETE FROM student <br />
+          WHERE ogrenci_no = 124;
+        </code>
+      </div>
+      Eger birden fazla satiri silmek istersek;(ikisini de siler)
+      <div class="cerceve">
+        <code>
+          DELETE FROM student <br />
+          WHERE ogrenci_no = 124 OR ogrenci_no = 132;
+        </code>
+      </div>
+      veya (OR yerine IN)
+      <div class="cerceve">
+        <code>
+          DELETE FROM student <br />
+          WHERE ogrenci_no IN (124,126,128);
+        </code>
+      </div>
+      veya
+      <div class="cerceve">
+        <code>
+          DELETE FROM student <br />
+          WHERE ogrenci_no &gt; 124;
+        </code>
+      </div>
+      Eger bir satirda iki sart ile silmek istersek; (ikisini de ayni satirda
+      bulmasi lazim ki silebilsin)
+      <div class="cerceve">
+        <code>
+          DELETE FROM student <br />
+          WHERE ogrenci_isim = 'Ali Can' AND ogrenci_no = 132;
+        </code>
+      </div>
+      Eger silinen verileri geri getirmek istersek(?)
+      <div class="cerceve">
+        <code>
+          ROLLBACK TO ABC; <br />
+          SELECT * FROM student;
+        </code>
+      </div>
+      <br />
+      <strong>ON DELETE CASCADE</strong> : parent de olsa bir tabloyu silebilmek
+      baglanti yaparken <strong>REFERENCES</strong> ten sonra yazilmali
+      <div class="cerceve">
+        <code>
+          CONSTRAINT aciklama FOREIGN KEY kendi_tablo_degeri <br />
+          REFERENCES diger_tablo(diger_tablo_degeri) ON DELETE CASCADE
+        </code>
+      </div>
       <hr />
       <h3>Iki Tabloyu Birbirine Baglama</h3>
       <div class="cerceve">
@@ -512,6 +592,7 @@
       Gelen notlar icinde 75 notu olan bir ögrenci olmayacak.
       <hr />
       <h3>Operatör Ifadeleri</h3>
+      <strong>WHERE</strong> komutu ile kullanilan mantiksal operatörlerdir.
       <ul>
         <li><strong>=</strong> : Esittir</li>
         <li>
@@ -522,331 +603,798 @@
         <li><strong>&lt;</strong> : Kücüktür</li>
         <li><strong>&gt;=</strong> : Büyüktür veya esittir</li>
         <li><strong>&lt;=</strong> : Kücüktür veya esittir</li>
+        <li>
+          <strong>AND</strong> : Ve yerine kullanilir <br /><code
+            >WHERE urun_id&gt;=20 AND urun_id&lt;=40;</code
+          >
+        </li>
+        <li>
+          <strong>OR</strong> : IN yerine kullanilir ama her araya OR
+          yazilmalidir. <br />
+          <code
+            >WHERE urun_isim ='Orange' OR urun_isim ='Apple' OR urun_isim
+            ='Apricot';</code
+          >
+        </li>
+        <li>
+          <strong>BETWEEN</strong> : Iki veri arasindaki ifadelerdir(dahil)
+          <br /><code>WHERE urun_id BETWEEN 20 AND 40 ;</code>
+        </li>
+        <li>
+          <strong>IN</strong> : nokta atis verilen ifadelerdir <br />
+          <code>WHERE urun_isim IN ('Orange', 'Apple', 'Apricot');</code>
+        </li>
       </ul>
+      <hr />
+      <h3>Subquery</h3>
+      Eger bir sorgunun icinde baska bir sorgu ile getirilen data varsa bu ic
+      ice sorguya <strong>subquery</strong> denir.
+      <div class="cerceve">
+        <code>
+          UPDATE ogrenciler <br />
+          SET sinav_notu=(SELECT butunleme_tarihi FROM sinavlar) <br />
+          WHERE ortalama&lt;50);
+        </code>
+      </div>
+      <hr />
+      <h3>EXISTS</h3>
+      *IN yerine EXIST de yazilabilir:
+      <div class="cerceve">
+        <code>
+          SELECT urun_id, musteri_isim FROM mart_satislar <br />
+          WHERE urun_id IN (SELECT urun_id FROM nisan_satislar <br />
+          WHERE mart_satislar.urun_id=nisan_satislar.urun_id);
+        </code>
+      </div>
+      yerine;
+      <div class="cerceve">
+        <code>
+          SELECT urun_id, musteri_isim FROM mart_satislar <br />
+          WHERE <strong>EXISTS</strong>(SELECT urun_id FROM nisan_satislar
+          <br />
+          WHERE mart_satislar.urun_id=nisan_satislar.urun_id);
+        </code>
+      </div>
+      EXISTS; bir baktigi degere tekrar bakmadigi icin IN e göre daha
+      <strong>hizli</strong>dir.
+      <hr />
+      <h2>AGGREGATE FONKSIYONLAR</h2>
+      <ul>
+        <li><strong>SUM</strong> : Toplam</li>
+        <li><strong>COUNT</strong> : Adet(Sayac)</li>
+        <li><strong>ROUND</strong> : Yuvarla</li>
+        <li><strong>MIN</strong> : Minimum deger</li>
+        <li><strong>MAX</strong> : Maximum deger</li>
+        <li><strong>AVG</strong> : Ortalama</li>
+      </ul>
+      <hr />
+      <h3>Örnekler</h3>
+      Sirketler ve personel tablosu var. Her sirketin, adini personel sayisini
+      ve ödedigi maas <strong>toplam</strong>ini bulalim;
+      <div class="cerceve">
+        <code
+          >SELECT sirket_adi,personel_sayisi,(SELECT <strong>SUM</strong>(maas)
+          FROM personel
+          <br />
+          WHERE sirketler.sirket_adi=personel.sirket)
+          <strong>AS</strong> toplam_maas <br />
+          FROM sirketler;
+        </code>
+      </div>
+      Sirketler tablosundaki "sirket_adi" ile personel tablosundaki "sirket"
+      datalarinin uyustugu yerdekiler manasina gelir. <br />
+      <strong>AS</strong> ; bir sütuna isim vermek icin kullanilir. yazilmazsa
+      hata vermez, calisir. <br />
+      Parantez icinde subquery kullanilmistir. <br /><br />
+      Sirketlerin adini, personel sayisini ve verdigi maas
+      <strong>ortalama</strong>sini bulalim;
+      <div class="cerceve">
+        <code
+          >SELECT sirket_adi,personel_sayisi,(SELECT <strong>AVG</strong>(maas)
+          FROM personel
+          <br />
+          WHERE sirketler.sirket_adi=personel.sirket) AS ortalama_maas <br />
+          FROM sirketler;
+        </code>
+      </div>
+      Eger maas ortalamalari virgüllü sayilar cikarsa parantez icine alip
+      <strong>yuvarla</strong>yabiliriz.
+      <div class="cerceve">
+        <code
+          >(SELECT <strong>ROUND</strong> (AVG(maas)) FROM personel
+          <br />
+          WHERE sirketler.sirket_adi=personel.sirket)
+        </code>
+      </div>
+      <br /><br />
+      Sirketlerin adini, personel sayisini ve sirket personelinin
+      <strong>minimum</strong> ve <strong>maximum</strong> maasini bulalim;
+      <div class="cerceve">
+        <code
+          >SELECT sirket_adi,personel_sayisi,(SELECT <strong>MAX</strong>(maas)
+          FROM personel
+          <br />
+          WHERE sirketler.sirket_adi=personel.sirket) AS max_maas, <br />
+          (SELECT <strong>MIN</strong>(maas) FROM personel
+          <br />
+          WHERE sirketler.sirket_adi=personel.sirket) AS min_maas <br />
+          FROM sirketler;
+        </code>
+      </div>
+      <br /><br />
+      Sirketlerin ID kodunu, ismini ve toplam kac sehirde bulundugunu listeleyen
+      bir sorgu yazalim;
+      <div class="cerceve">
+        <code
+          >SELECT sirket_id,sirket_adi,(SELECT <strong>COUNT</strong>(sehir)
+          FROM personel
+          <br />
+          WHERE sirketler.sirket_adi=personel.sirket) AS sehir_sayisi <br />
+          FROM sirketler;
+        </code>
+      </div>
+      <hr />
+      <h3>IS NULL, IS NOT NULL</h3>
+      Bir ifadenin <strong>NULL</strong> olup olmadigini kontrol eder.
+      <br /><br />
+      Ismi NULL girilenleri sorgulayiniz.
+      <div class="cerceve">
+        <code>
+          SELECT * FROM personel <br />
+          WHERE isim IS NULL;
+        </code>
+      </div>
+      Eger ismi NULL olanlarin isimlerine "NO NAME" yazisi atasaydik;
+      <div class="cerceve">
+        <code>
+          UPDATE personel <br />
+          SET isim= 'NO NAME' <br />
+          WHERE isim IS NULL;
+        </code>
+      </div>
+      <hr />
+      <h3>COALESCE</h3>
+      Null olmayanlari bize gösterir. <br />
+      <div class="cerceve">
+        <code> SELECT COALESCE (isim,ssn,adres) FROM insanlar; </code>
+      </div>
 
+      Burada önce isimlere bakti ve ismi olmayana denk gelince ssn numarasini
+      getirdi, ikisi de yoksa adresini getirdi.
+      <div class="cerceve">
+        <code>
+          UPDATE insanlar <br />
+          SET isim= COALESCE (isim,'Henuz isim girilmedi'), <br />
+          adres=COALESCE (adres,'Henuz adres girilmedi'), <br />
+          ssn=COALESCE (ssn,'ssn yok');
+        </code>
+      </div>
+      null lari istenilen degerlerle degistirdi.
+      <hr />
+      <h2>SIRALAMA - ORDER BY</h2>
+      ORDER BY cümleciği bir <strong>SORGU</strong> deyimi içerisinde belli bir
+      <strong>SUTUN</strong>'a göre <strong>SIRALAMA</strong> yapmak için
+      kullanılır.
+      <ul>
+        <li>ORDER BY sutun_adi ASC -- ARTAN</li>
+        <li>ORDER BY sutun_adi DESC -- AZALAN</li>
+      </ul>
+      Kisiler tablosunu adrese göre siralayalim;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kisiler <br />
+          ORDER BY adres;
+        </code>
+      </div>
+      Kisiler tablosunu maasa göre tersten(azanalan) siralayalim;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kisiler <br />
+          ORDER BY maas DESC;
+        </code>
+      </div>
+      Soyadi Bulut olanlari isim sirasina göre sorgulayalim;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kisiler <br />
+          WHERE soyisim='Bulut' ORDER BY 2;
+        </code>
+      </div>
+      Isim yerine sutun sirasini da kullanabiliriz.
+      <hr />
+      <h3>Istenilen Satirlari Getirme & Atlama (FETCH NEXT & OFFSET)</h3>
+      12C VE ÜSTÜ oracle larda çalışır, daha altsanız çalışmaz. <br /><br />
+      FETCH cümleciği ile listelenecek kayıtları sınırlandırabiliriz. İstersek
+      satır sayısına göre istersek de toplam satır sayısının belli bir yüzdesine
+      göre sınırlandırma koymak mümkündür. (şu kadar satırı getir) <br /><br />
+      Maasi en yüksek ilk üc kisiyi sorgulayalim;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kisiler <br />
+          ORDER BY maas DESC <br />
+          FETCH NEXT 3 ROWS ONLY;
+        </code>
+      </div>
+      Daha eski sürümlerde ise;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kisiler <br />
+          ORDER BY maas DESC <br />
+          WHERE ROWNUM&lt;4;
+        </code>
+      </div>
+      Eger en yüksek ilk %10'unu isteseydik;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kisiler <br />
+          ORDER BY maas DESC <br />
+          FETCH NEXT 10 <strong>PERCENT</strong> ROWS ONLY;
+        </code>
+      </div>
+      MAAŞ'a göre sıralamada 4. 5. ve 6. kişilerin bilgilerini listeleyen
+      sorguyu yazınız.
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kisiler <br />
+          ORDER BY maas DESC <br />
+          <strong>OFFSET</strong> 3 ROWS <br />
+          FETCH NEXT 3 ROWS ONLY;
+        </code>
+      </div>
+      OFFSET diyerek ilk üc satiri geciyoruz ve sonraki üc satiri yazdiriyoruz.
+      Eski yol ile yazacak olursak;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM (SELECT * FROM (SELECT * FROM kisiler <br />
+          ORDER BY maas DESC) <br />
+          WHERE ROWNUM &lt;=6) <br />
+          WHERE ROWNUM &lt;=3;
+        </code>
+      </div>
+      <hr />
+      <h3>GROUP BY</h3>
+      GROUP BY cümleciği bir SELECT ifadesinde satırları, sutunların değerlerine
+      göre özet olarak gruplamak için kullanılır. <br /><br />
+      GROUP BY cümleciği her grup başına bir satır döndürür. <br /><br />
+      GROUP BY genelde, AVG(),COUNT(),MAX(),MIN() ve SUM() gibi aggregate
+      fonksiyonları ile birlikte kullanılır.
+      <h4>Örnek</h4>
+      Kisi ismine göre satilan toplam meyve miktarlarini gösteren sorguyu
+      yaziniz. (Ahmet=5)
+      <div class="cerceve">
+        <code>
+          SELECT isim, SUM (urun_miktari) AS toplam_urun FROM manav <br />
+          GROUP BY isim;
+        </code>
+      </div>
+      Satilan meyve türüne göre ürün alan kisi sayisini gösteren sorgu yaziniz.
+      NULL olarak girilen meyve varsa listelenmesin.
+      <div class="cerceve">
+        <code>
+          SELECT urun_adi, COUNT(isim) FROM manav <br />
+          WHERE urun_adi IS NOT NULL <br />
+          GROUP BY urun_adi;
+        </code>
+      </div>
+      Ürün adindan bir tane yazar ve karsisina kisi sayisi yazar. (Armut=3)
+      <hr />
+      <h4>Siralama Yaparken:</h4>
+      <ol>
+        <li><strong>SELECT FROM</strong> ile basla,</li>
+        <li><strong>WHERE</strong> ile gruplamadan evvel bazilarini ele,</li>
+        <li><strong>GROUP BY</strong> ile özelliklerine göre grupla,</li>
+        <li>
+          <strong>HAVING</strong> ile grup özellillerine göre bir sart ile ele,
+        </li>
+        <li>
+          <strong>ORDER BY</strong> ile bu gruplari istenilen özellige göre
+          sirala.
+        </li>
+      </ol>
+      <strong>HAVING</strong> : Sorgu isleminden sonra olusan
+      <strong>yeni</strong> bir sütun icin bir sart konulacaksa kullanilir.
+      <br />
+      <code> HAVING SUM (urun_miktari)&gt;=3 </code> <br />
+      Ürün miktari 3 ve daha büyüklerini listeler.
+      <hr />
+      <h3>DISTINCT (Tekrar Önleyici)</h3>
+      DISTINCT cümleciği bir SORGU ifadesinde benzer olan satırları flitrelemek
+      için kullanılır. Dolayısıyla seçilen sutun ya da sutunlar için benzersiz
+      veri içeren satırlar oluşturmaya yarar. (ayni datalari görmezden gelir)
+      <h4>Örnek</h4>
+      Satilan farkli meyve türlerinin sayisini listeleyen sorgu yaziniz.
+      (üzüm=3)
+      <div class="cerceve">
+        <code>
+          SELECT COUNT (DISTINCT urun_adi) AS urun_cesit_sayisi FROM manav;
+        </code>
+      </div>
+      Eger COUNT'u koymazsak NULL olanlari da sayacaktir.
+      <hr />
+      <h3>SELECT - LIKE</h3>
+      LIKE anahtar kelimesi, sorgulama yaparken belirli patternleri
+      kullanabilmemize olanak sağlar. <br />
+      Pattern icin;
+      <ul>
+        <li>
+          <strong>%</strong> : Yazildigi tarafta karakterler gelebilir veya
+          gelmeyebilir.
+        </li>
+        <li>
+          <strong>_</strong> : Yazildigi yerde bir tane karakteri temsil eder.
+        </li>
+      </ul>
+      <h4>Örnek</h4>
+      Ismi A harfi ile baslayanlari listeleyelim;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM personel <br />
+          WHERE isim <strong>LIKE</strong> 'A%';
+        </code>
+      </div>
+      Ismi A harfi ile baslamayanlari listeleseydik;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM personel <br />
+          WHERE isim <strong>NOT LIKE</strong> 'A%';
+        </code>
+      </div>
+      Ismi n harfi ile bitenleri listeleyelim;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM personel <br />
+          WHERE isim LIKE '%n';
+        </code>
+      </div>
+      Ismi ikinci harfi e olup icinde y harfi gecen isimleri listeleyelim;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM personel <br />
+          WHERE isim LIKE '_e%y%';
+        </code>
+      </div>
+      Maasinin son iki hanesi 00 olanlari listeleyelim;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM personel <br />
+          WHERE maas LIKE '%00';
+        </code>
+      </div>
+      Maasinin 5 haneli olanlari listeleyelim;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM personel <br />
+          WHERE maas LIKE '_____';
+        </code>
+      </div>
+      <hr />
+      <h3>SELECT - REGEXP_LIKE</h3>
+      Daha karmaşık pattern ile sorgulama işlemi için REGEXP_LIKE
+      kullanılabilir.
+      <ul>
+        <li>
+          <strong>'c'</strong> : case-sentisitive demektir ve zaten default
+          olarak case-sensitive aktiftir.
+        </li>
+        <li>
+          <strong>'i'</strong> : incase-sentisitive demektir. Harfin büyük veya
+          kücük olmasi önemli degildir.
+        </li>
+        <li>
+          <strong>^</strong> : baslangic oldugunu belirtmek icin kullanilan bir
+          isarettir.
+        </li>
+        <li>
+          <strong>$</strong> : yazildigi tarafta herhangi bir karakter olmadigi
+          manasina gelen bir isarettir.
+        </li>
+      </ul>
+      <h4>Örnek</h4>
+      Icinde "hi" hecesi gecen kelimeleri listeleyelim; (LIKE gibi)
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kelimeler <br />
+          WHERE <strong>REGEXP_LIKE</strong> (kelime,'hi');
+        </code>
+      </div>
+      Icinde "ot" veya "at" hecesi gecen kelimeleri listeleyelim;
+      (case-sensetive olmasin)
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kelimeler <br />
+          WHERE REGEXP_LIKE (kelime,'ot|at','i');
+        </code>
+      </div>
+      Baslangicinda "ho" veya "hi" hecesi olan kelimeleri listeleyelim;
+      (case-sensetive olmasin)
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kelimeler <br />
+          WHERE REGEXP_LIKE (kelime,'^ho|^hi','i');
+        </code>
+      </div>
+      Son harfi "t" veya "m" olan kelimeleri listeleyelim; (case-sensetive
+      olmasin)
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kelimeler <br />
+          WHERE REGEXP_LIKE (kelime,'t$|m$','i');
+        </code>
+      </div>
+      "h" ile baslayip "t" ile biten 3 harfli kelimeleri listeleyelim;
+      (case-sensetive olmasin)
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kelimeler <br />
+          WHERE REGEXP_LIKE (kelime,'h[a-zA-Z0-9]t','i');
+        </code>
+      </div>
+
+      "h" ile baslayip "t" ile biten ortada da "o" veya "a" harfi bulunan 3
+      harfli kelimeleri listeleyelim; (case-sensetive olmasin)
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kelimeler <br />
+          WHERE REGEXP_LIKE (kelime,'h[oa]t','i');
+        </code>
+      </div>
+      icinde "m" veya "i" veya "e" olan kelimeleri listeleyelim;
+      <div class="cerceve">
+        <code>
+          SELECT * FROM kelimeler <br />
+          WHERE REGEXP_LIKE (kelime,'m|i|e');
+        </code>
+      </div>
+      <hr />
+      <h3>SET (küme) OPERATORLERI:</h3>
+      <ol>
+        <li>
+          <strong>UNION</strong>
+          <ul>
+            <li>
+              Eger tek sorguda birlestiremeyecegim iki sorgunun sonucunu
+              <strong>ayni tabloda</strong> gormek istersek UNION islemi
+              kullanilir.
+            </li>
+            <li>
+              Bu durumda dikkat etmemiz gereken konu iki sorguda da
+              <strong>field sayisi</strong> ve alt alta gelecek field
+              <strong>data tipleri</strong>nin ayni olmasidir.
+            </li>
+            <li>
+              UNION operatoru SADECE benzersiz degerleri alır. yani tekrar eden
+              verileri sadece 1 kez alacaktir.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>UNION ALL</strong>
+          <ul>
+            <li>
+              UNION ALL komutu ise <strong>tekrara bakmaksizin</strong> iki
+              sorgudan gelen tum sonuclari listeler.
+            </li>
+            <li>
+              UNION ALL komutunda da iki sorgunun sonucunun
+              <strong>esit sayida field</strong>'a ve
+              <strong>data tipleri</strong>ne sahip olmasi gereklidir
+            </li>
+            <li>
+              Benzerli verileri almak için UNION ALL kullanılır. Yani ayni
+              datadan ne kadar varsa hepsini alacaktir.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>INTERSECT</strong>
+          <ul>
+            <li>Iki kümenin <strong>kesişim</strong>ini döndürür</li>
+            <li>
+              INTERSECT operarotu 2 veya daha fazla Sorgu ifadesinin sonuclarini
+              dondurmek icin kullanilir.
+            </li>
+            <li>
+              Ancak, intersect SADECE tum sorgularin
+              <strong>ortak veriler</strong>ini (kesisimlerini) dondurur.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>MINUS</strong>
+          <ul>
+            <li>
+              MINUS operatoru ilk Sorgu ifadesinde olup da diger sorgu
+              ifadesinde olmayan verileri getirir.
+            </li>
+            <li>
+              Yani 1. sorgu ile 2. sorgu arasindaki farklı olanları getirir.
+            </li>
+            <li>
+              Minus; tekrarli satirlardan sadece bir adet yaazdirir.(UNION gibi)
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <h4>Örnek</h4>
+      Maasi 4000'den yüksek olan isci isimlerini ve 5000'den fazla maas alinan
+      sehirleri AYNI SÜTUNDA gösteren soruyu yaziniz. <br />
+      (Tablodan örnek satir: 16456589654,'Ali Yilmaz','Istanbul',5500,'Honda')
+      <div class="cerceve">
+        <code>
+          SELECT isim AS isim_veya_sehir,maas FROM personel <br />
+          WHERE maas &gt;4000 <br />
+          <strong>UNION</strong> <br />
+          SELECT sehir,maas FROM personel <br />
+          WHERE maas &gt;5000;
+        </code>
+      </div>
+      UNION yerine UNION ALL da yazabilirdik, eger ayni data varsa her datayi
+      yazardi. <br /><br />
+      Personel tablosundan Istanbul veya Ankarada calisanlarin id'lerini
+      sorgulayiniz, personel_bilgi tablosundan 2 veya 3 cocugu olanlarin
+      id'lerini sorgilayiniz, bu iki sorgudaki ortak elemanlari birlestiriniz.
+      <div class="cerceve">
+        <code>
+          SELECT id FROM personel <br />
+          WHERE sehir IN ('Istanbul','Ankara') <br />
+          <strong>INTERSECT</strong> <br />
+          SELECT id FROM personel_bilgi <br />
+          WHERE cocuk_sayisi IN (2,3);
+        </code>
+      </div>
+      veya
+      <div class="cerceve">
+        <code>
+          SELECT id FROM personel <br />
+          WHERE sehir='Istanbul' OR sehir='Ankara' <br />
+          INTERSECT <br />
+          SELECT id FROM personel_bilgi <br />
+          WHERE cocuk_sayisi=2 OR cocuk_sayisi=3;
+        </code>
+      </div>
+      <br />
+      Honda, Ford ve Tofas sirketinde calisan ortak isimde personel varsa
+      listeleyiniz.
+      <div class="cerceve">
+        <code>
+          SELECT isim FROM personel <br />
+          WHERE sirket='Honda' <br />
+          INTERSECT <br />
+          SELECT isim FROM personel <br />
+          WHERE sirket='Ford' <br />
+          INTERSECT <br />SELECT isim FROM personel <br />
+          WHERE sirket='Tofas';
+        </code>
+      </div>
+      <br />
+      500'den az maas alan ve Honda calisani olmayanlarin bilgilerini getiren
+      bir sorgu yaziniz.
+      <div class="cerceve">
+        <code>
+          SELECT * FROM personel <br />
+          WHERE maas &lt;5000 <br />
+          INTERSECT <br />
+          SELECT * FROM personel <br />
+          WHERE sirket != 'Honda';
+        </code>
+      </div>
+      veya
+      <div class="cerceve">
+        <code>
+          SELECT * FROM personel <br />
+          WHERE maas &lt;5000 <br />
+          <strong>MINUS</strong> <br />
+          SELECT * FROM personel <br />
+          WHERE sirket = 'Honda';
+        </code>
+      </div>
+      <hr />
+      <h3>JOIN İSLEMLERİ</h3>
+      <ul>
+        <li>
+          Join islemleri ise farklı Tablolari birlestirmek icin kullanilir.
+        </li>
+        <li>
+          Farkli tablolardaki secilen sutunlar ile yeni bir tablo olusturmak
+          icin kullanilabilir.
+        </li>
+        <li>
+          Set gibi sütunlari tek sütunda birlestirmez, sütunlari yan yana ekler.
+        </li>
+        <li>
+          JOIN islemleri Iliskisel Veritabanlari icin cok onemli bir ozelliktir.
+          Çunku Foreign Key'ler ile iliskili olan tablolardan istenilen
+          sutunlari cekmek icin JOIN islemleri kullanilabilir.
+        </li>
+      </ul>
+      ORACLE SQL'de 4 Cesit Join islemi kullanilabilmektedir.
+      <ol>
+        <li>
+          <strong>FULL JOIN</strong>
+          <ul>
+            <li>
+              FULL JOIN, Her iki tablo icin secilen sütunlara ait olan tüm
+              satirlari getirmek icin kullanilir.
+            </li>
+            <li>
+              Ortaklar aynı satırda yazılır, extra fazla satır varsa o da
+              yazılır.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>INNER JOIN</strong>
+          <ul>
+            <li>
+              Iki tablonun kesisim kumesi ile yeni bir tablo olusturmak icin
+              kullanilir.
+            </li>
+            <li></li>
+          </ul>
+        </li>
+        <li>
+          <strong>LEFT JOIN</strong>
+          <ul>
+            <li>
+              Ilk yazilan tablodan SELECT ile ifade edilen sütunlara ait tüm
+              satirlari getirir.
+            </li>
+            <li>
+              Ancak diger tablodan sadece ON ile belirtilen kosula uyan
+              satirlari getirir, ortak olmayan kisimlar bos kalir.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>RIGHT JOIN</strong>
+          <ul>
+            <li>
+              Ikinci yazilan tablodan SELECT ile ifade edilen sütunlara ait tüm
+              satirlari getirir.
+            </li>
+            <li>
+              Ilk tablodan sadece ON ile belirtilen kosula uyan(ortak) satirlari
+              getirir.
+            </li>
+            <li>Ancak ortak olmayan kisimlar bos kalir.</li>
+          </ul>
+        </li>
+      </ol>
+      <h4>Örnek</h4>
+      Sirketler ve siparisler adındaki tablolarda yer alan sirket_isim,
+      siparis_id ve siparis_tarihleri listeleyen bir sorgu yaziniz.
+      <div class="cerceve">
+        <code>
+          SELECT sirket_isim, siparis_id, siparis_tarihi,siparisler.sirket_id
+          <br />
+          FROM sirketler <br />
+          <strong>FULL JOIN</strong> siparisler <br />
+          ON sirketler.sirket_id=siparisler.sirket_id;
+        </code>
+      </div>
+      Join'de WHERE yerine <strong>ON</strong> kullaniliyor ve iki tabloyu bu
+      sütunlardan bagliyor. <br /><br />
+      Iki Tabloda sirket_id'si ayni olanlarin sirket_ismi, siparis_id ve
+      siparis_tarihleri listeleyen bir sorgu yaziniz. null olanlar çıkmıcak
+      çünkü NULL ortak değil(bir tabloda null iken diğerinde id null yok, 100,
+      101 vs var)
+      <div class="cerceve">
+        <code>
+          SELECT sirket_isim, siparis_id, siparis_tarihi,siparisler.sirket_id
+          <br />
+          FROM sirketler <br />
+          <strong>INNER JOIN</strong> siparisler <br />
+          ON sirketler.sirket_id=siparisler.sirket_id;
+        </code>
+      </div>
+      <br />
+      Sirketler tablosundaki tüm sirketleri ve bu sirketlere ait olan siparis_id
+      ve siparis_tarihlerini listeleyem bir sorgu yaziniz.
+      <div class="cerceve">
+        <code>
+          SELECT
+          sirket_isim,siparis_id,siparis_tarihi,siparisler.sirket_id,sirketler.sirket_id
+          <br />
+          FROM sirketler <br />
+          <strong>LEFT JOIN</strong> siparisler <br />
+          ON sirketler.sirket_id=siparisler.sirket_id;
+        </code>
+      </div>
+      <br />
+      Siparisler tablosundaki tüm siparis id ve siparis tarihleri ile bunlara
+      karsilik gelen sirket isimlerini listeleyen bir sorgu yaziniz.
+      <div class="cerceve">
+        <code>
+          SELECT sirket_isim,siparis_id,siparis_tarihi <br />
+          FROM sirketler <br />
+          <strong>RIGHT JOIN</strong> siparisler <br />
+          ON sirketler.sirket_id=siparisler.sirket_id;
+        </code>
+      </div>
+      <br />
+      Satis ve Muhasebe bölümlerinde calisan personelin isimlerini ve
+      bölümlerini, önce bölüm, sonra isim sirali olarak listeleyiniz.
+      <div class="cerceve">
+        <code>
+          SELECT personel_isim, bolum_isim <br />
+          FROM personel AS p <br />
+          FULL JOIN bolumler AS b <br />
+          ON b.bolum_id=p.bolum_id <br />
+          WHERE bolum_isim IN ('Satis','Muhasebe') <br />
+          ORDER BY bolum_isim, personel_isim;
+        </code>
+      </div>
+      <hr />
+      <h2>ALTER TABLE</h2>
+      <ul>
+        <li>
+          ALTER TABLE tabloda ADD, MODIFY, veya DROP/DELETE COLUMNS islemleri
+          icin kullanilir.
+        </li>
+        <li>
+          ALTER TABLE ifadesi tablolari yeniden isimlendirmek (RENAME) icin de
+          kullanilir.
+        </li>
+      </ul>
+      <h4>Örnek</h4>
+      Personel tablosuna ulke_ismi adinda ve default degeri 'Turkiye' olan bir
+      sütun ekleyiniz.
+      <div class="cerceve">
+        <code>
+          ALTER TABLE personel <br />
+          <strong>ADD</strong> ulke_isim VARCHAR2(20)
+          <strong>DEFAULT</strong> 'TURKIYE';
+        </code>
+      </div>
+      virgül ile ekleme yapilabilir. ( <code>...,yas NUMBER(3),...</code>)
+      <br /><br />
+      Personel tablosundan yas sütununu siliniz.
+      <div class="cerceve">
+        <code>
+          ALTER TABLE personel <br />
+          <strong>DROP COLUMN</strong> yas;
+        </code>
+      </div>
+      <br />
+      Personel tablosundaki ulke_ismi sütununnun adini ulke_adi olarak
+      degistiriniz.
+      <div class="cerceve">
+        <code>
+          ALTER TABLE personel <br />
+          <strong>RENAME COLUMN</strong> ulke_ismi <strong>TO</strong> ulke_adi;
+        </code>
+      </div>
+      <br />
+      Personel tablosunun adini insan_kaynaklari olarak degistiriniz.
+      <div class="cerceve">
+        <code>
+          ALTER TABLE personel <br />
+          <strong>RENAME TO</strong> insan_kaynaklari;
+        </code>
+      </div>
+      <br />
+      Insan_kaynaklari tablosundaki ulke_adi sütununna NOT NULL kisitlamasi ve
+      VARCHAR(30) ekleyiniz.
+      <div class="cerceve">
+        <code>
+          ALTER TABLE insan_kaynaklari <br />
+          <strong>MODIFY</strong> ulke_adi VARCHAR(30) NOT NULL;
+        </code>
+      </div>
+      Eger öncesinde herhangi bir NULL degeri girilmisse hata verecektir.
+      <br /><br />
+      Maas icin CHECK kisitlamasi ekleyelim;
+      <div class="cerceve">
+        <code>
+          ALTER TABLE insan_kaynaklari <br />
+          MODIFY maas CHECK (maas&gt;3000);
+        </code>
+      </div>
+      Artik 3000'den kücük bir maas girilemez.
+      <hr />
       <!--
 
--------------------------
-SELECT * FROM tablo_ismi 
-WHERE sinav_notu>80;		= secilen sarta ait tüm bilgileri gösterir.
--------------------------
-DELETE FROM tablo_ismi
-WHERE id=124;				=sarti tutanlari siler.
-	-DELETE FROM tablo_ismi
-	WHERE isim='Ayse' OR isim='fatma'	=hem ismi ayse olanlari sil hem de fatma olanlari sil 
-	-DELETE FROM tablo_ismi
-	WHERE isim='Ayse' AND id=124		=iki sarta da uyani sil
-	(id>126,id IN (123,124,126)
-------------------------
-SELECT * FROM tablo_ismi
-WHERE id BETWEEN '1003' AND '1008';	
-	veya
-SELECT * FROM tablo_ismi
-WHERE id id>= '1003' AND id<='1008';	= sartlar arasini gösterir.
-	*sartimiz harf veya kelime de olabilir.
-------------------------
-SELECT * FROM tabela_ismi
-WHERE maas IN (2000,3000,5000);	=sadece bu sarti saglayanlari gösterir.
-------------------------
-UPDATE tablo_ismi
-SET degistirilmek_istenen_key/value='yeni_deger'
-WHERE degistirilecek_degerin_kimligi=kimlik;	=Value veya key i degistirme
-	*eger hepsi degisecekse WHERE e gerek yok.
-	*art arda virgul ile degistirilecekler yazilabilir.
-------------------------
-***AGGREGATE FONKSIYONLAR***
-SUM	=toplam
-	SELECT SUM (toplami_istenilen) FROM tablo_ismi
-COUNT 	=adet(sayac)
-	SELECT COUNT(sayilmasi_istenen) FROM tablo_ismi 
-*ROUND	=yuvarla
-	SELECT ROUND (AVG(ortalamasi_istenilen)) FROM tablo_ismi
-MIN	=minimum deger
-	SELECT MIN (istenilen mainimun_deger) FROM tablo_ismi
-MAX	=maximum deger
-	SELECT MAX (istenilen maximun_deger) FROM tablo_ismi
-AVG 	=ortalama
-	SELECT AVG(ortalamasi_istenilen) FROM tablo_ismi
 
-AS yeni isim vermek icin genelde parantez ardina yazilir. Sutuna isim verir
-
-TRUNCATE TABLE tablo_ismi= tamamen siler geri gelmez
-
-DROP TABLE tablo_ismi PURGE =tamamen siler geri gelmez.
-
-FLASHBACK TABLE tablo_ismi TO BEFORE DROP = cop kutusundakini geri getirir.
-
-ON DELETE CASCADE = parent de olsa silebilmek baglanti yaparken  REFERENCES ten sonra yazilmali
-
-			=>CONSTRAINT aciklama FOREIGN KEY kendi_tablo_degeri REFERENCES 						diger_tablo(diger_tablo_degeri) ON DELETE CASCADE
-
-	*IN yerine EXIST de yazilabilir.
-SELECT urun_id, musteri_isim FROM mart_satislar
- WHERE EXISTS(SELECT urun_id FROM nisan_satislar
-                WHERE mart_satislar.urun_id=nisan_satislar.urun_id);
-------------------------------------
-IS NULL /IS NOT NULL
-
-SELECT * FROM insanlar
- WHERE isim IS NULL;		//ismi null olanlari gösterir
--------------------------------------
-COALESCE
---Null olmayanlari bize gösterir.
- SELECT COALESCE (isim,ssn,adres) FROM insanlar;		// her satirdan getirir
-veya
-UPDATE insanlar
- SET isim= COALESCE (isim,'Henuz isim girilmedi'),
- adres=COALESCE (adres,'Henuz adres girilmedi'),
- ssn=COALESCE (ssn,'ssn yok');				//null lari degistirir.
-
-/*================================ ORDER BY  ===================================
-   ORDER BY cümleciği bir SORGU deyimi içerisinde belli bir SUTUN'a göre
-   SIRALAMA yapmak için kullanılır.
-   Syntax
-   -------
-      ORDER BY sutun_adi ASC   -- ARTAN
-      ORDER BY sutun_adi DESC  -- AZALAN
-=========================================*/
-SELECT * FROM kisiler
- ORDER BY adres;
-
-SELECT * FROM kisiler
- WHERE isim ='Mine'
- ORDER BY ssn DESC;
-
-SELECT * FROM kisiler
- WHERE soyisim ='Bulut'
- ORDER BY 2;			-- 2. sutunda isim oldugu icin bu sekilde de kullanabiliriz.
- 
- /*===== FETCH NEXT, OFFSET (12C VE ÜSTÜ oracle larda çalışır, daha altsanız çalışmaz) ============
-   FETCH cümleciği ile listelenecek kayıtları sınırlandırabiliriz. İstersek
-   satır sayısına göre istersek de toplam satır sayısının belli bir yüzdesine
-   göre sınırlandırma koymak mümkündür. (şu kadar satırı getir)
-   Syntax
-   ---------
-   FETCH NEXT satir_sayisi ROWS ONLY;
-   FETCH NEXT satir_yuzdesi PERCENT ROWS ONLY;
-   OFFSET Cümleciği ile de listenecek olan satırlardan sırasıyla istediğimiz
-   kadarını atlayabiliriz.
-   Syntax
-   ----------
-   OFFSET satır_sayisi ROWS;
-==============================================================================*/
-
- ORNEK1: MAAŞ'ı en yüksek 3 kişinin bilgilerini listeleyen sorguyu yazınız.*/
-  
-  SELECT * FROM kisiler;
-  
-  SELECT * FROM kisiler
-  ORDER BY maas DESC
-  FETCH NEXT 3 ROWS ONLY;-- su an yuklu surumde hata veriyor
-  
-  SELECT * FROM (SELECT * FROM kisiler
-  ORDER BY maas DESC)
-  WHERE ROWNUM<4;       --11 den oncekilerde bu olmali
-  
-  --ORNEK2: MAAŞ'ı en DÜŞÜK 2 kişinin bilgilerini listeleyen sorguyu yazınız.
-  
-  SELECT * FROM kisiler
-  ORDER BY maas
-  FETCH NEXT 2 ROWS ONLY;
-  
-  SELECT * FROM (SELECT * FROM kisiler
-  ORDER BY maas)
-   WHERE ROWNUM<3;
-   
-   --ORNEK3: MAAŞ'a göre sıralamada 4. 5. ve 6. kişilerin bilgilerini listeleyen
-  --sorguyu yazınız
-  
-  SELECT * FROM kisiler
-  ORDER BY maas DESC
-  OFFSET 3 ROWS
-  FETCH NEXT 3 ROWS ONLY;
-  
-  
-   SELECT * FROM
-   (SELECT * FROM
-   (SELECT *
-                FROM   kisiler
-                ORDER BY maas DESC)
-        WHERE ROWNUM <=6)
-WHERE  ROWNUM <=3;
-
-*============================ GROUP BY =====================================
-    GROUP BY cümleciği bir SELECT ifadesinde satırları, sutunların değerlerine
-    göre özet olarak gruplamak için kullanılır.
-    GROUP BY cümleceği her grup başına bir satır döndürür.
-    GROUP BY genelde, AVG(),COUNT(),MAX(),MIN() ve SUM() gibi aggregate
-    fonksiyonları ile birlikte kullanılır.*/
-
-SELECT isim, SUM (urun_miktari)toplam_urun
-  FROM manav
-  GROUP BY isim;
-
-SELECT urun_adi, COUNT(isim)
-  FROM manav
-  WHERE urun_adi IS NOT NULL
-  GROUP BY urun_adi;
-
-/*******SIRALAMA AŞAĞIDAKİ GİBİ OLMALI********
-  =>SELECT FROM
-  =>WHERE  1)gruplamadan bazı şartlara göre bazılarını ele
-  =>GROUP BY 2)özelliklerine göre grupla
-  =>HAVİNG 3) grup özelliklerine göre şartla ele. ya where ya having yani
-  =>ORDER BY  4) bu grupları istenilen özelliğe göre sırala
-*/
-
-<> =esit degildir demek != seklinde de kullanilabilir.
-
-/*============================= DISTINCT =====================================
-    DISTINCT cümleciği bir SORGU ifadesinde benzer olan satırları flitrelemek
-    için kullanılır. Dolayısıyla seçilen sutun yada sutunlar için benzersiz veri
-    içeren satırlar oluşturmaya yarar.
-    SYNTAX
-    -------
-    SELECT DISTINCT sutun_adi1, sutun_adi2, satin_adi3
-    FROM  tablo_adı;
-    
-    aynilari yok etme oluyor
-======================= SELECT - LIKE ======================================
-    NOT:LIKE anahtar kelimesi, sorgulama yaparken belirli patternleri
-    kullanabilmemize olanak sağlar.
-    SYNTAX:
-    -------
-    SELECT sutün1, sutün2,…
-    FROM  tablo_adı WHERE sütun LIKE pattern
-    PATTERN İÇİN
-    -------------
-    %    --- > 0 veya daha fazla karakteri belirtir.
-    _    --- > Tek bir karakteri temsil eder.
-/* ====================================================
-
-select *from personel
-where isim like 'A%';
-
-/*======================= SELECT - REGEXP_LIKE ================================
-    Daha karmaşık pattern ile sorgulama işlemi için REGEXP_LIKE kullanılabilir.
-    Syntax:
-    --------
-    REGEXP_LIKE(sutun_adı, 'pattern[] ', 'c' ] )
-             -- 'c' => case-sentisitive demektir ve default case-sensitive aktiftir.
-     -- 'i' => incase-sentisitive demektir.
-/* ========================================================================== */
-
-SELECT * FROM kelimeler
-    where REGEXP_LIKE (kelime,'hi'|'ha','i'); veya islemi icin kullanilir
-	//sondaki i buyuk kucuk olabilir demek. Regex in özelligi
-//baslangic icin^ killanilir bitis icin$ (kelime, ^hi|^ha,'i') (kelime, t$|m$,'i')
-//kelime,'h[a-zA-Z0-9]t','i') uc harfli bir kelime bulma
-
-==================== SET (küme) OPERATORLERI: UNION, UNION ALL======================
-    set=küme diyelim diğer set (sql komutu) ile karışmasın
-    UNION, UNION ALL, INTERSECT, ve MINUS gibi SET operatorleri yardimiyla
-    Çoklu Sorgular birlestirilebilirler.aynı tablodan yada farklı tablodan sütunları birleştirip aynı sütunda yazdırma
-    UNION :  Bir SET operatorudur. 2 veya daha fazla Sorgu ifadesinin sonuc
-    kumelerini birlesitirerek tek bir sonuc kumesi olusturur. (iki kümenin birleşimi)
-    -- UNION
--- Eger tek sorguda birlestiremeyecegim iki sorgunun sonucunu ayni tabloda
--- gormek istersek UNION islemi kullanilir
--- BU durumda dikkat etmemiz gereken konu iki sorguda da field sayisi ve
--- alt alta gelecek field data tiplerinin ayni olmasidir
-    -- UNION ALL komutu ise tekrara bakmaksizin iki sorgudan gelen tum sonuclari listeler
--- UNION ALL komutunda da iki sorgunun sonucunun esit sayida field'a ve data
--- tiplerine sahip olmasi gereklidir
-     SÜTUN birleştirme=> SET
-     TABLO birleştirme=> JOIN
-    Syntax:
-    ----------
-    SELECT sutun_adi,sutun_adi2, .. FROM tablo_adi1
-    UNION
-    SELECT sutun_adi1, sutun_adi2, .. FROM tablo_adi2;
-    NOT: UNION operatoru SADECE benzersiz degerleri alır. Benzerli verileri almak
-    için UNION ALL kullanılır.
-
- ========================= SET OPERATORLERI: INTERSECT ========================
-    --ıntersect=> iki kümenin kesişimini döndürür
-    INTERSECT operarotu 2 veya daha fazla Sorgu ifadesinin sonuclarini
-    dondurmek icin kullanilir. Ancak, intersect SADECE tum sorgularin ortak
-    verilerini (kesimlerini) dondurur.
-    Syntax:
-    ----------
-    SELECT sutun_adi,sutun_adi2, .. FROM tablo_adi1
-    INTERSECT
-    SELECT sutun_adi1, sutun_adi2, .. FROM tablo_adi2;
-==============================================================================*/
-/* -----------------------------------------------------------------------------
-  ORNEK5: Personel tablosundan Istanbul veya Ankara'da calisanlarin id'lerini
-  sorgulayiniz.
-  Personel_bilgi tablosundan 2 veya 3 cocugu olanlarin id lerini sorgulayiniz.
-  Bu iki sorguyu INTERSECT ile birlesitiriniz.
-------------------------------------------------------------------------------*/
-
-
-========================= SET OPERATORLERI: MINUS ============================
-    MINUS operatoru ilk Sorgu ifadesinde olup da diger sorgu ifadesinde olmayan
-    verileri dondurur. Yani 1. sorgu ile 2. sorgu arasindaki farklı olanları
-    dondurur
-    Syntax:
-    ----------
-    SELECT sutun_adi,sutun_adi2, .. FROM tablo_adi1
-    MINUS
-    SELECT sutun_adi1, sutun_adi2, .. FROM tablo_adi2;
-==============================================================================*/
-
-
---minus tekrarli satirlardan sadece bir adet yaazdirir.(union gibi)
-
-/* -----------------------------------------------------------------------------
-  ORNEK8: 5000'den az maas alan ve Honda calisani olmayanların bilgilerini
-  listeleyen bir sorgu yaziniz.
-------------------------------------
-
-============================== JOIN İSLEMLERİ ===============================
-    foreıgn key id si ortakları yanyana yazıyordu bu bikaç tablodan istenilen
-    sütunları alır birleştirir. set istenilen sütunları tek sütunda birleştirir
-    Set Operatorleri (Union,Intersect,Minus) farklı tablolardaki sutunlari
-    birlestirmek için de kullanilir.
-    Join islemleri ise farklı Tablolari birlestirmek icin kullanilir. Diger
-    bir ifade ile farkli tablolardaki secilen sutunlar ile yeni bir tablo
-    olusturmak icin kullanilabilir.
-    JOIN islemleri Iliskisel Veritabanlari icin cok onemli bir ozelliktir. Çunku
-    Foreign Key'ler ile iliskili olan tablolardan istenilen sutunlari cekmek
-    icin JOIN islemleri kullanilabilir.
-    ORACLE SQL'de 4 Cesit Join islemi kullanilabilmektedir.
-    1) FULL JOIN:  Tablodaki tum sonuclari gosterir
-    2) INNER JOIN:  Tablolardaki ortak olan sonuc kumesini gosterir
-    3) LEFT JOIN:  Ilk tabloda (Sol) olup digerinde olmayan sonuclari gosterir
-4) RIGHT JOIN: Sadece Ikinci tabloda olan tum sonuclari gosterir
-
-/*=============================== FULL JOIN  ==================================
-    FULL JOIN, Her iki tablo icin secilen sutunlara ait olan tum satirlari
-    getirmek icin kullanilir. ortaklar aynı satırda yazılır, extra fazla satır varsa o da yazılır.
-    Syntax
-    -----------
-    SELECT sutun1,sutun2....sutunN
-    FROM tablo1
-    FULL JOIN tablo2
-    ON tablo1.sutun = tablo2.sutun;
-==============================================================================*/
-/* -----------------------------------------------------------------------------
-  ORNEK1: sirketler ve siparisler adındaki tablolarda yer alan sirket_isim,
-  siparis_id ve siparis_tarihleri listeleyen bir sorgu yaziniz.
-------------------------------------------------------------------------------*/
-
-=============================== INNER JOIN  ==================================
-    Iki tablonun kesisim kumesi ile yeni bir tablo olusturmak icin kullanilir.
-    Syntax
-    -----------
-    SELECT sutun1,sutun2....sutunN
-    FROM tablo1
-    INNER JOIN tablo2
-    ON tablo1.sutun = tablo2.sutun;
-================================================================================
-/* -----------------------------------------------------------------------------
-  ORNEK2: Iki Tabloda sirket_id'si ayni olanlarin sirket_ismi, siparis_id ve
-  siparis_tarihleri listeleyen bir sorgu yaziniz. null olanlar çıkmıcak çünkü NULL
-  ortak değil(bir tabloda null iken diğerinde id null yok, 100, 101 vs var)
-------------------------------------------------------------------------------*/
 
 /*=============================== ALTER TABLE ==================================
     --iç kaporta için UPDATE (DML), dış kaporta için ALTER (DDL)
