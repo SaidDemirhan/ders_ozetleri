@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .maddesiz ul li {
+        list-style: none;
+      }
+      .cerceve {
+        border: 2px solid black;
+      }
+    </style>
     <title>API</title>
   </head>
   <body>
@@ -349,91 +357,95 @@
       Pom.xml dosyamizdaki &lt;/project&gt; kapanma tagindan önce
       &lt;dependencies&gt; tagi acip <strong>rest-assured</strong> ve
       <strong>JUnit</strong> kütüphanelerini yüklüyoruz. <br />
-      <code>
-        <ul>
-          <li>
-            &lt;dependencies&gt;
-            <ul>
-              <li>
-                &lt;dependency&gt;
-                <ul>
-                  <li>&lt;groupId&gt;junit&lt;/groupId&gt;</li>
-                  <li>&lt;artifactId&gt;junit&lt;/artifactId&gt;</li>
-                  <li>&lt;version&gt;4.13.2&lt;/version&gt;</li>
-                </ul>
-              </li>
-              <li>&lt;/dependency&gt;</li>
-              <li>
-                &lt;dependency&gt;
-                <ul>
-                  <li>&lt;groupId&gt;io.rest-assured&lt;/groupId&gt;</li>
-                  <li>&lt;artifactId&gt;rest-assured&lt;/artifactId&gt;</li>
-                  <li>&lt;version&gt;4.4.0&lt;/version&gt;</li>
-                  <li>&lt;scope&gt;test&lt;/scope&gt;</li>
-                </ul>
-              </li>
-              <li>&lt;/dependency&gt;</li>
-            </ul>
-          </li>
-          <li>&lt;/dependencies&gt;</li>
-        </ul>
-      </code>
-      <hr />
-      <h2>API Framework</h2>
-      <ul>
-        <li>
-          Batch30Api
+      <div class="cerceve">
+        <code>
           <ul>
-            <li>.idea</li>
             <li>
-              src
+              &lt;dependencies&gt;
               <ul>
-                <li>main</li>
                 <li>
-                  test
+                  &lt;dependency&gt;
                   <ul>
-                    <li>
-                      java
-                      <ul>
-                        <li>
-                          com.techproed
-                          <ul>
-                            <li>
-                              day01
-                              <ul>
-                                <li>GetRequest01</li>
-                                <li>...</li>
-                              </ul>
-                            </li>
-                            <li>
-                              testBase
-                              <ul>
-                                <li>DummyTestBase</li>
-                                <li>...</li>
-                              </ul>
-                            </li>
-                            <li>
-                              testData
-                              <ul>
-                                <li>DummyTestData</li>
-                                <li>...</li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
+                    <li>&lt;groupId&gt;junit&lt;/groupId&gt;</li>
+                    <li>&lt;artifactId&gt;junit&lt;/artifactId&gt;</li>
+                    <li>&lt;version&gt;4.13.2&lt;/version&gt;</li>
                   </ul>
                 </li>
+                <li>&lt;/dependency&gt;</li>
+                <li>
+                  &lt;dependency&gt;
+                  <ul>
+                    <li>&lt;groupId&gt;io.rest-assured&lt;/groupId&gt;</li>
+                    <li>&lt;artifactId&gt;rest-assured&lt;/artifactId&gt;</li>
+                    <li>&lt;version&gt;4.4.0&lt;/version&gt;</li>
+                    <li>&lt;scope&gt;test&lt;/scope&gt;</li>
+                  </ul>
+                </li>
+                <li>&lt;/dependency&gt;</li>
               </ul>
             </li>
-            <li>target</li>
-            <li>pom.xml</li>
+            <li>&lt;/dependencies&gt;</li>
           </ul>
-        </li>
-        <li>External Libraries</li>
-        <li>Scratches and Consoles</li>
-      </ul>
+        </code>
+      </div>
+      <hr />
+      <h2>API Framework</h2>
+      <div class="cerceve">
+        <ul>
+          <li>
+            Batch30Api
+            <ul>
+              <li>.idea</li>
+              <li>
+                src
+                <ul>
+                  <li>main</li>
+                  <li>
+                    test
+                    <ul>
+                      <li>
+                        java
+                        <ul>
+                          <li>
+                            com.techproed
+                            <ul>
+                              <li>
+                                day01
+                                <ul>
+                                  <li>GetRequest01</li>
+                                  <li>...</li>
+                                </ul>
+                              </li>
+                              <li>
+                                testBase
+                                <ul>
+                                  <li>DummyTestBase</li>
+                                  <li>...</li>
+                                </ul>
+                              </li>
+                              <li>
+                                testData
+                                <ul>
+                                  <li>DummyTestData</li>
+                                  <li>...</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>target</li>
+              <li>pom.xml</li>
+            </ul>
+          </li>
+          <li>External Libraries</li>
+          <li>Scratches and Consoles</li>
+        </ul>
+      </div>
       Eger acilan package'lar yanyana görünüyorsa(techproed.day1 gibi) Framework
       un ayarlar simgesine tiklayip
       <strong>Compact Middle Packages</strong> secenegindeki isareti kaldirmak
@@ -485,8 +497,9 @@
               <code
                 >response.getStatusCode(); <br />
                 response.getContentType(); <br />
-                response.getStatusLine(); seklinde cagrilabilir.
+                response.getStatusLine();
               </code>
+              seklinde cagrilabilir.
             </li>
           </ul>
         </li>
@@ -504,9 +517,14 @@
             </li>
             <li>
               API dogrulamasini kullanabiliriz; <br />
-              <code
-                >response.then(). assertThat(). statusCode(200).
-                contentType(ContentType.JSON). statusLine("HTTP/1.1 200 OK");
+              <code class="maddesiz">
+                response.then().
+                <ul>
+                  <li>assertThat().</li>
+                  <li>statusCode(200).</li>
+                  <li>contentType(ContentType.JSON).</li>
+                  <li>statusLine("HTTP/1.1 200 OK");</li>
+                </ul>
               </code>
               <ul>
                 <li>
@@ -525,18 +543,24 @@
               </ul>
             </li>
             <li>
-              Matcher Class yardimiyla; <br /><code>
-                response.then(). <br />
-                assertThat(). <br />
-                statusCode(200). <br />
-                contentType("application/json"). <br />
-                body("firstname", Matchers.equalTo("Susan")). <br />
-                body("lastname",Matchers.equalTo("Jackson")). <br />
-                body("totalprice",Matchers.equalTo(811)). <br />
-                body("depositpaid",Matchers.equalTo(true)). <br />
-                body("bookingdates.checkin",Matchers.equalTo("2021-08-11")).
-                <br />
-                body("bookingdates.checkout",Matchers.equalTo("2021-10-18"));
+              Matcher Class yardimiyla; <br />
+              <code class="maddesiz">
+                response.then().
+                <ul>
+                  <li>assertThat().</li>
+                  <li>statusCode(200).</li>
+                  <li>contentType("application/json").</li>
+                  <li>body("firstname", Matchers.equalTo("Susan")).</li>
+                  <li>body("lastname",Matchers.equalTo("Jackson")).</li>
+                  <li>body("totalprice",Matchers.equalTo(811)).</li>
+                  <li>body("depositpaid",Matchers.equalTo(true)).</li>
+                  <li>
+                    body("bookingdates.checkin",Matchers.equalTo("2021-08-11")).
+                  </li>
+                  <li>
+                    body("bookingdates.checkout",Matchers.equalTo("2021-10-18"));
+                  </li>
+                </ul>
               </code>
               <ul>
                 <li>
@@ -549,19 +573,20 @@
                   </code>
                   <br />
                   sekline ceviriyoruz. Artik Matchers'siz yazilabilir; <br />
-                  <code
-                    >body("firstname",equalTo("Susan"), <br />
-                    "lastname",equalTo("Jackson"), <br />
-                    "totalprice",equalTo(811), <br />
-                    "bookingdates.checkin",equalTo("2021-08-11"), <br />
-                    "bookingdates.checkout",equalTo("2021-10-18"));
+                  <code class="maddesiz">
+                    <ul>
+                      <li>body("firstname",equalTo("Susan"),</li>
+                      <li>"lastname",equalTo("Jackson"),</li>
+                      <li>"totalprice",equalTo(811),</li>
+                      <li>"bookingdates.checkin",equalTo("2021-08-11"),</li>
+                      <li>"bookingdates.checkout",equalTo("2021-10-18"));</li>
+                    </ul>
                   </code>
                 </li>
                 <li>
-                  <code> "bookingdates.checkin",equalTo("2021-08-11"); </code>
-                  <br />
                   Buradaki formata <strong>JsonPath</strong> denir. Ic ice olan
-                  datalara ulasmak icin kullanilir.
+                  datalara ulasmak icin kullanilir. <br />
+                  <code> "bookingdates.checkin",equalTo("2021-08-11"); </code>
                 </li>
               </ul>
             </li>
@@ -668,33 +693,399 @@
       </code>
       <hr />
       <h3>TestBase Class'i</h3>
-      <ul>
-        <li>
-          public class JsonPlaceHolderTestBase {
+      <div class="cerceve maddesiz">
+        <code>
           <ul>
-            <li>protected RequestSpecification spec01;</li>
-            <li>@Before</li>
             <li>
-              public void setUp(){
+              public class JsonPlaceHolderTestBase {
               <ul>
+                <li>protected RequestSpecification spec01;</li>
+                <li>@Before</li>
                 <li>
-                  spec01= new RequestSpecBuilder(). <br />
-                  setBaseUri("https://jsonplaceholder.typicode.com"). <br />
-                  build();
+                  public void setUp(){
+                  <ul>
+                    <li>
+                      spec01= new RequestSpecBuilder(). <br />
+                      setBaseUri("https://jsonplaceholder.typicode.com"). <br />
+                      build();
+                    </li>
+                  </ul>
                 </li>
+                <li>}</li>
               </ul>
             </li>
             <li>}</li>
           </ul>
-        </li>
-        <li>}</li>
-      </ul>
+        </code>
+      </div>
       Linkimizin ana kismini buraya <strong>spec</strong> olarak tanimladik
-      <br />
+      <br /><br />
       <strong>Parametre</strong> olarak kullanacagimiz class'ta linkin arkasina
-      ekleyebiliriz.
-      <br />
+      ekleyebiliriz. <br /><br />
       Kullanacagimiz Class'i bu Class'a <strong>extends</strong> etmeliyiz.
+      <br /><br />
+      <strong>RequestSpecification</strong> bir Interface'tir ve Restassured
+      kütüphanesinden gelir. Bununla <strong>spec</strong> denilen yapilar
+      olustururuz. <br /><br />
+      Sadece bu class'i extends eden child Class'larin kullanmasini istedigimiiz
+      icin <strong>protected</strong> yapiyoruz. <br /><br />
+      Cucumber'da @Backround, JUnit'te @Before her testten önce calistigi gibi
+      Api'de de <strong>@Before</strong> annotation'i kullanilir. <br /><br />
+      Olusturdugumuz method'da class level'da olusturdugumuz spec'e
+      <strong>new RequestSpecBuilder()</strong> diyerek deger atiyoruz. Bu
+      birazdan verecegim url'i spec olarak insa et manasina gelmektedir.
+      <br /><br />
+      RequestSpecBuilder()'in calisabilmesi icin sonunda mutlaka
+      <strong>.buid();</strong> olmalidir. <br /><br />
+      TestBase sayesinde sayfamiza <strong>String url</strong> tanimlamaktan
+      kurtulduk. <br />
+      <code>
+        String url="https://jsonplaceholder.typicode.com/todos/123";
+      </code>
+      yazmak yerine: <br />
+      <div class="cerceve maddesiz">
+        <code>
+          <ul>
+            <li>
+              spec01.pathParams("parametre1","todos",
+              <ul>
+                <li>"parametre2",123);</li>
+              </ul>
+            </li>
+            <li>
+              Response response= given().
+              <ul>
+                <li>accept("application/json").</li>
+                <li>spec(spec01).</li>
+                <li>when().</li>
+                <li>get("/{parametre1}/{parametre2}");</li>
+              </ul>
+            </li>
+            <li>response.prettyPrint();</li>
+          </ul>
+        </code>
+      </div>
+      Eger bir tane parametre ekleyeceksek
+      <code><strong>pathParam()</strong></code> kullaniriz. <br /><br />
+      <code> get("/{parametre1}/{parametre2}"); </code> kisminda süslü
+      parantezleri degisebilir degerler oldugunu belirmek icin kullaniyoruz.
+      Anlasilir olsun diye parametre olarak ifade ediyoruz.
+      <hr />
+      <h3>Örnek</h3>
+      https://jsonplaceholder.typicode.com/todos/123 url'ine accept type'i
+      "application/json" olan GET request'i yolladigimda gelen response'un;
+      <ul>
+        <li>status kodunun 200</li>
+        <li>content type'inin "application/json"</li>
+        <li>Headers'daki "Server" in "cloudflare"</li>
+        <li>response body'deki "userId"'nin 7</li>
+        <li>"title" in "esse et quis iste est earum aut impedit"</li>
+        <li>"completed" bolumunun false oldugunu test edin.</li>
+      </ul>
+      <div class="maddesiz">
+        <code>
+          <ul>
+            <li>
+              spec01.pathParams("parametre1","todos",
+              <ul>
+                <li>"parametre2",123);</li>
+              </ul>
+            </li>
+            <li>
+              Response response= given().
+              <ul>
+                <li>accept("application/json").</li>
+                <li>spec(spec01).</li>
+                <li>when().</li>
+                <li>get("/{parametre1}/{parametre2}");</li>
+              </ul>
+            </li>
+            <li>response.prettyPrint();</li>
+            <li>
+              response.then().
+              <ul>
+                <li>assertThat().</li>
+                <li>statusCode(200).</li>
+                <li>contentType("application/json").</li>
+                <li>header("Server", equalTo("cloudflare")).</li>
+                <li>
+                  body("userId",equalTo(7),
+                  <ul>
+                    <li>
+                      "title",equalTo("esse et quis iste est earum aut
+                      impedit"),
+                    </li>
+                    <li>"completed",equalTo(false));</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </code>
+      </div>
+      <hr />
+      <h2>JsonPath Özelliginin Uygulanmasi</h2>
+      <strong>response.jsonPath();</strong> methodu JsonPath class'indan
+      <strong>obje</strong> üreterek response üzerinden JsonPath class'indaki
+      methodlari kullanmamizi saglar. <br /><br />
+      JsonPath ile <strong>sadece body'nin icini</strong> test edebiliriz.
+      Örnegin statuscode'u response yardimiyla test ediyoruz.
+
+      <h3>Örnek</h3>
+      //https://restful-booker.herokuapp.com/booking/ url'sine bir request
+      yolladigimda;
+      <ul>
+        <li>HTTP Status Code'unun 200,</li>
+        <li>response content type'inin "application/JSON" oldugunu,</li>
+        <li>
+          response body'sinin asagidaki gibi oldugunu test edin.
+          <code class="maddesiz">
+            <ul>
+              <li>{</li>
+              <li>"firstname": "Sally",</li>
+              <li>"lastname": "Wilson",</li>
+              <li>"totalprice": 753,</li>
+              <li>"depositpaid": true,</li>
+              <li>
+                "bookingdates": {
+                <ul>
+                  <li>"checkin": "2020-10-31",</li>
+                  <li>"checkout": "2021-06-26"},</li>
+                </ul>
+              </li>
+              <li>"additionalneeds": "Breakfast"</li>
+              <li>}</li>
+            </ul>
+          </code>
+        </li>
+      </ul>
+      <div class="maddesiz">
+        <code
+          ><ul>
+            <li>
+              public class GetRequest07 extends HerokuAppTestBase {
+              <ul>
+                <il>@Test</il>
+                <il
+                  >public void test(){
+                  <ul>
+                    <li>
+                      spec02.pathParams("parametre1","booking",
+                      <ul>
+                        <li>"parametre2",2);</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Response response=given()
+                      <ul>
+                        <li>.accept("application/json")</li>
+                        <li>.spec(spec02)</li>
+                        <li>.when()</li>
+                        <li>.get("/{parametre1}/{parametre2}");</li>
+                      </ul>
+                    </li>
+                    <li>
+                      response.then().assertThat().statusCode(200).contentType(ContentType.JSON);
+                      <br />
+                      (//Assert.assertEquals(200,response.getStatusCode());)
+                    </li>
+                    <li>
+                      <strong>JsonPath jsonPath=response.jsonPath();</strong>
+                    </li>
+                    <li>
+                      Assert.assertEquals("Sally",jsonPath.getString("firstname"));
+                    </li>
+                    <li>
+                      Assert.assertEquals("Wilson",jsonPath.getString("lastname"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(753,jsonPath.getInt("totalprice"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(true,jsonPath.getBoolean("depositpaid"));
+                    </li>
+                    <li>
+                      Assert.assertEquals("2020-10-31",jsonPath.getString("bookingdates.checkin"));
+                    </li>
+                    <li>
+                      Assert.assertEquals("2021-06-26",jsonPath.getString("bookingdates.checkout."));
+                    </li>
+                  </ul></il
+                >
+                <il>}</il>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
+      <hr />
+      <h3>Örnek</h3>
+      http://dummy.restapiexample.com/api/v1/employees url'ine bir istek
+      gönderildiğinde;
+      <ul>
+        <li>status kodun 200 oldugunu,</li>
+        gelen body'de;
+        <li>5. çalışanın isminin "Airi Satou" olduğunu,</li>
+        <li>6. çalışanın maaşının "372000" olduğunu,</li>
+        <li>Toplam 24 tane çalışan olduğunu,</li>
+        <li>"Rhona Davidson"in employee'lerden biri olduğunu,</li>
+        <li>"21", "23", "61" yaşlarında employeeler olduğunu test edin.</li>
+      </ul>
+      <div class="maddesiz">
+        <code>
+          <ul>
+            <li>
+              public class GetRequest09 extends DummyTestBase {
+              <ul>
+                <li>@Test</li>
+                <li>
+                  public void test(){
+                  <ul>
+                    <li>spec03.pathParam("parametre1","employees");</li>
+                    <li>
+                      Response response= given().
+                      <ul>
+                        <li>accept("application/json").</li>
+                        <li>spec(spec03).</li>
+                        <li>when().</li>
+                        <li>get("/{parametre1}");</li>
+                      </ul>
+                    </li>
+                    <li>response.prettyPrint();</li>
+                    <li>JsonPath jsonPath=response.jsonPath();</li>
+                    <li>
+                      System.out.println(jsonPath.getList("data.id").size());
+                    </li>
+                    <li>
+                      Assert.assertEquals(24,jsonPath.getList("data.id").size());
+                    </li>
+                    <li>
+                      Assert.assertEquals(200,response.getStatusCode()); <br />
+                      *(//Assert.assertTrue(response.getStatusCode()==200);)
+                    </li>
+                    <li>
+                      Assert.assertEquals("Airi
+                      Satou",jsonPath.getString("data.employee_name[4]"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(372000,jsonPath.getInt("data[5].employee_salary"));
+                    </li>
+                    <li>
+                      Assert.assertTrue(
+                      jsonPath.getList("data.employee_name").contains("Rhona
+                      Davidson"));
+                    </li>
+                    <li>
+                      List&lt;Integer&gt; arananyaslar= Arrays.asList(21,23,61);
+                      <br />
+                      *(List&lt;Integer&gt; arananyaslar=new
+                      *ArrayList&lt;Integer&gt;(); <br />
+                      *arananyaslar.add(21); <br />
+                      *arananyaslar.add(23); <br />
+                      *arananyaslar.add(61);)
+                    </li>
+                    <li>
+                      Assert.assertTrue(jsonPath.getList("data.employee_age").containsAll(arananyaslar));
+                    </li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
+      <hr />
+      <h2>Grovy Dili</h2>
+      Groovy dili javanın alt dilidir. Bu dil yardımı ile loop kullanmadan gelen
+      responsedaki değerleri bir şarta bağlı olarak listeye yazdırabiliyoruz.
+      <br />
+      <strong> <code> "data.findAll{it.id&gt;10}.id" </code> </strong>
+      <br />
+      Body'den gelen tüm veriler "data"nin altinda oldugu icin
+      <strong>data.</strong> ile basliyoruz. <br />
+      Data'nin icinde ulasmak istedigimiz degeri
+      <strong>findAll</strong> methoduyla sartiyla birlikte aratiyoruz. <br />
+      Sartin olusabilmesi icin yazilan sartin önüne
+      <strong>it.</strong> yaziyoruz. <br />
+      Süslü parantez kullanarak oradaki datalari aliyoruz.
+      ====================================================
+      <h3>Örnek</h3>
+      http://dummy.restapiexample.com/api/v1/employees url ine bir istek
+      gönderildiğinde Dönen response un;
+      <ul>
+        <li>Status kodunun 200 oldugunu test edin.</li>
+        <li>10'dan büyük tüm id'leri ekrana yazdırın.</li>
+        <li>10'dan büyük 14 id olduğunu test edin.</li>
+        <li>30'dan küçük tüm yaşları ekrana yazdırın.</li>
+        <li>
+          30'dan kucuk yaslar icinde en büyük yaşın 23 olduğunu test edin.
+        </li>
+        <li>
+          Maası 350000 den büyük olan tüm employee name'leri ekrana yazdırın
+        </li>
+        <li>
+          Maası 350000 den büyük olan tüm employee name'leri icinde "Charde
+          Marshall" oldugunu test edin.
+        </li>
+      </ul>
+      <div class="maddesiz">
+        <code>
+          <ul>
+            <li>
+              public class GetRequest10 extends DummyTestBase {
+              <ul>
+                <li>@Test</li>
+                <li>
+                  public void test(){
+                  <ul>
+                    <li>spec03.pathParam("parametre1","employees");</li>
+                    <li>
+                      Response response= given().
+                      <ul>
+                        <li>accept("application/json").</li>
+                        <li>spec(spec03).</li>
+                        <li>when().</li>
+                        <li>get("/{parametre1}");</li>
+                      </ul>
+                    </li>
+                    <li>JsonPath jsonPath=response.jsonPath();</li>
+                    <li>Assert.assertEquals(200,response.getStatusCode());</li>
+                    <li>
+                      List&lt;Integer&gt; idList=
+                      jsonPath.getList("data.findAll{it.id&gt;10}.id");
+                    </li>
+                    <li>System.out.println(idList);</li>
+                    <li>Assert.assertEquals(14,idList.size());</li>
+                    <li>
+                      List&lt;Integer&gt; yasListesi=
+                      jsonPath.getList("data.findAll{it.employee_age&lt;30}.employee_age");
+                    </li>
+                    <li>System.out.println(yasListesi);</li>
+                    <li>Collections.sort(yasListesi);</li>
+                    <li>
+                      Assert.assertEquals((Integer)23,yasListesi.get(yasListesi.size()-1));
+                    </li>
+                    <li>
+                      List&lt;String&gt;isimListesi=
+                      jsonPath.getList("data.findAll{it.employee_salary&gt;350000}.employee_name");
+                    </li>
+                    <li>System.out.println(isimListesi);</li>
+                    <li>
+                      Assert.assertTrue(isimListesi.contains("Charde
+                      Marshall"));
+                    </li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
     </main>
     <footer>
       <hr />
