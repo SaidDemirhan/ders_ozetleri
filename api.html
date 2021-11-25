@@ -1224,7 +1224,8 @@
                       Assert.assertEquals(expectedData.get("completed"),
                       jsonPath.getBoolean("completed")); <br /><br />
                     </li>
-                    ===3.Yöntem=Deserialization==
+                    ===2.Yöntemi TestData Class'indan obje olusturarak da
+                    yapabiliriz.==
                     <br />
                     Bir sonraki örnekte verilecektir.
                   </ul>
@@ -1273,9 +1274,7 @@
         </code>
       </div>
       <h3>Örnek</h3>
-      Bir üstteki örnegin Deserialization cözümüdür. <br />
-      (Matchers ve JsonPath cözümleri de ayni sekilde TestBase class'indan obje
-      olusturularak yapilabilir.)
+      Bir üstteki örnegin TestData Class'iyla cözümüdür. <br />
       <div class="maddesiz">
         <code>
           <ul>
@@ -1303,7 +1302,7 @@
                       (HashMap&lt;String,Object&gt;)
                       expectedObje.setUpTestData(); <br />
                       //Ayni data türüne sahip bir map olusturarark TestData
-                      class'inda olusturulanmethodu cagirdik.(TypeCasting
+                      class'inda olusturulan methodu cagirdik.(TypeCasting
                       isteyebilir.)
                     </li>
                     <li>System.out.println(expectedData); <br /><br /></li>
@@ -1344,6 +1343,41 @@
       Body'nin disindakileri <strong>response</strong> ile, icindekileri ise
       <strong>JsonPath</strong> ile assert ediyoruz.
       <hr />
+      <h2>DE-Serialization</h2>
+      API'den aldigimiz bir datayi (json) <strong>Java diline cevime</strong>ye
+      <strong>deserializition</strong> denir. (tester isi) <br />
+      Javada yazilan bir kodu API icin yeni bir formata cevirmeye (json)
+      <strong>serialization</strong> denir. <br /><br />
+      Bu islemi yapabilmek icin POM.xml dosyamiza iki kütüphane eklemeliyiz:
+      <div class="cerceve maddesiz">
+        <code>
+          <ul>
+            <li>
+              &lt;dependency&gt;
+              <ul>
+                <li>&lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;</li>
+                <li>&lt;artifactId&gt;gson&lt;/artifactId&gt;</li>
+                <li>&lt;version&gt;2.8.6&lt;/version&gt;</li>
+              </ul>
+            </li>
+            <li>&lt;/dependency&gt;</li>
+          </ul>
+        </code>
+        ve
+        <code>
+          <ul>
+            <li>
+              &lt;dependency&gt;
+              <ul>
+                <li>&lt;groupId&gt;org.codehaus.jackson&lt;/groupId&gt;</li>
+                <li>&lt;artifactId&gt;jackson-mapper-asl&lt;/artifactId&gt;</li>
+                <li>&lt;version&gt;1.9.13&lt;/version&gt;</li>
+              </ul>
+            </li>
+            <li>&lt;/dependency&gt;</li>
+          </ul>
+        </code>
+      </div>
     </main>
     <footer>
       <hr />
