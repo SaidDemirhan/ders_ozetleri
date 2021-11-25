@@ -290,6 +290,13 @@
       >
       adresinden swagger ile ilgili alistirmalar yapilabilir.
       <hr />
+      <h2>Postman</h2>
+      Ayrintili bilgi icin
+      <a href="https://image4.io/tr/blog/postman-ile-api-testi/"
+        >https://image4.io/tr/blog/postman-ile-api-testi/
+      </a>
+      adresini ziyaret edebilirsiniz.
+      <hr />
       <h2>API Testing</h2>
       IntelliJ ile API testleri yapabilmek icin <strong>POM.xml</strong>'e
       <strong>io-rest-assured</strong> ve
@@ -1007,11 +1014,23 @@
       Body'den gelen tüm veriler "data"nin altinda oldugu icin
       <strong>data.</strong> ile basliyoruz. <br />
       Data'nin icinde ulasmak istedigimiz degeri
-      <strong>findAll</strong> methoduyla sartiyla birlikte aratiyoruz. <br />
+      <strong>findAll</strong> methoduyla
+      <strong>sartiyla birlikte</strong> aratiyoruz. <br />
       Sartin olusabilmesi icin yazilan sartin önüne
       <strong>it.</strong> yaziyoruz. <br />
-      Süslü parantez kullanarak oradaki datalari aliyoruz.
-      ====================================================
+      <strong>Süslü parantez</strong> kullanarak oradaki datalari aliyoruz.
+      <br />
+      Bilgiler bize bir <strong>list</strong> olarak gelir. <br />
+      <strong>JsonPath</strong>'ten gelir. <br />
+      Biz gelen bilgileri <strong>data türüne göre</strong> bir
+      <strong>List</strong>'e eklemeliyiz. <br />
+      <strong>
+        <code>
+          JsonPath jsonPath=response.jsonPath(); <br />
+          List&lt;Integer&gt; idList =
+          jsonPath.getList("data.findAll{it.id&gt;10}.id");
+        </code>
+      </strong>
       <h3>Örnek</h3>
       http://dummy.restapiexample.com/api/v1/employees url ine bir istek
       gönderildiğinde Dönen response un;
@@ -1086,14 +1105,248 @@
           </ul>
         </code>
       </div>
+      <hr />
+      <h3>Örnek</h3>
+      https://jsonplaceholder.typicode.com/todos/2 url'ine istek
+      gönderildiğinde, dönen response'un;
+      <ul>
+        <li>Status kodunun 200 oldugunu,</li>
+        dönen body de;
+        <li>"completed": değerinin false oldugunu,</li>
+        <li>
+          "title": değerinin "quis ut nam facilis et officia qui" oldugunu,
+        </li>
+        <li>"userId" sinin 1 oldugunu,</li>
+        header değerlerinden;
+        <li>"Via" değerinin "1.1 vegur" oldugunu,</li>
+        <li>"Server" değerinin "cloudflare" olduğunu test edin.</li>
+      </ul>
+      <div class="maddesiz">
+        <code>
+          <ul>
+            <li>
+              public class GetRequest11 extends JsonPlaceHolderTestBase {
+              <ul>
+                <li>@Test</li>
+                <li>
+                  public void test() {
+                  <ul>
+                    <li>
+                      spec01.pathParams("parametre1", "todos",
+                      <ul>
+                        <li>"parametre2", 2); <br /><br /></li>
+                      </ul>
+                    </li>
+                    <li>
+                      HashMap&lt;String, Object&gt; expectedData = new
+                      HashMap&lt;String, Object&gt;();
+                    </li>
+                    <li>expectedData.put("statusCode", 200);</li>
+                    <li>expectedData.put("via", "1.1 vegur");</li>
+                    <li>expectedData.put("Server", "cloudflare");</li>
+                    <li>expectedData.put("userId", 1);</li>
+                    <li>
+                      expectedData.put("title", "quis ut nam facilis et officia
+                      qui");
+                    </li>
+                    <li>expectedData.put("completed", false);</li>
+                    <li>
+                      System.out.println(expectedData); <br />//Map'te bilgileri
+                      görebilmek icin yazdirdik.<br /><br />
+                    </li>
+                    <li>
+                      Response response = given().
+                      <ul>
+                        <li>accept("application/json").</li>
+                        <li>spec(spec01).</li>
+                        <li>when().</li>
+                        <li>get("/{parametre1}/{parametre2}");</li>
+                      </ul>
+                    </li>
+                    <li>response.prettyPrint(); <br /><br /></li>
+                    ===1.Yöntem=Matchers Class===
+                    <li>
+                      response.then().
+                      <ul>
+                        <li>assertThat().</li>
+                        <li>
+                          statusCode((Integer) expectedData.get("statusCode")).
+                          <br />//Map'deki statusCode olarak tanimlanan value'yu
+                          istedik. <br />
+                          //Ayrica integer olarak getirmesini isteyere cast
+                          islemi yaptik.
+                        </li>
+                        <li>
+                          headers("via", equalTo(expectedData.get("via")),
+                          <ul>
+                            <li>
+                              "Server", equalTo(expectedData.get("Server"))).
+                            </li>
+                          </ul>
+                        </li>
+                        <li></li>
+                        <li></li>
+                      </ul>
+                    </li>
+                    <li>
+                      body("userId", equalTo(expectedData.get("userId")),
+                      <ul>
+                        <li>"title", equalTo(expectedData.get("title")),</li>
+                        <li>
+                          "completed", equalTo(expectedData.get("completed")));
+                          <br /><br />
+                        </li>
+                      </ul>
+                    </li>
+                    ===2.Yöntem=JsonPath====
+                    <li>JsonPath jsonPath = response.jsonPath();</li>
+                    <li>
+                      Assert.assertEquals(expectedData.get("statusCode"),
+                      response.statusCode());
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedData.get("via"),
+                      response.getHeader("via"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedData.get("Server"),
+                      response.getHeader("Server"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedData.get("userId"),
+                      jsonPath.getInt("userId"))
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedData.get("title"),
+                      jsonPath.getString("title"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedData.get("completed"),
+                      jsonPath.getBoolean("completed")); <br /><br />
+                    </li>
+                    ===3.Yöntem=Deserialization==
+                    <br />
+                    Bir sonraki örnekte verilecektir.
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
+      <hr />
+      <h2>TestData Class'i</h2>
+      <strong>Expected data</strong>'larin tutuldugu class'tir. <br />
+      Bu class'tan <strong>Obje</strong> üreterek burdaki datalari cagiracagiz.
+      <div class="cerceve maddesiz">
+        <code>
+          <ul>
+            <li>
+              public class JsonPlaceHolderTestData {
+              <ul>
+                <li>
+                  public Map&lt;String,Object&gt;setUpTestData(){
+                  <ul>
+                    <li>
+                      HashMap&lt;String,Object&gt; expectedData = new
+                      HashMap&lt;String,Object&gt;();
+                    </li>
+                    <li>expectedData.put("statusCode", 200);</li>
+                    <li>expectedData.put("via", "1.1 vegur");</li>
+                    <li>expectedData.put("Server", "cloudflare");</li>
+                    <li>expectedData.put("userId", 1);</li>
+                    <li>
+                      expectedData.put("title", "quis ut nam facilis et officia
+                      qui");
+                    </li>
+                    <li>expectedData.put("completed", false);</li>
+                    <li>return expectedData;</li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
+      <h3>Örnek</h3>
+      Bir üstteki örnegin Deserialization cözümüdür. <br />
+      (Matchers ve JsonPath cözümleri de ayni sekilde TestBase class'indan obje
+      olusturularak yapilabilir.)
+      <div class="maddesiz">
+        <code>
+          <ul>
+            <li>
+              public class GetRequest11TestData extends JsonPlaceHolderTestBase
+              {
+              <ul>
+                <li>@Test</li>
+                <li>
+                  public void test() {
+                  <ul>
+                    <li>
+                      spec01.pathParams("parametre1", "todos",
+                      <ul>
+                        <li>"parametre2", 2); <br /><br /></li>
+                      </ul>
+                    </li>
+                    <li>
+                      JsonPlaceHolderTestData expectedObje=new
+                      JsonPlaceHolderTestData(); <br />
+                      //TestData class'indan bir obje olusturduk.
+                    </li>
+                    <li>
+                      HashMap&lt;String,Object&gt; expectedData=
+                      (HashMap&lt;String,Object&gt;)
+                      expectedObje.setUpTestData(); <br />
+                      //Ayni data türüne sahip bir map olusturarark TestData
+                      class'inda olusturulanmethodu cagirdik.(TypeCasting
+                      isteyebilir.)
+                    </li>
+                    <li>System.out.println(expectedData); <br /><br /></li>
+                    <li>
+                      Response response = given().
+                      <ul>
+                        <li>accept("application/json").</li>
+                        <li>spec(spec01).</li>
+                        <li>when().</li>
+                        <li>get("/{parametre1}/{parametre2}");</li>
+                      </ul>
+                    </li>
+                    <li>response.prettyPrint(); <br /><br /></li>
+                    <li>
+                      HashMap&lt;String,Object&gt;
+                      actualData=response.as(HashMap.class);
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedData.get("userId"),actualData.get("userId"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedData.get("title"),actualData.get("title"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedData.get("completed"),actualData.get("completed"));
+                    </li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
+      <hr />
+      <h4>Uyari!</h4>
+      Body'nin disindakileri <strong>response</strong> ile, icindekileri ise
+      <strong>JsonPath</strong> ile assert ediyoruz.
+      <hr />
     </main>
     <footer>
       <hr />
-      Ayrintili bilgi icin
-      <a href="https://image4.io/tr/blog/postman-ile-api-testi/"
-        >https://image4.io/tr/blog/postman-ile-api-testi/</a
-      >
-      adresini ziyaret edebilirsiniz.
     </footer>
   </body>
 </html>
