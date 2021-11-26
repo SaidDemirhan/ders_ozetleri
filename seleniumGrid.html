@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SeleniumGrid</title>
+  </head>
+  <body>
+    <h1>SELENIUM GRID 3 DERS NOTLARI 24/11/2021 BATCH 30</h1>
+    <h2>PARALEL TESTİ NASIL YAPARSINIZ?</h2>
+    <ol>
+      <li>TestNG xml files</li>
+      <li>Cucumber -&gt; Maven SureFire Plugin</li>
+      <li>Selenium Grid</li>
+    </ol>
+
+    <h3>Interview Sorusu</h3>
+    SELENIUM GRID KULLANDIN MI? NEREDE KULLANDIN? <br />
+    Evet Kullandım. Paralel Test ve Cross Browser Test yaparken. <br /><br />
+
+    CROSS BROWSER TEST NEDİR? <br />
+    Bir application'ın bir çok browser'da çalışıp çalışmadığını test etmek.
+    <br /><br />
+
+    PARALEL TEST NEDİR? <br />
+    Testleri aynı anda çalıştırma. <br /><br />
+
+    HUB NEDİR? <br />
+    Ağdaki tüm makineleri kontrol eden yönlendiren merkezdir. <br />
+    Kullanıcın isteklerini alır, o isteklere uygun makinalara kodlarımızı
+    gönderir ve çalıştırır. Makineler ile iletişim için JSON kullanır.
+    <br /><br />
+
+    NODE NEDİR? <br />
+    Kodlarımızı çalıştırmak için oluşturduğumuz sanal makina ortamı.
+    <br /><br />
+
+    SELENIUM GRID'DE HANGİ DRIVER'I KULLANIYORSUN? <br />
+    RemoteWebDriver Class kullanılır. <br /><br />
+
+    Desired Capabilities İÇİNDE NE VAR? <br />
+    <ol>
+      <li>İşletim sistemi</li>
+      <li>Browser ismi</li>
+      <li>Browser Version</li>
+    </ol>
+    bunlara Desired Capabilities denilir (istenen özellikler).
+
+    <h2>SELENIUM GRID3 KURULUM</h2>
+    <ol>
+      <li>C:\ sürücüsünde Grid3 isminde bir dosya olusturun.</li>
+      <li>
+        C:\Grid3 dosyasının içine selenium-server-standalone.jar dosyasını
+        kopyalayın.
+      </li>
+      <li>Crome browserınızın versiyonunu kontrol edin 96.0.4664.45</li>
+      <li>
+        https://chromedriver.chromium.org/ adresine gidip 96.0.4664.45
+        versiyonunu indirip C:\Grid3 dosyasının içine kopyalayın.
+      </li>
+      <li>
+        Terminali açın C:\Grid3 "java -jar selenium-server-standalone.jar -role
+        hub" bu kodu yazın <br />
+        C:\Grid3&gt;java -jar selenium-server-standalone.jar -role hub enter
+      </li>
+      <li>
+        "Selenium Grid hub is up and running" mesajını almanız lazım. <br />
+        <strong>NOT:</strong> http://192.168.43.151:4444 ADRESLER BİLGİSAYARDAN
+        BİLGİSAYARA DEĞİŞİR KENDİ BİLGİSAYARINIZ OLUSTURDUĞU ADRTESLERİ KULLANIN
+      </li>
+      <li>
+        Nodes should register to http://192.168.43.151:4444/grid/register/
+        <br />
+        Olusturacağımız nodu bu adrese
+        "http://192.168.43.151:4444/grid/register/" bağlamalısınız
+      </li>
+      <li>
+        Clients should connect to http://192.168.43.151:4444/wd/hub Kullanıcının
+        "http://192.168.43.151:4444/wd/hub" bu adrese gitmesi lazım
+      </li>
+      <li>
+        Chrome browser'ı aç adres olarak http://192.168.43.151:4444 yaz ve
+        enter.
+      </li>
+      <li>2. bir CMD ekranı açın. C:\Grid3></li>
+      <li>
+        "java -Dwebdriver.chrome.driver="C:\Grid3\chromedriver.exe" -jar
+        selenium-server-standalone.jar -role node -hub
+        http://192.168.43.151:4444/grid/register/" KODUNU YAZIN ENTER.
+      </li>
+      <li>
+        C:\Grid3&gt;java -Dwebdriver.chrome.driver="C:\Grid3\chromedriver.exe"
+        -jar selenium-server-standalone.jar -role node -hub
+        http://192.168.43.151:4444/grid/register/
+      </li>
+      <li>
+        Selenium Grid node is up and ready to register to the hub Node'ın hub'a
+        bağlandığı mesajını görün. ilk node'u oluşturduk.
+      </li>
+      <li>
+        Chrome'u açın oluşturduğumuz Hub'ta console tıklayın ve node'u görün.
+      </li>
+      <li>Şimdi 2. nodu oluşturmak için 3. bir CMD ekranı açın C:\Grid3></li>
+      <li>
+        "java -Dwebdriver.chrome.driver="C:\Grid3\chromedriver.exe" -jar
+        selenium-server-standalone.jar -role node -hub
+        http://192.168.43.151:4444/grid/register/" KODUNU YAZIN ENTER.
+      </li>
+      <li>
+        C:\Grid3&gt;java -Dwebdriver.chrome.driver="C:\Grid3\chromedriver.exe"
+        -jar selenium-server-standalone.jar -role node -hub
+        http://192.168.43.151:4444/grid/register/
+      </li>
+      <li>
+        Selenium Grid node is up and ready to register to the hub Node'ın hub'a
+        bağlandığı mesajını görün. 2. node'uda oluşturduk.
+      </li>
+      <li>Chrome'u açın REFRESH yapın. Oluşturulan 2. node'uda görün.</li>
+    </ol>
+
+    <h3>ÇALIŞTIRACAĞIMIZ KODLARI YAZMAYA BAŞLAMAK İÇİN PROJE OLUŞTURMA</h3>
+    <ol>
+      <li>IntelliJ'yi açın.</li>
+      <li>File -&gt; New Project</li>
+      <li>Maven'ı seç</li>
+      <li>Create from archetype'a tikla</li>
+      <li>maven-archetype-quickstart'ı seç</li>
+      <li>
+        Add ArcheType <br />
+        Group Id =&gt; com.SeleniumGrid <br />
+        Artifactld =&gt; SeleniumGrid <br />
+        Version =&gt; 1.0 <br />
+        Next'E TIKLA
+      </li>
+      <li>Name =&gt; SeleniumGrid</li>
+      <li>
+        pom.xml'i aç. Aşağıdaki dependency'leri ekle
+        <div>
+          <code>
+            <ul>
+              <li>
+                &lt;dependency&gt;
+                <ul>
+                  <li>
+                    &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
+                  </li>
+                  <li>&lt;artifactId&gt;selenium-java&lt;/artifactId&gt;</li>
+                  <li>&lt;dependency&gt;3.141.59&lt;/dependency&gt;</li>
+                </ul>
+              </li>
+              <li>&lt;/dependency&gt;</li>
+            </ul>
+            <ul>
+              <li>
+                &lt;dependency&gt;
+                <ul>
+                  <li>&lt;groupId&gt;org.testng&lt;/groupId&gt;</li>
+                  <li>&lt;artifactId&gt;testng&lt;/artifactId&gt;</li>
+                  <li>&lt;dependency&gt;7.1.0&lt;/dependency&gt;</li>
+                </ul>
+              </li>
+              <li>&lt;/dependency&gt;</li>
+            </ul>
+          </code>
+        </div>
+      </li>
+    </ol>
+
+    <h3>KODUMUZU YAZMAK İÇİN CLASS OLUŞTURMA</h3>
+
+    <ul>
+      <li>package org.example;</li>
+      <li>import org.openqa.selenium.Platform;</li>
+      <li>import org.openqa.selenium.WebDriver;</li>
+      <li>import org.openqa.selenium.chrome.ChromeOptions;</li>
+      <li>import org.openqa.selenium.remote.DesiredCapabilities;</li>
+      <li>import org.openqa.selenium.remote.RemoteWebDriver;</li>
+      <li>import java.net.MalformedURLException;</li>
+      <li>import java.net.URL;</li>
+      <li>
+        public class GridTest {
+        <ul>
+          <li>
+            public static void main(String[] args) throws MalformedURLException
+            {
+            <ul>
+              <li>
+                //1) Desired Capabilities OLUSTUR. <br />
+                DesiredCapabilities cap = new DesiredCapabilities();
+              </li>
+              <li>
+                //Desired Capabilities içerisine 3 şey tanımlayabiliriz <br />
+
+                //a) browser <br />
+                cap.setBrowserName("chrome");
+              </li>
+              <li>
+                //b) işletim sistemi <br />
+
+                cap.setPlatform(Platform.WINDOWS);
+              </li>
+              <li>
+                //c) browser version <br />
+                //cap.setVersion("96.0.4664.45");
+              </li>
+              <li>
+                //2) Chrome Options olustur <br />
+                ChromeOptions options = new ChromeOptions();
+              </li>
+              <li>options.merge(cap);</li>
+              <li>String hubUrl = "http://192.168.43.151:4444/wd/hub";</li>
+              <li>
+                WebDriver driver = new RemoteWebDriver(new URL(hubUrl),options);
+              </li>
+              <li>driver.get("https://www.google.com/");</li>
+              <li>System.out.println(driver.getTitle());</li>
+            </ul>
+          </li>
+          <li>}</li>
+        </ul>
+      </li>
+      <li>}</li>
+    </ul>
+  </body>
+</html>
