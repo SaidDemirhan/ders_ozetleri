@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jenkins</title>
+  </head>
+  <body>
+    <main>
+      <div>
+        <h1>JENKINS DERS NOTLARI 26/11/2021 BATCH 30</h1>
+        <h2>JENKİNS KURULUM</h2>
+        <a href="https://www.jenkins.io/download/"
+          >https://www.jenkins.io/download/</a
+        >
+        <h2>JENKINS'İ CMD VEYA TERMİNAL İLE KURMA</h2>
+        <ol>
+          <li>Bilgisayarınızda Jenkins dosyası oluşturun</li>
+          <li>
+            <a href="https://www.jenkins.io/download/"
+              >https://www.jenkins.io/download/</a
+            >
+            adresine gidip (Generic Java package(.war) Jenkins.war dosyasını,
+            Jenkins klasörüne indirin
+          </li>
+          <li>
+            CMD ekrenında Jenkins klasörünü açın ve java -jar jenkis.war ENTER
+            <br />
+            KURULUM BAŞLAYACAKTIR. <br />
+            KURULUM İLERLEDİĞİNDE EKRANDA UZUN BİR ŞİFRE ÇIKACAK. <br />
+            O ŞİFREYİ KOPYALAYIN
+          </li>
+          <li>Browser adres satırına localhost:8080 yaz ENTER</li>
+          <li>
+            SİZDEN BİR ŞİFRE İSTEYECEK. AZ ÖNCE KOPYALADIĞINIZ ŞİFREYİ BURAYA
+            YAPIŞTIRIN
+          </li>
+          <li>KURULUM DEVAM EDECEK. ŞİFRE VE KULLANICI ADI İSTEYECEK.</li>
+          <li>
+            Kurulum bittiğinde, Browser adres satırına localhost:8080 ENTER
+          </li>
+          <li>Username ve Password'u gir ENTER</li>
+        </ol>
+        <h3>JENKINS'İ ÇALIŞTIRABİLMEK İÇİN BAZI AYARLAR YAPMA</h3>
+        <ol>
+          <li>Manage Jenkins =&gt; Global Tool Configration</li>
+          <li>
+            JDK => Instal automatically TIKLA <br />
+            Instaling JDK Oracle account. Please enter your username/password
+            TIKLA <br />
+            Oracle username ve password'ünü gir.
+          </li>
+          <li>
+            MAVEN => Maven installations TIKLA <br />
+            Maven versionu SEÇ
+          </li>
+          <li>Apply =&gt; Save</li>
+        </ol>
+        <h3>PROJE'Yİ JENKINS'TE ÇALIŞTIRMA</h3>
+        <ol>
+          <li>New Item (Yeni Öğe) TIKLA</li>
+          <li>Enter an item name = "isim ver"</li>
+          <li>Freestyle projet'e TIKLA</li>
+          <li>En Altta OK TIKLA</li>
+          <li>
+            General => GitHub project <br />
+            GitHub projenizin URL'ini buraya yazacaksınız
+          </li>
+          <li>
+            Source Code Management (Kaynak Kodu Yönetimi) =&gt; Git TIKLA <br />
+            GitHub projenizin URL'ini buraya yazacaksınız <br />
+            Branch to build =&gt; Branch Specifier (blank for "any") <br />
+            */master yazısını */main olarak değiştir
+          </li>
+          <li>
+            Build =&gt; Invoke top-level Maven targets SEÇ <br />
+            Goals =&gt; clean install YAZ <br />
+            Advance =&gt; POM =&gt; pom.xml YAZ
+          </li>
+          <li>Apply =&gt; Save</li>
+        </ol>
+      </div>
+      <div>
+        adima tanimlanmis kullanici adi ve sifrem ile sisteme giris yaptim,
+        ilgili projemizi github'tan ekleyerek yazmis oldugum testleri uyguladim.
+        <br />
+        test olustur, ismini tanimladim maven projeyi sec, github ile baglanti
+        kur. master yerine main branci kullan.
+      </div>
+    </main>
+  </body>
+</html>
