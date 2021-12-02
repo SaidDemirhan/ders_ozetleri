@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linux</title>
+  </head>
+  <body>
+    <main>
+      <div>
+        <h2>Linux Kurulumu</h2>
+        VirtualBox (Oracle) uygulamasini indiriyoruz. <br />
+        <a href="https://www.oracle.com/virtualization/virtualbox/"
+          >https://www.oracle.com/virtualization/virtualbox/</a
+        ><br />
+        Herhangi bir özellik belirtmeden kurulumu yapiyoruz. <br />
+        Bilgisayar icine baska bir isletim sistemi kurmamizi sagliyor. <br />
+        Google da Online Linux yazdigimizda browser üzerinden calisan cesitli
+        uygulamalar da bulunabilir. <br />
+        örnegin; wsl2 <br />
+        Linux un kaynak kodalarina
+        <a href="https://github.com/torvalds/linux">
+          https://github.com/torvalds/linux
+        </a>
+        adresinden herkes ulasabilir. <br />
+        Pardus bir linux isletim sistemidir.
+        <hr />
+        Ubuntu uygulamasini
+        <strong>Dowload Ubuntu Deskstop seceneginden</strong> indiriyoruz.
+        <br />
+        <a href="https://ubuntu.com/download">https://ubuntu.com/download</a>
+        <br />
+        istersek bu ubuntuyu bir usb ye de kurabiliriz. <br />
+        install ubuntu usb <br />
+        KDE ve Gnome adinda masaüstü uygulamalari vardir. <br />
+        <hr />
+        Ubuntuyu kurmak icin;
+        <ul>
+          <li>VirtualBox</li>
+          <li>yeni</li>
+          <li>sanal makine olustur</li>
+          <li>isim ver</li>
+          <li>c:/ ye kur</li>
+          <li>Linux</li>
+          <li>Ubuntu (64 bit) ileri</li>
+          <li>bellek boyutu min 1 gb tavsiye 4 gb ileri</li>
+          <li>Simdi sanal bir sabit disk olustur ileri</li>
+          <li>VDI (VirtualBox Disk Kalibi ileri</li>
+          <li>fiziksel sabit diskte depolama degisken olarak ayrilan ileri</li>
+          <li>dosya yeri ve boyutu 10 gb olustur</li>
+          <li>Gelen ekrandaki olusturulan simgeye cift tikla</li>
+          <li>Baslangic diskini secin</li>
+          <li>Dosyadan Ekleye bas</li>
+          <li>indirilen ubuntu imajini bul ve sec</li>
+          <li>Baslat</li>
+          <li>acildiktan sonra klavyeyen ne ise ona göre dil sec.</li>
+          <li>klavye cesidi genel kalsin Devam et</li>
+          <li>
+            normal kurulum Ubuntu yüklenirken güncellemeleri indirin devam et
+          </li>
+          <li>Diski sil ve ubuntu yükle simdi yükle</li>
+          <li>bundan sonraki degisiklikler devam et</li>
+          <li>Kurulum türü(bir önceki ekran) simdi yükle</li>
+          <li>Zaman dilimi sec devam et</li>
+          <li>Kimsiniz? bilgileri gir (ad parola ubuntu) devam et</li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <hr />
+      <div>
+        Linux u actiktan sonra terminal i aciyoruz. <br />
+        Gördügümüz sondaki <strong>$</strong> isareti bizim normal bir kullanici
+        oldugumuzu gösterir. Eger root olsaydi <strong>#</strong> isareti
+        cikakacktir. <br />
+        online linux sitesi
+        <a
+          href="https://bellard.org/jslinux/vm.html?url=alpine-x86.cfg&mem=192"
+        >
+          https://bellard.org/jslinux/vm.html?url=alpine-x86.cfg&mem=192
+        </a>
+      </div>
+      <hr />
+      <div>
+        <h3>Terminal Kodlari</h3>
+        <ul>
+          <li>
+            <strong>whoami</strong> : hangi kullanicida islem yaptigimizi
+            gösterir.
+          </li>
+          <li><strong>pwd</strong> : oldugumuz klosörü gösterir.</li>
+          <li><strong>hostname</strong> : baglanilan makinenin adini verir.</li>
+          <li>
+            <strong>sudo su</strong> : root kullanicisina gecirir. sifre ister
+            ve # olur.
+          </li>
+          <li>
+            <strong>clear</strong> : terminalde yazilmis olanlari temizler.
+          </li>
+          <li>
+            <strong>history</strong> : su ana kadar terminale yazilan komutlari
+            gösterir.
+          </li>
+          <li>
+            <strong>history -c</strong> : gecmiste terminale yazilan komutlari
+            siler.
+          </li>
+          <li>
+            <strong>ls</strong> : bulunulan dosyadaki dizinleri yan yana yazar.
+          </li>
+          <li><strong>ls -l</strong> : liste formatinda verir.</li>
+          <li>
+            <strong>ls -la</strong>: gizli dosyalari liste halinde verir.
+            <br />Eger bir dosyanin basinda nokta(.) varsa o dosya gizli
+            anlamina gelmektedir. <br />
+            Basinda d harfi olmasi o dosyanin bir klosör oldugunu ifade eder.
+            <br />
+            rwx: read write execute demektir. Bu dizini olusturanin haklarini
+            belirtir. <br />
+            3'lü sekilde gruplanir. -rwx-r-xr--
+          </li>
+          <li>
+            <strong>ls Desktop -la</strong> : alt klosörün icindeki ayrintilari
+            girmeden gösterir.
+          </li>
+          <li><strong>cd ..</strong>: bir üst klosöre cikar</li>
+          <li><strong>cd Desktop </strong> : yazilan klosöre girer.</li>
+          <li>
+            <strong>ls /ho* </strong> : yarim yazilan ho ile baslayan tüm
+            klosörleri getirir.
+          </li>
+          <li><strong>ls /</strong> : baslangic klosörüne gider.</li>
+          <li>
+            <strong>uname</strong> : hangi programda calistigimizi gösterir.
+          </li>
+          <li><strong>uname -a</strong> : programin ayrintisini gösterir.</li>
+          <li><strong>apt-get</strong> : paket manager i getirir.</li>
+          <li>
+            <strong>ls /bin</strong> : bin klosörünü listeler. userlarin
+            kullandigi binary ler burda bulunur.
+          </li>
+          <li>
+            <strong>ps</strong> : proc dosyasindan calisan prosessleri gösterir.
+          </li>
+          <li>
+            <strong>ls /proc/</strong> : calisan proseslerin ayrintisini
+            gösterir.
+          </li>
+          <li><strong>ls /proc/ -la</strong> : daha ayrintilica gösterir.</li>
+          <li>
+            <strong>cd /</strong> : root(en üst) kullanicisina gider sembol ~
+            iken / döner.
+          </li>
+          <li><strong>cd ~</strong> : home kullanicisina gider.</li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Extra bilgiler</h3>
+        <a href="https://insights.stackoverflow.com/survey/2021#overview">
+          https://insights.stackoverflow.com/survey/2021#overview
+        </a>
+        sitesinden her türlu güncel teknoloji istatistiklerini görebilirsiniz.
+        <br />
+        cmd ekrani ayni zamanda <strong>PowerShell</strong> arayüzü ile de
+        kullanilabilir. <br />
+        Git i de Linux u kesfeden kurmus.
+      </div>
+    </main>
+  </body>
+</html>

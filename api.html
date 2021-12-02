@@ -1224,10 +1224,15 @@
                       Assert.assertEquals(expectedData.get("completed"),
                       jsonPath.getBoolean("completed")); <br /><br />
                     </li>
-                    ===2.Yöntemi TestData Class'indan obje olusturarak da
+                    ===Bu Yöntemleri TestData Class'indan obje olusturarak da
                     yapabiliriz.==
                     <br />
-                    Bir sonraki örnekte verilecektir.
+                    <br />
+                    ===3.Yöntem=Deserialization====
+                    <br />
+                    Asagida ayrintili
+                    <a href="#deserializationYontemiyleCozum">cözüm</a
+                    >ü verilecektir.
                   </ul>
                 </li>
                 <li>}</li>
@@ -1264,71 +1269,6 @@
                     </li>
                     <li>expectedData.put("completed", false);</li>
                     <li>return expectedData;</li>
-                  </ul>
-                </li>
-                <li>}</li>
-              </ul>
-            </li>
-            <li>}</li>
-          </ul>
-        </code>
-      </div>
-      <h3>Örnek</h3>
-      Bir üstteki örnegin TestData Class'iyla cözümüdür. <br />
-      <div class="maddesiz">
-        <code>
-          <ul>
-            <li>
-              public class GetRequest11TestData extends JsonPlaceHolderTestBase
-              {
-              <ul>
-                <li>@Test</li>
-                <li>
-                  public void test() {
-                  <ul>
-                    <li>
-                      spec01.pathParams("parametre1", "todos",
-                      <ul>
-                        <li>"parametre2", 2); <br /><br /></li>
-                      </ul>
-                    </li>
-                    <li>
-                      JsonPlaceHolderTestData expectedObje=new
-                      JsonPlaceHolderTestData(); <br />
-                      //TestData class'indan bir obje olusturduk.
-                    </li>
-                    <li>
-                      HashMap&lt;String,Object&gt; expectedData=
-                      (HashMap&lt;String,Object&gt;)
-                      expectedObje.setUpTestData(); <br />
-                      //Ayni data türüne sahip bir map olusturarark TestData
-                      class'inda olusturulan methodu cagirdik.(TypeCasting
-                      isteyebilir.)
-                    </li>
-                    <li>System.out.println(expectedData); <br /><br /></li>
-                    <li>
-                      Response response = given().
-                      <ul>
-                        <li>accept("application/json").</li>
-                        <li>spec(spec01).</li>
-                        <li>when().</li>
-                        <li>get("/{parametre1}/{parametre2}");</li>
-                      </ul>
-                    </li>
-                    <li>response.prettyPrint(); <br /><br /></li>
-                    <li>
-                      HashMap&lt;String,Object&gt;
-                      actualData=response.as(HashMap.class);
-                    </li>
-                    <li>
-                      Assert.assertEquals(expectedData.get("userId"),actualData.get("userId"));
-                    </li>
-                    <li>
-                      Assert.assertEquals(expectedData.get("title"),actualData.get("title"));
-                    </li>
-                    <li>
-                      Assert.assertEquals(expectedData.get("completed"),actualData.get("completed"));
-                    </li>
                   </ul>
                 </li>
                 <li>}</li>
@@ -1378,6 +1318,525 @@
           </ul>
         </code>
       </div>
+      Bu kütüphanelerden biri deserialization yapmamizi sagliyor, digeri ise
+      nokta ve virgüllerden kurtulmamizi sagliyor.
+      <h3 id="deserializationYontemiyleCozum">Örnek</h3>
+      Bir üstteki örnegin TestData Class'iyla ve Deserialization yöntemiyle
+      cözümüdür. <br />
+      <div class="maddesiz">
+        <code>
+          <ul>
+            <li>
+              public class GetRequest11TestData extends JsonPlaceHolderTestBase
+              {
+              <ul>
+                <li>@Test</li>
+                <li>
+                  public void test() {
+                  <ul>
+                    <li>
+                      spec01.pathParams("parametre1", "todos",
+                      <ul>
+                        <li>"parametre2", 2); <br /><br /></li>
+                      </ul>
+                    </li>
+                    <li>
+                      JsonPlaceHolderTestData expectedObje=new
+                      JsonPlaceHolderTestData(); <br />
+                      //TestData class'indan bir obje olusturduk.
+                    </li>
+                    <li>
+                      HashMap&lt;String,Object&gt; expectedData=
+                      (HashMap&lt;String,Object&gt;)
+                      expectedObje.setUpTestData(); <br />
+                      //Ayni data türüne sahip bir map olusturarark TestData
+                      class'inda olusturulan methodu cagirdik.(TypeCasting
+                      isteyebilir.)
+                    </li>
+                    <li>System.out.println(expectedData); <br /><br /></li>
+                    <li>
+                      //Request gönderiyoruz. <br />
+                      Response response = given().
+                      <ul>
+                        <li>accept("application/json").</li>
+                        <li>spec(spec01).</li>
+                        <li>when().</li>
+                        <li>get("/{parametre1}/{parametre2}");</li>
+                      </ul>
+                    </li>
+                    <li>response.prettyPrint(); <br /><br /></li>
+                    <li>
+                      //ActualData'yi, yani response'tan dönen yaniti
+                      olusturdugumuz bir map icine atiyoruz. <br />
+                      <br />
+                      HashMap&gt;String,Object&gt; actualDataMap=
+                      response.as(HashMap.class); <br />
+                      <br />
+                      //Biz bu islemi yaparak deserialization islemini
+                      gerceklestirmis olduk. <br />
+                      //Response'tan gelen data'yi hash gibi al diyoruz. <br />
+                      //".as(HashMap.class);" kisminin calismasini saglayan
+                      pom.xml'e eklenen iki yeni kütüphanedir. <br />
+                      Bir kütüphane gelen response'u map'in icine
+                      aktarabilmemizi sagliyor, digeri ise aktarimdaki
+                      datatype'lari belirleyici olmaktadir. <br />
+                      //JsonPath'de oldugu gibi body disindaki bilgileri biz map
+                      icine atamiyoruz. <br /><br />
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedData.get("userId"),actualDataMap.get("userId"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedData.get("title"),actualDataMap.get("title"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedData.get("completed"),actualDataMap.get("completed"));
+                    </li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
+      <hr />
+      <h4>Örnek</h4>
+      https://restful-booker.herokuapp.com/booking/1 url'ine bir istek
+      gönderildiğinde dönen response body nin;
+      <ul>
+        <li>{</li>
+        <li>"firstname": "Susan",</li>
+        <li>"lastname": "Ericsson",</li>
+        <li>"totalprice": 521,</li>
+        <li>"depositpaid": true,</li>
+        <li>
+          "bookingdates": {
+          <ul>
+            <li>"checkin": "2015-03-05",</li>
+            <li>"checkout": "2019-08-18"</li>
+            <li>}</li>
+          </ul>
+        </li>
+        <li>}</li>
+      </ul>
+      gibi olduğunu test edin. <br /><br />
+      Bu örnegi ayrintisiyla yapalim.
+      <div class="maddesiz">
+        <code>
+          <ul>
+            <li>
+              public class HerokuAppTestBase {
+              <ul>
+                <li>protected RequestSpecification spec02;</li>
+                <li>@Before</li>
+                <li>
+                  public void setUp(){
+                  <ul>
+                    <li>
+                      spec02= new RequestSpecBuilder().
+                      <ul>
+                        <li>
+                          setBaseUri("https://restful-booker.herokuapp.com").
+                        </li>
+                        <li>build();</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+            <li>===========================================================</li>
+            <li>
+              public class HerokuappTestData {
+              <ul>
+                <li>
+                  public HashMap&lt;String,Object&gt; setupTestData(){
+                  <ul>
+                    <li>
+                      HashMap&lt;String,Object&gt; bookingdates=new
+                      HashMap&lt;String,Object&gt;();
+                    </li>
+                    <li>bookingdates.put("checkin","2015-03-05");</li>
+                    <li>
+                      bookingdates.put("checkout","2019-08-18"); <br /><br />
+                    </li>
+                    <li>
+                      HashMap&lt;String,Object&gt; expectedData=new
+                      HashMap&lt;String,Object&gt;();
+                    </li>
+                    <li>expectedData.put("firstname", "Susan");</li>
+                    <li>expectedData.put("lastname", "Ericsson");</li>
+                    <li>expectedData.put("totalprice", 521);</li>
+                    <li>expectedData.put("depositpaid", true);</li>
+                    <li>expectedData.put("bookingdates", bookingdates);</li>
+                    <li>return expectedData;</li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+            <li>
+              ==============================================================
+            </li>
+            <li>
+              public class GetRequest12 extends HerokuAppTestBase {
+              <ul>
+                <li>@Test</li>
+                <li>
+                  public void test(){
+                  <ul>
+                    <li>
+                      //url olustur <br />
+                      spec02.pathParams("parametre1", "booking",
+                      <ul>
+                        <li>"parametre2", 1);</li>
+                      </ul>
+                    </li>
+                    <li>
+                      //expected data <br />
+                      HerokuappTestData expectedObje=new HerokuappTestData();
+                    </li>
+                    <li>
+                      HashMap&lt;String,Object&gt;expectedDataMap=expectedObje.setupTestData();
+                    </li>
+                    <li>System.out.println(expectedDataMap); <br /><br /></li>
+                    <li>
+                      //request gönder <br />
+                      Response response= given().
+                      <ul>
+                        <li>accept("application/json").</li>
+                        <li>spec(spec02).</li>
+                        <li>when().</li>
+                        <li>get("/{parametre1}/{parametre2}");</li>
+                      </ul>
+                    </li>
+                    <li>response.prettyPrint(); <br /><br /></li>
+                    <li>
+                      // 1. yol DeSerialization <br />
+                      HashMap&lt;String,Object&gt;actualDataMap=response.as(HashMap.class);
+                    </li>
+                    <li>System.out.println(actualDataMap); <br /><br /></li>
+                    <li>
+                      Assert.assertEquals(expectedDataMap.get("firstname"),actualDataMap.get("firstname"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedDataMap.get("lastname"),actualDataMap.get("lastname"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedDataMap.get("totalprice"),actualDataMap.get("totalprice"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedDataMap.get("depositpaid"),actualDataMap.get("depositpaid"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(
+                      ((Map)expectedDataMap.get("bookingdates")).get("checkin"),
+                      <br />
+                      //Ayni obje ile ikince kez ayni methodu (.get()) kullanmak
+                      istersek kullanamadigimiz icin Map'in icinden checkin'i
+                      getirebilmesi icin Map döndüren yapiyi parantez icine alip
+                      basina typecasting olarak (map) yaziyoruz.
+                      <ul>
+                        <li>
+                          ((Map)actualDataMap.get("bookingdates")).get("checkin"));
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      Assert.assertEquals(
+                      ((Map)expectedDataMap.get("bookingdates")).get("checkout"),
+                      <ul>
+                        <li>
+                          ((Map)actualDataMap.get("bookingdates")).get("checkout"));
+                          <br /><br />
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      // 2. yol JsonPath <br />
+                      JsonPath jsonPath=response.jsonPath();
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedDataMap.get("firstname"),jsonPath.getString("firstname"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedDataMap.get("lastname"),jsonPath.getString("lastname"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedDataMap.get("totalprice"),jsonPath.getInt("totalprice"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedDataMap.get("depositpaid"),jsonPath.getBoolean("depositpaid"));
+                    </li>
+                    <li>
+                      Assert.assertEquals(
+                      ((Map)expectedDataMap.get("bookingdates")).get("checkin"),
+                      <ul>
+                        <li>jsonPath.getString("bookingdates.checkin"));</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Assert.assertEquals(((Map)
+                      expectedDataMap.get("bookingdates")).get("checkout"),
+                      <ul>
+                        <li>jsonPath.getString("bookingdates.checkout"));</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
+      <hr />
+      <h4>Örnek</h4>
+      http://dummy.restapiexample.com/api/v1/employees url'ine bir istek
+      gönderildiğinde;
+      <ul>
+        <li>Status kodun 200 olduğunu,</li>
+        <li>5. Çalışan isminin "Airi Satou" olduğunu,</li>
+        <li>çalışan sayısının 24 olduğunu,</li>
+        <li>Sondan 2. çalışanın maaşının 106450 olduğunu</li>
+        <li>40,21 ve 19 yaslarında çalışanlar olup olmadığını</li>
+        <li>
+          11. Çalışan bilgilerinin;
+          <ul>
+            <li>{"id":"11",</li>
+            <li>"employee_name": "Jena Gaines",</li>
+            <li>"employee_salary": "90560",</li>
+            <li>"employee_age": "30",</li>
+            <li>"profile_image": "" }</li>
+          </ul>
+        </li>
+      </ul>
+      gibi olduğunu test edin. <br /><br />
+      Gelen response: <br />
+      <code>
+        {data=[{id=1, employee_name=Tiger Nixon, employee_salary=320800,
+        employee_age=61, profile_image=},...], message=Successfully! All records
+        has been fetched., status=success}
+      </code>
+      <div class="maddesiz">
+        <code>
+          <ul>
+            <li>
+              public class DummyTestBase {
+              <ul>
+                <li>protected RequestSpecification spec03;</li>
+                <li>@Before</li>
+                <li>
+                  public void setUp(){
+                  <ul>
+                    <li>
+                      spec03= new RequestSpecBuilder().
+                      <ul>
+                        <li>
+                          setBaseUri("http://dummy.restapiexample.com/api/v1").
+                        </li>
+                        <li>build();</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+            <li>
+              =================================================================
+            </li>
+            <li>
+              public class DummyTestData {
+              <ul>
+                <li>
+                  public HashMap&lt;String,Object&gt; setUpTestData(){
+                  <ul>
+                    <li>
+                      List&lt;Integer&gt; yaslar= new
+                      ArrayList&lt;Integer&gt;();
+                    </li>
+                    <li>yaslar.add(40);</li>
+                    <li>yaslar.add(21);</li>
+                    <li>yaslar.add(19);</li>
+                    <li>
+                      HashMap&lt;String,Object&gt; onbirinci=new
+                      HashMap&lt;String,Object&gt;();
+                    </li>
+                    <li>onbirinci.put("id",11);</li>
+                    <li>onbirinci.put("employee_name","Jena Gaines");</li>
+                    <li>onbirinci.put("employee_salary",90560);</li>
+                    <li>onbirinci.put("employee_age",30);</li>
+                    <li>onbirinci.put("profile_image","");</li>
+                    <li>
+                      HashMap&lt;String,Object&gt; expectedData=new
+                      HashMap&lt;String,Object&gt;();
+                    </li>
+                    <li>expectedData.put("statusCode",200);</li>
+                    <li>expectedData.put("besincicalisan","Airi Satou");</li>
+                    <li>expectedData.put("calisansayisi",24);</li>
+                    <li>
+                      expectedData.put("sondanikincicalisanmaasi",106450);
+                    </li>
+                    <li>expectedData.put("arananyaslar",yaslar);</li>
+                    <li>expectedData.put("onbirincicalisan",onbirinci);</li>
+                    <li>return expectedData;</li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+            <li>==========================================================</li>
+            <li>
+              public class GetRequest13 extends DummyTestBase {
+              <ul>
+                <li>@Test</li>
+                <li>
+                  public void test(){
+                  <ul>
+                    <li>
+                      spec03.pathParam("parametre1","employees"); <br /><br />
+                    </li>
+                    <li>DummyTestData expectedObje=new DummyTestData();</li>
+                    <li>
+                      HashMap&lt;String,Object&gt;
+                      expectedDataMap=expectedObje.setUpTestData();
+                    </li>
+                    <li>System.out.println(expectedDataMap); <br /><br /></li>
+                    <li>
+                      Response response= given().
+                      <ul>
+                        <li>accept("application/json").</li>
+                        <li>spec(spec03).</li>
+                        <li>when().</li>
+                        <li>get("/{parametre1}"); <br /><br /></li>
+                      </ul>
+                    </li>
+                    <li>
+                      //De Serialization işlemi <br />
+                      HashMap&lt;String,Object&gt;
+                      actualDataMap=response.as(HashMap.class);
+                    </li>
+                    <li>System.out.println(actualDataMap); <br /><br /></li>
+                    <li>
+                      Assert.assertEquals(expectedDataMap.get("statusCode"),response.getStatusCode());
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedDataMap.get("besincicalisan"),
+                      <ul>
+                        <li>
+                          ((Map)((List)actualDataMap.get("data")).get(4)).get("employee_name"));
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedDataMap.get("calisansayisi"),
+                      <ul>
+                        <li>((List)actualDataMap.get("data")).size());</li>
+                      </ul>
+                    </li>
+                    <li>
+                      int datasize= ((List) actualDataMap.get("data")).size();
+                    </li>
+                    <li>
+                      Assert.assertEquals(expectedDataMap.get("sondanikincicalisanmaasi"),
+                      <ul>
+                        <li>
+                          ((Map)((List)
+                          actualDataMap.get("data")).get(datasize-2)).get("employee_salary"));
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      List&lt;Integer&gt; actualYasListesi=new
+                      ArrayList&lt;Integer&gt;();
+                    </li>
+                    <li>
+                      for (int i=0; i&lt;datasize;i++){
+                      <ul>
+                        <li>
+                          actualYasListesi.add((Integer) ((Map)((List)
+                          actualDataMap.get("data")).get(i)).get("employee_age")
+                          );
+                        </li>
+                      </ul>
+                    </li>
+                    <li>}</li>
+                    <li>
+                      Assert.assertTrue(actualYasListesi.containsAll((List)expectedDataMap.get("arananyaslar")));
+                      <br /><br />
+                    </li>
+                    <li>
+                      Assert.assertEquals(((Map)expectedDataMap.get("onbirincicalisan")).get("employee_name"),
+                      <ul>
+                        <li>
+                          ((Map) ((List)
+                          actualDataMap.get("data")).get(10)).get("employee_name"));
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      Assert.assertEquals(((Map)
+                      expectedDataMap.get("onbirincicalisan")).get("employee_salary"),
+                      <ul>
+                        <li>
+                          ((Map) ((List)
+                          actualDataMap.get("data")).get(10)).get("employee_salary"));
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      Assert.assertEquals(((Map)
+                      expectedDataMap.get("onbirincicalisan")).get("employee_age"),
+                      <ul>
+                        <li>
+                          ((Map) ((List)
+                          actualDataMap.get("data")).get(10)).get("employee_age"));
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      Assert.assertEquals
+                      (((Map)expectedDataMap.get("onbirincicalisan")).get("profile_image"),
+                      <ul>
+                        <li>
+                          ((Map) ((List)
+                          actualDataMap.get("data")).get(10)).get("profile_image"));
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
+      <hr />
+      <h3>Request Cesitleri</h3>
+      <ol>
+        <h4><li>GetRequest</li></h4>
+        Simdiye kadar olan tüm örnekler
+        <strong>GetRequest</strong>
+        örnegiydi.
+        <h4><li>PostRequest</li></h4>
+        Post islemi yaparken mutlaka request olarak bir
+        <strong>RequestBody</strong>
+        de göndermeliyiz.
+        <h4><li>PutRequest</li></h4>
+        <h4><li>DeleteRequest</li></h4>
+        <h4><li>PatchRequest</li></h4>
+      </ol>
     </main>
     <footer>
       <hr />
