@@ -7,6 +7,397 @@
     <title>Document</title>
   </head>
   <body>
+    <main>
+      <div>
+        Bilgisayarimizda python kurulu olup olmadigini cmd'ye
+        <code>python --version</code> yazarak görebiliriz. <br />
+        Anaconda Navigator programini bilgisayara kurmus olmaliyiz. <br />
+        Anaconda üzerindeki <strong>jupyter Notebook</strong> programini
+        calistiriyoruz. <br />
+        Bilgisayardaki dosyalar aciliyor. <br />
+        New butonuna basarak python 3 e tikliyoruz, default olan tarayicidan bos
+        bir notebook sayfasi aciliyor.
+      </div>
+      <div>
+        <ul>
+          <li>Dosya uzantilari <strong>.py</strong> olur. (hello.py)</li>
+          <li>
+            .py uzantili dosyayi cmd üzerinden calistirabiliriz. Dosyanin
+            bulundugu lokasyonda dosya adi ve uzantisini yazip enter a basariz.
+            (hello.py+Enter)
+          </li>
+          <li>
+            cmd üzerinen python komutlarini yazabiliriz. cmd ye
+            <strong>python</strong> yazip enter a basinca cikan
+            <strong>&gt;&gt;&gt;</strong>'dan sonra istedigimiz komutu
+            yazabiliriz.(print("Hello!"))
+          </li>
+          <li>
+            Eger cmd de python kod yazma komut islemini sona erdirmek istersek
+            <strong>exit()</strong> yazip enter a basmamiz yeterlidir.
+          </li>
+          <li>
+            pandas, nanpal adinda kutüphaneler mevcuttur. Bilgisayarda kurulu
+            olup olmadigini ögrenmek icin cmd ekranina
+            <strong>pip --version</strong> yazabiliriz.
+            <strong>pip list</strong> yazdigimizda sistemimizdeki moduller
+            karsimiza cikacaktir. Mesela pandas yoksa
+            <strong>pip install pandas</strong> yazip enter a basarak pandas
+            kütüphanesini kurmus oluyoruz.
+          </li>
+          <li>
+            eger bilgisayara python kurulanmiyorsa
+            <a href="https://colab.research.google.com/"
+              >https://colab.research.google.com/
+            </a>
+            üzerinden yapabiliriz. <br />
+            Acilan ekrandan <strong>yeni not defteri</strong> olusturuyoruz.
+            <br />
+            <strong>baglan</strong> diyerek bilgisayarimizin harddiski ile
+            baglanti sagliyoruz.
+          </li>
+          <li>
+            jupyter i restart etmek icin <strong>Kernel</strong> secenegini
+            kullaniriz.
+          </li>
+          <li>
+            Eger kodlarin basinda calistiktan sonra sayi cikiyorsa kodlar
+            sorunsuz calisiyor demektir. Ama <strong>*</strong> cikiyorsa ya
+            calismaya devam ediyor ya da hatali anlamina gelir.
+          </li>
+          <li>
+            jupyter nootbok programinin kisayollari icin
+            <a href="https://defkey.com/tr/jupyter-notebook-klavye-kisayollari"
+              >https://defkey.com/tr/jupyter-notebook-klavye-kisayollari
+            </a>
+            sitesi ziyaret edilebilir.
+          </li>
+          <li>
+            <strong>Docstring</strong> ifadesi daha önce yazilan kodlardaki
+            yorum satirlarini ifade etmek icin kullanilir.
+          </li>
+          <li>
+            Eger bir fonksiyoni incelemek istersek
+            <strong>shift tab tab</strong> tuslarina basarak ayrintisini
+            görebiliriz.
+          </li>
+          <li>python <strong>Case Sensetive</strong>'dir.</li>
+          <li>
+            <strong>Camel Case</strong> : kücük harfle baslayip her kelimenin
+            ilk harfini büyük yazmaktir. (benimAdimAhmet)
+          </li>
+          <li>
+            <strong>Pascal Case</strong> : büyük harfle baslayip her kelimenin
+            ilk harfini büyük yazmaktir. (BenimAdimAhmet)
+          </li>
+          <li>
+            <strong>Snake Case</strong> : kelime aralarina alt cizgi (_) koyarak
+            yaazmaktir. (benim_adim_ahmet)
+          </li>
+          <li>
+            PYTHON'da kodlar <strong>yukaridan asagiya</strong> ve
+            <strong>soldan saga</strong> calisir. Buna
+            <strong>Sequential Steps</strong> denir.
+          </li>
+          <li>
+            Kodlarin belli bir sarta bagli olarak calismasina
+            <strong>Conditional Steps</strong> denir. (if)
+          </li>
+          <li>
+            Bir kodun belli bir kosula bagli olarak tekrar tekrar calismasina
+            <strong>Repated Steps</strong> denir. (döngüler while vb.)
+          </li>
+          <li>
+            Bir variable'a herhangi bir deger atanmasina
+            <strong>statement</strong> denir. (assingment)
+          </li>
+          <li>
+            Bir satirdaki kodun toplam karakter sayisi <strong>79</strong>'u
+            gecmemelidir.
+          </li>
+          <li>
+            Cift tirnak (") ile tek tirnak (') arsinda kod yaziminda farklilik
+            yoktur.
+          </li>
+          <li>Python kod stiline <strong>PEP8</strong> deniyor.</li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <hr />
+      <div>
+        <h3>Variable'lara Isim verirken dikkat edilmesi gerekenler:</h3>
+        Eger bu kulallara uyulmazsa <strong>SyntaxError</strong> ile
+        karsilasilir.
+        <ul>
+          <li>Sayi ile baslayamaz. (2isim)</li>
+          <li>Icerisinde cizgi isareti kullanilamaz. (ad-soyad)</li>
+          <li>Icerisinde bosluk kullanilamaz. (ad soyad)</li>
+          <li>
+            Reserve kelimeleri isimlendirmede kullanamayiz. (False="Merhaba")
+            <br />
+            def, if, elif, else, and, or, class, False, True, return, is,
+            finally, None, for, lambda, continue, break, from, whilenonlocal,
+            del, global, not, with, as, try, yield, assert, import, pass,
+            except, in, raise
+          </li>
+        </ul>
+      </div>
+      <hr />
+      <div>
+        <h3>Python'daki Data Tipleri</h3>
+        <ul>
+          <li>
+            Text Type
+            <ul>
+              <li>
+                String (str)
+                <ul>
+                  <li>isim="ahmed"</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Numeric Types
+            <ul>
+              <li>integer (int)</li>
+              <li>
+                float
+                <ul>
+                  <li>y=20.5</li>
+                </ul>
+              </li>
+              <li>
+                complex
+                <ul>
+                  <li>z=1j</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Sequence Types
+            <ul>
+              <li>
+                list
+                <ul>
+                  <li>x=["a","b","c"]</li>
+                </ul>
+              </li>
+              <li>
+                tuple
+                <ul>
+                  <li>y=("a","b","c")</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Map Types
+            <ul>
+              <li>
+                dictionary (dict)
+                <ul>
+                  <li>t={"il":"izmir","seviye":3}</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Set Types
+            <ul>
+              <li>
+                set
+                <ul>
+                  <li>s={"x","y","z"}</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Boolean Types
+            <ul>
+              <li>
+                bool
+                <ul>
+                  <li>a=False</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <hr />
+      <div>
+        <h3>Veri Türleri</h3>
+        <ul>
+          <li>
+            Immutable (Degistirilemeyen)
+            <ul>
+              <li>String</li>
+              <li>Tuple</li>
+              <li>FrozenSet</li>
+              <li>Boolean</li>
+              <li>
+                Number
+                <ul>
+                  <li>Integer</li>
+                  <li>Float</li>
+                  <li>Long Integer</li>
+                  <li>Complex</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Mutable (Degistirilebilen)
+            <ul>
+              <li>List</li>
+              <li>Dictionary</li>
+              <li>Set</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <hr />
+      <div>
+        <h2>PYTHON KOMUTLARI</h2>
+        <ul>
+          <li>
+            <strong>print("Hello Wold!")</strong> : ekrana yazdirir. <br />
+            Eger iki deger ard arda yazdirilacaksa araya
+            <strong>virgül(,)</strong> konulmalisir, default olarak arada
+            <strong>bosluk</strong> birakir. <br />
+            Eger jupyter Notbook üzerinde calisiliyorsa dierkt olarak (printsiz)
+            yazilsa da print olarak islev görmektedir.
+          </li>
+          <li>
+            <strong>print(x,y, sep"zz")</strong> : eger araya bosluk degil de
+            istedigimiz karakteri yazmak istiyorsak kullaniriz. (500zzhello)
+          </li>
+          <li>
+            <strong>print("benim adim "+isim)</strong> : yazdirilan bir yaziya
+            yazi eklemek icin kullanilir. <br />print("benim adim ",isim)
+            seklinde de kullanimi vardir.
+          </li>
+          <li>
+            <strong>print(isim,"\n",soyisim)</strong> : atama yapilmis iki
+            kelimeyi alt alta yazdirir.
+          </li>
+          <li>
+            <strong>username=input("isminizi giriniz: ")</strong> : kullanicidan
+            bilgi isterken kullanilir. <br />
+            Kod calistirildiginda altta inputbox acilacaktir. yazip enter a
+            basmak gerekir. <br />
+            Input ile gelen her veri <strong>String</strong> olarak gelir.
+          </li>
+          <li>
+            <strong>sayi1=int(input("sayi giriniz: "))</strong> : girilen sayiyi
+            integer olarak alma isine yarar.
+          </li>
+          <li>
+            <strong>if 5>2:</strong> : egr sart tutuyorsa sonraki islem uygular.
+            <br />
+            Enter a basildiginda otomatik olarak 4 bosluk birakilmis sekilde
+            asagiya iner. <br />
+            Birbiriyle alakali kodlar yazzilirken alttaki kod
+            <strong>4 bosluk iceriden</strong> baslamalidir. Aksi takdirde
+            <strong>IdentationError</strong> vercektir.
+          </li>
+          <li>
+            <strong>#Bu bir yorumdur</strong> : herhangi bir yere tek satirlik
+            yorum yazmak icin kullanilir.
+          </li>
+          <li>
+            <strong>"""yorum kumesidir"""</strong> : cok satirlik bir yorum
+            yazilacaksa kullanilir.
+          </li>
+          <li>
+            <strong>x=500</strong> : integer bir deger atamasidir. 3 cesit
+            integer deger atamasi yapilabilir:
+            <ul>
+              <li>x=25 : tam sayi <strong>integer</strong> atamasi</li>
+              <li>y=20.5 : kusuratli <strong>float</strong> atamasi</li>
+              <li>
+                z=1j : karmasik sayilardaki <strong>complex</strong> atamasi
+              </li>
+            </ul>
+          </li>
+          <li><strong>y="hello"</strong> : String bir deger atamasidir.</li>
+          <li>
+            <strong>x,y,z="elma","armut","ayva"</strong> : toplu deger
+            atanabilir. <br />
+            Esitligin her iki yaninda esit sayida veri olmalidir. <br />
+            Eger bu kurala uyulmazsa <strong>ValueError</strong> hatasi alinir.
+          </li>
+          <li>
+            <strong>meyveler=["elma","armut","ayva"]</strong> : eger köseli
+            parantez görüyorsak <strong>list</strong> oldugunu ifade ederiz.
+          </li>
+          <li>
+            <strong>x,y,z=meyveler</strong> : eger öncesinde bir list varsa
+            list'in icindeki degerleri atar. <br />
+            Bu isleme <strong>unpacking</strong> (paketi acma) da denilmektedir.
+          </li>
+          <li>
+            <strong>sebzeler=("marul","havuc","salatalik")</strong> : bir
+            <strong>tuple</strong> ifade eder.(demet)
+          </li>
+          <li>
+            <strong>id(x)</strong> : atanan bir variable'in id degerini
+            yazdirir. <br />
+            Degerleri ayni olsa bile eger birbirine esitlenmemisse id numaralari
+            farkli olacaktir. <br />
+            (x=y ayni, sayi1=2 sayi2=2 farkli)
+          </li>
+          <li>
+            <strong
+              >x=0 <br />
+              while x&lt;5:
+              <ul>
+                <li>print(x)</li>
+                <li>x=x+1</li>
+              </ul></strong
+            >
+            : bir while döngüsü yapisidir.
+          </li>
+          <li>
+            <strong>print(type(x))</strong> : istenilen elemanin data türünü
+            yazdirir. Strig, int, list, dict... <br />
+            Cikti olarak &lt;class 'list'&gt; seklindedir.
+          </li>
+          <li>
+            <strong>kisi={"name":"ahmet","yas":36}</strong> : key ve value
+            degerine sahip bir <strong>dict</strong> (dictionary) ifade eder.
+          </li>
+          <li>
+            <strong>favori={"kiraz","elma","muz"}</strong> : süslü parantezli
+            ancak key value ikilisi olmadigi icin <strong>set</strong> (küme)
+            diyoruz.
+          </li>
+          <li><strong>dogruMu=True</strong> : boolean tipinde bir atamadir.</li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+          <li><strong></strong></li>
+        </ul>
+      </div>
+      <hr />
+    </main>
     /collapse
     print("=================================================================")
     <br />
