@@ -1,323 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Github</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>GITHUB</h1>
-	<main>
-<p>
-===============================================================================
-git kurulumu için          ===> https://git-scm.com/downloads <br>
-(install için tüm asamalarda next isaretlenecek, degisiklik yapilmayacak.)</p>
-<p>
-git --version = git versiyonunu ve pc de olup olmadigini ögrenmek icin yazilir. <br>
-git config --global color.ui true= eger bu girilmisse yazilari renkli getirir.</p>
-================================================================================
-<h2>Cmd KOMUTLARI</h2>
---------------------------------------------------------------------------------
-<p> *cd=change directory nin kisaltilmis halidir. <br>
 
-cd ..    		===> bir üst klosöre gider<br>
-dir           	===> dosyalarimiz liste halinde gösterilir.<br>
-cd klasörAdi 	===> istenilen dosyaya girer. <br>
-cd klasörA*		===> seklinde eger o adla bir dosya varsa girilebilir.<br>
-cd .         	===> mevcut dosyada kaliyoruz,bir degisiklik olmuyor<br>
-cls        		===> tüm ekrani temziler.<br>
-cd/ veya cd\ 	===> en üst klasöre gider. C:\><br>
-C:\>d:		===> D:\> diskine gider.<br>
-mkdir			===> klasör olusturma *(make directory)<br>
-rmdir			===> klasör silme *(remove directory)</p><hr>
---------------------------------------------------------------------------------
-dir /a:h				===> gizli klasör görebilmek icin<br>
-echo merhaba >dosya.txt 	===>dosya olusturur, icine merhaba yazdirir.<br>
-more	= Dosyanin icini görme<br>
-del	= Dosya silme<br>
-ren 	= klosör ve dosya ismi degistirme<br><hr>
-================================================================================
-Eger cmd de hata olusursa "Q" ya basarsak %99 normale döner.<br><hr>
-================================================================================
+    <p>
+      ===============================================================================
+      git kurulumu için === https://git-scm.com/downloads <br />
+      (install için tüm asamalarda next isaretlenecek, degisiklik yapilmayacak.)
+    </p>
+    <p>
+      git --version = git versiyonunu ve pc de olup olmadigini ögrenmek icin
+      yazilir. <br />
+      git config --global color.ui true= eger bu girilmisse yazilari renkli
+      getirir.
+    </p>
+    ================================================================================
+    <h2>Cmd KOMUTLARI</h2>
+    --------------------------------------------------------------------------------
+    <p>
+      *cd=change directory nin kisaltilmis halidir. <br />
+
+      cd .. === bir üst klosöre gider<br />
+      dir === dosyalarimiz liste halinde gösterilir.<br />
+      cd klasörAdi === istenilen dosyaya girer. <br />
+      cd klasörA* === seklinde eger o adla bir dosya varsa girilebilir.<br />
+      cd . === mevcut dosyada kaliyoruz,bir degisiklik olmuyor<br />
+      cls === tüm ekrani temziler.<br />
+      cd/ veya cd\ === en üst klasöre gider. <br />
+      C:\&lg;d: ===&gt; D:\&gt; diskine gider.<br />
+      mkdir === klasör olusturma *(make directory)<br />
+      rmdir === klasör silme *(remove directory)
+    </p>
+    <hr />
+    --------------------------------------------------------------------------------
+    dir /a:h === gizli klasör görebilmek icin<br />
+    echo merhaba dosya.txt === dosya olusturur, icine merhaba yazdirir.<br />
+    more = Dosyanin icini görme<br />
+    del = Dosya silme<br />
+    ren = klosör ve dosya ismi degistirme<br />
+    <hr />
+    ================================================================================
+    Eger cmd de hata olusursa "Q" ya basarsak %99 normale döner.<br />
+    <hr />
+    ================================================================================
+
+    <h2>VERSIYON OLUSTURMAK ICIN KODLAR</h2>
+
+    repo(sitory); depo demektir. Her projenin ayri ayri olmasi önerilir.<br />
+    git init = bilgisayardaki proje klosörüne git klosörü olusturulur.<br />
+    Git initialize(inischlayz)<br />
+    =Öncelikle masaüstüne proje klosörü olusturduk>icine girdik<br />
+    dosya yolunu kopyaladik<br />
+    cmd de cikan ekrana: cd (dosya yolu) nu yapistirip enter a bastik<br />
+    cmd de klosörün icindeyken git init yazip enter a bastik<br />
+    CALISMA ALANIMIZ HAZIRDIR. Her pojede bir kez yapilmasi yeterlidir.<br />
+    <hr />
+
+    =REPOSITORY 3 alandan mütesekkildir.<br />
+    -Working Space =calisma alanimiz,git klosörümüz.<br />
+    -Staging Area =Versiyon dosyalarimizi gecici burda tutuyoruz.<br />
+    -Commit Store =Versiyonlarimizin asil tutuldugu alan.<br />
+    <hr />
+
+    git add .= Working Space ten Staging Area ya tüm degisiklikleri gönderir.<br />
+    &lt;git add dosya_adi&gt; sadece ismi gecen dosyayi gönderir.<br />
+    <hr />
+
+    git commit -m "ilk versiyon"= Staging Area dan Commit Store a tasir.<br />
+    <hr />
+
+    git status= Working Space ve Staging Area nin durumunu gösterir.<br />
+    Eger yesil yazilar görüyorsak Staging Area ya aktarilmistir.<br />
+    Eger kirmizi görüyorsak henuz Staging Area ya gönderilmemistir.<br />
+    Eger &lt;nothing to commit, working tree clean&gt; ise Staging Area bos.<br />
+    <hr />
+
+    ***Eger local de olusturulmus ve git push yapilamiyorsa;<br />
+
+    git remote add &lt;name&gt; &lt;url&gt; sonrasinda<br />
+    git push &lt;name&gt; yapilarak github a aktarilmis olur.***<br />
+
+    git log= Commit Store da olusturulan versiyonlarin ayrintili listesini
+    gösterir.<br />
+    git log -oneline= Tek satir halinde her versiyonu gösterir.<br />
+
+    git show hash_kodu= Kodun hepsi/ilk 7 hanesi degisiklikleri ayrintilica
+    verir.<br />
+    Kirmizilar silinmis/yeri degistirilmis,<br />
+    Yesiller yeni eklenmis manasina gelir. <br />
+    <hr />
+    --------------------------------------------------------------------------------
+    ***Eger e posta adresi github a esitlenmemisse; proje klosörünün icindeyken
+    cmd <br />
+    de &lt;git config --global user.email "E-posta Adresiniz"&gt; yazip enter a
+    basiniz.<br />
+    Ardindan &lt;git config --global user.name "adiniz"&gt; yazip enter a
+    basiniz.<br />
+    <hr />
+    ================================================================================
+
+    <h3>Working Space DEKI SON DEGISIKLIKLERI SILME- BIR ADIM GERI ALMA</h3>
+
+    cmd de proje klosörünün icindeyken asagidakileri yazip enter a basinca;<br />
+
+    git restore --dosya_adi_ve_uzantisi = yazilan dosyadaki son yapilan Working
+    Space deki degisiklikler siliniyor.<br />
+
+    git restore .= son yapilan Working Space deki tüm degisiklikler
+    siliniyor.<br />
+    <hr />
+
+    --------------------------------------------------------------------------------
+    code .= cmd de git init yapilmis klosörünün icindeyken yazilip enter a
+    basilinca o dosyada VisualStudioCode aciliyor.<br />
+    <hr />
+    --------------------------------------------------------------------------------
+    Stage DEKI SON DEGISIKLIKLERI Working Space E GERI TASIMA<br />
+
+    cmd de proje klosörünün icindeyken asagidakileri yazip enter a basinca;<br />
+
+    git restore --staged dosya_adi_ve_uzantisi = Stage a gönderilen dosyadaki
+    son degisikleri Working Space e geri getirir.<br />
+
+    git restore --staged .= Stage a gönderilen son degisiklerin tümünü Working
+    Space e geri getirir..<br />
+    <hr />
+    --------------------------------------------------------------------------------
+    Stage DEKI VEYA Working Space DEKI DEGISIKLIKLERDEN VAZGECIP SILME<br />
+
+    cmd de proje klosörünün icindeyken asagidakini yazip enter a basinca;<br />
+
+    git reset --hard= iki alandaki son degisiklikleri de siler.<br />
+    <hr />
+    --------------------------------------------------------------------------------
+    Commits DE BIR VERSIYONU SILME<br />
+
+    cmd de proje klosörünün icindeyken asagidakini yazip enter a basinca;<br />
+
+    git reset --hard hash_kodu= yazilan versiyona gider onu silmez ve orda kalir
+    ve sonrasinda olusturulan tüm versiyonlari siler.<br />
+    <hr />
+    --------------------------------------------------------------------------------
+    Commits DE ISTENILEN VERSIYONA GERI DÖNME<br />
+
+    git checkout hash_kodu dosya_adi= Sadece Dosya hash taki versiyonuna
+    döner.(sonda nokta yok)<br />
+
+    git checkout hash_kodu .= Tüm dosya Hash degeri verilen versiyona HEAD i
+    getirir ve o versiyonu görebiliriz.<br />
+    *Head bir isaretcidir ve bizim hangi versiyonda oldugumuzu gösterir.<br />
 
+    Eger dogru versiyon ise ve gercekten o versiyona dönmek istiyorsak<br />
+    *git checkout lardan sonra mutlaka &lt;git add . &gt;+( git commit -m "…")
+    yapilmalidir. Yoksa degisiklik gecerli olmaz.<br />
 
+    **özellikle grup ile bir projede calisiliyorsa MASTER da böyle bir uygulama
+    yapilmaz, Branch ta tavsiye edilir.<br />
+    <hr />
+    ================================================================================
+
+    <h2>BRANCH OLUSTURMA</h2>
+
+    git branch isim= degisikliklerin yapilabilmesi icin calisilan dosyanin bir
+    kopyasini olusturur.<br />
+    Genellikle kisi ismi verilir.<br />
+
+    Eger dosya da herhangi bir islem henuz yapilmamaissa Branch
+    olusturulamaz.<br />
+
+    Local de olusturulan Branch Remote da olmaz ve o Branch da iken git push
+    yaparsak<br />
+    uyari verir.Eger remote da da ayni isimli Branch imizi olusturmak
+    istiyorsak; <br />
+    git push --set-upstream origin branch_adi ENTER <br />
+    yapmaliyiz. Bu sekilde local branch dan Remote Branch e göndermis oluruz.<br />
+    <hr />
+
+    Remote daki Branch i Master ile birlestirmek icin;<br />
+    Pull repuests seceneginden Compare & pull request e basmali.<br />
+    Eger cakisma uyarisi(merge conflict) varsa create pull request>resolve
+    conflicts<br />
+    seceneklerine basarak manuel cakismayi cözüp <br />
+    Mark as resolved Commit merge e basar. Ardindan<br />
+    Merge pull request Confirm merge basarak birlestirme tamamlaniyor.<br />
+    <hr />
+    --------------------------------------------------------------------------------
+    OLUSTURULAN BRANCH I GÖRMEK<br />
 
+    git branch= olusturdugumuz branch lari ve master i gösterir.<br />
+
+    = hangi branch aktif ise yaninda * vardir.<br />
+    <hr />
+    --------------------------------------------------------------------------------
+    BRANCLAR ARASI GECIS YAPMAK (Branch tan Master a veya Master dan Branch
+    a)<br />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <h2>VERSIYON OLUSTURMAK ICIN KODLAR</h2>
-
-repo(sitory); depo demektir. Her projenin ayri ayri olmasi önerilir.<br>
-git init	= bilgisayardaki proje klosörüne git klosörü olusturulur.<br>
-		  Git initialize(inischlayz)<br>
-=>Öncelikle masaüstüne proje klosörü olusturduk>icine girdik<br>
-  dosya yolunu kopyaladik<br>
-  cmd de cikan ekrana: cd (dosya yolu) nu yapistirip enter a bastik<br>
-  cmd de klosörün icindeyken git init yazip enter a bastik<br>
-  CALISMA ALANIMIZ HAZIRDIR. Her pojede bir kez yapilmasi yeterlidir.<br><hr>
-
-=>REPOSITORY 3 alandan mütesekkildir.<br>
--Working Space	=calisma alanimiz,git klosörümüz.<br>
--Staging Area	=Versiyon dosyalarimizi gecici burda tutuyoruz.<br>
--Commit Store	=Versiyonlarimizin asil tutuldugu alan.<br><hr>
-
-git add .= Working Space ten  Staging Area ya tüm degisiklikleri gönderir.<br>
-	     <git add dosya_adi> sadece ismi gecen dosyayi gönderir.<br><hr>
-
-git commit -m "ilk versiyon"=  Staging Area dan  Commit Store a tasir.<br><hr>
-
-git status= Working Space ve Staging Area nin durumunu gösterir.<br>
-		Eger yesil yazilar görüyorsak Staging Area ya aktarilmistir.<br>
-		Eger kirmizi görüyorsak henuz Staging Area ya gönderilmemistir.<br>
-		Eger <nothing to commit, working tree clean> ise  Staging Area bos.<br><hr>
-
-***Eger local de olusturulmus ve git push yapilamiyorsa;<br>
-
-	git remote add <name> <url> sonrasinda<br>
-    	git push <name> yapilarak github a aktarilmis olur.***<br>
-
-git log= Commit Store da olusturulan versiyonlarin ayrintili listesini gösterir.<br>
-git log -oneline= Tek satir halinde her versiyonu gösterir.<br>
-
-git show hash_kodu= Kodun hepsi/ilk 7 hanesi degisiklikleri ayrintilica verir.<br>
-			  Kirmizilar silinmis/yeri degistirilmis,<br>
-			  Yesiller yeni eklenmis manasina gelir. <br><hr>
---------------------------------------------------------------------------------
-***Eger e posta adresi github a esitlenmemisse; proje klosörünün icindeyken cmd <br>
-de <git config --global user.email "E-posta Adresiniz"> yazip enter a basiniz.<br>
-Ardindan <git config --global user.name "adiniz"> yazip enter a basiniz.<br><hr>
-================================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h3>Working Space DEKI SON DEGISIKLIKLERI SILME- BIR ADIM GERI ALMA</h3>
-
-	cmd de proje klosörünün icindeyken asagidakileri yazip enter a basinca;<br>
-
-git restore --dosya_adi_ve_uzantisi = yazilan dosyadaki son yapilan Working Space deki degisiklikler siliniyor.<br>
-
-git restore .= son yapilan Working Space deki tüm degisiklikler siliniyor.<br><hr>
-
---------------------------------------------------------------------------------
-code .= cmd de git init yapilmis klosörünün icindeyken yazilip enter a 
-basilinca o dosyada VisualStudioCode aciliyor.<br><hr>
---------------------------------------------------------------------------------
->Stage DEKI SON DEGISIKLIKLERI  Working Space E GERI TASIMA<br>
-
-	cmd de proje klosörünün icindeyken asagidakileri yazip enter a basinca;<br>
-
-git restore --staged dosya_adi_ve_uzantisi = Stage a gönderilen dosyadaki son degisikleri Working Space e geri getirir.<br>
-
-git restore --staged .= Stage a gönderilen son degisiklerin tümünü Working Space e geri getirir..<br><hr>
---------------------------------------------------------------------------------
->Stage DEKI VEYA  Working Space  DEKI DEGISIKLIKLERDEN VAZGECIP SILME<br>
-	
-	cmd de proje klosörünün icindeyken asagidakini yazip enter a basinca;<br>
-
-git reset --hard= iki alandaki son degisiklikleri de siler.<br><hr>
---------------------------------------------------------------------------------
->Commits DE BIR VERSIYONU SILME<br>
-
-	cmd de proje klosörünün icindeyken asagidakini yazip enter a basinca;<br>
-
-git reset --hard hash_kodu= yazilan versiyona gider onu silmez ve orda  kalir 
-ve sonrasinda olusturulan tüm versiyonlari siler.<br><hr>
---------------------------------------------------------------------------------
->Commits DE ISTENILEN VERSIYONA GERI DÖNME<br>
-
-git checkout hash_kodu dosya_adi= Sadece Dosya hash taki versiyonuna döner.(sonda nokta yok)<br>
-
-git checkout hash_kodu .= Tüm dosya Hash degeri verilen versiyona HEAD i getirir ve o versiyonu görebiliriz.<br>
-	*Head bir isaretcidir ve bizim hangi versiyonda oldugumuzu gösterir.<br>
-
-Eger dogru versiyon ise ve gercekten o versiyona dönmek istiyorsak<br>
-*git checkout lardan sonra mutlaka <git add . >+( git commit -m "…") yapilmalidir. Yoksa degisiklik gecerli olmaz.<br>
-
-**özellikle grup ile bir projede calisiliyorsa MASTER da böyle bir uygulama yapilmaz, Branch ta tavsiye edilir.<br><hr>
-================================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-<h2>BRANCH OLUSTURMA</h2>
-
-git branch isim= degisikliklerin yapilabilmesi icin calisilan dosyanin bir kopyasini olusturur.<br> 
-Genellikle kisi ismi verilir.<br>
-
-Eger dosya da herhangi bir islem henuz yapilmamaissa Branch olusturulamaz.<br>
-
-Local de olusturulan Branch Remote da olmaz ve o Branch da iken git push yaparsak<br> 
-uyari verir.Eger remote da da ayni isimli Branch imizi olusturmak istiyorsak; <br>
-git push --set-upstream origin branch_adi>ENTER <br>
-yapmaliyiz. Bu sekilde local branch dan Remote Branch e göndermis oluruz.<br><hr>
-
-Remote daki Branch i Master ile birlestirmek icin;<br>
-Pull repuests seceneginden Compare & pull request e basmali.<br>
-Eger cakisma uyarisi(merge conflict) varsa create pull request>resolve conflicts<br>
- seceneklerine basarak manuel cakismayi cözüp <br>
-Mark as resolved>Commit merge e basar. Ardindan<br>
-Merge pull request>Confirm merge basarak birlestirme tamamlaniyor.<br><hr>
---------------------------------------------------------------------------------
-OLUSTURULAN BRANCH I GÖRMEK<br>
-
-git branch= olusturdugumuz branch lari ve master i gösterir.<br>
-
-=> hangi branch aktif ise yaninda * vardir.<br><hr>
---------------------------------------------------------------------------------
-BRANCLAR ARASI GECIS YAPMAK (Branch tan Master a veya Master dan Branch a)<br>
-
-git checkout branch_isim= yazip enter a basinca istenilen branch a gecilir.<br>
-
-git log --oneline yapildiginda Head dan sonra hangisi yaziyorsa o branchtayizdir<br>
-=>hashcode (HEAD -> said, master) = said branch indayizdir.<br><hr>
---------------------------------------------------------------------------------
-BRANCH BIRLESTIRME (feature i Master ekleme)<br>
-
-git merge branch_isim= branch lari birlestirir.<br>
-
-1- Ana Branch hangisi ise o branch a gecilmeli (git checkout branch_isim).<br>
-2- git merge yan_branch_isim yazilarak Ana Branch(genelde master) a yerlestirir.<br>
-3- git log --oneline yapilarak iki branch taki veriyonlarin birlestigi görülür.<br><hr>
---------------------------------------------------------------------------------
-BRANCH SILME<br>
-
-git branch -d branch_ismi= yazarsak istenilen branch silinir.<br><hr>
---------------------------------------------------------------------------------
-BRANCH ISMI DEGISTIRME<br>
-
-git branch -m branch_ismi= aktif olan branch in ismini degistirir.<br><hr>
-================================================================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2>GIT-GITHUB BIRBIRINE BAGLAMA(Local-Remote) </h2>
-
-
-Github hesabi acildiktan sonra 2 tür baglama yapilabilir.<br>
-
-1- CLONE yöntemiyle<br>
-2- REMOTE yöntemiyle<br>
-
-*-eger projede cok kisi calisacaksa ayarlar>manage accsess>Invite a collaborator<br>
-
-=>git clone url= github daki bir repoyu local e indirme islemidir.<br>
-
-* Clone isleminde klosör olusacagi icin ona uygun yerde bu islem yapilmalidir.<br>
-
-* Eger clone yapiyorsak git init yapmamaliyiz.<br>
-
-*Eger projenize github da baslamaniz gerekiyorse git clone en kisa yoldur.<br>
-
-*baskasinin github reposunu da git clone url ile kendi localimize baglayabiliriz   <br>    
-
-=>git push= Local de olusturulan commit lerin github a gönderilme islemidir.<br>
-
-*git push isleminden önce git add . ve git commit-m "…" yapmayi unutmayalim.<br><hr>
---------------------------------------------------------------------------------
-***Eger local de olusturulmus dosyaya cmd den girip <br>
-git init>xgit add .>git commit -m "…" yapildiktan sonra git push yapilamiyorsa;<br>
-ayni isimle github da bir repository olusturup;<br>
-
-	git remote add <name> <url> (isim ve url) sonrasinda<br>
-    	git push <name> yapilarak github a aktarilmis olur.***<br>
-
-Ikinci yol olarak acilan repo daki: git remote add origin (url) >ENTER><br>
-git push -u origin (branch_adi)>ENTER (genelde master olur) seklinde de olur.<br>
-
-=>git pull= Github daki en son versiyonun lokal ile karsilastirilarak varsa <br>
-     degisikliklerin indirilmesi(git fetch) ve uygulanmasi(git merge) islemidir.<br><hr>
-================================================================================
-
-
-
-
- <h2>MERGE CONFLICT</h2>
-
-Birlestirilecek commit lerde ayni dosyanin ayni satirinda birbirinden farkli <br>
-degisiklikler varsa bu durumdaki catismaya denir.<br>
-
-Ekip calismalarinda karsilasabilir.<br>
-
-Remote ile Local in birlestirilmesinde(git push, git pull) ve <br>
-Branch birlestirmelerinde (git merge branch_isim) karsilasilir.<br>
-
-git pull ve git push edildiginde karsilasilir, 2 cözüm vardir.<br>
-1- ya gelen kodlar duzenlenip git add .>git commit -m "..."">git push gönderilir<br>
-2- ya da git merge -abort>ENTER ile vazgecebiliriz(gecici bir hamledir)<br><hr>
-
-Cakisma olmamasi icin 5 adimli tavsiye:<br>
-
-1- github da(REMOTE) dosayi olustur.<br>
-2- Local e git pull et.<br>
-3- Local de Branch olustur.(feature)<br>
-4- Local Branch daki degisikligi Remote Branch a gönder.<br>
-5- Remote Branch takini Master Branch ile birlestir.<br>
-</main>
-</body>
+    git checkout branch_isim= yazip enter a basinca istenilen branch a
+    gecilir.<br />
+
+    git log --oneline yapildiginda Head dan sonra hangisi yaziyorsa o
+    branchtayizdir<br />
+    =>hashcode (HEAD - said, master) = said branch indayizdir.<br />
+    <hr />
+    --------------------------------------------------------------------------------
+    BRANCH BIRLESTIRME (feature i Master ekleme)<br />
+
+    git merge branch_isim= branch lari birlestirir.<br />
+
+    1- Ana Branch hangisi ise o branch a gecilmeli (git checkout
+    branch_isim).<br />
+    2- git merge yan_branch_isim yazilarak Ana Branch(genelde master) a
+    yerlestirir.<br />
+    3- git log --oneline yapilarak iki branch taki veriyonlarin birlestigi
+    görülür.<br />
+    <hr />
+    --------------------------------------------------------------------------------
+    BRANCH SILME<br />
+
+    git branch -d branch_ismi= yazarsak istenilen branch silinir.<br />
+    <hr />
+    --------------------------------------------------------------------------------
+    BRANCH ISMI DEGISTIRME<br />
+
+    git branch -m branch_ismi= aktif olan branch in ismini degistirir.<br />
+    <hr />
+    ================================================================================
+
+    <h2>GIT-GITHUB BIRBIRINE BAGLAMA(Local-Remote)</h2>
+
+    Github hesabi acildiktan sonra 2 tür baglama yapilabilir.<br />
+
+    1- CLONE yöntemiyle<br />
+    2- REMOTE yöntemiyle<br />
+
+    *-eger projede cok kisi calisacaksa ayarlar manage accsess Invite a
+    collaborator<br />
+
+    =git clone url= github daki bir repoyu local e indirme islemidir.<br />
+
+    * Clone isleminde klosör olusacagi icin ona uygun yerde bu islem
+    yapilmalidir.<br />
+
+    * Eger clone yapiyorsak git init yapmamaliyiz.<br />
+
+    *Eger projenize github da baslamaniz gerekiyorse git clone en kisa
+    yoldur.<br />
+
+    *baskasinin github reposunu da git clone url ile kendi localimize
+    baglayabiliriz <br />
+
+    =git push= Local de olusturulan commit lerin github a gönderilme
+    islemidir.<br />
+
+    *git push isleminden önce git add . ve git commit-m "…" yapmayi
+    unutmayalim.<br />
+    <hr />
+    --------------------------------------------------------------------------------
+    ***Eger local de olusturulmus dosyaya cmd den girip <br />
+    git init>xgit add . git commit -m "…" yapildiktan sonra git push
+    yapilamiyorsa;<br />
+    ayni isimle github da bir repository olusturup;<br />
+
+    git remote add &lt;name&gt; &lt;url&gt; (isim ve url) sonrasinda<br />
+    git push &lt;name&gt; yapilarak github a aktarilmis olur.***<br />
+
+    Ikinci yol olarak acilan repo daki: git remote add origin (url) ENTER <br />
+    git push -u origin (branch_adi)>ENTER (genelde master olur) seklinde de
+    olur.<br />
+
+    =git pull= Github daki en son versiyonun lokal ile karsilastirilarak varsa
+    <br />
+    degisikliklerin indirilmesi(git fetch) ve uygulanmasi(git merge)
+    islemidir.<br />
+    <hr />
+    ================================================================================
+
+    <h2>MERGE CONFLICT</h2>
+
+    Birlestirilecek commit lerde ayni dosyanin ayni satirinda birbirinden farkli
+    <br />
+    degisiklikler varsa bu durumdaki catismaya denir.<br />
+
+    Ekip calismalarinda karsilasabilir.<br />
+
+    Remote ile Local in birlestirilmesinde(git push, git pull) ve <br />
+    Branch birlestirmelerinde (git merge branch_isim) karsilasilir.<br />
+
+    git pull ve git push edildiginde karsilasilir, 2 cözüm vardir.<br />
+    1- ya gelen kodlar duzenlenip git add .n git commit -m "..."" git push
+    gönderilir<br />
+    2- ya da git merge -abort>ENTER ile vazgecebiliriz(gecici bir hamledir)<br />
+    <hr />
+
+    Cakisma olmamasi icin 5 adimli tavsiye:<br />
+
+    1- github da(REMOTE) dosayi olustur.<br />
+    2- Local e git pull et.<br />
+    3- Local de Branch olustur.(feature)<br />
+    4- Local Branch daki degisikligi Remote Branch a gönder.<br />
+    5- Remote Branch takini Master Branch ile birlestir.<br />
+    <hr />
+    <h3>Bir repository üzerinde ekip olarak calismak</h3>
+    <ul>
+      <li>Repository olustur</li>
+      <li><strong>Setting</strong>'e git</li>
+      <li><strong>Manage acces</strong> secenegine tikla</li>
+      <li><strong>Add people</strong> butonuna tikla</li>
+      <li>
+        Paylasmak istediginin kisinin mail ini gir (github hesabi olan bir email
+        olmali)
+      </li>
+      <li><strong>Select a collaborator above</strong> butonuna tikla.</li>
+    </ul>
+    <hr />
+    <h3>Public bir Repository'i private yapmak</h3>
+    <ul>
+      <li><strong>Setting</strong>'e git</li>
+      <li><strong>Manage acces</strong> secenegine tikla</li>
+      <li>
+        Public Repository kismindaki <strong>Manage</strong> yazisina tikla
+      </li>
+      <li>
+        Danger zone daki Change repository visibility kismindaki
+        <strong>Change visibility</strong> butonuna tikla
+      </li>
+      <li><strong>Make private</strong> secenegini tiklayarak onayla.</li>
+    </ul>
+  </body>
 </html>
