@@ -279,23 +279,25 @@
     degisikliklerin indirilmesi(git fetch) ve uygulanmasi(git merge)
     islemidir.<br />
     <hr />
-    ================================================================================
-
     <h2>MERGE CONFLICT</h2>
+    <div>
+      Birlestirilecek commit lerde ayni dosyanin ayni satirinda birbirinden
+      farkli degisiklikler varsa bu durumdaki catismaya denir. <br />
+      Ekip calismalarinda karsilasabilir. <br />
+      Remote ile Local in birlestirilmesinde(git push, git pull) ve Branch
+      birlestirmelerinde (git merge branch_isim) karsilasilir.
+    </div>
+    git pull ve git push edildiginde karsilasilir, 2 cözüm vardir.
+    <ul>
+      <li>
+        ya gelen kodlar duzenlenip git add .n git commit -m "..."" git push
+        gönderilir
+      </li>
+      <li>
+        ya da git merge -abort>ENTER ile vazgecebiliriz(gecici bir hamledir)
+      </li>
+    </ul>
 
-    Birlestirilecek commit lerde ayni dosyanin ayni satirinda birbirinden farkli
-    <br />
-    degisiklikler varsa bu durumdaki catismaya denir.<br />
-
-    Ekip calismalarinda karsilasabilir.<br />
-
-    Remote ile Local in birlestirilmesinde(git push, git pull) ve <br />
-    Branch birlestirmelerinde (git merge branch_isim) karsilasilir.<br />
-
-    git pull ve git push edildiginde karsilasilir, 2 cözüm vardir.<br />
-    1- ya gelen kodlar duzenlenip git add .n git commit -m "..."" git push
-    gönderilir<br />
-    2- ya da git merge -abort>ENTER ile vazgecebiliriz(gecici bir hamledir)<br />
     <hr />
 
     <h4>Cakisma olmamasi icin 5 adimli tavsiye:</h4>
