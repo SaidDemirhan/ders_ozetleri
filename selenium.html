@@ -1841,6 +1841,25 @@
       Locate islemi mutlaka <strong>// </strong> ile baslar ve ihtiyaca göre /
       veya // ile devam eder.<br /><br />
       <hr />
+      //td[text()='Managers'] <br />
+      and tr[2]//button[text()='Edit'] <br />
+      The closest I can get to doing what I want is: <br />
+      //td[text()='Managers'] <br />
+      //tr[2]//button[text()='Edit']
+      <hr />
+      <h3>Testlerde Hata cikarsa Kodun devam etmesi</h3>
+      @And("Sifrenin basarili bir sekilde olusturuldugunu görür") <br />
+      public void sifreninBasariliBirSekildeOlusturuldugunuGorur() { <br />
+      try { <br />
+
+      Assert.assertEquals(ConfigurationReader.getProperty("basariliDegisimMesaji"),
+      gmiBankPage07.yanlisSifreMesaji.getText()); <br />
+      } catch (AssertionError e) { <br />
+      e.printStackTrace(); <br />
+      } <br />
+
+      } <br />
+      <hr />
       <h3>List'teki Degerleri Getirme</h3>
       *Eger List'in icindeki degerleri getirmek istiyorsak; <br />
       <ul class="maddesiz" id="foreach">
