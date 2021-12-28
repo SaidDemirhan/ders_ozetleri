@@ -1851,13 +1851,11 @@
       @And("Sifrenin basarili bir sekilde olusturuldugunu görür") <br />
       public void sifreninBasariliBirSekildeOlusturuldugunuGorur() { <br />
       try { <br />
-
       Assert.assertEquals(ConfigurationReader.getProperty("basariliDegisimMesaji"),
       gmiBankPage07.yanlisSifreMesaji.getText()); <br />
       } catch (AssertionError e) { <br />
       e.printStackTrace(); <br />
       } <br />
-
       } <br />
       <hr />
       <h3>List'teki Degerleri Getirme</h3>
