@@ -2234,16 +2234,27 @@
           <ul>
             <li>public class DummyTestData</li>
             <ul>
-              <li>public HashMap&lt;String, String&gt; setupRequestBody(){</li>
+              <li>public HashMap&lt;String, Object&gt; setUpExpectedData(){</li>
               <ul>
                 <li>
-                  HashMap&lt;String, String&gt; requestBody=new
-                  HashMap&lt;String, String&gt;();
+                  //HashMap&lt;String, Object&gt; data=new HashMap&lt;String,
+                  Object&gt;();
                 </li>
-                <li>requestBody.put("name", "batch30");</li>
-                <li>requestBody.put("salary","123000");</li>
-                <li>requestBody.put("age","20");</li>
-                <li>return requestBody;</li>
+                <li>//data.put("name","batch30");</li>
+                <li>//data.put("salary","123000");</li>
+                <li>//data.put("age","20"); <br /><br /></li>
+                <li>
+                  HashMap&lt;String, Object&gt; expectedData=new
+                  HashMap&lt;String, Object&gt;();
+                </li>
+                <li>expectedData.put("statusCode",200);</li>
+                <li>expectedData.put("status","success");</li>
+                <li>//expectedData.put("data",data);</li>
+                <li>
+                  expectedData.put("message","Successfully! Record has been
+                  added.");
+                </li>
+                <li>return expectedData;</li>
               </ul>
               <li>}</li>
             </ul>
@@ -2271,7 +2282,9 @@
                 <li>Response response=given().</li>
                 <ul>
                   <li>accept("application/json").</li>
-                  <li>spec(spec03).auth().basic("admin","password123").</li>
+                  <li>spec(spec03).</li>
+                  <li>Authorization (yetki) icin burasi yazilmali.</li>
+                  <li>auth().basic("admin","password123").</li>
                   <li>body(requestBodyMap).</li>
                   <li>when().</li>
                   <li>post("/{parametre1}");</li>
@@ -2306,6 +2319,19 @@
             <li>}</li>
           </ul>
         </code>
+      </div>
+      <hr />
+      <div>
+        <strong>Auhhentication: </strong> Kim oldugumuzu ifade eder. <br />
+        <strong>Authorization: </strong> Yetki alanimizi ifade eder.. (put post
+        delete) <br />
+        Tester vpn ile kullanici olarak internet yardimiyla endpoint(url)e
+        <br />
+        ulasip yetkisine göre create delete post put get yapabilir. <br /><br />
+        örnegin Dummy sitesinde <br />
+        Username: admin <br />
+        Password: password123 <br />
+        seklinde Authorization verilmistir.
       </div>
     </main>
     <footer>
