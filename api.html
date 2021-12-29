@@ -1822,6 +1822,369 @@
           </ul>
         </code>
       </div>
+      -------------------------MatchersClass
+      yöntemiyle------------------------------------
+      <div class="maddesiz">
+        <code
+          ><ul>
+            <li>
+              public class GetRequest13MatchersClass extends DummyTestBase {
+              <ul>
+                <li>@Test</li>
+                <li>public void test() {</li>
+                <ul>
+                  <li>spec03.pathParam("parametre1", "employees");</li>
+                  <li>DummyTestData expectedObje = new DummyTestData();</li>
+                  <li>
+                    HashMap&lt;String, Object&gt; expectedDataMap =
+                    expectedObje.setUpTestData();
+                  </li>
+                  <li>System.out.println(expectedDataMap); <br /><br /></li>
+                  <li>Response response = given().</li>
+                  <ul>
+                    <li>accept("application/json").</li>
+                    <li>spec(spec03).</li>
+                    <li>when().</li>
+                    <li>get("/{parametre1}"); <br /><br /></li>
+                  </ul>
+                  <li>response.prettyPrint(); <br /><br /></li>
+                  <li>
+                    response.then().assertThat().statusCode((Integer)expectedDataMap.get("statusCode")).
+                  </li>
+                  <ul>
+                    <li>
+                      body("data[4].employee_name",equalTo(expectedDataMap.get("besincicalisan")),
+                    </li>
+                    <ul>
+                      <li>
+                        "data.id" ,hasSize((Integer)
+                        expectedDataMap.get("calisansayisi")) ,
+                      </li>
+                      <li>
+                        "data[-2].employee_salary",equalTo(expectedDataMap.get("sondanikincicalisanmaasi")),
+                      </li>
+                      <li>
+                        "data.employee_age",hasItems(((List)expectedDataMap.get("arananyaslar")).get(0),
+                      </li>
+                      <ul>
+                        <li>
+                          ((List&lt;?&gt;)
+                          expectedDataMap.get("arananyaslar")).get(1),
+                        </li>
+                        <li>
+                          ((List&lt;?&gt;)
+                          expectedDataMap.get("arananyaslar")).get(2)),
+                        </li>
+                      </ul>
+                      <li>
+                        "data[10].employee_name",equalTo(((Map)expectedDataMap.get("onbirincicalisan")).get("employee_name")),
+                      </li>
+                      <li>
+                        "data[10].employee_salary",equalTo(((Map&lt;?, ?&gt;)
+                        expectedDataMap.get("onbirincicalisan")).get("employee_salary")),
+                      </li>
+                      <li>
+                        "data[10].employee_age",equalTo(((Map&lt;?, ?&gt;)
+                        expectedDataMap.get("onbirincicalisan")).get("employee_age")),
+                      </li>
+                      <li>
+                        "data[10].profile_image",equalTo(((Map&lt;?, ?&gt;)
+                        expectedDataMap.get("onbirincicalisan")).get("profile_image")));
+                      </li>
+                    </ul>
+                  </ul>
+                </ul>
+
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
+      ------------------------------JsonPath
+      Yöntemiyle---------------------------
+      <div class="maddesiz">
+        <code>
+          <ul>
+            <li>public class GetRequest13JsonPath extends DummyTestBase {</li>
+            <ul>
+              <li>@Test</li>
+              <li>public void test() {</li>
+              <ul>
+                <li>spec03.pathParam("parametre1", "employees");</li>
+                <li>DummyTestData expectedObje = new DummyTestData();</li>
+                <li>
+                  HashMap&lt;String, Object&gt; expectedDataMap =
+                  expectedObje.setUpTestData();
+                </li>
+                <li>System.out.println(expectedDataMap); <br /><br /></li>
+                <li>Response response = given().</li>
+                <ul>
+                  <li>accept("application/json").</li>
+                  <li>spec(spec03).</li>
+                  <li>when().</li>
+                  <li>get("/{parametre1}"); <br /><br /></li>
+                </ul>
+                <li>response.prettyPrint(); <br /><br /></li>
+                <li>
+                  JsonPath json=response.jsonPath(); //JsonPath Yöntemi
+                  <br /><br />
+                </li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("statusCode"),
+                  <ul>
+                    <li>response.getStatusCode());</li>
+                  </ul>
+                </li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("besincicalisan"),
+                  <ul>
+                    <li>json.getString("data[4].employee_name"));</li>
+                  </ul>
+                </li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("calisansayisi"),
+                  <ul>
+                    <li>json.getList("data.id").size());</li>
+                  </ul>
+                </li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("sondanikincicalisanmaasi"),
+                  <ul>
+                    <li>json.getInt("data[-2].employee_salary"));</li>
+                  </ul>
+                </li>
+                <li>
+                  Assert.assertTrue(json.getList("data.employee_age").containsAll((List)
+                  <ul>
+                    <li>expectedDataMap.get("arananyaslar")));</li>
+                  </ul>
+                </li>
+                <li>
+                  Assert.assertEquals(((Map)expectedDataMap.get("onbirincicalisan")).get("id"),
+                  <ul>
+                    <li>json.getInt("data[10].id"));</li>
+                  </ul>
+                </li>
+                <li>
+                  Assert.assertEquals(((Map&lt;?, ?&gt;)
+                  <ul>
+                    <li>
+                      expectedDataMap.get("onbirincicalisan")).get("employee_name"),
+                    </li>
+                    <li>json.getString("data[10].employee_name"));</li>
+                  </ul>
+                </li>
+                <li>
+                  Assert.assertEquals(((Map&lt;?, ?&gt;)
+                  <ul>
+                    <li>
+                      expectedDataMap.get("onbirincicalisan")).get("employee_salary"),
+                    </li>
+                    <li>json.getInt("data[10].employee_salary"));</li>
+                  </ul>
+                </li>
+                <li>
+                  Assert.assertEquals(((Map&lt;?, ?&gt;)
+                  <ul>
+                    <li>
+                      expectedDataMap.get("onbirincicalisan")).get("employee_age"),
+                    </li>
+                    <li>json.getInt("data[10].employee_age"));</li>
+                  </ul>
+                </li>
+                <li>
+                  Assert.assertEquals(((Map&lt;?, ?&gt;)
+                  <ul>
+                    <li>
+                      expectedDataMap.get("onbirincicalisan")).get("profile_image"),
+                    </li>
+                    <li>json.getString("data[10].profile_image"));</li>
+                  </ul>
+                </li>
+              </ul>
+              <li>}</li>
+            </ul>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
+      <hr />
+      <h4>Örnek</h4>
+      http://dummy.restapiexample.com/api/v1/employees url'ine bir istek
+      gönderildiğinde;
+      <ul>
+        <li>Status kodun 200 olduğunu,</li>
+        <li>En yüksek maaşın 725000 olduğunu,</li>
+        <li>En küçük yaşın 19 olduğunu,</li>
+        <li>İkinci en yüksek maaşın 675000</li>
+      </ul>
+      gibi olduğunu test edin. <br /><br />
+      -------------------------------------------------
+      <div class="maddesiz">
+        <code>
+          <ul>
+            <li>public class DummyTestData</li>
+            <ul>
+              <li>public HashMap&lt;String, Integer&gt; setUpTestData02(){</li>
+              <ul>
+                <li>
+                  HashMap&lt;String,Integer&gt; expectedData=new
+                  HashMap&lt;String, Integer&gt;();
+                </li>
+                <li>expectedData.put("statusCode",200);</li>
+                <li>expectedData.put("enYuksekMaas",725000);</li>
+                <li>expectedData.put("enKucukYas",19);</li>
+                <li>expectedData.put("ikinciYuksekMaas",675000);</li>
+                <li>return expectedData;</li>
+              </ul>
+              <li>}</li>
+            </ul>
+            <li>}</li>
+            <li>===========================================================</li>
+          </ul>
+          <ul>
+            <li>
+              public class DummyTestBase {
+              <ul>
+                <li>protected RequestSpecification spec03;</li>
+                <li>@Before</li>
+                <li>
+                  public void setUp(){
+                  <ul>
+                    <li>
+                      spec03= new RequestSpecBuilder().
+                      <ul>
+                        <li>
+                          setBaseUri("http://dummy.restapiexample.com/api/v1").
+                        </li>
+                        <li>build();</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+            </li>
+            <li>}</li>
+            <li>
+              =================================================================
+            </li>
+          </ul>
+          <ul>
+            <li>public class GetRequest14 extends DummyTestBase {</li>
+            <ul>
+              <li>@Test</li>
+              <li>public void test(){</li>
+              <ul>
+                <li>
+                  spec03.pathParam("parametre1","employees"); <br /><br />
+                </li>
+                <li>DummyTestData expectedObje=new DummyTestData();</li>
+                <li>
+                  HashMap&lt;String,Integer&gt;expectedDataMap=
+                  expectedObje.setUpTestData02();
+                </li>
+                <li>System.out.println(expectedDataMap); <br /><br /></li>
+                <li>
+                  Response response=given().
+                  <ul>
+                    <li>accept("application/json").</li>
+                    <li>spec(spec03).</li>
+                    <li>when().</li>
+                    <li>get("/{parametre1}"); <br /><br /></li>
+                  </ul>
+                </li>
+                <li>//1-De-Serialization yöntemi ile</li>
+                <li>
+                  HashMap&lt;String,Object&gt; actualDataMap=
+                  response.as(HashMap.class);
+                </li>
+                <li>System.out.println(actualDataMap); <br /><br /></li>
+                <li>//Status kodun 200 olduğunu,</li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("statusCode"),(Integer)
+                  response.getStatusCode()); <br /><br />
+                </li>
+                <li>//En yüksek maaşın 725000 olduğunu,</li>
+                <li>
+                  List&lt;Integer&gt; maasListesi=new
+                  ArrayList&lt;Integer&gt;();
+                </li>
+                <li>int datasize=((List)actualDataMap.get("data")).size();</li>
+                <li>
+                  for (int i=0; i&lt;datasize; i++){
+                  <ul>
+                    <li>
+                      maasListesi.add((Integer)((Map)
+                      ((List)actualDataMap.get("data")).get(i)).get("employee_salary"));
+                    </li>
+                  </ul>
+                </li>
+                <li>}</li>
+                <li>Collections.sort(maasListesi);</li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("enYuksekMaas"),maasListesi.get(maasListesi.size()-1));
+                  <br /><br />
+                </li>
+                <li>//İkinci en yüksek maaşın 675000</li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("ikinciYuksekMaas"),maasListesi.get(maasListesi.size()-2));
+                  <br /><br />
+                </li>
+                <li>//En küçük yaşın 19 olduğunu</li>
+                <li>
+                  List&lt;Integer&gt; yasListesi=new ArrayList&lt;Integer&gt;();
+                </li>
+                <li>
+                  for (int i=0;i&lt;datasize; i++){
+                  <ul>
+                    <li>
+                      yasListesi.add( (Integer) ((Map)((List&lt;?&gt;)
+                      actualDataMap.get("data")).get(i)).get("employee_age") );
+                    </li>
+                  </ul>
+                </li>
+                <li>}</li>
+                <li>Collections.sort(yasListesi);</li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("enKucukYas"),yasListesi.get(0));
+                  <br /><br />
+                </li>
+                <li>--------//2-JsonPath yöntemi ile--------------</li>
+                <li>JsonPath json=response.jsonPath(); <br /><br /></li>
+                <li>//En yüksek maaşın 725000 olduğunu,</li>
+                <li>
+                  List&lt;Integer&gt;
+                  maasListesijson=json.getList("data.employee_salary");
+                </li>
+                <li>Collections.sort(maasListesijson);</li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("enYuksekMaas"),maasListesijson.get(maasListesijson.size()-1));
+                  <br /><br />
+                </li>
+                <li>//İkinci en yüksek maaşın 675000</li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("ikinciYuksekMaas"),maasListesijson.get(maasListesijson.size()-2));
+                  <br /><br />
+                </li>
+                <li>//En küçük yaşın 19 olduğunu</li>
+                <li>
+                  List&lt;Integer&gt;
+                  yasListesijson=json.getList("data.employee_age");
+                </li>
+                <li>Collections.sort(yasListesijson);</li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("enKucukYas"),yasListesijson.get(0));
+                </li>
+              </ul>
+              <li>}</li>
+            </ul>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
       <hr />
       <h3>Request Cesitleri</h3>
       <ol>
@@ -1837,9 +2200,142 @@
         <h4><li>DeleteRequest</li></h4>
         <h4><li>PatchRequest</li></h4>
       </ol>
+      <hr />
+      <h3>PostRequest</h3>
+      <h4>Örnek</h4>
+      http://dummy.restapiexample.com/api/v1/create url ine, Request Body olarak
+      <code>
+        <ul>
+          <li>{</li>
+          <li>"name":"Ahmet Aksoy",</li>
+          <li>"salary":"1000",</li>
+          <li>"age":"18",</li>
+          <li>}</li>
+        </ul>
+      </code>
+      gönderildiğinde, Status kodun 200 olduğunu ve dönen response body nin,
+      <code>
+        <ul>
+          <li>{</li>
+          <li>"status": "success",</li>
+          <li>"data": {</li>
+          <ul>
+            <li>"id":…</li>
+          </ul>
+          <li>},</li>
+          <li>"message": "Successfully! Record has been added."</li>
+          <li>}</li>
+        </ul>
+      </code>
+      olduğunu test edin. <br /><br />
+      ------------------------------------------------------------
+      <div class="maddesiz">
+        <code>
+          <ul>
+            <li>public class DummyTestData</li>
+            <ul>
+              <li>public HashMap&lt;String, String&gt; setupRequestBody(){</li>
+              <ul>
+                <li>
+                  HashMap&lt;String, String&gt; requestBody=new
+                  HashMap&lt;String, String&gt;();
+                </li>
+                <li>requestBody.put("name", "batch30");</li>
+                <li>requestBody.put("salary","123000");</li>
+                <li>requestBody.put("age","20");</li>
+                <li>return requestBody;</li>
+              </ul>
+              <li>}</li>
+            </ul>
+            <li>}</li>
+            <li>===========================================================</li>
+          </ul>
+          <ul>
+            <li>public class PostRequest01 extends DummyTestBase {</li>
+            <ul>
+              <li>@Test</li>
+              <li>public void test(){</li>
+              <ul>
+                <li>spec03.pathParam("parametre1","create");</li>
+                <li>DummyTestData obje=new DummyTestData();</li>
+                <li>//post request yaparken biz body göndermek zorundayız,</li>
+                <li>//testdata classında oluşturduğumuz request body i</li>
+                <li>//burada çağırıyoruz.</li>
+                <li>
+                  HashMap&lt;String,String&gt;
+                  requestBodyMap=obje.setupRequestBody();
+                </li>
+                <li>
+                  HashMap&lt;String,Object&gt;expectedDataMap=obje.setUpExpectedData();
+                </li>
+                <li>Response response=given().</li>
+                <ul>
+                  <li>accept("application/json").</li>
+                  <li>spec(spec03).auth().basic("admin","password123").</li>
+                  <li>body(requestBodyMap).</li>
+                  <li>when().</li>
+                  <li>post("/{parametre1}");</li>
+                </ul>
+                <li>response.prettyPrint(); <br /><br /></li>
+                <li>//DE Serialization</li>
+                <li>
+                  HashMap&lt;String,Object&gt;
+                  actualDataMap=response.as(HashMap.class);
+                </li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("statusCode"),response.getStatusCode());
+                </li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("status"),actualDataMap.get("status"));
+                </li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("message"),actualDataMap.get("message"));
+                  <br /><br />
+                </li>
+                <li>//JsonPath</li>
+                <li>JsonPath json=response.jsonPath();</li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("status"),json.getString("status"));
+                </li>
+                <li>
+                  Assert.assertEquals(expectedDataMap.get("message"),json.getString("message"));
+                </li>
+              </ul>
+              <li>}</li>
+            </ul>
+            <li>}</li>
+          </ul>
+        </code>
+      </div>
     </main>
     <footer>
       <hr />
+      <ul>
+        <li>
+          HashMap&lt;String,Object&gt; expectedData=new
+          HashMap&lt;String,Object&gt;();
+        </li>
+        <ul>
+          <li>expectedData.put("statusCode",200);</li>
+          <li>expectedData.put("status","success")</li>
+          <li>
+            expectedData.put("message","Successfully! Record has been added.");
+          </li>
+          <li>return expectedData;</li>
+        </ul>
+        <li>}</li>
+        <li>public JSONObject setUpDeleteExpectedData(){</li>
+        <ul>
+          <li>JSONObject expectedData=new JSONObject(); <br /><br /></li>
+          <li>expectedData.put("status", "success");</li>
+          <li>expectedData.put("data", "2");</li>
+          <li>
+            expectedData.put("message", "Successfully! Record has been
+            deleted");
+          </li>
+          <li>return expectedData;</li>
+        </ul>
+      </ul>
     </footer>
   </body>
 </html>
