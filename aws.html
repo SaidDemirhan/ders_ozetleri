@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aws</title>
+  </head>
+  <body>
+    <h2>AWS de sanal makine olusturma ve Jenkins kurma</h2>
+    e2 yi sec <br />
+    launch instance tikla <br />
+    ubuntu yu sec <br />
+
+    The authenticity of host 'ec2-3-82-94-48.compute-1.amazonaws.com
+    (3.82.94.48)' can't be established. <br />
+    ECDSA key fingerprint is SHA256:16wn0IEmfAEIkcAxFdriAVl2blhoIIgf3P7N/AOsV58.
+    <br />
+    Are you sure you want to continue connecting (yes/no/[fingerprint])? <br />
+    yes diyoruz <br />
+    connect diyoruz <br />
+    ssh client kismina geliyoruz <br />
+
+    cmd ile anahtari indirdigimiz dosyayi aciyoruz <br />
+
+    en alttak örnek linkini kopyallayip cmd ye yapistiriyoruz. <br />
+
+    sudo apt-get install -y libappindicator1 fonts-liberation <br />
+    wget
+    https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    <br />
+    sudo dpkg -i google-chrome*.deb<br />
+    sudo apt-get install -f<br />
+    sudo dpkg -i google-chrome*.deb<br />
+    20:54 Uhr<br />
+    sudo apt install unzip<br />
+    wget
+    https://chromedriver.storage.googleapis.com/96.0.4664.45/chromedriver_linux64.zip<br />
+    unzip chromedriver_linux64.zip<br />
+    sudo mv chromedriver /usr/bin/chromedriver<br />
+
+    MAIN TOOL INSTALLATIONS <br />
+    sudo apt-get install default-jdk<br />
+    /usr/lib/jvm/java-11-openjdk-amd64<br />
+    sudo apt install maven<br />
+    sudo apt install git<br />
+
+    JENKINS INSTALATION <br />
+    wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo
+    apt-key add -<br />
+    sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ >
+    /etc/apt/sources.list.d/jenkins.list'<br />
+    sudo apt-get update<br />
+    sudo apt-get install jenkins<br />
+  </body>
+</html>
