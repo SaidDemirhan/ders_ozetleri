@@ -95,6 +95,35 @@
         http://3.82.209.98:8080/ <br />
         Kullanıcı Adı: admin <br />
         Şifre: Tester12345
+        <hr>
+        1-Jenkins nedir ? Neden Jenkins’i kullanıyoruz ?
+Jenkins, açık kaynak kodlu bir otomasyon sunucusu ve Java ile geliştirilmiş bir entegrasyon aracıdır. Jenkins yazılım geliştirme sürecinin parçalarını otomatikleştirmeye yardımcı oluyor. Jenkins yazılımı, geliştiricilerin bir kod tabanındaki kusurları hızlı bir şekilde bulmalarını, çözmelerini ve testlerini otomatikleştirmeyi sağlıyor.
+2-Maven ile Jenkins arasındaki fark nedir ?
+Maven bir build aracıdır. Build ve sürüm kontrolü süreçlerinde yardımcı olur. Jenkins ise sürekli entegrasyon sistemidir. Maven’ı build için kullanır.
+3-Jenkins’de sürekli entegrasyon (Continuous Integration) ne demektir ?
+Tüm geliştirme çalışmalarının entegre olduğu bir süreçtir. Ortaya çıkan artifactler otomatik olarak oluşturulur ve test edilir. Bu işlem hataları olabildiğince erken belirlemenize izin verir.
+4-CI (Continuous Integration) araçları nelerdir ?
+Jenkins
+TeamCity
+Travis CI
+Go CD
+Bamboo
+GitLab CI
+CircleCI
+Codeship
+5-Jenkins’de pipeline nedir?
+Bir işin uygulanmasından sonra otomatik olarak diğer iş (ler) in başlatılması sürecidir.
+6-DSL Jenkins nedir ?
+Jenkins “Job DSL / Plugin” iki bölümden oluşur, bunlar: Kullanıcıların işleri bir Groovy tabanlı dil kullanarak tanımlamalarını sağlayan Domain Specific Language (DSL) ve scriptleri ve güncellenmesini yöneten bir Jenkins eklentisidir.
+7-Jenkins hangi SCM araçlarını destekliyor?
+Jenkins, AccuRev, CVS, Subversion, Git, Mercurial, Perforce, ClearCase ve RTC gibi sürüm kontrol araçlarını destekler. Shell scripts ve Windows batch komutlarının yanı sıra Apache Ant, Apache Maven ve sbt tabanlı projeleri çalıştırabilir.
+8-Jenkins’de bir build nasıl schedule edilir ?
+Jenkins’de job konfigurasyonlarında çeşitli build triggerlar tanımlayabiliriz. ‘Build Triggers’ bölümünü bulun ve ‘ Build Periodically’ onay kutusunu işaretleyin. Periyodik olarak oluşturduğunuzda build işleminizi örneğin haftanın gününe göre planlayabilirsiniz. Zamanlama metin kutusunun biçimi aşağıdaki gibidir.
+MINUTE (0–59), HOUR (0–23), DAY (1–31), MONTH (1–12), DAY OF THE WEEK (0–7)
+9-Jenkinsfile nedir ?
+Jenkinsfile bir jenkins pipeline tanımını içeren bir metin dosyasıdır.
+10-Jenkins’de multibranch pipeline nasıl oluşturulur ?
+Multibranch pipeline, aynı projenin farklı dalları için farklı Jenkinsfile’lar uygulamanızı sağlar. Jenkinsfile içeren dallar için pipeline’ları otomatik olarak keşfeder, yönetir ve yürütür.
       </div>
     </main>
   </body>
