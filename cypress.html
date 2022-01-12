@@ -8,9 +8,108 @@
   </head>
   <body>
     <h2>cypress kurma</h2>
-    masaustunde yeni bir klosör olustur. <br />
-    vs de klosörumuzu acalim <br />
-    terminale npm init -y yazalim <br />
+    <ul>
+      <li>
+        masaustunde yeni bir klosör olustur. Klosor adi kucuk harfle olsun.
+      </li>
+      <li>vs de klosörumuzu acalim</li>
+      <li>
+        terminale <strong>npm init -y</strong> yazalim (json file olusturulur)
+      </li>
+      <li>
+        <strong>npm install --save-dev cypress</strong> yazarak cypress i
+        yüklüyoruz.(Framework a nodemodules geliyor.)
+      </li>
+      <li>
+        <strong>npx cypress open</strong> yazarak cypress in arayüzünü aciyoruz.
+        <ul>
+          <li>
+            Eger sonradan acmak istersek; Cypress kurulumu yaptigimiz
+            Frameworkten dosyamizin icindeki
+            <strong>cypress-integration-2-advanced</strong> klosorunun icindeki
+            <strong>action.spec.js</strong> dosyasina tiklayip terminalden
+            <strong>npx cypress open</strong> koduyla aciyoruz.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <hr />
+    <h2>Cypress Hakkinda</h2>
+    <p>
+      Cypress, modern web dünyasi için tasarlanmiş, JavaScript tabanli, yeni
+      jenerasyon bir test aracidir. Hali hazirda var olan Mocha ve Chai gibi
+      test araçlarinin içinde barindirdiği birçok method ve özelliği bünyesinde
+      barindirir. O yüzden daha önce bu test araçlarini kullandiysaniz Cypress'e
+      alişmak sizin için çok daha kolay olacaktir.
+    </p>
+
+    <div>
+      Cypress başka hiçbir test aracinin sahip olmadiği özelliklere sahiptir.
+      Bunlar:
+      <ul>
+        <li>
+          Zamanda yolculuk: Cypress, testiniz
+          <strong>çalişirken ekran görüntüsü</strong>
+          alabilir. Bu sayede test süreci içindeki herhangi bir ana gidip
+          kolayca nasil göründüğünü görebilirsiniz.
+        </li>
+        <li>
+          Debug edebilmek: Chrome Developer tools araciliği ile kolayca
+          testinizin <strong>nerede hata verdiği</strong> ni görebilirsiniz. ve
+          kod devam eder.
+        </li>
+        <li>
+          Otomatik bekleme: Testinize uygulamayi
+          <strong>bekletme methodlari</strong> yazmak zorunda değilsiniz.
+          Cypress otomatik olarak emirlerin ve sorgularin çalişmasini bekler ve
+          yanit aldiktan sonra ilerler.
+        </li>
+        <li>
+          Taklit edebilme: Fonksiyonlarin davranişlarini kontrol edebilirsiniz.
+          Server cevaplari, saat bilgileri gibi datalari tipki gerçek bir
+          kaynaktan gelmiş gibi taklit edebilirsiniz.
+        </li>
+        <li>
+          Ağ trafiği kontrolü: Herhangi bir servera ihtiyaç duymadan istediğiniz
+          miktarda ağ trafiğini taklit edebilirsiniz.
+        </li>
+        <li>Safari yi desteklemez.</li>
+        <li>
+          <a href="https://www.cypress.io/">https://www.cypress.io/</a>
+          sayfasinda ayrintili destek vardir.
+        </li>
+        <li>
+          Selenium dan farki direkt olarak browser in icinde calismasidir. bu
+          yüzden veri transferi daha sagliklidir.
+        </li>
+      </ul>
+    </div>
+
+    <p>
+      Cypress çoğunlukla Selenium ile karşilaştirilir ancak hem temel ilke
+      bakimindan hem de mimari bakimindan oldukça farklidir. Selenium ve diğer
+      araçlarin sahip olduğu birçok eksik noktalarin üstesinden gelir.
+      Cypress'in geliştiricisi Brian Mann, bu araci geliştirirken anketler
+      yoluyla test sürecinde karşilaşilan zorluklari ve talepleri tespit ederek
+      ilerlemiştir.
+    </p>
+
+    <p>
+      Cypress her seviyede otomasyon sürecini kontrol eder. Bunun anlami,
+      tarayicinin içinde ve dişinda gelişen her olayi anlayabilme yeteneğine
+      sahip olmasidir. Bu sayede herhangi bir test aracindan çok daha tutarli
+      sonuçlar verebilir.
+    </p>
+
+    <p>
+      Cypress bilgisayarimiza lokal olarak kurulduğundan dolayi otomasyon süreci
+      için işletim sistemine erişebilir. Bu sayede ekran görüntüleri alabilir,
+      videolar kaydedebilir, bazi dosya işlemleri ve ağ operasyonlari
+      yapabiliriz. Uygulamanin içinde çaliştiğindan dolayi her nesneye native
+      şekilde ulaşabiliriz. Bu özellikten dolayi test kodumuzun içinde window
+      nesnesine, document nesnesine, DOM elementlerine, veya bir timer nesnesine
+      ulaşabiliriz.
+    </p>
     <hr />
     <h2></h2>
     <ul>
