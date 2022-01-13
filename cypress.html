@@ -111,7 +111,92 @@
       ulaşabiliriz.
     </p>
     <hr />
-    <h2></h2>
+    <h2>Dosya Yapisi</h2>
+    <ul>
+      <li>my-cypress-framework <ul>
+        <li>cypress <ul>
+          <li>fixtures <ul>
+            <li>{} example.json</li>
+          </ul></li>
+          <li>integration</li>
+          <li>plugins</li>
+          <li>support</li>
+        </ul></li>
+        <li>node_modules <ul>
+          <li>cypress.json</li>
+          <li>package-lock.json</li>
+          <li>package.json</li>
+        </ul></li>
+      </ul></li>
+    </ul>
+ 
+<div>Fixture: Sabit test datalari olusturmak icin kullanilir. <br>
+  -url, email, username, password, ......</div>
+
+
+<div>Integration: This folder used to create the test cases <br>
+  -similar to Java folder in Selenium <br>
+  -By default this folder has some test cases. <br>
+  -We can delete those test case and write our own <br>
+  -In this folder we can create own folder folders and test classes</div>
+
+
+<div>Plugins: (index.js) Cypressin yapabidiklerinden yararlanmaniza,
+  bunlari değiştirmenize veya genişletmenize olanak tanir.
+  
+  Ornek Plagins: cypress-dark, cypress-xpath, cypress-mailosaur,
+                 cypress-slack-reporter, ...... <br> https://www.npmjs.com/package/cypress-xpath
+                 npm install -D cypress-xpath <br>
+                 require('cypress-xpath')</div>
+
+
+
+Support Folder:
+This is used to create custum methods, utilty classess, ....
+When we add any custom methods in support folder, they will be
+visible entire framawork automatically
+
+command.js: çeşitli özel komutlarin nasil oluşturulacağini ve
+            mevcut komutlarin üzerine nasil yazilacağini gösterir.
+
+-------------------------------------------------------------------------
+
+
+node_modules:
+-This hass all packages and required npm(node package manager)
+-This is smilar to maven dependencies/plugins
+---------------------------------------------------------------------------
+
+cypress.json: Bu JSON dosyasi, sağladiğiniz tüm yapilandirma
+              değerlerini depolamak için kullanilir.
+
+-this is used to override cypress custum behaviours
+- adding global variables
+add tis in cypress.json file to override subdomain security
+Ornek: downloadsFolder, defaultCommandTimeout, screenshotsFolder, 
+
+"defaultCommandTimeout": 4000,
+
+"chromeWebSecurity": false
+
+
+Güvenli olmayan içeriği görüntüle
+Kaynaklar arasi hatalar olmadan herhangi bir süper domain alanina gidin
+Uygulamaniza katiştirilmiş çapraz kaynakli iframelere erişin
+---------------------------------------------------------------------------
+
+package-lock.js:
+-after npm commands, this fill will be generated
+this is specific file based on the npm packages
+(project specific informations) like pom.xml
+-in our case, this package has all cypress specific information
+---------------------------------------------------------------------------
+
+package.json: 
+this file has basic general configration
+such as name, description, devDependencies
+
+============================================================================
     <ul>
       <li>cy.visit() istenilen ur</li>
       <li></li>
