@@ -113,99 +113,328 @@
     <hr />
     <h2>Dosya Yapisi</h2>
     <ul>
-      <li>my-cypress-framework <ul>
-        <li>cypress <ul>
-          <li>fixtures <ul>
-            <li>{} example.json</li>
-          </ul></li>
-          <li>integration</li>
-          <li>plugins</li>
-          <li>support</li>
-        </ul></li>
-        <li>node_modules <ul>
-          <li>cypress.json</li>
-          <li>package-lock.json</li>
-          <li>package.json</li>
-        </ul></li>
-      </ul></li>
+      <li>
+        my-cypress-framework
+        <ul>
+          <li>
+            cypress
+            <ul>
+              <li>
+                fixtures
+                <ul>
+                  <li>{} example.json</li>
+                </ul>
+              </li>
+              <li>integration</li>
+              <li>plugins</li>
+              <li>support</li>
+            </ul>
+          </li>
+          <li>
+            node_modules
+            <ul>
+              <li>cypress.json</li>
+              <li>package-lock.json</li>
+              <li>package.json</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
     </ul>
- 
-<div>Fixture: Sabit test datalari olusturmak icin kullanilir. <br>
-  -url, email, username, password, ......</div>
 
+    <div>
+      <strong>Fixture:</strong> Sabit test datalari olusturmak icin kullanilir.
+      <br />
+      -url, email, username, password, ......
+    </div>
 
-<div>Integration: This folder used to create the test cases <br>
-  -similar to Java folder in Selenium <br>
-  -By default this folder has some test cases. <br>
-  -We can delete those test case and write our own <br>
-  -In this folder we can create own folder folders and test classes</div>
+    <div>
+      <strong>Integration:</strong> This folder used to create the test cases
+      <br />
+      -similar to Java folder in Selenium <br />
+      -By default this folder has some test cases. <br />
+      -We can delete those test case and write our own <br />
+      -In this folder we can create own folder folders and test classes
+    </div>
 
+    <div>
+      <strong>Plugins:</strong> (index.js) Cypressin yapabidiklerinden
+      yararlanmaniza, bunlari değiştirmenize veya genişletmenize olanak tanir.
+      <br />
 
-<div>Plugins: (index.js) Cypressin yapabidiklerinden yararlanmaniza,
-  bunlari değiştirmenize veya genişletmenize olanak tanir.
-  
-  Ornek Plagins: cypress-dark, cypress-xpath, cypress-mailosaur,
-                 cypress-slack-reporter, ...... <br> https://www.npmjs.com/package/cypress-xpath
-                 npm install -D cypress-xpath <br>
-                 require('cypress-xpath')</div>
+      <strong>Ornek Plugins:</strong> cypress-dark, cypress-xpath,
+      cypress-mailosaur, <br />
+      cypress-slack-reporter, ...... <br />
+      https://www.npmjs.com/package/cypress-xpath <br />
+      npm install -D cypress-xpath <br />
+      require('cypress-xpath')
+    </div>
 
+    <div>
+      <strong>Support Folder:</strong> This is used to create custum methods,
+      utilty classess, .... <br />
+      When we add any custom methods in support folder, they will be visible
+      entire framawork automatically <br />
 
+      <strong>command.js:</strong> çeşitli özel komutlarin nasil
+      oluşturulacağini ve mevcut komutlarin üzerine nasil yazilacağini gösterir.
+    </div>
 
-Support Folder:
-This is used to create custum methods, utilty classess, ....
-When we add any custom methods in support folder, they will be
-visible entire framawork automatically
+    <div>
+      <strong>node_modules:</strong> -This hass all packages and required
+      npm(node package manager) <br />
+      -This is smilar to maven dependencies/plugins
+    </div>
 
-command.js: çeşitli özel komutlarin nasil oluşturulacağini ve
-            mevcut komutlarin üzerine nasil yazilacağini gösterir.
+    <div>
+      <strong>cypress.json:</strong> Bu JSON dosyasi, sağladiğiniz tüm
+      yapilandirma değerlerini depolamak için kullanilir. <br />
 
------------------------------------------------------------------------
+      -this is used to override cypress custum behaviours <br />
+      - adding global variables <br />
+      add tis in cypress.json file to override subdomain security <br /><br />
+      <strong>Ornek:</strong> downloadsFolder, defaultCommandTimeout,
+      screenshotsFolder, <br />
 
+      "defaultCommandTimeout": 4000, <br />
 
-node_modules:
--This hass all packages and required npm(node package manager)
--This is smilar to maven dependencies/plugins
----------------------------------------------------------------------------
+      "chromeWebSecurity": false <br />
+      <br />
 
-cypress.json: Bu JSON dosyasi, sağladiğiniz tüm yapilandirma
-              değerlerini depolamak için kullanilir.
+      Güvenli olmayan içeriği görüntüle <br />
+      Kaynaklar arasi hatalar olmadan herhangi bir süper domain alanina gidin
+      <br />
+      Uygulamaniza katiştirilmiş çapraz kaynakli iframelere erişin
+    </div>
 
--this is used to override cypress custum behaviours
-- adding global variables
-add tis in cypress.json file to override subdomain security
-Ornek: downloadsFolder, defaultCommandTimeout, screenshotsFolder, 
+    <div>
+      <strong>package-lock.js:</strong> -after npm commands, this fill will be
+      generated <br />
+      this is specific file based on the npm packages <br />
+      (project specific informations) like pom.xml <br />
+      -in our case, this package has all cypress specific information
+    </div>
 
-"defaultCommandTimeout": 4000,
-
-"chromeWebSecurity": false
-
-
-Güvenli olmayan içeriği görüntüle
-Kaynaklar arasi hatalar olmadan herhangi bir süper domain alanina gidin
-Uygulamaniza katiştirilmiş çapraz kaynakli iframelere erişin
----------------------------------------------------------------------------
-
-package-lock.js:
--after npm commands, this fill will be generated
-this is specific file based on the npm packages
-(project specific informations) like pom.xml
--in our case, this package has all cypress specific information
----------------------------------------------------------------------------
-
-package.json: 
-this file has basic general configration
-such as name, description, devDependencies
-
-============================================================================
+    <div>
+      <strong>package.json:</strong> this file has basic general configration
+      <br />
+      such as name, description, devDependencies
+    </div>
+    <hr />
+    <h2>Cypress taki Kod Bilgileri</h2>
     <ul>
-      <li>cy.visit() istenilen ur</li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+      <li>
+        <code>
+          Cypress.on("uncaught:exception", (err, runnable) => { <br />
+          return false; <br />
+          }); <br />
+        </code>
+        Eger bu kodu class basina yazarsak islemlerde try-catch uygular.
+      </li>
+      <hr />
+      <h3>Class Olusturma</h3>
+      <li>
+        <code>
+          describe("giris", () => { <br />
+          }); <br />
+        </code>
+        Class imizin olusturmak icin yazdigimiz bölümdür. <br />
+        <strong>NOT: </strong> function() ayni zamanda
+        <strong>=&gt;</strong> arrow isaretiyle de gösterilebilir. <br />
+        Function java daki method'un karsiligidir.
+      </li>
+      <hr />
+      <h3>Test Annotation u Olusturma</h3>
+      <li>
+        <code>
+          it("login negatif test", function() {
+          <br />
+          }); <br />
+        </code>
+        test anotation u yapabilmek icin kullanilir.
+      </li>
+      <hr />
+      <h3>Url e Gitme</h3>
+      <li>
+        <strong>cy.visit('https://gmibank.com/') </strong> istenilen url ye
+        gitmek icin kullanilir.
+      </li>
+      <hr />
+      <h3>Location Alma</h3>
+      <li>
+        <strong>cy.get('#tp-customer-mobilePhoneNumber') </strong> locate alma
+        islemidir.
+        <div>
+          <ol>
+            <li>
+              <code>
+                describe("giris", () => { <br />
+                it("login negatif test", function() {
+                <br />
+                cy.visit('https://gmibank.com/') <br />
+                }); <br />
+                }); <br />
+              </code>
+              yazip cy driver in calistigi browser dan siteyi aciyoruz.
+            </li>
+            <li>locate isaretine basiyoruz.</li>
+            <li>Istedigimiz elemente tikliyoruz.</li>
+            <li>
+              cy.get('...') seklinde gördügümüz kismi kopyala butonuna basarak
+              kopyaliyoruz.
+            </li>
+            <li>
+              Test anotation icin olusturdugumuz it fonksiyonunun icine
+              yapistiriyoruz.
+            </li>
+          </ol>
+        </div>
+      </li>
+      <hr />
+      <h3>Locate lerde Islem Yapma</h3>
+      <li>
+        <strong>cy.get('...').click() </strong> bahsi gecen locate e tiklar
+      </li>
+      <li>
+        <strong>cy.get('...').type('istenilenmetin') </strong> bahsi gecen
+        locate teki texbox icine deger yazmak icin kullanilir. (sendkeys)
+      </li>
+      <li>
+        <strong>cy.get('...').clear() </strong> bahsi gecen locate teki texbox
+        icine yazilmis olan deger(ler)i temizlemek(silmek) icin kullanilir.
+      </li>
+      <hr />
+      <h3>configurationproperties ile Kullanim</h3>
+      <li>
+        <code>
+          before(function () { <br />
+          cy.fixture('example').then(function (data) { <br />
+          this.data = data; <br />
+          }); <br />
+        </code>
+        Eger configurationproperties gibi bir yapi kullanmak istersek describe
+        icine bu methodu yazmaliyiz. <br />
+        Bu dosya fixture dosyasinin icinde olusturulmalidir. <br />
+        <strong>NOT: </strong> fixture dosyasinin icinde key ve value lar tirnak
+        icinde yazilmalidir. <br />
+        "username":"team3",
+        <strong>NOT2: </strong> fixture dosyasi her zaman süslü parantezle
+        baslayip bitmelidir! ({})
+      </li>
+      <hr />
+      <h3>Belirli Testi Ignore Etme veya Calistirma</h3>
+      <li>
+        <strong>skip: </strong> bu anahtar kelimenin oldugu test ignore edilir.
+        <br />
+        <code>
+          it.skip('login negatif test', function() { ...
+          <br />
+          }); <br />
+        </code>
+      </li>
+      <li>
+        <strong>only: </strong> class ta sedece bu anahtar kelimenin oldugu test
+        calisir.
+        <br />
+        <code>
+          it.only('login negatif test', function() { ...
+          <br />
+          }); <br />
+        </code>
+      </li>
+      <hr />
+      <h3>Assertion Yapma</h3>
+      <li>
+        <strong>cy.get('...').should('...') </strong> verilen locate teki durumu
+        assert etmek icin kullanilir.
+        <ul>
+          <li>
+            <strong>.should('be.visible') </strong> görünür oldugunu kontrol
+            eder.
+          </li>
+          <li>
+            <strong>.should('include.text','try again') </strong> istenilen
+            yaziyi icerdigini kontrol eder. <br />
+            include yerine <strong>contain</strong> de yazilabilir.
+          </li>
+          <li>
+            Eger iki assert u ayni anda yapacaksak
+            <strong>.and('...')</strong> kullanabiliriz. <br />
+            <code> .should('be.visible').and('include.text','try again') </code>
+          </li>
+          <li>
+            <strong>.should('have.text','try again') </strong> istenilen yazi
+            ile oradaki yazinin ayni oldugunu kontrol eder.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>cy.url().should('include','https://www.gmibank.com/') </strong>
+        gidilen url nin icinde yazilan kelimenin/url yi icerdigini kontrol eder.
+      </li>
+      <li>
+        <strong>cy.title().should('contain','gmibank') </strong>
+        sayfanin title inda yazili kelimeyi icerdigini kontrol eder. >
+      </li>
+      <hr />
+      <h3>Method Olusturma</h3>
+      <li>
+        <code>
+          Cypress.Commands.add('LoginAdmin',()=> { <br />
+          }) <br />
+        </code>
+        <strong>NOT: </strong> Methodlari Locate lerimizi bulundurdugumuz Page
+        sayfamizda olusturursak cagiramiyoruz. Bu yüzden support package inda
+        bir <strong>commands.js</strong> dosyasi olusturup icine yaziyoruz.
+        <strong>NOT2: </strong> Cypress ta method calistirabilmek icin terminale
+        <strong>npm install --save-dev cypress-file-upload</strong> yazip enter
+        a basiyoruz. Olusturdugumuz Not1 deki commands.js dosyasinin en son
+        satir olarak <strong>import 'cypress-file-upload'</strong> yazisini
+        ekliyoruz.
+      </li>
+      <li>
+        Bu methodu cagirabilmek icin bir test Annotation methodunun icinde (it)
+        iken
+        <strong><code> cy.LoginAdmin(); </code></strong> diyoruz.
+      </li>
+      <hr />
+      <h3>Page Object Model Olusturma</h3>
+      <li>
+        Integration dosyasinin altina <strong>POM</strong> klosörü
+        olusturuyoruz. (Loceter larin bulunacagi dosya)
+      </li>
+      <li><strong>xxx.js</strong> uzantili bir json class i olusturuyoruz.</li>
+      <li>
+        sayfayi öncelikle <strong><code> class xxx {} </code></strong> koduyla
+        cevreliyoruz.
+      </li>
+      <li>
+        Bu class iminizin icin <strong>locate methodlari</strong>yla
+        dolduruyoruz. <br />
+        <code>
+          getLoginButonu() { <br />
+          return cy.get("#account-menu > .dropdown-toggle") <br />
+          }
+        </code>
+      </li>
+      <li>
+        Asil adimlarimizi yazdigimiz integration package imizdaki test
+        Annotation larimizin bulundugu sayfaya, describe in icindeki before
+        methodundan sonra (veya it Annotation indan önce)
+        <strong>const xxx=new xxx();</strong> yazarak o sayfadan methodlari
+        alabiliyoruz.(obje olusturma)
+      </li>
+      <li>
+        Artik <strong>xxx.getLoginButonu().click()</strong> diyerek oradaki
+        locate lere her türlü islemi yapabilirim.
+      </li>
+      <li>
+        Eger fixtures (properties) dosyasindan bir bilgi istersek
+        <strong>xxx.kullaniciAdi().type(this.data.firstname);</strong> yazarak
+        bastaki before methodu sayesinde oraya önceden yazdigimiz firstname key
+        inin karsisindaki value yu txbox a yazdirabiliriz.
+      </li>
     </ul>
+    <hr />
   </body>
 </html>
