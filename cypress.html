@@ -34,6 +34,20 @@
       </li>
     </ul>
     <hr />
+    Eger sürüm sorunu yasaniyorsa; yani hata<br />
+    <code>
+      No version of Cypress is installed in:
+      C:\Users\ASD\AppData\Local\Cypress\Cache\9.2.1\Cypress <br />
+
+      Please reinstall Cypress by running: cypress install
+    </code>
+    <br />
+    seklinde ise; <br />
+    <strong>npm install --save-dev cypress@9.2.0</strong> kodunu girip enter a
+    basiyoruz. <br />
+    sonrasinda <strong>npx cypress open</strong> koduyla aciyoruz.
+
+    <hr />
     <h2>Cypress Hakkinda</h2>
     <p>
       Cypress, modern web dünyasi için tasarlanmiş, JavaScript tabanli, yeni
@@ -408,6 +422,10 @@
       <li>
         sayfayi öncelikle <strong><code> class xxx {} </code></strong> koduyla
         cevreliyoruz.
+      </li>
+      <li>
+        Ama en altina <strong>export default xxx</strong> yazmazsak kodumuzu
+        calistiramayiz.
       </li>
       <li>
         Bu class iminizin icin <strong>locate methodlari</strong>yla
