@@ -380,6 +380,15 @@
             <strong>.should('have.text','try again') </strong> istenilen yazi
             ile oradaki yazinin ayni oldugunu kontrol eder.
           </li>
+          <li>
+            Eger Select ile secilmesi gereken dropdown ise; <br />
+            cy.get('#langKey').select('English').should('have.value', 'en')
+          </li>
+          <li>
+            Eger text olarak kendimiz secmek istersek; <br />
+            cy.get('#account-menu > .dropdown-toggle').contains('cako5
+            bes').click()
+          </li>
         </ul>
       </li>
       <li>
