@@ -171,8 +171,10 @@
           <strong>colspan="" :</strong>yatayda hücre birlestirir. <br />
           <code> &lt;td collspan="2"&gt; </code>
         </li>
-        <li><strong>rowspan="" :</strong>dikeyde hücre birlestirir. <br />
-          <code> &lt;td rowspan="3"&gt; </code> </li>
+        <li>
+          <strong>rowspan="" :</strong>dikeyde hücre birlestirir. <br />
+          <code> &lt;td rowspan="3"&gt; </code>
+        </li>
       </ul>
       <div>
         Eger tablonun cizgilerini olusturmak istiyorsak; <br />
@@ -305,8 +307,8 @@
           </section>
           <strong>"button"</strong> buton halide bir sekil olusturur. default
           görevi yoktur.<br />
-          <strong>"submit" </strong>Form bilgilerini baackend e gönderen bir
-          buton olusturur. <br />
+          <strong>"submit" </strong>Form bilgilerini action da belirtilen
+          baackend e gönderen bir buton olusturur. <br />
           <strong>"reset" </strong> Form daki bilgileri resetleyen bir buton
           olusturur. <br />
           Butonlarin ayni form etiketi icinde aktif oldugunu unutmayalim. <br />
@@ -327,8 +329,10 @@
             <input type="checkbox" name="tenis" id="tenis" value="tenis" />
             <label for="tenis">Tenis</label> <br />
           </section>
+          Eger <strong>checked</strong> yazarsak default olarak hazir
+          isaretlenmis halde karsimiza cikar. <br />
           <strong>"radio" </strong> tek secime izin veren bir giristir. eger
-          birden fazla radio butonu varsa name="" leri ayni olmali ki tek secim
+          birden fazla radio butonu varsa <strong>name="" leri ayni olmali</strong> ki tek secim
           yapilabilsin.(cinsiyet gibi)<br />
           <section class="kod">
             <input type="radio" name="cinsiyet" id="erkek" />
