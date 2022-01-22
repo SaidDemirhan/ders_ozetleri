@@ -110,13 +110,30 @@
           yapmak icin kullanilir.
         </li>
         <li>
-          <strong>&lt;a href=""> &lt;/a> :</strong>baglanti vermek icin
-          kullanilir. <br />
-          "mailto:(email adresi)" =cihazdaki mail pograminizi acip mail
-          gönderilir. <br />
-          "tel:(tel no)"" = cihazin telefonunu kullanir. <br />
-          "https://wa.me/905551234567" =seklinde whatsapptan arar.
-          https://faq.whatsapp.com/iphone/how-to-link-to-whatsapp-from-a-different-app/?lang=tr
+          <strong>&lt;a href=""> &lt;/a> :</strong> internetten veya ayni/farkli
+          sayfadan baglanti vermek icin kullanilir. <br />
+          <ul>
+            <li>
+              eger baska sayfadaki bir yere gitmek istenirse
+              <strong>index.html#Klavye</strong> gibi bir yazim yapilabilir (#
+              ile kullanacagimiz bir id olmalidir.).
+            </li>
+            <li>
+              "mailto:(email adresi)" =cihazdaki mail pograminizi acip mail
+              gönderilir.
+            </li>
+            <li>"tel:(tel no)"" = cihazin telefonunu kullanir.</li>
+            <li>
+              "https://wa.me/905551234567" =seklinde whatsapptan arar.
+              https://faq.whatsapp.com/iphone/how-to-link-to-whatsapp-from-a-different-app/?lang=tr
+            </li>
+            <li>
+              Eger indirilmesini istedigimiz bir dosya linki olusturmak istersek
+              zip tarzi bir uzanti vermeliyiz. (&lt;a
+              href="katalog.pdf"&gt;katalogu indir&lt;/a&gt;) <br />
+              Eger gösterilebilecek bir dosya ise gösterir yoksa indirir.
+            </li>
+          </ul>
         </li>
         <li>
           <strong>&lt;iframe src="." frameborder="0"> &lt;/iframe> :</strong
@@ -150,9 +167,18 @@
         <li><strong>&lt;/tr> :</strong></li>
         <li><strong>&lt;/tfoot> :</strong></li>
         <li><strong>&lt;/table> :</strong></li>
-        <li><strong>colspan="" :</strong>yatayda hücre birlestirir.</li>
-        <li><strong>rowspan="" :</strong>dikeyde hücre birlestirir.</li>
+        <li>
+          <strong>colspan="" :</strong>yatayda hücre birlestirir. <br />
+          <code> &lt;td collspan="2"&gt; </code>
+        </li>
+        <li><strong>rowspan="" :</strong>dikeyde hücre birlestirir. <br />
+          <code> &lt;td rowspan="3"&gt; </code> </li>
       </ul>
+      <div>
+        Eger tablonun cizgilerini olusturmak istiyorsak; <br />
+        <code> .tablo{background-color:black} </code> <br />
+        <code> .tablo td{background-color:white} </code>
+      </div>
       <hr />
 
       <h2>LISTELEME TAGLARI</h2>
@@ -168,10 +194,12 @@
       <hr />
 
       <h2>RESIM-FOTOGRAF EKLEME</h2>
-      <strong
-        >&lt;img src="(resim yolu)" alt="(resim bilgisi)" width="100px"
-        height="75px"></strong
-      >
+      <strong>
+        &lt;img src="(resim yolu)" alt="(resim bilgisi)" width="100px"
+        height="75px">
+      </strong>
+      <br />
+      alt img de olur ama title a taginda olur.
       <hr />
       <h2>VIDEO EKLEME</h2>
       <strong
@@ -180,14 +208,38 @@
       ><br />
       <strong>controls autoplay :</strong>acilinca oynamaya basla(yabili)r.<br />
       isteninirse direkt olarak youtube dan da ifarame seklinde baglanti
-      alinabilir. <br />
-      <p>
+      alinabilir. <br /><br />
+      Baska türlü eklemek istersek; <br />
+      <code>
+        &lt;video width="320" height="240" controls&gt; <br />
+        &lt;source src="movie1.mp4" type="video/mp4"&gt; <br />
+        Your browser does not support the video tag.
+      </code>
+      (html5 i kabul etmeyen bir tarayicida görünür.) <br />
+      <code> &lt;/video&gt; </code>
+      <hr />
+      <h3>IFRAME Ekleme</h3>
+      Kendi sitenin icine baska bir sayfa eklemek icin kullanilir. <br />
+      Video harita internet sayfasi vs icin kullanilir. <br />
+      <code>
         &lt;iframe width="560" height="315"
         src="https://www.youtube.com/embed/O2059wLL_Ls" title="YouTube video
         player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
         encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>&lt;/iframe>
-      </p>
+      </code>
+      <br />
+      <br />
+      Bazi siteler güvenlik gerekcesiyle bu yöntemi engeller. <br />
+      Eger youtube tan bir video almak istersek; <br />
+      <strong>paylas- yerlestir</strong> yaparak iframe kodunu kopalayabiliriz.
+      <br /><br />
+      Eger haritadan bir yeri iframe olarak yerlestirmek istersek
+      <strong>paylas-harita yerlestir</strong> üzerinden alabiliriz. <br />
+      Eger paylas cikkmiyorsa sectigimiz nokta icin; <br />
+      sag tus ile <strong>burasi neresi?</strong> seklinde isaretleyip paylas
+      kismin aktif hale getirebiliriz.
+
       <hr />
       <h2>Ses Ekleme</h2>
       <strong>&lt;audio src="" controls>&lt;/audio></strong>
@@ -454,7 +506,8 @@
           </li>
           <li>
             <strong>&lt;nav&gt; :</strong> Sayfadaki bağlantıları bir araya
-            toplamak için kullanılan bir etikettir. <br />
+            toplamak için kullanılan bir etikettir.(# ile kullanacagimiz id
+            olmalidir.) <br />
             <nav>
               <a href="#">link1</a>
               <a href="#">link2</a>
@@ -774,11 +827,22 @@
             <br />Buna <strong>internal stil </strong>denir.
             <ul>
               <li><code>h1{text-align: center;}</code></li>
-              <li><code>.baslik{color: red;}</code></li>
-              <li><code>#birinciBaslik{background-color: red;}</code></li>
+              <li>
+                <code>.baslik{color: red;}</code> (class icin "."(nokta)
+                kullailir.)
+              </li>
+              <li>
+                <code>#birinciBaslik{background-color: red;}</code> (id icin "#"
+                kullailir.)
+              </li>
               <li>
                 <code>.menu a{text-decoration: none</code> menu class indaki
                 ataglarinin cizgisini kaldir
+              </li>
+              <li>
+                Parentten en son child a kadar aralarda bosluk birakilarak css
+                kodlari yazilabilir. <br />
+                .urun-listesi thead th
               </li>
             </ul>
           </li>
