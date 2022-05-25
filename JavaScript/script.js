@@ -250,7 +250,81 @@ veri = veri.replace("demir", "celik"); //said celikhan 36
 
 veri = veri.length; //16
 
+veri = "said demirhan 36";
 veri = veri.split(" ");
+(3)[("said", "demirhan", "36")];
 
 console.log(veri);
 console.log(typeof veri);
+
+/////////////////////////////////////////////////////////////////////
+
+//ARRAYS
+
+let isimler = ["ali", "veli", "asli", "kerem"]; //(4)['ali', 'veli', 'asli', 'kerem']
+
+console.log(isimler);
+console.log(isimler.length); //4
+console.log(typeof isimler); //object
+
+let sayilar = [56, 24, 25, 36, 98, 47]; //(6) [56, 24, 25, 36, 98, 47]
+console.log(sayilar);
+
+let karisik = ["ali", "yilmaz", 36, null, undefined, ["programlama", "futbol"]];
+//(6) ['ali', 'yilmaz', 36, null, undefined, Array(2)]
+console.log(karisik);
+
+//get array item
+
+console.log(isimler[1]); //veli
+
+//set array item
+
+isimler[0] = "ahmet";
+console.log(isimler); //(4)['ahmet', 'veli', 'asli', 'kerem']
+
+//add item
+
+isimler[5] = "havva"; //(6)['ahmet', 'veli', 'asli', 'kerem', empty, 'havva']
+console.log(isimler);
+console.log(isimler.length); //6
+//index 0 dan basladigi icin bosluklara empty degerini atadi
+isimler[isimler.length] = "kivanc";
+console.log(isimler); //(7)['ahmet', 'veli', 'asli', 'kerem', empty, 'havva', 'kivanc']
+
+isimler = ["ali", "veli", "asli"];
+isimler.push("eda"); //sonuna ekler
+console.log(isimler); //(4)['ali', 'veli', 'asli', 'eda']
+
+isimler = ["ali", "veli", "asli"];
+isimler.unshift("eda"); //basina ekler
+console.log(isimler); //(4)['eda', 'ali', 'veli', 'asli']
+
+//remove item
+
+sayilar = [56, 24, 25, 36, 98, 47];
+sayilar.pop(); //son sayiyi siler
+console.log(sayilar); //(5)[56, 24, 25, 36, 98]   //47 silindi
+
+sayilar.shift(); //ilk sayiyi siler
+console.log(sayilar); //(4)[24, 25, 36, 98] //56 silindi
+
+//indexOf
+
+isimler = ["ali", "veli", "asli"];
+let index = isimler.indexOf("veli"); //indexini buluruz.
+console.log("aradigim isim " + (index + 1) + ". sirada listededir.");
+
+//reverse     tersine döndürür.
+
+console.log(isimler.reverse()); //(3)['asli', 'veli', 'ali']
+
+//sort       siralamak icin
+
+console.log(isimler.sort()); //(3)['ali', 'asli', 'veli']
+console.log(sayilar.sort()); //(4)[24, 25, 36, 98]
+
+//concat iki diziyi birlestirir
+
+let birlesikArray = isimler.concat(sayilar);
+console.log(birlesikArray); //(7)['ali', 'asli', 'veli', 24, 25, 36, 98]
