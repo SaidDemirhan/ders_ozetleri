@@ -14,7 +14,7 @@ console.warn("ACHTUNG");
 //konsoldaki yazlari temizler
 
 //////////////////////////////////////////////////////////////////
-//Degiskenler
+//Degiskenler     let var const
 
 var adSoyad = "Said Demirhan";
 
@@ -256,7 +256,19 @@ veri = veri.split(" ");
 
 console.log(veri);
 console.log(typeof veri);
+////////////////////////////////////////////////////////////
+//VERI TURLERI(DATA TYPE)
+//String
+//Number
+//Boolean
+//null
+//undefined
 
+//////////////////////////////////////////
+
+//null ve Undefined farki
+//null da deger null olarak atanmistir,
+//undefined de henüz deger atanmamistir.
 /////////////////////////////////////////////////////////////////////
 
 //ARRAYS
@@ -328,3 +340,62 @@ console.log(sayilar.sort()); //(4)[24, 25, 36, 98]
 
 let birlesikArray = isimler.concat(sayilar);
 console.log(birlesikArray); //(7)['ali', 'asli', 'veli', 24, 25, 36, 98]
+
+//splice      diziye silerek veya silmeden eleman ekler
+
+isimler = ["ali", "veli", "asli"];
+isimler.splice(1, 0, "kadir"); //silmeden istenilen index e ekler
+console.log(isimler); //(4)['ali', 'kadir', 'veli', 'asli']
+
+isimler = ["ali", "veli", "asli"];
+isimler.splice(1, 1, "kadir"); //yazilan indextekini siler ve istenilen index e ekler
+console.log(isimler); //(3)['ali', 'kadir', 'asli']
+
+isimler = ["ali", "veli", "asli"];
+isimler.splice(1, 2, "kadir"); //yazilan indextekiyle birlikte sonra geleni
+// siler ve istenilen index e ekler.
+console.log(isimler); //(2)['ali', 'kadir']
+
+/////////////////////////////////////////////////////////////////////////////
+
+//Kosullu durumlar
+
+const isim2 = "Kadir";
+const username = "kdr88";
+const yas2 = 24;
+const isStudent = true;
+const okul = "Universite";
+
+if (username == "kdr88") {
+  console.log("Merhaba Kadir!");
+  if (yas2 >= 20) {
+    console.log("üniversite yasindasin");
+  } else {
+    console.log("daha cok kücüksün");
+  }
+} else {
+  console.log("Kullanici bulunamadi");
+}
+
+//undefined sorgulasi
+let id = 546517;
+if (typeof id != "undefined") {
+  console.log("id: " + id);
+} else {
+  console.log("id numarasi bulunamadi");
+}
+
+/////////////////////////////////////////////////////////////////
+//Süslemeler
+
+//%c isareti
+//color: red blau green
+//font-size: large, x-large, xx-large, xxx-large
+
+console.log("%cHello World", "color:blue; font-size:xxx-large");
+
+/////////////////////////////////////////////////////////////
+//BACKTICK
+
+var mesaj = `${ad} ve ${soyad}`;
+console.log(mesaj);   //Said ve Demirhan
