@@ -238,8 +238,19 @@ veri = veri.toLowerCase(); //said demirhan 36
 veri = veri.substring(2, 6); //id d
 //0 dan baslar... ilk i dahil, ikincisi dahil degil
 
-veri = "said demirhan 36";
+veri = "said demirhan 36"; //substring de degistigi icin aynisini yeniden atadik
 veri = veri.slice(1, 8); //aid dem
+
+veri = "said demirhan 36";
+veri = veri.indexOf("d"); //3 ilk buldugu harfin indexini int olarak getirir.
+//eger olmayan bir karakter istenirse -1 gelir
+
+veri = "said demirhan 36";
+veri = veri.replace("demir", "celik"); //said celikhan 36
+
+veri = veri.length; //16
+
+veri = veri.split(" ");
 
 console.log(veri);
 console.log(typeof veri);
