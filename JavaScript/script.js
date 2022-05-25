@@ -169,7 +169,77 @@ console.log(veri);
 console.log(typeof veri);
 
 var sayi = 15.65895245;
-veri = sayi.toPrecision(4);
+veri = sayi.toPrecision(4); //15.66
+//tam sayi ve virgulden sonrasindaki toplam rakam miktarini belirtir.
+
+veri = sayi.toFixed(3); //15.659
+//virgülden sonra kac adet rakam yazilacagini ifade eder.
+
+veri = Math.PI; //Pi saysisini verir
+
+veri = Math.round(4.5); //5 girileni yuvarlar
+
+veri = Math.ceil(3.2); //4 hep yukariya yuvarlar
+
+veri = Math.floor(8.9); //8 hep asagiya yuvarlar
+
+veri = Math.pow(3, 2); //9 üssünü alir, 3'ün 2. kuvveti
+
+veri = Math.sqrt(81); //9 karekökünü alir
+
+veri = Math.abs(-50); //50 Mutlak degerini verir yani her zaman eksi isaretini + yapar
+
+veri = Math.min(6, 1, 3, 5, 2); //1 minimum degeri verir
+
+veri = Math.max(3, 2, 4, 1); //4 max degeri verir
+
+veri = Math.floor(Math.random() * 10 + 1); // 0 ile 10 arasinda rastgele bir sayi
+//+1 lik kismi 0 in dahil olmadigi anlamina gelir.
 
 console.log(veri);
-console.log(typeof sayi);
+console.log(typeof veri);
+
+///////////////////////////////////////////////////////////
+
+//STRINGS
+
+const ad = "Said";
+const soyad = "Demirhan";
+const yas1 = 36;
+
+//let = veri;   //yukarida oldugu icin yoruma aldik.
+
+//String birlestirme(String Concetenation)
+
+veri = ad + " " + soyad; //Said Demirhan ya da
+veri = ad;
+veri += " " + soyad; //Said Demirhan
+
+veri =
+  "Benim adim " +
+  ad +
+  ", soyadim " +
+  soyad +
+  ", yasim " +
+  yas1 +
+  " ve Balikesir'de yasiyorum.";
+
+//NOT= eger tirnak isaretinin yanlis algilanmasini istemiyorsak
+//ters slash isareti kullanalim ('Balikesir\'de yasiyorum.')
+
+//veya concat methoduyla birlestirilebilir.
+
+veri = ad.concat(" ", soyad, " ", yas1); //Said Demirhan 36
+
+veri = veri.toUpperCase(); //SAID DEMIRHAN 36
+
+veri = veri.toLowerCase(); //said demirhan 36
+
+veri = veri.substring(2, 6); //id d
+//0 dan baslar... ilk i dahil, ikincisi dahil degil
+
+veri = "said demirhan 36";
+veri = veri.slice(1, 8); //aid dem
+
+console.log(veri);
+console.log(typeof veri);
